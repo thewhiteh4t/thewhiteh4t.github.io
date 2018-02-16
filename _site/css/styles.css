@@ -1,0 +1,55 @@
+#logo
+{
+	max-width: 80%;
+	padding-top: 5px;
+}
+
+.navbar-fixed 
+{ 
+	z-index: 9999; 
+}
+
+.img
+{
+	height: 238;
+	width: 422;
+	object-fit: cover;
+}
+
+.title
+{
+	font-weight: 100;
+	font-size: 40px;
+}
+
+.subtitle
+{
+	font-weight: 100;
+	font-size: 30px;
+}
+
+.content
+{
+	font-weight: 300;
+	font-size: 16px;
+}
+
+pre
+{
+    background-color: #212121;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+}
+
+body 
+{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main 
+{
+    flex: 1 0 auto;
+}

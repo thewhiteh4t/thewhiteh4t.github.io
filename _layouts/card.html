@@ -1,0 +1,17 @@
+---
+layout: 
+---
+{% for post in site.posts limit:5 %}
+<div class="col s12 m12 l6">
+  <div class="card grey darken-3 z-depth-5">
+    <div class="card-image">
+      <img class="img" src="{{ item.image }}">               
+      <a href="{{ post.link }}" class="btn-floating btn-large halfway-fab waves-effect cyan z-depth-5"><i class="material-icons">chevron_right</i></a>               
+    </div>
+    <div class="card-content white-text"> 
+      <span class="card-title">{{ post.title }}</span>
+      <p class="cyan-text">{{ post.desc }}</p>  
+    </div>
+  </div>
+</div>
+{% endfor %}
