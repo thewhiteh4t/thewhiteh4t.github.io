@@ -1,6 +1,10 @@
 name: The White Hat
 
-autho: H4ck1t
+url: https://h4ck1t.github.io/thewhitehat
+
+baseurl: /thewhitehat
+
+author: H4ck1t
 
 future: true
 
