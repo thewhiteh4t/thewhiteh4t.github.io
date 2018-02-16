@@ -8,6 +8,7 @@ fields:
   label: Layout
   config:
     required: true
+  default: post
 - type: file
   name: image
   label: Image
@@ -16,6 +17,7 @@ fields:
   label: Title
   config:
     required: true
+  default: Test
 - type: datetime
   name: date
   label: Date
