@@ -2,4 +2,22 @@
 pages:
 - _posts/test-2.md
 hide_body: false
-fields: []
+fields:
+- type: text
+  name: layout
+  label: Layout
+  config:
+    required: true
+- type: file
+  name: image
+  label: Image
+- type: text
+  name: title
+  label: Title
+  config:
+    required: true
+- type: datetime
+  name: date
+  label: Date
+  config:
+    required: true
