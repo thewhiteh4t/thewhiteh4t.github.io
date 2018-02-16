@@ -1,37 +1,18 @@
-<!-- forestryio: ignore; forestryio: admin -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin</title>
-    <meta name="description" content=" " />
-    <meta name="author" content=" " />
-    <meta name="HandheldFriendly" content="true" />
-    <meta name="MobileOptimized" content="320" />
-    <!-- Use maximum-scale and user-scalable at your own risk. It disables pinch/zoom. Think about usability/accessibility before including.-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+---
+layout: default
+---
 
-    <link rel="stylesheet" href="https://local.forestry.io/main.css" />
-
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-
-    <!-- Fort awesome icon kit -->
-    <script src="https://use.fortawesome.com/b6f38602.js"></script>
-
-</head>
-<body>
-<div id="app">
-
+{% for post in site.posts limit:6 %}
+<div class="col s12 m12 l6">
+  <div class="card grey darken-3 z-depth-5">
+    <div class="card-image">
+      <img class="img" src="{{ post.image }}">        
+      <a href="{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect cyan z-depth-5"><i class="material-icons">chevron_right</i></a>               
+    </div>
+    <div class="card-content white-text"> 
+      <span class="card-title">{{ post.title }}</span>
+      <p class="cyan-text">{{ post.date | date: "%b %d, %Y" }}</p>  
+    </div>
+  </div>
 </div>
-<script id="admin-config-script" type="text/javascript">
-    var env = {
-        siteId: "bis5kmnq7zp3tg",
-        local: false
-    };
-</script>
-<script type="application/javascript" src="https://local.forestry.io/forestry.min.js"></script>
-
-</body>
-</html>
+{% endfor %}
