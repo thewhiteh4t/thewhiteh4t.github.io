@@ -2,9 +2,9 @@ title: The White Hat
 description: A Cyber Security Blog 
 logo: /images/logo.png
 url: https://h4ck1t.github.io/thewhitehat
-baseurl: /
+baseurl: /thewhitehat
 author: H4ck1t
-future: true
+future: false
 source: .
 destination: ./_site
 layouts_dir: _layouts
