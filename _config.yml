@@ -1,6 +1,5 @@
 title: The White Hat
 description: A Cyber Security Blog 
-logo: /images/logo.png
 url: https://h4ck1t.github.io/thewhitehat
 baseurl: /thewhitehat
 author: H4ck1t
@@ -9,6 +8,4 @@ source: .
 destination: ./_site
 layouts_dir: _layouts
 markdown_ext: md
-plugins: [jekyll-paginate , jekyll-sitemap , jekyll-seo-tag]
-paginate: 6
-paginate_path: "/blog/page:num/"
+plugins: [jekyll-sitemap , jekyll-seo-tag]
