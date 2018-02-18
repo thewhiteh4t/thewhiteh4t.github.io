@@ -1,6 +1,6 @@
 ---
 pages:
-- _posts/cve-2018-6791-arbitrary-command-execution-in-kde-plasma.md
+- _posts/2018-02-18-cve-2018-6791-arbitrary-command-execution-in-kde-plasma.md
 hide_body: false
 fields:
 - type: text
