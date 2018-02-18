@@ -8,6 +8,4 @@ source: .
 destination: ./_site
 layouts_dir: _layouts
 markdown_ext: md
-plugins: 
-  -jekyll-sitemap
-  -jekyll-seo-tag
+plugins: [jekyll-sitemap , jekyll-seo-tag]
