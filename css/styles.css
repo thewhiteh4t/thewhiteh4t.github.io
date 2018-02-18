@@ -42,7 +42,7 @@ pre
     padding: 20px;
 }
 
-body 
+.body 
 {
     display: flex;
     min-height: 100vh;
