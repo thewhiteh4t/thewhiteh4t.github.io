@@ -16,15 +16,15 @@
     enable_page_level_ads: true
   });
 </script>
-<link rel="icon" type="image/png" href="https://h4ck1t.github.io/thewhitehat/favicon-196x196.png" sizes="196x196"/>
-<link rel="icon" type="image/png" href="https://h4ck1t.github.io/thewhitehat/favicon-96x96.png" sizes="96x96"/>
-<link rel="icon" type="image/png" href="https://h4ck1t.github.io/thewhitehat/favicon-32x32.png" sizes="32x32"/>
-<link rel="icon" type="image/png" href="https://h4ck1t.github.io/thewhitehat/favicon-16x16.png" sizes="16x16"/>
-<link rel="icon" type="image/png" href="https://h4ck1t.github.io/thewhitehat/favicon-128.png" sizes="128x128"/>
-<link rel="shortcut icon" type="image/x-icon" href="https://h4ck1t.github.io/thewhitehat/favicon.ico"/>
-<link type="text/css" rel="stylesheet" href="/thewhitehat/materialize/css/materialize.min.css"  media="screen,projection"/>
+<link rel="icon" type="image/png" href="{{ site.url }}/favicon-196x196.png" sizes="196x196"/>
+<link rel="icon" type="image/png" href="{{ site.url }}/favicon-96x96.png" sizes="96x96"/>
+<link rel="icon" type="image/png" href="{{ site.url }}/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="{{ site.url }}/favicon-16x16.png" sizes="16x16"/>
+<link rel="icon" type="image/png" href="{{ site.url }}/favicon-128.png" sizes="128x128"/>
+<link rel="shortcut icon" type="image/x-icon" href="{{ site.url }}/favicon.ico"/>
+<link type="text/css" rel="stylesheet" href="{{ site.url }}/materialize/css/materialize.min.css"  media="screen,projection"/>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="/thewhitehat/css/styles.css">
+<link rel="stylesheet" href="{{ site.url }}/css/styles.css">
 <meta name="viewport" content="width=device-width; initial-scale=1.0;"/>
 <meta name="theme-color" content="#424242">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -36,7 +36,7 @@
 <body style="background-color:#212121;">
  <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script type="text/javascript" src="/thewhitehat/materialize/js/materialize.min.js"></script>
+      <script type="text/javascript" src="{{ site.url }}/materialize/js/materialize.min.js"></script>
       <script>
       	$(document).ready(function(){
       		$(".button-collapse").sideNav();
@@ -48,16 +48,16 @@
     	<div class="navbar-fixed">
     	<nav>
     		<div class="nav-wrapper grey darken-3 z-depth-5">
-    			<a href="/thewhitehat">
-    			<img id="logo" class="brand-logo center" src="/thewhitehat/images/logo.png"> 
+    			<a href="{{ site.url }}">
+    			<img id="logo" class="brand-logo center" src="{{ site.url }}/images/logo.png"> 
     			</a>
       			<ul id="slide-out" class="side-nav grey darken-3">
     				<li>
     					<div class="user-view">
     						<div class="background">
-        						<img src="/thewhitehat/images/sidebg.jpg">
+        						<img src="{{ site.url }}/images/sidebg.jpg">
       						</div>
-      							<img class="circle z-depth-5" src="/thewhitehat/images/circle.jpg">
+      							<img class="circle z-depth-5" src="{{ site.url }}/images/circle.jpg">
       							<span class="black-text flow-text name">&nbsp H4ck1t</span>
       							<span class="black-text">Welcome!</span>
     					</div>
@@ -92,7 +92,7 @@
             </div>
           </div>
           <div class="footer-copyright">
-            <div class="container">2018 All Rights Reserved. </div>
+            <div class="container">2018 All Rights Reserved.</div>
           </div>
         </footer>
 </body>
