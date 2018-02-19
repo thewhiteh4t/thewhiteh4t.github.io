@@ -1,8 +1,8 @@
 title: The White Hat
 description: A Cyber Security Blog 
-url: https://h4ck1t.github.io/thewhitehat
-baseurl: /thewhitehat
-author: H4ck1t
+url: https://thewhiteh4t.github.io
+baseurl: 
+author: thewhiteh4t
 future: false
 source: .
 destination: ./_site
