@@ -32,7 +32,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
-
 <body style="background-color:#212121;">
  <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -42,41 +41,37 @@
       		$(".button-collapse").sideNav();
       	});
       </script>
-
-
-	<div class="valign-wrapper">
-    	<div class="navbar-fixed">
-    	<nav>
-    		<div class="nav-wrapper grey darken-3 z-depth-5">
-    			<a href="{{ site.url }}">
-    			<img id="logo" class="brand-logo center" src="{{ site.url }}/images/logo.png"> 
-    			</a>
-      			<ul id="slide-out" class="side-nav grey darken-3">
-    				<li>
-    					<div class="user-view">
-    						<div class="background">
-        						<img src="{{ site.url }}/images/sidebg.jpg">
-      						</div>
+<div class="valign-wrapper">
+	<div class="navbar-fixed">
+    		<nav>
+    			<div class="nav-wrapper grey darken-3 z-depth-5">
+    				<a href="{{ site.url }}">
+    					<img id="logo" class="brand-logo center" src="{{ site.url }}/images/logo.png"> 
+    				</a>
+      				<ul id="slide-out" class="side-nav grey darken-3">
+    					<li>
+    						<div class="user-view">
+    							<div class="background">
+        							<img src="{{ site.url }}/images/sidebg.jpg">
+      							</div>
       							<img class="circle z-depth-5" src="{{ site.url }}/images/circle.jpg">
       							<span class="black-text flow-text name">The White Hat</span>
       							<span class="black-text">Welcome!</span>
-    					</div>
-    				</li>
-    				<li><a href="#!" class="cyan-text">Remote Exploits</a></li>
-    				<li><a href="#!" class="cyan-text">Frameworks</a></li>
-    				<li><a href="#!" class="cyan-text">Misc</a></li>
+    						</div>
+    					</li>
+    					<li><a href="#!" class="cyan-text">Remote Exploits</a></li>
+    					<li><a href="#!" class="cyan-text">Frameworks</a></li>
+    					<li><a href="#!" class="cyan-text">Misc</a></li>
 				</ul>
 				<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
 			</div>
   		</nav>          		
     	</div>
-	</div>
+</div>
 
 <div class="container">
 <div class="row">	
-
 {{ content }}
-
 </div>
 </div>
 <footer class="page-footer grey darken-4">
