@@ -57,13 +57,14 @@ pre
 #h1
 {
 	font-size: 14px;
-	margin: 15px 0px 10px 0px;
+	padding-top: 15px;
 }
 
 #h2
 {
 	font-size: 14px;
-	margin: 0px 0px 20px 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 #sidebg
