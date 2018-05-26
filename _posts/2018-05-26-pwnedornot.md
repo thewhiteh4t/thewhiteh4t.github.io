@@ -14,14 +14,24 @@ image: "/images/pwned3-1.png"
 
 <b>pwnedOrNot</b> is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find <b>passwords</b> for the compromised account. 
 
-<br> 
+<br> <br>
 
 It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwned.com/api/v2)">haveibeenpwnd</a></b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps</b>
 
- <br> This script has been tested on : <br>
+ <br><br>
 
-* **Kali Linux 18.2**
-* **Ubuntu 18.04**
-* **Kali Nethunter**
-* **Termux**
-  <br>
+This script has been tested on : 
+
+<br><br>
+
+<ul style="list-style-type:disc">
+
+<li>Kali Linux 18.2</li>
+
+<li>Kali Nethunter</li>
+
+<li>Ubuntu 18.04</li>
+
+<li>Termux</li>
+
+</ul>
