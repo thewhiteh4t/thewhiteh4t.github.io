@@ -12,7 +12,7 @@ image: "/images/pwned3-1.png"
 
 <p class="content white-text">
 
-pwnedOrNot is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find **passwords** for the compromised account. 
+pwnedOrNot is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find <b>passwords</b> for the compromised account. 
 
 <br> 
 
