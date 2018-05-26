@@ -74,7 +74,6 @@ python pwnedornot.py
 <li>Source of Dump</li>
 <li>ID of Dump</li>
 </ul>
-<br>
 And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password
 <br>
 <h6 class="cyan-text subtitle">Screenshots</h6>
