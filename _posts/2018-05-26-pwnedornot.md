@@ -35,3 +35,113 @@ This script has been tested on :
 <li>Termux</li>
 
 </ul>
+
+<h3 class="cyan-text subtitle">Installation</h3>
+
+<br>
+
+<b class="cyan-text">Ubuntu and Kali :</b>
+
+<br>
+
+<pre><code class="grey darken-4 red-text">
+
+pip install cfscrape
+
+apt-get install nodejs
+
+</code></pre>
+
+<br>
+
+<b class="cyan-text">Termux :</b>
+
+<br>
+
+<pre><code class="grey darken-4 red-text">
+
+pkg install python2
+
+pip2 install requests
+
+pip2 install cfscrape
+
+python2 pwnedornot.py
+
+</code></pre>
+
+<br>
+
+Other common standard python modules pwnedornot uses :
+
+<ul>
+
+<li>os</li>
+
+<li>re</li>
+
+<li>time</li>
+
+<li>json</li>
+
+<li>requests</li>
+
+<br>
+
+<h4>Usage</h4>
+
+<br>
+
+<pre><code class="grey darken-4 red-text">
+
+git clone https://github.com/thewhiteh4t/pwnedOrNot.git
+
+cd pwnedOrNot/
+
+python pwnedornot.py
+
+</code></pre>
+
+<br>
+
+<h5>Features</h5>
+
+<b><a href="[https://haveibeenpwned.com/API/v2](https://haveibeenpwned.com/API/v2)">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
+
+<ul>
+
+<li>Name of Breach</li>
+
+<li>Domain Name</li>
+
+<li>Date of Breach</li>
+
+<li>Fabrication status</li>
+
+<li>Verification Status</li>
+
+<li>Retirement status</li>
+
+<li>Spam Status</li>
+
+<li>Source of Dump</li>
+
+<li>ID of Dump</li>
+
+<br>
+
+And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password
+
+<br>
+
+<h6>Screenshots</h6>
+
+!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned1.png)
+
+!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned2.png)
+
+Also works on Kali Nethunter
+
+!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter1.png)
+
+!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter2.png)
