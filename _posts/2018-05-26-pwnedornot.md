@@ -25,15 +25,10 @@ This script has been tested on :
 <br>
 
 <ul>
-
 <li>Kali Linux 18.2</li>
-
 <li>Kali Nethunter</li>
-
 <li>Ubuntu 18.04</li>
-
 <li>Termux</li>
-
 </ul>
 
 <h3 class="cyan-text subtitle">Installation</h3>
@@ -45,35 +40,25 @@ apt-get install nodejs
 </code></pre>
 
 <b class="cyan-text">Termux :</b>
-
 <br>
-
 <pre><code class="grey darken-4 red-text">pkg install python2
 pip2 install requests
 pip2 install cfscrape
 python2 pwnedornot.py
 </code></pre>
-
 <br>
-
 Other common standard python modules pwnedornot uses :
 
 <ul class="cyan-text">
-
 <li>os</li>
-
 <li>re</li>
-
 <li>time</li>
-
 <li>json</li>
-
 <li>requests</li>
-
+</ul>
 <br>
 
 <h4 class="cyan-text subtitle">Usage</h4>
-
 <br>
 
 <pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
@@ -82,31 +67,21 @@ python pwnedornot.py
 </code></pre>
 
 <br>
-
 <h5 class="cyan-text subtitle">Features</h5>
 
-<b><a href="[https://haveibeenpwned.com/API/v2](https://haveibeenpwned.com/API/v2)">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
+<b><a href="https://haveibeenpwned.com/API/v2">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
 
 <ul class="cyan-text">
-
 <li>Name of Breach</li>
-
 <li>Domain Name</li>
-
 <li>Date of Breach</li>
-
 <li>Fabrication status</li>
-
 <li>Verification Status</li>
-
 <li>Retirement status</li>
-
 <li>Spam Status</li>
-
 <li>Source of Dump</li>
-
 <li>ID of Dump</li>
-
+</ul>
 <br>
 
 And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password
