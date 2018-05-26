@@ -16,7 +16,7 @@ pwnedOrNot is a python script which checks if the email account has  been compro
 
 <br> 
 
-It uses <b> [**haveibeenpwned**](https://haveibeenpwned.com/API/v2) </b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps</b>
+It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwned.com/api/v2 "haveibeenpwned")"></a></b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps</b>
 
  <br> This script has been tested on : <br>
 
