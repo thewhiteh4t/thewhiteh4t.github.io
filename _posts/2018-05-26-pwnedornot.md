@@ -22,9 +22,9 @@ It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwn
 
 This script has been tested on : 
 
-<br><br>
+<br>
 
-<ul style="list-style-type:disc">
+<ul>
 
 <li>Kali Linux 18.2</li>
 
