@@ -48,16 +48,10 @@ apt-get install nodejs
 
 <br>
 
-<pre><code class="grey darken-4 red-text">
-
-pkg install python2
-
+<pre><code class="grey darken-4 red-text">pkg install python2
 pip2 install requests
-
 pip2 install cfscrape
-
 python2 pwnedornot.py
-
 </code></pre>
 
 <br>
