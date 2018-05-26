@@ -12,7 +12,7 @@ image: "/images/pwned3-1.png"
 
 <p class="content white-text">
 
-<b>pwnedOrNot</b> is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find <b>passwords</b> for the compromised account. 
+<b>pwnedOrNot</b> is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find <b>passwords</b> for the compromised account.
 
 <br> <br>
 
@@ -20,7 +20,7 @@ It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwn
 
 <br><br>
 
-This script has been tested on : 
+This script has been tested on :
 
 <br>
 
@@ -49,41 +49,38 @@ python2 pwnedornot.py
 <br>
 Other common standard python modules pwnedornot uses :
 
-<ul class="cyan-text">
-<li>os</li>
-<li>re</li>
+<ul class="cyan-text"> 
+<li>os</li> 
+<li>re</li> 
 <li>time</li>
-<li>json</li>
-<li>requests</li>
-</ul>
-<h4 class="cyan-text subtitle">Usage</h4>
-<pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
-cd pwnedOrNot/
-python pwnedornot.py
-</code></pre>
-<h5 class="cyan-text subtitle">Features</h5>
-<b><a href="https://haveibeenpwned.com/API/v2">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
-<ul class="cyan-text">
-<li>Name of Breach</li>
-<li>Domain Name</li>
-<li>Date of Breach</li>
-<li>Fabrication status</li>
-<li>Verification Status</li>
-<li>Retirement status</li>
-<li>Spam Status</li>
-<li>Source of Dump</li>
-<li>ID of Dump</li>
-</ul>
-And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password
-<br>
-<h6 class="cyan-text subtitle">Screenshots</h6>
-<br>
-<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned1.png">
-<br>
-<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned2.png">
-<br>
-Also works on Kali Nethunter
-<br>
-<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter1.png">
-<br>
-<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter2.png">
+<li>json</li> 
+<li>requests</li> 
+</ul> 
+<h4 class="cyan-text subtitle">Usage</h4> 
+<pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git cd pwnedOrNot/ python pwnedornot.py </code></pre> 
+<h5 class="cyan-text subtitle">Features</h5> 
+<b><a href="https://haveibeenpwned.com/API/v2">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script : 
+<ul class="cyan-text"> 
+<li>Name of Breach</li> 
+<li>Domain Name</li> 
+<li>Date of Breach</li> 
+<li>Fabrication status</li> 
+<li>Verification Status</li> 
+<li>Retirement status</li> 
+<li>Spam Status</li> 
+<li>Source of Dump</li> 
+<li>ID of Dump</li> 
+</ul> 
+And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password 
+<br> 
+<h6 class="cyan-text subtitle">Screenshots</h6> 
+<br> 
+<img class="responsive-img z-depth-5" src="/images/pwned1.png"> 
+<br> 
+<img class="responsive-img z-depth-5" src="/images/pwned2.png"> 
+<br> 
+Also works on Kali Nethunter 
+<br> 
+<img class="responsive-img z-depth-5" src="/images/nethunter1.png">
+<br> 
+<img class="responsive-img z-depth-5" src="/images/nethunter2.png">
