@@ -4,13 +4,13 @@ post: post
 date: 2018-05-26 00:00:00 +0000
 image: "/images/pwned3-1.png"
 ---
-<h1 class="cyan-text title">pwnedOrNot</h1> 
+<h1 class="cyan-text title">pwnedOrNot</h1>
 
-<img class="responsive-img z-depth-5" src="/thewhitehat/images/pwned3.png"> 
+<img class="responsive-img z-depth-5" src="/images/pwned3.png">
 
-<h2 class="cyan-text subtitle">Introduction</h2> 
+<h2 class="cyan-text subtitle">Introduction</h2>
 
-<p class="content white-text"> 
+<p class="content white-text">
 
 pwnedOrNot is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find **passwords** for the compromised account.
 <br>
