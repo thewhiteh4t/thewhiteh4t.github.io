@@ -76,5 +76,4 @@ And with all this information <b>pwnedOrNot</b> can easily find passwords for co
 <h6 class="cyan-text subtitle">Screenshots</h6> 
 <br> 
 <img class="responsive-img z-depth-5" src="/images/pwned1.png"> 
-<br> 
 <img class="responsive-img z-depth-5" src="/images/pwned2.png"> 
