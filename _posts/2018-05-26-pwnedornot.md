@@ -57,20 +57,16 @@ Other common standard python modules pwnedornot uses :
 <li>requests</li>
 </ul>
 <br>
-
 <h4 class="cyan-text subtitle">Usage</h4>
 <br>
-
 <pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
 cd pwnedOrNot/
 python pwnedornot.py
 </code></pre>
-
 <br>
 <h5 class="cyan-text subtitle">Features</h5>
-
 <b><a href="https://haveibeenpwned.com/API/v2">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
-
+<br>
 <ul class="cyan-text">
 <li>Name of Breach</li>
 <li>Domain Name</li>
@@ -83,19 +79,16 @@ python pwnedornot.py
 <li>ID of Dump</li>
 </ul>
 <br>
-
 And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password
-
 <br>
-
 <h6 class="cyan-text subtitle">Screenshots</h6>
-
-!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned1.png)
-
-!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned2.png)
-
+<br>
+<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned1.png">
+<br>
+<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned2.png">
+<br>
 Also works on Kali Nethunter
-
-!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter1.png)
-
-!\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter2.png)
+<br>
+<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter1.png">
+<br>
+<img class="responsive-img z-depth-5" src="https://github.com/thewhiteh4t/pwnedOrNot/blob/master/nethunter2.png">
