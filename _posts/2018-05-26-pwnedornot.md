@@ -40,8 +40,7 @@ This script has been tested on :
 
 <b class="cyan-text">Ubuntu and Kali :</b>
 
-<pre><code class="grey darken-4 red-text">
-pip install cfscrape
+<pre><code class="grey darken-4 red-text">pip install cfscrape
 apt-get install nodejs
 </code></pre>
 
