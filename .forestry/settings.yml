@@ -1,9 +1,11 @@
 ---
-upload_path: "/images"
-frontmatter_file_url_template: "/uploads/:year:/:month:/:day:"
-body_file_url_template: "/uploads/:year:/:month:/:day:"
 new_page_extension: md
 auto_deploy: true
 admin_path: ''
 webhook_url: 
 collections: 
+upload_dir: images
+public_path: "/uploads"
+front_matter_path: "/uploads"
+use_front_matter_path: false
+file_template: ":filename:"

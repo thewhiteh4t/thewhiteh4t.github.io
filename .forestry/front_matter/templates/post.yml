@@ -1,7 +1,6 @@
 ---
-pages:
-- _posts/2018-02-18-cve-2018-6791-arbitrary-command-execution-in-kde-plasma.md
 hide_body: false
+is_partial: false
 fields:
 - type: text
   name: post
@@ -23,3 +22,6 @@ fields:
   label: Date
   config:
     required: true
+pages:
+- _posts/pwnedornot.md
+- _posts/2018-02-18-cve-2018-6791-arbitrary-command-execution-in-kde-plasma.md
