@@ -72,7 +72,7 @@ Other common standard python modules pwnedornot uses :
 
 <br>
 
-<h3>Usage</h3>
+<h4 class="cyan-text subtitle">Usage</h4>
 
 <br>
 
@@ -83,7 +83,7 @@ python pwnedornot.py
 
 <br>
 
-<h3>Features</h3>
+<h5 class="cyan-text subtitle">Features</h5>
 
 <b><a href="[https://haveibeenpwned.com/API/v2](https://haveibeenpwned.com/API/v2)">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
 
@@ -113,7 +113,7 @@ And with all this information <b>pwnedOrNot</b> can easily find passwords for co
 
 <br>
 
-<h3>Screenshots</h3>
+<h6 class="cyan-text subtitle">Screenshots</h6>
 
 !\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned1.png)
 
