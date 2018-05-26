@@ -38,11 +38,7 @@ This script has been tested on :
 
 <h3 class="cyan-text subtitle">Installation</h3>
 
-<br>
-
 <b class="cyan-text">Ubuntu and Kali :</b>
-
-<br>
 
 <pre><code class="grey darken-4 red-text">
 
@@ -51,8 +47,6 @@ pip install cfscrape
 apt-get install nodejs
 
 </code></pre>
-
-<br>
 
 <b class="cyan-text">Termux :</b>
 
