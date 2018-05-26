@@ -6,6 +6,6 @@ webhook_url:
 collections: 
 upload_dir: images
 public_path: "/images"
-front_matter_path: "/uploads"
-use_front_matter_path: false
+front_matter_path: ''
+use_front_matter_path: true
 file_template: ":filename:"
