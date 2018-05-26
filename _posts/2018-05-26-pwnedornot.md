@@ -16,7 +16,7 @@ image: "/images/pwned3-1.png"
 
 <br> <br>
 
-It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwned.com/api/v2)">haveibeenpwnd</a></b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps</b>
+It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwned.com/api/v2)">haveibeenpwnd</a></b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps.</b>
 
  <br><br>
 
