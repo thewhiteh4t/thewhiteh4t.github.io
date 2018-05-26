@@ -18,7 +18,7 @@ image: "/images/pwned3-1.png"
 
 It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwned.com/api/v2)">haveibeenpwnd</a></b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps.</b>
 
- <br><br>
+<br><br>
 
 This script has been tested on : 
 
@@ -41,11 +41,8 @@ This script has been tested on :
 <b class="cyan-text">Ubuntu and Kali :</b>
 
 <pre><code class="grey darken-4 red-text">
-
 pip install cfscrape
-
 apt-get install nodejs
-
 </code></pre>
 
 <b class="cyan-text">Termux :</b>
