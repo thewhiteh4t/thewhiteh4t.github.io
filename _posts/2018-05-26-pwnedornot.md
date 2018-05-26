@@ -58,7 +58,7 @@ python2 pwnedornot.py
 
 Other common standard python modules pwnedornot uses :
 
-<ul>
+<ul class="cyan-text">
 
 <li>os</li>
 
@@ -72,27 +72,22 @@ Other common standard python modules pwnedornot uses :
 
 <br>
 
-<h4>Usage</h4>
+<h3>Usage</h3>
 
 <br>
 
-<pre><code class="grey darken-4 red-text">
-
-git clone https://github.com/thewhiteh4t/pwnedOrNot.git
-
+<pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
 cd pwnedOrNot/
-
 python pwnedornot.py
-
 </code></pre>
 
 <br>
 
-<h5>Features</h5>
+<h3>Features</h3>
 
 <b><a href="[https://haveibeenpwned.com/API/v2](https://haveibeenpwned.com/API/v2)">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
 
-<ul>
+<ul class="cyan-text">
 
 <li>Name of Breach</li>
 
@@ -118,7 +113,7 @@ And with all this information <b>pwnedOrNot</b> can easily find passwords for co
 
 <br>
 
-<h6>Screenshots</h6>
+<h3>Screenshots</h3>
 
 !\[example\](https://github.com/thewhiteh4t/pwnedOrNot/blob/master/pwned1.png)
 
