@@ -41,9 +41,11 @@ apt-get install nodejs
 
 <b class="cyan-text">Termux :</b>
 <br>
-<pre><code class="grey darken-4 red-text">pkg install python2
+<pre><code class="grey darken-4 red-text">pkg instal git
+pkg install python2
 pip2 install requests
 pip2 install cfscrape
+git clone https://github.com/thewhiteh4t/pwnedOrNot.git
 python2 pwnedornot.py
 </code></pre>
 <br>
