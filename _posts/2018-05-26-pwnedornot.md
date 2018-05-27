@@ -49,7 +49,7 @@ python2 pwnedornot.py
 <br>
 Other common standard python modules pwnedornot uses :
 
-<ul> <li>os</li> <li>re</li> <li>time</li> <li>json</li> <li>requests</li> </ul> <h4 class="cyan-text subtitle">Usage</h4> <pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git 
+<ul class="browser-default"> <li>os</li> <li>re</li> <li>time</li> <li>json</li> <li>requests</li> </ul> <h4 class="cyan-text subtitle">Usage</h4> <pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git 
 
 cd pwnedOrNot/ 
 
