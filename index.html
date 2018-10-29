@@ -2,25 +2,25 @@
 layout: default
 ---
 <div class="row">
-      <div class="col s12 m12 l12">
-            <div class="card-panel grey darken-3 z-depth-5" style="text-align: center;">
+      <div class="col s12">
+            <div class="card-panel grey darken-3 z-depth-3" style="text-align: center; margin-top: 40px">
           	      <span class="cyan-text flow-text">
           			<script type="application/javascript">function getIP(json) {document.write("Welcome!   ", json.ip);}</script>
           			<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
           		</span>
         	</div>
      	</div>
-</div>	
+</div>
 {% for post in site.posts limit:6 %}
-<div class="col s12 m12 l6">
+<div class="col s6">
   <div class="card grey darken-3 z-depth-5">
     <div class="card-image">
-      <img class="img" src="{{ site.url }}/{{ post.image }}" alt="{{ post.title }}">        
-      <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect cyan z-depth-5"><i class="material-icons">chevron_right</i></a>               
+      <img class="img" src="{{ site.url }}/{{ post.image }}" alt="{{ post.title }}">
+      <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect cyan z-depth-5"><i class="material-icons">chevron_right</i></a>
     </div>
-    <div class="card-content white-text"> 
-      <h1 class="card-title">{{ post.title }}</h1>
-      <p class="cyan-text">{{ post.date | date: "%b %d, %Y" }}</p>  
+    <div class="card-content white-text">
+      <h1 class="card-title truncate">{{ post.title }}</h1>
+      <p class="cyan-text">{{ post.date | date: "%b %d, %Y" }}</p>
     </div>
   </div>
 </div>
