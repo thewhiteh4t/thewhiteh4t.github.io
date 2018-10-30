@@ -19,8 +19,7 @@ layout: default
               document.write('<br>');
               document.write("Display(H) : ", window.screen.height)
             </script>
-            <p id="Country" class="flow-text cyan-text left-align" style="margin: 0px">Country : </p>
-            <p id="isp" class="flow-text cyan-text left-align">ISP : </p>
+            <p id="Country" class="flow-text cyan-text left-align">Country : </p>
           </p>
         </div>
         <div class="col s6">
@@ -39,11 +38,10 @@ layout: default
 </div>
 
 <script>
-  $.getJSON("//ip-api.com/json", function(data) {
+  $.getJSON("//freegeoip.app/json/", function(data) {
     $("#City").append(data['city']);
-    $("#Country").append(data['country']);
-    $("#isp").append(data['org']);
-    $("#IP").append(data['query']);
+    $("#Country").append(data['country_name']);
+    $("#IP").append(data['ip']);
   });
 </script>
 
