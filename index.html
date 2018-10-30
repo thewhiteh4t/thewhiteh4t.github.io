@@ -2,15 +2,45 @@
 layout: default
 ---
 <div class="row">
-      <div class="col s12">
-            <div class="card-panel grey darken-3 z-depth-3" style="text-align: center; margin-top: 40px">
-          	      <span class="cyan-text flow-text">
-          			<script type="application/javascript">function getIP(json) {document.write("Welcome!   ", json.ip);}</script>
-          			<script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-          		</span>
-        	</div>
-     	</div>
+  <div class="col s12">
+    <div class="card-panel grey darken-3 z-depth-3" style="margin-top: 40px">
+      <p class="flow-text cyan-text center-align">
+        <script type="application/javascript">function getIP(json) {document.write("Welcome!   ", json.ip);}</script>
+        <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
+      </p>
+      <div class="row">
+        <div class="col s6">
+          <p class="flow-text cyan-text left-align">
+            <script>
+              os = navigator.userAgent;
+              os = os.substring(0, os.indexOf(')'));
+              os = os.split(';');
+              os = os[1];
+              os = os.trim();
+              document.write("Operating System : ", os);
+              document.write('<br>');
+              document.write("CPU Cores : ", navigator.hardwareConcurrency);
+              document.write('<br>')
+              document.write("Display Height : ", window.screen.height)
+            </script>
+          </p>
+        </div>
+        <div class="col s6">
+          <p class="flow-text cyan-text right-align">
+            <script>
+              document.write("Platform : ", navigator.platform);
+              document.write('<br>')
+              document.write("RAM : ", navigator.deviceMemory);
+              document.write('<br>')
+              document.write("Display Width : ", window.screen.width)
+            </script>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 {% for post in site.posts limit:6 %}
 <div class="col s12 m12 l6">
   <div class="card grey darken-3 z-depth-5">
