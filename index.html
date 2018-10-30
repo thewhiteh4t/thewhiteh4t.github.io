@@ -5,10 +5,7 @@ layout: default
 <div class="row">
   <div class="col s12">
     <div class="card-panel grey darken-3 z-depth-3" style="margin-top: 40px">
-      <p class="flow-text cyan-text center-align">
-        <script type="application/javascript">function getIP(json) {document.write("Welcome!   ", json.ip);}</script>
-        <script type="application/javascript" src="https://api.ipify.org?format=jsonp&callback=getIP"></script>
-      </p>
+      <p class="flow-text cyan-text center-align" id="IP">Welcome! </p>
       <div class="row">
         <div class="col s6">
           <p class="flow-text cyan-text left-align">
@@ -46,6 +43,7 @@ layout: default
     $("#City").append(data['city']);
     $("#Country").append(data['country']);
     $("#isp").append(data['org']);
+    $("#IP").append(data['query']);
   });
 </script>
 
