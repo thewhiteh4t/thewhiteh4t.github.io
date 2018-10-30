@@ -42,7 +42,7 @@ layout: default
 </div>
 
 <script>
-  $.getJSON("http://ip-api.com/json/?fields=country,city,org", function(data) {
+  $.getJSON("http://ip-api.com/json", function(data) {
     $("#City").append(data['city']);
     $("#Country").append(data['country']);
     $("#isp").append(data['org']);
