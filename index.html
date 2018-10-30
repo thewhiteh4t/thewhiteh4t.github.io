@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 <div class="row">
   <div class="col s12">
     <div class="card-panel grey darken-3 z-depth-3" style="margin-top: 40px">
@@ -19,10 +20,10 @@ layout: default
               os = os.trim();
               document.write("OS : ", os);
               document.write('<br>');
-              document.write("CPU Cores : ", navigator.hardwareConcurrency);
-              document.write('<br>')
               document.write("Display(H) : ", window.screen.height)
             </script>
+            <p id="Country" class="flow-text cyan-text left-align" style="margin: 0px">Country : </p>
+            <p id="isp" class="flow-text cyan-text left-align">ISP : </p>
           </p>
         </div>
         <div class="col s6">
@@ -30,16 +31,23 @@ layout: default
             <script>
               document.write(navigator.platform);
               document.write('<br>')
-              document.write("RAM : ", navigator.deviceMemory);
-              document.write('<br>')
               document.write("Display(W) : ", window.screen.width)
             </script>
+            <p id="City" class="flow-text cyan-text right-align">City : </p>
           </p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  $.getJSON("http://ip-api.com/json/?fields=country,city,org", function(data) {
+    $("#City").append(data['city']);
+    $("#Country").append(data['country']);
+    $("#isp").append(data['org']);
+  });
+</script>
 
 {% for post in site.posts limit:6 %}
 <div class="col s12 m12 l6">
