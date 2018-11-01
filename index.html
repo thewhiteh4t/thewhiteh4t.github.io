@@ -6,41 +6,12 @@ layout: default
   <div class="col s12">
     <div class="card-panel grey darken-3 z-depth-3" style="margin-top: 40px">
       <p class="flow-text cyan-text center-align" id="IP">Welcome! </p>
-      <div class="row">
-        <div class="col s6">
-          <p class="flow-text cyan-text left-align">
-            <script>
-              os = navigator.userAgent;
-              os = os.substring(0, os.indexOf(')'));
-              os = os.split(';');
-              os = os[1];
-              os = os.trim();
-              document.write("OS : ", os);
-              document.write('<br>');
-              document.write("Display(H) : ", window.screen.height)
-            </script>
-            <p id="Country" class="flow-text cyan-text left-align">Country : </p>
-          </p>
-        </div>
-        <div class="col s6">
-          <p class="flow-text cyan-text right-align">
-            <script>
-              document.write(navigator.platform);
-              document.write('<br>')
-              document.write("Display(W) : ", window.screen.width)
-            </script>
-            <p id="City" class="flow-text cyan-text right-align">City : </p>
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 </div>
 
 <script>
   $.getJSON("//freegeoip.app/json/", function(data) {
-    $("#City").append(data['city']);
-    $("#Country").append(data['country_name']);
     $("#IP").append(data['ip']);
   });
 </script>
