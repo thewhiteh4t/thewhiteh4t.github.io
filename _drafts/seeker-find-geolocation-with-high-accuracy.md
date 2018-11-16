@@ -18,3 +18,47 @@ Concept behind Seeker is simple, just like we host phishing pages to  get creden
 <br>
 
 Seeker Hosts a fake website on **In Built PHP Server** and uses **Ngrok**, website asks for Location Permission and if the user allows it, we can get :
+
+<br>
+
+<ul class="browser-default">
+
+<li>Longitude</li>
+
+<li>Latitude</li>
+
+<li>Accuracy</li>
+
+<li>Altitude - Not always available</li>
+
+<li>Direction - Only available if user is moving</li>
+
+<li>Speed - Only available if user is moving</li>
+
+</ul>
+
+<br>
+
+Along with Location Information we also get **Device Information** without any permissions :
+
+<br>
+
+<ul class="browser-default">
+
+<li>Operating System</li>
+
+<li>Platform</li>
+
+<li>Number of CPU Cores</li>
+
+<li>Amount of RAM - Approximate Results</li>
+
+<li>Screen Resolution</li>
+
+<li>GPU information</li>
+
+<li>Browser Name and Version</li>
+
+<li>Public IP Address</li>
+
+</ul>
