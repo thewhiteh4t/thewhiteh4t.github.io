@@ -148,7 +148,9 @@ systemctl start docker.service
 
 \# Build Seeker
 
-cd seeker/ docker build -t seeker .
+cd seeker/ 
+
+docker build -t seeker .
 
 \# Launch seeker docker run -t --rm seeker
 
