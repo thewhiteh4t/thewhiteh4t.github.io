@@ -9,7 +9,9 @@ image: ''
 
 <br>
 
-<a href="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")"><img src="![](https://i.imgur.com/cg82a8k.png)" title="source: imgur.com"/></a>
+<img src="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")"></img>
+
+<br>
 
 <h2 class="cyan-text subtitle">Introduction</h2>
 
@@ -136,15 +138,15 @@ docker run -t --rm seeker
 
 <br>
 
-<pre><code class="grey darken-4 red-text"># Install docker  
+<pre><code class="grey darken-4 red-text"># Install docker
 
-pacman -Syy pacman -S docker 
+pacman -Syy pacman -S docker
 
-systemctl start docker.service  
+systemctl start docker.service
 
 \# Build Seeker
 
- cd seeker/ docker build -t seeker .  
+cd seeker/ docker build -t seeker .
 
 \# Launch seeker docker run -t --rm seeker
 
