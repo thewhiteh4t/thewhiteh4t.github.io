@@ -96,4 +96,6 @@ docker build -t seeker .
 <br>
 <h7 class="cyan-text subtitle">Demo</h7>
 <br>
+<div class="video-container">
 <iframe src="https://www.youtube.com/embed/ggUGPq4cjSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ </div>
