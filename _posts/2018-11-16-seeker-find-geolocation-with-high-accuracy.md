@@ -7,8 +7,7 @@ image: ''
 ---
 <h1 class="cyan-text title">Seeker - Find Geolocation with High Accuracy</h1>
 <br>
-<p><img class="responsive-img z-depth-5" src="https://imgur.com/cg82a8k"/></p>
-<a href="https://imgur.com/cg82a8k"><img src="https://i.imgur.com/cg82a8k.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/cg82a8k"><img class="responsive-img z-depth-5" src="https://i.imgur.com/cg82a8k.png" title="source: imgur.com" /></a>
 <br>
 <h2 class="cyan-text subtitle">Introduction</h2>
 <p class="content white-text">
