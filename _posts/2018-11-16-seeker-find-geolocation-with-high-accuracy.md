@@ -132,7 +132,7 @@ docker run -t --rm seeker
 
 <br>
 
-\[!\[asciicast\](https://asciinema.org/a/195052.png)\](https://asciinema.org/a/195052)
+<script id="asciicast-195052" src="https://asciinema.org/a/195052.js" async></script>
 
 <br>
 
