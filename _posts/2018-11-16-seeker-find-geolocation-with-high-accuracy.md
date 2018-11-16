@@ -2,7 +2,7 @@
 title: Seeker - Find Geolocation with High Accuracy
 post: post
 date: 2018-11-16 09:48
-image: ''
+image: "/images/seeker.png"
 
 ---
 <h1 class="cyan-text title">Seeker - Find Geolocation with High Accuracy</h1>
