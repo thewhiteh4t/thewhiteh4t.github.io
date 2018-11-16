@@ -7,6 +7,8 @@ image: ''
 ---
 <h1 class="cyan-text title">Seeker - Find Geolocation with High Accuracy</h1>
 
+<br>
+
 <a href="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")"><img src="![](https://i.imgur.com/cg82a8k.png)" title="source: imgur.com"/></a>
 
 <h2 class="cyan-text subtitle">Introduction</h2>
