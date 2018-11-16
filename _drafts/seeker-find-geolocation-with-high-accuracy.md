@@ -97,6 +97,8 @@ Along with Location Information we also get **Device Information** without any p
 
 </ul>
 
+<br>
+
 <h4 class="cyan-text subtitle">Installation</h4>
 
 <h5 class="cyan-text subtitle">Ubuntu/Kali Linux</h5>
@@ -121,3 +123,35 @@ docker build -t seeker .
 docker run -t --rm seeker
 
 </code></pre>
+
+<br>
+
+\[!\[asciicast\](https://asciinema.org/a/195052.png)\](https://asciinema.org/a/195052)
+
+<br>
+
+<h6 class="cyan-text subtitle">Arch Linux Based Distro</h6>
+
+<br>
+
+<pre><code class="grey darken-4 red-text"># Install docker  
+
+pacman -Syy pacman -S docker 
+
+systemctl start docker.service  
+
+\# Build Seeker
+
+ cd seeker/ docker build -t seeker .  
+
+\# Launch seeker docker run -t --rm seeker
+
+</code></pre>
+
+<br>
+
+<h7 class="cyan-text subtitle">Demo</h7>
+
+<br>
+
+<iframe width="560" height="315" src="[https://www.youtube.com/embed/ggUGPq4cjSM](https://www.youtube.com/embed/ggUGPq4cjSM "Seeker")" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
