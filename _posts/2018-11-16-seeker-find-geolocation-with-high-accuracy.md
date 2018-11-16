@@ -11,7 +11,7 @@ image: ''
 
 <img src="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")">
 
-!\[alt text\](https://imgur.com/cg82a8k "Logo Title Text 1")
+<p><img class="responsive-img z-depth-5" src="https://imgur.com/cg82a8k" /></p>
 
 <br>
 
