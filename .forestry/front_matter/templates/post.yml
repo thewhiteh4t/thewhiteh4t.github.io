@@ -24,6 +24,6 @@ fields:
   config:
     required: true
 pages:
-- _posts/seeker-find-geolocation-with-high-accuracy.md
+- _posts/2018-11-16-seeker-find-geolocation-with-high-accuracy.md
 - _posts/2018-05-26-pwnedornot.md
 - _posts/2018-02-18-cve-2018-6791-arbitrary-command-execution-in-kde-plasma.md
