@@ -11,6 +11,8 @@ image: ''
 
 <img src="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")">
 
+!\[alt text\](https://imgur.com/cg82a8k "Logo Title Text 1")
+
 <br>
 
 <h2 class="cyan-text subtitle">Introduction</h2>
