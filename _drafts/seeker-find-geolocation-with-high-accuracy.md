@@ -62,3 +62,62 @@ Along with Location Information we also get **Device Information** without any p
 <li>Public IP Address</li>
 
 </ul>
+
+**This tool is a Proof of Concept and is for Educational Purposes  Only, Seeker shows what data a malicious website can gather about you  and your devices and why you should not click on random links and allow  critical permissions such as Location etc.**
+
+<br>
+
+<ul class="browser-default">
+
+<li>Other tools and services offer IP Geolocation which is not very accurate and does not give location of user.</li>
+
+<li>Generally if a user accepts location permsission, Accuracy of the information recieved is **accurate to approximately 30 meters**.</li>
+
+</ul>
+
+<br>
+
+<h3 class="cyan-text subtitle">Tested On :</h3>
+
+<ul class="browser-default">
+
+<li>Kali Linux 2018.2</li>
+
+<li>Ubuntu 18.04</li>
+
+<li>Arch Linux based Distro</li>
+
+<li>Termux</li>
+
+<li>Kali Linux (WSL)</li>
+
+<li>Parrot OS</li>
+
+<li>Zorin OS</li>
+
+</ul>
+
+<h4 class="cyan-text subtitle">Installation</h4>
+
+<h5 class="cyan-text subtitle">Ubuntu/Kali Linux</h5>
+
+<pre><code class="grey darken-4 red-text">git clone [https://github.com/thewhiteh4t/seeker.git](https://github.com/thewhiteh4t/seeker.git "https://github.com/thewhiteh4t/seeker.git")
+cd seeker/
+chmod 777 install.sh
+./install.sh
+
+\# OR using Docker
+
+\# Install docker
+
+curl -fsSL [https://get.docker.com](https://get.docker.com "https://get.docker.com") -o get-docker.sh
+sh get-docker.sh
+
+\# Build Seeker
+cd seeker/
+docker build -t seeker .
+
+\# Launch seeker
+docker run -t --rm seeker
+
+</code></pre>
