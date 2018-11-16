@@ -9,7 +9,7 @@ image: ''
 
 <br>
 
-<img src="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")"></img>
+<img src="[https://imgur.com/cg82a8k](https://imgur.com/cg82a8k "https://imgur.com/cg82a8k")">
 
 <br>
 
