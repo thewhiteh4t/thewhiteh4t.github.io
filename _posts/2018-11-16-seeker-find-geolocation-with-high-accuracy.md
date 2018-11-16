@@ -105,9 +105,11 @@ Along with Location Information we also get **Device Information** without any p
 
 <h4 class="cyan-text subtitle">Installation</h4>
 
+<br>
+
 <h5 class="cyan-text subtitle">Ubuntu/Kali Linux</h5>
 
-<pre><code class="grey darken-4 red-text">git clone [https://github.com/thewhiteh4t/seeker.git](https://github.com/thewhiteh4t/seeker.git "https://github.com/thewhiteh4t/seeker.git")
+<pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/seeker.git
 cd seeker/
 chmod 777 install.sh
 ./install.sh
@@ -116,7 +118,7 @@ chmod 777 install.sh
 
 \# Install docker
 
-curl -fsSL [https://get.docker.com](https://get.docker.com "https://get.docker.com") -o get-docker.sh
+curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 
 \# Build Seeker
