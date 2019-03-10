@@ -1,6 +1,6 @@
 ---
 title: Seeker - Find Geolocation with High Accuracy
-post: post
+layout: post
 date: 2018-11-16 09:48
 image: "/images/seeker.png"
 
@@ -87,7 +87,7 @@ pacman -Syy pacman -S docker
 systemctl start docker.service
 
 # Build Seeker
-cd seeker/ 
+cd seeker/
 docker build -t seeker .
 
 # Launch seeker docker run -t --rm seeker
