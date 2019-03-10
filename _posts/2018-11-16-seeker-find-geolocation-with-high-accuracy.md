@@ -10,7 +10,7 @@ image: "/images/seeker.png"
 <a href="https://imgur.com/cg82a8k"><img class="responsive-img z-depth-5" src="https://i.imgur.com/cg82a8k.png" title="source: imgur.com" /></a>
 <br>
 <h2 class="cyan-text subtitle">Introduction</h2>
-<p class="content white-text">
+<div class="content white-text">
 Concept behind Seeker is simple, just like we host phishing pages to  get credentials why not host a fake page that requests your loction just  like many popular location based websites.
 <br>
 Seeker Hosts a fake website on In Built PHP Server and uses Ngrok, website asks for Location Permission and if the user allows it, we can get :
@@ -59,7 +59,7 @@ This tool is a Proof of Concept and is for Educational Purposes  Only, Seeker sh
 <br>
 <h5 class="cyan-text subtitle">Ubuntu/Kali Linux</h5>
 <br>
-<pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/seeker.git
+<pre><code class="black green-text">git clone https://github.com/thewhiteh4t/seeker.git
 cd seeker/
 chmod 777 install.sh
 ./install.sh
@@ -82,7 +82,7 @@ docker run -t --rm seeker
 <br>
 <h6 class="cyan-text subtitle">Arch Linux Based Distro</h6>
 <br>
-<pre><code class="grey darken-4 red-text"># Install docker
+<pre><code class="black green-text"># Install docker
 pacman -Syy pacman -S docker
 systemctl start docker.service
 
@@ -95,6 +95,7 @@ docker build -t seeker .
 <br>
 <h7 class="cyan-text subtitle">Demo</h7>
 <br>
+</div>
 <div class="video-container">
 <iframe src="https://www.youtube.com/embed/ggUGPq4cjSM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- </div>
+</div>

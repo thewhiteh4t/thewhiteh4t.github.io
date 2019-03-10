@@ -10,7 +10,7 @@ image: "/images/pwned3-1.png"
 
 <h2 class="cyan-text subtitle">Introduction</h2>
 
-<p class="content white-text">
+<div class="content white-text">
 
 <b>pwnedOrNot</b> is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find <b>passwords</b> for the compromised account.
 
@@ -35,13 +35,13 @@ This script has been tested on :
 
 <b class="cyan-text">Ubuntu and Kali :</b>
 
-<pre><code class="grey darken-4 red-text">pip install cfscrape
+<pre><code class="black green-text">pip install cfscrape
 apt-get install nodejs
 </code></pre>
 
 <b class="cyan-text">Termux :</b>
 <br>
-<pre><code class="grey darken-4 red-text">pkg instal git
+<pre><code class="black green-text">pkg install git
 pkg install python2
 pip2 install requests
 pip2 install cfscrape
@@ -59,7 +59,7 @@ Other common standard python modules pwnedornot uses :
 </ul>
 
 <h4 class="cyan-text subtitle">Usage</h4>
-<pre><code class="grey darken-4 red-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
+<pre><code class="black green-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
 cd pwnedOrNot/
 python pwnedornot.py </code></pre>
 
@@ -84,3 +84,4 @@ And with all this information <b>pwnedOrNot</b> can easily find passwords for co
 <br>
 <img class="responsive-img z-depth-5" src="/images/pwned1.png">
 <img class="responsive-img z-depth-5" src="/images/pwned2.png">
+</div>
