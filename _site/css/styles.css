@@ -4,9 +4,9 @@
 	padding-top: 5px;
 }
 
-.navbar-fixed 
-{ 
-	z-index: 9999; 
+.navbar-fixed
+{
+	z-index: 9999;
 }
 
 .img
@@ -36,20 +36,21 @@
 
 pre
 {
-    background-color: #212121;
-    border: 1px solid #999;
+    background-color: #000000;
+    border: 1px solid;
+		border-color: #000000;
     display: block;
-    padding: 20px;
+    padding: 0px;
 }
 
-.body 
+.body
 {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-.main 
+.main
 {
     flex: 1 0 auto;
 }
@@ -69,4 +70,9 @@ pre
 #sidebg
 {
 overflow: visible;
+}
+
+.hoverable:hover {
+  transition: box-shadow .25s;
+  box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8);
 }
