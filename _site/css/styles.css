@@ -82,3 +82,10 @@ overflow: visible;
 	0 6px 30px 5px rgba(0, 188, 212, 0.8),
 	0 8px 10px -5px rgba(0, 188, 212, 0.8);
 }
+
+.round {
+	width: 40px;
+  height: 40px;
+	border-radius: 50%;
+	text-align: center;
+}
