@@ -42,14 +42,31 @@ pre
     padding: 20px;
 }
 
-body 
+.body 
 {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
 
-main 
+.main 
 {
     flex: 1 0 auto;
+}
+
+#h1
+{
+	font-size: 14px;
+	margin: 20px 0px 0px 0px;
+}
+
+#h2
+{
+	font-size: 14px;
+	margin: 10px 0px 50px 0px;
+}
+
+#sidebg
+{
+overflow: visible;
 }

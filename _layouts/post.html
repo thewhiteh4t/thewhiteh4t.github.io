@@ -2,25 +2,26 @@
 layout: default
 ---
 <div class="col s12 m12 l12">
-	<div class="card-panel grey darken-3 z-depth-5">
-		<span class="white-text content">
+	<div class="card-panel grey darken-4 hoverable">
+		<div class="white-text content">
 			{{ content }}
-	    	</span>
+		</div>
 	</div>
 </div>
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large cyan z-depth-5">
-      <i class=" material-icons">share</i>
-    </a>
-    <ul>
-	<li><a href="whatsapp://send?text={{ site.url }}{{ page.url }}" class="btn-floating green z-depth-5"><i class="fa fa-whatsapp"></i></a></li>
-	<li><a href="//www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}" class="btn-floating light-blue darken-4 z-depth-5"><i class="fa fa-linkedin"></i></a></li>
-     	<li><a href="//www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" class="btn-floating blue z-depth-5"><i class="fa fa-facebook"></i></a></li>
-      	<li><a href="//twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}" class="btn-floating light-blue z-depth-5"><i class="fa fa-twitter"></i></a></li>
+  <a class="btn-floating btn-large cyan z-depth-5">
+  	<i class=" material-icons">share</i>
+  </a>
+  <ul>
+		<li><a href="whatsapp://send?text={{ site.url }}{{ page.url }}" class="btn-floating green z-depth-5"><i class="fa fa-whatsapp"></i></a></li>
+		<li><a href="//www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}" class="btn-floating light-blue darken-4 z-depth-5"><i class="fa fa-linkedin"></i></a></li>
+   	<li><a href="//www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" class="btn-floating blue z-depth-5"><i class="fa fa-facebook"></i></a></li>
+  	<li><a href="//twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}" class="btn-floating light-blue z-depth-5"><i class="fa fa-twitter"></i></a></li>
 	</ul>
-  </div>
-	<script>
-		$(document).ready(function(){
-			$('.fixed-action-btn').floatingActionButton();
-		});
-	</script>
+</div>
+
+<script>
+	$(document).ready(function(){
+		$('.fixed-action-btn').floatingActionButton();
+	});
+</script>

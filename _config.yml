@@ -1,10 +1,17 @@
 title: thewhiteh4t
-description: The Best Offense is a Great Defense 
+description: The Best Offense is a Great Defense
 url: https://thewhiteh4t.github.io
-baseurl: 
+baseurl:
 author: thewhiteh4t
 layouts_dir: _layouts
-plugins: 
-  - jekyll-sitemap 
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "default"
+plugins:
+  - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-paginate

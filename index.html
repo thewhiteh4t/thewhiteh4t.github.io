@@ -4,7 +4,7 @@ layout: default
 
 <div class="row">
   <div class="col s12">
-    <div class="card-panel z-depth-3" style="margin-top: 40px; background-color: rgba(66,66,66,0.4);">
+    <div class="card-panel hoverable" style="margin-top: 40px; background-color: rgba(30,30,30,0.6);">
       <p class="flow-text cyan-text center-align" id="IP">Welcome! </p>
     </div>
   </div>
@@ -18,10 +18,10 @@ layout: default
 
 {% for post in site.posts limit:6 %}
 <div class="col s12 m12 l6">
-  <div class="card z-depth-5" style="background-color: rgba(66,66,66,0.4);">
+  <div class="card hoverable" style="background-color: rgba(30,30,30,0.6);">
     <div class="card-image">
       <img class="img" src="{{ site.url }}/{{ post.image }}" alt="{{ post.title }}">
-      <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect cyan z-depth-5"><i class="material-icons">chevron_right</i></a>
+      <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect black hoverable"><i class="material-icons">chevron_right</i></a>
     </div>
     <div class="card-content white-text">
       <h1 class="card-title truncate">{{ post.title }}</h1>
