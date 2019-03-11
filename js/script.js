@@ -16,6 +16,4 @@ $.getJSON("https://ipapi.co/json/", function(data){
   $("#LAT").append(lat);
   $("#LON").append(lon);
   $("#RGN").append(rgn);
-  $("#MOB").append(Mob);
-  $("#PXY").append(Pxy);
 });
