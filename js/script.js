@@ -1,5 +1,24 @@
-$(document).ready(function(){ 
-  $.get("ui.html", function(data) {
-    $("#header").html(data);
-  });
+$.getJSON("http://ip-api.com/json/?fields=205817", function(data){
+  var cit = data.city;
+  var cnt = data.country;
+  var isp = data.isp;
+  var lat = data.lat;
+  var lon = data.lon;
+  var mob = data.mobile;
+  var Mob = String(mob);
+  var pxy = data.proxy;
+  var Pxy = String(pxy);
+  var ipa = data.query;
+  var rgn = data.regionName;
+  var tzn = data.timezone;
+  var zip = data.zip;
+  $("#IP").append(ipa);
+  $("#ISP").append(isp);
+  $("#CITY").append(cit);
+  $("#COUNTRY").append(cnt);
+  $("#LAT").append(lat);
+  $("#LON").append(lon);
+  $("#RGN").append(rgn);
+  $("#MOB").append(Mob);
+  $("#PXY").append(Pxy);
 });
