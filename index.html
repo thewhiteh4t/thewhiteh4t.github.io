@@ -5,16 +5,19 @@ layout: default
 <div class="row">
   <div class="col s12">
     <div class="card-panel hoverable" style="margin-top: 40px; background-color: rgba(30,30,30,0.6);">
-      <p class="flow-text cyan-text center-align" id="IP">Welcome! </p>
+      <table class="flow-text white-text">
+        <tr><td class="cyan-text">IP</td><td class="right-align" id="IP"></td></tr>
+        <tr><td class="cyan-text">Mobile</td><td class="right-align" id="MOB"></td></tr>
+        <tr><td class="cyan-text">Proxy</td><td class="right-align" id="PXY"></td></tr>
+        <tr><td class="cyan-text">Country</td><td class="right-align" id="COUNTRY"></td></tr>
+        <tr><td class="cyan-text">City</td><td class="right-align" id="CITY"></td></tr>
+        <tr><td class="cyan-text">ISP</td><td class="right-align" id="ISP"></td></tr>
+        <tr><td class="cyan-text">Latitude</td><td class="right-align" id="LAT"></td></tr>
+        <tr><td class="cyan-text">Longitude</td><td class="right-align" id="LON"></td></tr>
+      </table>
     </div>
   </div>
 </div>
-
-<script>
-  $.getJSON("//freegeoip.app/json/", function(data) {
-    $("#IP").append(data['ip']);
-  });
-</script>
 
 {% for post in site.posts limit:6 %}
 <div class="col s12 m12 l6">
