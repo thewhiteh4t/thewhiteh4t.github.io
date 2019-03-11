@@ -1,5 +1,4 @@
 $.getJSON("https://ipapi.co/json/", function(data){
-  console.log(data)
   var cit = data.city;
   var cnt = data.country_name;
   var isp = data.org;
@@ -16,4 +15,6 @@ $.getJSON("https://ipapi.co/json/", function(data){
   $("#LAT").append(lat);
   $("#LON").append(lon);
   $("#RGN").append(rgn);
+  $("#TZN").append(tzn);
+  $("#ZIP").append(zip);
 });
