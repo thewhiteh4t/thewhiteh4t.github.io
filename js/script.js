@@ -19,7 +19,7 @@ $.getJSON("https://ipapi.co/json/", function(data){
   $("#ZIP").append(zip);
 });
 
-$(document).ready(function(){
+window.onload = function(){
   var ua = navigator.userAgent;
   var ver = navigator.appVersion;
   var scw = window.screen.width;
@@ -43,4 +43,4 @@ $(document).ready(function(){
   $("#RAM").append(ram);
   $("#VENDOR").append(vendor);
   $("#RENDER").append(render);
-});
+};
