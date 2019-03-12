@@ -6,70 +6,59 @@ body {
 	height: 100%;
 }
 
-#logo
-{
+#logo {
 	max-width: 80%;
 	padding-top: 5px;
 }
 
-.navbar-fixed
-{
+.navbar-fixed {
 	z-index: 9999;
 }
 
-.img
-{
+.img {
 	height: 238;
 	width: 422;
 	object-fit: cover;
 }
 
-.title
-{
+.title {
 	font-weight: 100;
 	font-size: 40px;
 }
 
-.subtitle
-{
+.subtitle {
 	font-weight: 100;
 	font-size: 30px;
 }
 
-.content
-{
+.content {
 	font-weight: 300;
 	font-size: 16px;
 }
 
-pre
-{
-    background-color: #000000;
-    border: 1px solid;
-		border-color: #000000;
-    display: block;
-    padding: 0px;
+pre {
+	background-color: #000000;
+  border: 1px solid;
+	border-color: #000000;
+  display: block;
+  padding: 0px;
 }
 
-.main
-{
+.main {
     flex: 1 0 auto;
 }
 
-#h1
-{
+#h1 {
 	font-size: 14px;
 	margin: 20px 0px 0px 0px;
 }
 
-#h2
-{
+#h2 {
 	font-size: 14px;
 	margin: 10px 0px 50px 0px;
 }
 
-#sidebg
-{
+#sidebg {
 overflow: visible;
 }
 
