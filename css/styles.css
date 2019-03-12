@@ -38,14 +38,14 @@ body {
 
 pre {
 	background-color: #000000;
-  border: 1px solid;
+	border: 1px solid;
 	border-color: #000000;
-  display: block;
-  padding: 0px;
+	display: block;
+	padding: 0px;
 }
 
 .main {
-    flex: 1 0 auto;
+		flex: 1 0 auto;
 }
 
 #h1 {
@@ -63,8 +63,8 @@ overflow: visible;
 }
 
 .hoverable:hover {
-  transition: box-shadow .25s;
-  box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8);
+	transition: box-shadow .25s;
+	box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8);
 }
 
 .glow {
@@ -75,19 +75,23 @@ overflow: visible;
 
 .round {
 	width: 40px;
-  height: 40px;
+	height: 40px;
 	border-radius: 50%;
 	text-align: center;
 }
 
 #particles-js {
-  position: fixed;
-  width: 100%;
+	position: fixed;
+	width: 100%;
 	height: auto;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  overflow: hidden;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
 	z-index: -1;
+}
+
+.pace-running > *:not(.pace) {
+  opacity:0;
 }
