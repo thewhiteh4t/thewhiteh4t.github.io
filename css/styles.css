@@ -1,3 +1,11 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
 #logo
 {
 	max-width: 80%;
@@ -43,13 +51,6 @@ pre
     padding: 0px;
 }
 
-.body
-{
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
 .main
 {
     flex: 1 0 auto;
@@ -88,4 +89,16 @@ overflow: visible;
   height: 40px;
 	border-radius: 50%;
 	text-align: center;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+	height: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+	z-index: -1;
 }
