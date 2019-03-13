@@ -1,97 +1,10 @@
-html {
-	height: 100%;
-}
-
-body {
-	height: 100%;
-}
-
-#logo {
-	max-width: 80%;
-	padding-top: 5px;
-}
-
-.navbar-fixed {
-	z-index: 9999;
-}
-
-.img {
-	height: 238;
-	width: 422;
-	object-fit: cover;
-}
-
-.title {
-	font-weight: 100;
-	font-size: 40px;
-}
-
-.subtitle {
-	font-weight: 100;
-	font-size: 30px;
-}
-
-.content {
-	font-weight: 300;
-	font-size: 16px;
-}
-
-pre {
-	background-color: #000000;
-	border: 1px solid;
-	border-color: #000000;
-	display: block;
-	padding: 0px;
-}
-
-.main {
-		flex: 1 0 auto;
-}
-
-#h1 {
-	font-size: 14px;
-	margin: 20px 0px 0px 0px;
-}
-
-#h2 {
-	font-size: 14px;
-	margin: 10px 0px 50px 0px;
-}
-
-#sidebg {
-overflow: visible;
-}
-
-.hoverable:hover {
-	transition: box-shadow .25s;
-	box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8);
-}
-
-.glow {
-	box-shadow: 0 16px 24px 2px rgba(0, 188, 212, 0.8),
-	0 6px 30px 5px rgba(0, 188, 212, 0.8),
-	0 8px 10px -5px rgba(0, 188, 212, 0.8);
-}
-
-.round {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	text-align: center;
-}
-
-#particles-js {
-	position: fixed;
-	width: 100%;
-	height: auto;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	overflow: hidden;
-	z-index: -1;
-}
-
-.pace-running > *:not(.pace) {
-  opacity:0;
-}
+html { height: 100%; }
+body { height: 100%; }
+.img { height: 238; width: 422; object-fit: cover;}
+.content { font-weight: 300; font-size: 16px; }
+pre { background-color: #000000; border: 1px solid; border-color: #000000; display: block; padding: 0px; }
+.hoverable:hover { transition: box-shadow .25s; box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8); }
+.glow { box-shadow: 0 16px 24px 2px rgba(0, 188, 212, 0.8), 0 6px 30px 5px rgba(0, 188, 212, 0.8), 0 8px 10px -5px rgba(0, 188, 212, 0.8); }
+.round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
+#particles-js { position: fixed; width: 100%; height: auto; top: 0; left: 0; bottom: 0; right: 0; overflow: hidden; z-index: -1; }
+.pace-running > *:not(.pace) { opacity:0; }

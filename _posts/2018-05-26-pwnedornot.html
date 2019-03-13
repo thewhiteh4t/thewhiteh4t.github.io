@@ -1,89 +1,95 @@
 ---
-title: pwnedOrNot
+title: pwnedOrNot - Get Passwords for Compromised Email Accounts
 layout: post
 date: 2018-05-26 00:00:00 +0000
 image: "/images/pwned3-1.png"
-post: post
-
 ---
-<h1 class="cyan-text title">pwnedOrNot</h1>
-
-<img class="responsive-img z-depth-5" src="/images/pwned3.png">
+<h1 class="cyan-text title">pwnedOrNot - Get Passwords for Compromised Email Accounts</h1>
 
 <h2 class="cyan-text subtitle">Introduction</h2>
 
 <div class="content white-text">
+  <p>
+    pwnedOrNot is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find passwords for the compromised account.
+    <br><br>
+    It uses <a href="https://haveibeenpwned.com/API/v2">haveibeenpwnd</a> v2 api to test email accounts and searches for the passwords in Pastebin Dumps.
+    <br><br>
+    This tool has been tested on :
+  </p>
 
-<b>pwnedOrNot</b> is a python script which checks if the email account has  been compromised in a data breach, if the email account is compromised  it proceeds to find <b>passwords</b> for the compromised account.
+  <ul class="browser-default">
+    <li>Kali Linux 18.2</li>
+    <li>Kali Nethunter</li>
+    <li>Ubuntu 18.04</li>
+    <li>Termux</li>
+  </ul>
 
-<br> <br>
+  <h3 class="cyan-text subtitle">Installation</h3>
 
-It uses <b><a href="[**https://haveibeenpwned.com/API/v2**](https://haveibeenpwned.com/api/v2)">haveibeenpwnd</a></b> v2 api to test email accounts and searches for the <b> passwords </b> in <b>Pastebin Dumps.</b>
+    <span class="cyan-text">Ubuntu and Kali :</span>
 
-<br><br>
+    <pre><code class="black green-text">
+    pip install cfscrape
+    apt-get install nodejs
+    </code></pre>
 
-This script has been tested on :
+    <span class="cyan-text">Termux :</span>
 
-<br>
+    <pre><code class="black green-text">
+    pkg install git
+    pkg install python2
+    pip2 install requests
+    pip2 install cfscrape
+    git clone https://github.com/thewhiteh4t/pwnedOrNot.git
+    python2 pwnedornot.py
+    </code></pre>
 
-<ul class="browser-default">
-<li>Kali Linux 18.2</li>
-<li>Kali Nethunter</li>
-<li>Ubuntu 18.04</li>
-<li>Termux</li>
-</ul>
+    <p>Other common standard python modules pwnedornot uses :</p>
 
-<h3 class="cyan-text subtitle">Installation</h3>
+    <ul class="browser-default">
+      <li>os</li>
+      <li>re</li>
+      <li>time</li>
+      <li>json</li>
+      <li>requests</li>
+    </ul>
 
-<b class="cyan-text">Ubuntu and Kali :</b>
+    <h4 class="cyan-text subtitle">Usage</h4>
 
-<pre><code class="black green-text">pip install cfscrape
-apt-get install nodejs
-</code></pre>
+    <pre><code class="black green-text">
+    git clone https://github.com/thewhiteh4t/pwnedOrNot.git
+    cd pwnedOrNot/
+    python pwnedornot.py
+    </code></pre>
 
-<b class="cyan-text">Termux :</b>
-<br>
-<pre><code class="black green-text">pkg install git
-pkg install python2
-pip2 install requests
-pip2 install cfscrape
-git clone https://github.com/thewhiteh4t/pwnedOrNot.git
-python2 pwnedornot.py
-</code></pre>
-<br>
-Other common standard python modules pwnedornot uses :
+    <h5 class="cyan-text subtitle">Features</h5>
 
-<ul class="browser-default">
-  <li>os</li> <li>re</li>
-  <li>time</li>
-  <li>json</li>
-  <li>requests</li>
-</ul>
+    <p>
+      <a href="https://haveibeenpwned.com/API/v2">haveibeenpwned</a> offers a lot of information about the compromised email, some useful information is displayed by this script :
+   </p>
 
-<h4 class="cyan-text subtitle">Usage</h4>
-<pre><code class="black green-text">git clone https://github.com/thewhiteh4t/pwnedOrNot.git
-cd pwnedOrNot/
-python pwnedornot.py </code></pre>
+   <ul class="browser-default">
+     <li>Name of Breach</li>
+     <li>Domain Name</li>
+     <li>Date of Breach</li>
+     <li>Fabrication status</li>
+     <li>Verification Status</li>
+     <li>Retirement status</li>
+     <li>Spam Status</li>
+     <li>Source of Dump</li>
+     <li>ID of Dump</li>
+   </ul>
 
- <h5 class="cyan-text subtitle">Features</h5>
+   <p>
+     And with all this information pwnedOrNot can easily find passwords for compromised emails if the dump is accessible and it contains the password.
+    </p>
 
- <b><a href="https://haveibeenpwned.com/API/v2">haveibeenpwned</a></b> offers a lot of information about the compromised email, some useful information is displayed by this script :
- <ul class="browser-default">
-  <li>Name of Breach</li>
-  <li>Domain Name</li>
-  <li>Date of Breach</li>
-  <li>Fabrication status</li>
-  <li>Verification Status</li>
-  <li>Retirement status</li>
-  <li>Spam Status</li>
-  <li>Source of Dump</li>
-  <li>ID of Dump</li>
-</ul>
+    <h6 class="cyan-text subtitle">Screenshots</h6>
+      <img class="responsive-img z-depth-5" src="/images/pwned1.png">
+      <img class="responsive-img z-depth-5" src="/images/pwned2.png">
 
-And with all this information <b>pwnedOrNot</b> can easily find passwords for compromised emails if the dump is accessible and it contains the password.
-<br>
-<h6 class="cyan-text subtitle">Screenshots</h6>
-<br>
-<img class="responsive-img z-depth-5" src="/images/pwned1.png">
-<img class="responsive-img z-depth-5" src="/images/pwned2.png">
+    <h6 class="cyan-text subtitle">Demo</h6>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/R_Y_QzVmERA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
 </div>
