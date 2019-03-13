@@ -22,27 +22,101 @@ fetch("https://ipapi.co/json/").then(response => {
 
   window.onload = function(){
     var ua = navigator.userAgent;
-    var ver = navigator.appVersion;
+    var str = ua;
+    var os = ua;
     var scw = window.screen.width;
     var sch = window.screen.height;
     var name = navigator.appCodeName;
-    var ptf = navigator.platform;
     var cores = navigator.hardwareConcurrency;
     var ram = navigator.deviceMemory;
+    if (ram == undefined) { ram = 'Not Available'; }
 
-    gl = document.createElement('canvas').getContext('webgl');
-    debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-    var vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
-    var render = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+    if (ua.indexOf('Firefox') != -1)
+    {
+      str = str.substring(str.indexOf('Firefox/'));
+      str = str.split(' ');
+      name = str[0];
+    }
+    else if (ua.indexOf('Vivaldi') != -1)
+    {
+      str = str.substring(str.indexOf('Vivaldi/'));
+      str = str.split(' ');
+      name = str[0];
+    }
+    else if (ua.indexOf('Chrome') != -1)
+    {
+      str = str.substring(str.indexOf('Chrome/'));
+      str = str.split(' ');
+      name = str[0];
+    }
+    else if (ua.indexOf('Safari') != -1)
+    {
+      str = str.substring(str.indexOf('Safari/'));
+      str = str.split(' ');
+      name = str[0];
+    }
+    else if (ua.indexOf('Edge') != -1)
+    {
+      str = str.substring(str.indexOf('Edge/'));
+      str = str.split(' ');
+      name = str[0];
+    }
+    else
+    {
+      brw = 'Not Available'
+      console.log('Browser is not available')
+    }
+
+    var ver = name.match(/-?\d+\.\d+/);
+    var ver = ver.toString();
+    console.log(ver);
+
+    var brw = name.match(/[a-zA-Z]+/g);
+    brw = brw.toString();
+
+    os = os.substring(0, os.indexOf(')'));
+    os = os.split(';');
+    os = os[1];
+    if (os == undefined)
+    {
+      os = 'Not Available';
+      console.log('OS is not available')
+    }
+    os = os.trim();
+    console.log(os);
+
+    var canvas = document.createElement('canvas');
+    var gl;
+    var debugInfo;
+    var ven;
+    var ren;
+
+    try
+    { gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl'); }
+
+    catch (e) { console.log(e); }
+
+    if (gl)
+    {
+      debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+      ven = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+      ren = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+    }
+
+    if (ven == undefined)
+    { ven = 'Not Available'; }
+
+    if (ren == undefined)
+    { ren = 'Not Available'; }
 
     document.getElementById('VER').innerHTML=ver;
     document.getElementById('SCW').innerHTML=scw;
     document.getElementById('SCH').innerHTML=sch;
-    document.getElementById('NAME').innerHTML=name;
-    document.getElementById('PTF').innerHTML=ptf;
+    document.getElementById('NAME').innerHTML=brw;
+    document.getElementById('OS').innerHTML=os;
     document.getElementById('CORES').innerHTML=cores;
     document.getElementById('RAM').innerHTML=ram;
-    document.getElementById('VENDOR').innerHTML=vendor;
-    document.getElementById('RENDER').innerHTML=render;
+    document.getElementById('VENDOR').innerHTML=ven;
+    document.getElementById('RENDER').innerHTML=ren;
   };
 }).catch(err => {console.log(err)});
