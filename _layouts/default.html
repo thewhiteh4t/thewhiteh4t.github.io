@@ -38,9 +38,9 @@
   <link rel="stylesheet" href="{{ site.url }}/css/xt256.css">
   <link rel="stylesheet" href="{{ site.url }}/css/pace-theme-center-simple.css">
   <link rel="stylesheet" href="{{ site.url }}/css/styles.css">
-  <script src="{{ site.url }}/js/jquery.min.js"></script>
-  <script src="{{ site.url }}/js/pace.min.js" async></script>
-  <script src="/js/script.js" async></script>
+  <script src="{{ site.url }}/js/jquery.min.js" defer></script>
+  <script src="{{ site.url }}/js/pace.min.js"></script>
+  <script src="/js/script.js" defer></script>
 </head>
 
 <body>
@@ -91,11 +91,11 @@
     </div>
   </footer>
 
-  <script src="{{ site.url }}/js/materialize.min.js" async></script>
-  <script src="{{ site.url }}/js/particles.min.js"></script>
-  <script src="{{ site.url }}/js/highlight.pack.js"></script>
+  <script src="{{ site.url }}/js/materialize.min.js" defer></script>
+  <script src="{{ site.url }}/js/particles.min.js" defer></script>
+  <script src="{{ site.url }}/js/highlight.pack.js" defer></script>
   <script>hljs.initHighlightingOnLoad();</script>
-  <script src="{{ site.url }}/js/app.js" async></script>
+  <script>particlesJS.load('particles-js', '/js/particlesjs-config.json', function() { console.log('callback - particles.js config loaded'); });</script>
 
 </body>
 </html>
