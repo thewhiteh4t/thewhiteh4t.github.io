@@ -20,7 +20,7 @@ fetch("https://ipapi.co/json/").then(response => {
   document.getElementById('TZN').innerHTML=tzn;
   document.getElementById('ZIP').innerHTML=zip;
 
-  window.onload = function(){
+  function info() {
     var ua = navigator.userAgent;
     var str = ua;
     var os = ua;
@@ -69,7 +69,6 @@ fetch("https://ipapi.co/json/").then(response => {
 
     var ver = name.match(/-?\d+\.\d+/);
     var ver = ver.toString();
-    console.log(ver);
 
     var brw = name.match(/[a-zA-Z]+/g);
     brw = brw.toString();
@@ -83,7 +82,6 @@ fetch("https://ipapi.co/json/").then(response => {
       console.log('OS is not available')
     }
     os = os.trim();
-    console.log(os);
 
     var canvas = document.createElement('canvas');
     var gl;
@@ -118,5 +116,6 @@ fetch("https://ipapi.co/json/").then(response => {
     document.getElementById('RAM').innerHTML=ram;
     document.getElementById('VENDOR').innerHTML=ven;
     document.getElementById('RENDER').innerHTML=ren;
-  };
+  }
+  window.onload = info();
 }).catch(err => {console.log(err)});
