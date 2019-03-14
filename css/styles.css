@@ -1,4 +1,4 @@
-html { height: 100%; }
+html { height: 100%; scroll-behavior: smooth; }
 body { height: 100%; background-color: #212121; font-family: 'Chakra Petch', sans-serif; }
 @font-face { font-family: 'Chakra Petch'; font-style: normal; font-weight: 400; src: local('Chakra Petch Regular'), local('ChakraPetch-Regular'), url(../fonts/ChakraPetch-Regular.woff2) format('woff2'); font-display: swap;}
 @font-face { font-family: 'Material Icons'; font-style: normal; font-weight: 400; src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/MaterialIcons-Regular.woff2) format('woff2'), url(../fonts/MaterialIcons-Regular.woff) format('woff'), url(../fonts/MaterialIcons-Regular.ttf) format('truetype'); font-display: swap;}
