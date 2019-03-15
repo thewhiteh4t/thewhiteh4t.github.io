@@ -4,6 +4,7 @@ url: https://thewhiteh4t.github.io
 baseurl:
 author: thewhiteh4t
 layouts_dir: _layouts
+paginate: 6
 defaults:
   -
     scope:
