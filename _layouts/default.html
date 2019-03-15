@@ -42,34 +42,44 @@
 <body>
   <div id="particles-js"></div>
 
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper grey darken-4 hoverable">
-        <a style="outline: none;" class="brand-logo center cyan-text" href="{{ site.url }}">~/the<span class="white-text">white</span>h4t</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a class="btn black hoverable" onclick="window.open('https://github.com/thewhiteh4t')">Github</a></li>
-          <li><a class="btn black hoverable" onclick="window.open('https://www.youtube.com/c/thewhiteh4t')">YouTube</a></li>
-          <li><a class="btn black hoverable" onclick="window.open('https://www.linkedin.com/in/lohityapushkar/')">LinkedIn</a></li>
-          <li><a class="btn black hoverable" onClick="window.open('https://thewhiteh4t.github.io/feed.xml')">RSS</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      {{ content }}
+  <header>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper grey darken-4 hoverable">
+          <a style="outline: none;" class="brand-logo center cyan-text" href="{{ site.url }}">~/the<span class="white-text">white</span>h4t</a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="btn black hoverable" onclick="window.open('https://github.com/thewhiteh4t')">Github</a></li>
+            <li><a class="btn black hoverable" onclick="window.open('https://www.youtube.com/c/thewhiteh4t')">YouTube</a></li>
+            <li><a class="btn black hoverable" onclick="window.open('https://www.linkedin.com/in/lohityapushkar/')">LinkedIn</a></li>
+            <li><a class="btn black hoverable" onClick="window.open('https://thewhiteh4t.github.io/feed.xml')">RSS</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
-  </div>
+  </header>
 
+  <main>
+    <div class="container">
+      <div class="row">
+        {{ content }}
+      </div>
+    </div>
+  </main>
+  
   <footer class="page-footer grey darken-4 glow">
     <div class="container">
       <div class="row">
         <div class="col s12 m12 l12">
           <ul class="pagination center">
-            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-            <li class="active cyan"><a href="#!">1</a></li>
-            <li><a href="{{ site.url }}/page2/"><i class="material-icons">chevron_right</i></a></li>
+            {% if paginator.previous_page %}
+              <li><a href="{{ paginator.previous_page_path }}"><i class="material-icons white-text">chevron_left</i></a></li>
+            {% endif %}
+            {% if paginator.page %}
+              <li class="active cyan"><a class="black-text">{{ paginator.page }}</a></li>
+            {% endif %}
+            {% if paginator.next_page %}
+              <li><a href="{{ paginator.next_page_path }}"><i class="material-icons white-text">chevron_right</i></a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
