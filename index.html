@@ -1,104 +1,12 @@
 ---
 layout: default
 ---
-{% if paginator.page == 1 %}
-<div class="row">
-  <div class="col s12">
-    <div class="card-panel hoverable" style="margin-top: 40px; background-color: rgba(30,30,30,0.6);">
-      <div class="row">
-        <div class="col s12 m6 l6">
-          <table class="white-text">
-            <tr>
-              <td class="cyan-text">IP</td>
-              <td class="right-align" id="IP"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Country</td>
-              <td class="right-align" id="COUNTRY"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">City</td>
-              <td class="right-align" id="CITY"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Region</td>
-              <td class="right-align" id="RGN"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">ISP</td>
-              <td class="right-align" id="ISP"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Latitude</td>
-              <td class="right-align" id="LAT"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Longitude</td>
-              <td class="right-align" id="LON"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">ZipCode</td>
-              <td class="right-align" id="ZIP"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">TimeZone</td>
-              <td class="right-align" id="TZN"></td>
-            </tr>
-          </table>
-        </div>
-        <div class="col s12 m6 l6">
-          <table class="white-text">
-            <tr>
-              <td class="cyan-text">Browser</td>
-              <td class="right-align" id="NAME"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Version</td>
-              <td class="right-align" id="VER"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Operating System</td>
-              <td class="right-align" id="OS"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Width</td>
-              <td class="right-align" id="SCW"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Height</td>
-              <td class="right-align" id="SCH"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">Cores</td>
-              <td class="right-align" id="CORES"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">RAM</td>
-              <td class="right-align" id="RAM"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">GPU Vendor</td>
-              <td class="right-align" id="VENDOR"></td>
-            </tr>
-            <tr>
-              <td class="cyan-text">GPU</td>
-              <td class="right-align" id="RENDER"></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script async src="/js/script.js"></script>
-{% endif %}
 
 {% for post in paginator.posts %}
 <div class="col s12 m12 l6">
   <div class="card hoverable" style="background-color: rgba(30,30,30,0.6);">
     <div class="card-image">
-      <img class="img" src="{{ site.url }}/{{ post.image }}.webp" onerror="this.onerror=null; this.src='{{ site.url }}/{{ post.image }}.png'">
+      <img class="img" src="{{ site.url }}/{{ post.image }}.webp" onerror="this.onerror=null; this.src='{{ site.url }}/{{ post.image }}.png'" alt="{{ post.title }}">
       <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect black hoverable"><i class="material-icons">chevron_right</i></a>
     </div>
     <div class="card-content white-text">
