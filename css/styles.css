@@ -9,6 +9,7 @@ main { flex: 1 0 auto; }
 pre { border: 0; display: block; padding: 0px; }
 .hoverable:hover { transition: box-shadow .25s; box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8); }
 .glow { box-shadow: 0 16px 24px 2px rgba(0, 188, 212, 0.8), 0 6px 30px 5px rgba(0, 188, 212, 0.8), 0 8px 10px -5px rgba(0, 188, 212, 0.8); }
+.glass { background-color: rgba(30,30,30,0.6); }
 .round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
 #particles-js { position: fixed; width: 100%; height: auto; top: 0; left: 0; bottom: 0; right: 0; overflow: hidden; z-index: -1; }
 .pace-running > *:not(.pace) { opacity: 0; }
