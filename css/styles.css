@@ -49,16 +49,61 @@ pre { border: 0; display: block; padding: 0px; }
 .hljs-link {color: #ff00ff;}
 .hljs-meta {color: #fff;font-weight: bolder;}
 
-.blur { width: 100%; height: auto; position: relative; -webkit-filter: blur(2px); -moz-filter: blur(2px);
-  -o-filter: blur(2px); -ms-filter: blur(2px); filter: blur(2px); }
+.killcast {
+  background-image: url(https://i.imgur.com/8EOXyxX.png);
+  background-color: linear-gradient(rgba(0, 0, 0, 0.5));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+  position: relative;
+  filter: blur(3px);
+}
+
+.seeker {
+  background-image: url(https://i.imgur.com/cg82a8k.png);
+  background-color: linear-gradient(rgba(0, 0, 0, 0.5));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+  position: relative;
+  filter: blur(3px);
+}
+
+.pwnedornot {
+  background-image: url(https://i.imgur.com/aSM6dKc.png);
+  background-color: linear-gradient(rgba(0, 0, 0, 0.5));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+  position: relative;
+  filter: blur(3px);
+}
+
+.spacepaper {
+  background-image: url(https://i.imgur.com/eUncuyD.png);
+  background-color: linear-gradient(rgba(0, 0, 0, 0.5));
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+  position: relative;
+  filter: blur(3px);
+}
+
 .cover-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .wrapper { position: absolute; text-align: center; color: white; }
 
-.carousel-cell { width: 100%; height: 300px; }
-
+.carousel-cell { width: 100%; height: 250px; }
 .flickity-button { background: #000000; }
 .flickity-button:hover { background: #00bcd4; }
 .flickity-prev-next-button { width: 30px; height: 30px; border-radius: 5px; }
 .flickity-button-icon { fill: white; }
-.flickity-prev-next-button.previous { left: -40px; }
-.flickity-prev-next-button.next { right: -40px; }
+.flickity-prev-next-button.previous { left: -40px; margin-left: 20px; }
+.flickity-prev-next-button.next { right: -40px; margin-right: 20px; }
