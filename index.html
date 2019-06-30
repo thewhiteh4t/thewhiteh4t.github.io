@@ -2,6 +2,63 @@
 layout: default
 ---
 
+{% if paginator.page == 1 %}
+<div class="col s12 m12 l12">
+	<div style="position: absolute; z-index: 1; left: 50%; transform: translate(-50%, 0);">
+		<img class="circle z-depth-3 responsive-img" src="images/logo_small.png">
+	</div>	
+	
+	<div class="card-panel glow" style="background-color: rgba(30,30,30,0.6); margin-top: 100px; padding-top: 110px;">
+
+		<h5 class="white-text center-align">Python Scripting • Network Exploitation • Hardware Hacking • Exploit Analysis • OSINT • CTF Player</h5>
+
+		<div class="divider light-green accent-3"></div>
+
+		<h5 class="white-text">Projects</h5>
+
+		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/pwnedOrNot">pwnedOrNot</a>
+		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/seeker">seeker</a>
+		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/killcast">killcast</a>
+		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/FinalRecon">FinalRecon<a>
+		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/flashspoit">FlashSploit</a>
+		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/spacepaper">SpacePaper</a>
+		
+		<div class="row" style="margin-top: 40px;">
+			<div class="col s2 m2 l2 center-align">
+				<a href="https://github.com/thewhiteh4t">
+					<img src="{{ site.url }}/images/svg/github.svg" alt="thewhiteh4t github" class="btn-floating white">
+				</a>
+			</div>
+            <div class="col s2 m2 l2 center-align">
+            	<a href="https://www.youtube.com/c/thewhiteh4t">
+            		<img src="{{ site.url }}/images/svg/youtube.svg" alt="thewhiteh4t youtube" class="btn-floating grey darken-4">
+            	</a>
+            </div>
+            <div class="col s2 m2 l2 center-align">
+            	<a href="https://www.linkedin.com/in/lohityapushkar/">
+            		<img src="{{ site.url }}/images/svg/linkedin.svg" alt="thewhiteh4t linkedin" class="btn-floating grey darken-4">
+            	</a>
+            </div>
+            <div class="col s2 m2 l2 center-align">
+            	<a href="https://twitter.com/thewhiteh4t?ref_src=twsrc%5Etfw">
+            		<img src="{{ site.url }}/images/svg/twitter.svg" alt="thewhiteh4t twitter" class="btn-floating grey darken-4">
+            	</a>
+            </div>
+            <div class="col s2 m2 l2 center-align">
+            	<a href="https://t.me/thewhiteh4t">
+            		<img src="{{ site.url }}/images/svg/telegram.svg" alt="thewhiteh4t telegram" class="btn-floating grey darken-4">
+            	</a>
+            </div>
+            <div class="col s2 m2 l2 center-align">
+            	<a href="https://thewhiteh4t.github.io/feed.xml">
+            		<img src="{{ site.url }}/images/svg/rss.svg" alt="thewhiteh4t rss" class="btn-floating grey darken-4">
+            	</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 {% for post in paginator.posts %}
 <div class="col s12 m12 l6">
   <div class="card hoverable" style="background-color: rgba(30,30,30,0.6);">
