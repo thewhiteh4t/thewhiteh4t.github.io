@@ -1,0 +1,11 @@
+I"Ñ<h3 class="cyan-text">SpacePaper | High Quality Images from NASA APOD</h3>
+<h4 class="cyan-text">Introduction</h4>
+<div class="content white-text">
+  <p>
+    One of the most popular websites at NASA is the Astronomy Picture of the Day. Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.
+    The official NASA APOD page displays a single image everyday, SpacePaper retrieves images for a specific Month and Year.
+    APOD API allows us to retrieve images from June 1995 - Current Year.
+    API Requests are handled by a python script and it generates a Javascript file which displays images on the frontend.
+  </p>
+</div>
+:ET
