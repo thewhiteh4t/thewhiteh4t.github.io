@@ -4,13 +4,15 @@ layout: default
 
 {% if paginator.page == 1 %}
 <div class="col s12 m12 l12">
-	<div style="position: absolute; z-index: 1; left: 50%; transform: translate(-50%, 0);">
-		<img class="circle z-depth-3 responsive-img" src="images/logo_small.png" alt="card logo">
-	</div>	
-	
-	<div class="card-panel glow" style="background-color: rgba(30,30,30,0.6); margin-top: 100px; padding-top: 110px;">
-
-        <h1 class="white-text center-align"><i>"OFFENSE IS THE BEST DEFENSE"</i></h1>
+	<div class="card-panel glow tr-dark profile-card-top-margin">
+        <div class="row">
+            <div class="col l2 s12 center-align">
+                <img class="circle responsive-img" src="images/logo_small.png" alt="card logo">
+            </div>
+            <div class="col s12 l10 center-align margin20">
+                <h1 class="white-text"><i>"OFFENSE IS THE BEST DEFENSE"</i></h1>
+            </div>
+        </div>
 
 		<h2 class="white-text">Projects</h2>
 
@@ -21,11 +23,11 @@ layout: default
 		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/flashsploit">FlashSploit</a>
 		<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/spacepaper">SpacePaper</a>
 		
-		<div style="margin-top: 30px;">
+		<div class="margin30">
 			<script src="https://www.hackthebox.eu/badge/40338"></script>
 		</div>
 
-		<div class="row" style="margin-top: 40px;">
+		<div class="row margin30">
 			<div class="col s2 m2 l2 center-align">
 				<a href="https://github.com/thewhiteh4t">
 					<img src="{{ site.url }}/images/svg/github.svg" alt="thewhiteh4t github" class="btn-floating grey darken-4">
@@ -63,7 +65,7 @@ layout: default
 
 {% for post in paginator.posts %}
 <div class="col s12 m12 l6">
-  <div class="card hoverable" style="background-color: rgba(30,30,30,0.6);">
+  <div class="card hoverable margin30 tr-dark">
     <div class="card-image">
       <img class="img" src="{{ site.url }}/{{ post.image }}.webp" onerror="this.onerror=null; this.src='{{ site.url }}/{{ post.image }}.png'" alt="{{ post.title }}">
       <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect black hoverable"><i class="material-icons">chevron_right</i></a>
