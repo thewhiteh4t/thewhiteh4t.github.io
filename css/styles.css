@@ -50,3 +50,6 @@ pre { border: 0; display: block; padding: 0px; }
 .hljs-meta {color: #fff;font-weight: bolder;}
 
 .adjust {margin: 5px;}
+
+h1 { font-size: 45px; }
+h2 { font-size: 30px; }
