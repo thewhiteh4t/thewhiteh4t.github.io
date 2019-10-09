@@ -56,3 +56,4 @@ h3 { font-size: 25px; }
 .margin20 { margin-top: 20px; }
 .sub-text { font-size: 20px; padding-top: -10px; }
 .sub-text-link { color: #00ff00; }
+.tagline-glow { text-shadow: 0px 0px 15px #00e2ff; }
