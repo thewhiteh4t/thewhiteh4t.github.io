@@ -1,5 +1,5 @@
 html { height: 100%; scroll-behavior: smooth; }
-body { display: flex; min-height: 100vh; flex-direction: column; background-color: #212121; font-family: 'Chakra Petch', sans-serif; }
+body { display: flex; min-height: 100vh; flex-direction: column; background-color: #000000; font-family: 'Chakra Petch', sans-serif; }
 main { flex: 1 0 auto; }
 @font-face { font-family: 'Chakra Petch'; font-style: normal; font-weight: 400; src: local('Chakra Petch Regular'), local('ChakraPetch-Regular'), url(../fonts/ChakraPetch-Regular.woff2) format('woff2'); font-display: swap;}
 @font-face { font-family: 'Material Icons'; font-style: normal; font-weight: 400; src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/MaterialIcons-Regular.woff2) format('woff2'), url(../fonts/MaterialIcons-Regular.woff) format('woff'), url(../fonts/MaterialIcons-Regular.ttf) format('truetype'); font-display: swap;}
@@ -7,8 +7,8 @@ main { flex: 1 0 auto; }
 .img { object-fit: cover; width: 640px; height: 320px; }
 .content { font-weight: 300; font-size: 16px; }
 pre { border: 0; display: block; padding: 0px; }
-.hoverable:hover { transition: box-shadow .25s; box-shadow: 0 8px 17px 0 rgba(0, 188, 212, 0.8), 0 6px 20px 0 rgba(0, 188, 212, 0.8); }
-.glow { box-shadow: 0 16px 24px 2px rgba(0, 188, 212, 0.8), 0 6px 30px 5px rgba(0, 188, 212, 0.8), 0 8px 10px -5px rgba(0, 188, 212, 0.8); }
+.hoverable:hover { transition: box-shadow .25s; box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
+.glow { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
 .glass { background-color: rgba(30,30,30,0.6); }
 .tools { overflow-x: auto; white-space: nowrap; }
 .round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
@@ -49,7 +49,9 @@ pre { border: 0; display: block; padding: 0px; }
 .adjust {margin: 5px;}
 h1 { font-size: 45px; }
 h2 { font-size: 30px; }
+h3 { font-size: 25px; }
 .tr-dark { background-color: rgba(30,30,30,0.6); }
 .profile-card-top-margin { margin-top: 30px; }
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
+.sub-text { font-size: 20px; padding-top: -10px;}
