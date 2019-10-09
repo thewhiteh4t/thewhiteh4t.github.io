@@ -54,4 +54,5 @@ h3 { font-size: 25px; }
 .profile-card-top-margin { margin-top: 30px; }
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
-.sub-text { font-size: 20px; padding-top: -10px;}
+.sub-text { font-size: 20px; padding-top: -10px; }
+.sub-text-link { color: #00ff00; }
