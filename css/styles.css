@@ -52,6 +52,7 @@ h2 { font-size: 30px; }
 h3 { font-size: 25px; }
 .tr-dark { background-color: rgba(30,30,30,0.6); }
 .profile-card-top-margin { margin-top: 30px; }
+.nav-img { width: 100px; height: 100px; margin-left: 30px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center;}
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
 .sub-text { font-size: 20px; padding-top: -10px; }
@@ -59,3 +60,31 @@ h3 { font-size: 25px; }
 .sub-text-glow { text-shadow: 0px 0px 15px #00ff00; }
 .text-glow { text-shadow: 0px 0px 15px #00e2ff; }
 .about-text { font-size: 18px; }
+.fluid-text { font-size: 18px; line-height: 180px; float: left;}
+.block-cursor {
+  float: left;
+  margin-left: 4px;
+  margin-top: 80px;
+  width: 10px;
+  height: 18px;
+  background: white;
+  box-shadow: 0 0 15px #00e2ff;
+  line-height: 180px;
+}
+
+@media only screen and (min-width: 768px) {
+	.fluid-text { font-size: 45px; line-height: 180px; float: left;}
+	.block-cursor {
+		float: left;
+ 	 	margin-left: 4px;
+  		margin-top: 70px;
+  		width: 23px;
+  		height: 45px;
+  		background: white;
+  		box-shadow: 0 0 15px #00e2ff;
+  		line-height: 180px;
+  		}
+  	}  	
+.hidden {
+  opacity:0;
+}
