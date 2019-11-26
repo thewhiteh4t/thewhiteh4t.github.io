@@ -60,11 +60,11 @@ h3 { font-size: 25px; }
 .sub-text-glow { text-shadow: 0px 0px 15px #00ff00; }
 .text-glow { text-shadow: 0px 0px 15px #00e2ff; }
 .about-text { font-size: 18px; }
-.fluid-text { font-size: 18px; line-height: 180px; float: left;}
+.fluid-text { font-size: 18px; line-height: 180px; float: left; }
 .block-cursor {
   float: left;
   margin-left: 4px;
-  margin-top: 80px;
+  margin-top: 82px;
   width: 10px;
   height: 18px;
   background: white;
@@ -77,7 +77,7 @@ h3 { font-size: 25px; }
 	.block-cursor {
 		float: left;
  	 	margin-left: 4px;
-  		margin-top: 70px;
+  		margin-top: 72px;
   		width: 23px;
   		height: 45px;
   		background: white;
