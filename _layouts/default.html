@@ -77,11 +77,30 @@
   <div id="particles-js"></div>
 
   <main>
-    <div class="container">
+    <div id="container" class="container">
       <div class="row">
         {{ content }}
       </div>
     </div>
+
+    {% if page.url == '/' %}
+    
+    <div class="fixed-action-btn">
+      <button class="btn-floating btn-large black glow modal-trigger" data-target="search-box" onclick="blurred()">
+        <i class=" material-icons">search</i>
+      </button>
+    </div>
+
+    <div id="search-box" class="modal tr-dark glow">
+        <div class="modal-content">
+          <button class="btn btn-floating black glow close-btn modal-close" onclick="clearblur()">
+            <i class="material-icons white-text text-glow">close</i>
+          </button>
+            <input type="text" id="search-input" placeholder="Search..." class="white-text">
+        <ul id="results-container" class="white-text text-glow link"></ul>
+        </div>
+    </div>
+    {% endif %}
   </main>
 
   <footer class="page-footer black glow center">
@@ -114,5 +133,28 @@
   <script src="{{ site.url }}/js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <script>particlesJS.load('particles-js', '/js/particlesjs-config.json', function() { console.log('callback - particles.js config loaded'); });</script>
+  <script>
+  SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '/search.json'
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, {"dismissible": false, "preventScrolling": false});
+    });
+
+  function blurred() {
+    var body = document.getElementById('container');
+    body.className += ' blur';
+  };
+
+  function clearblur() {
+    var body = document.getElementById('container');
+    body.classList.remove("blur");
+    console.log(body.className);
+  };
+</script>
 </body>
 </html>

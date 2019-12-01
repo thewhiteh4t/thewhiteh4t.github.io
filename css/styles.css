@@ -84,6 +84,16 @@ h3 { font-size: 25px; }
   		line-height: 180px;
   		}
   	}  	
-.hidden {
-  opacity:0;
+.hidden { opacity: 0; }
+
+.blur {
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  filter: blur(4px);
 }
+
+.link { color: #00ff00; font-size: 18px;}
+.close-btn { display: flex; float: right; }
+a:active, a:focus { outline: 0; border: none; }
