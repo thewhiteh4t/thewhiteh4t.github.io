@@ -103,3 +103,4 @@ h3 { font-size: 25px; }
 .close-btn { display: flex; float: right; }
 a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }
+.tb-margin{margin-top: 20px; margin-bottom: 20px;}
