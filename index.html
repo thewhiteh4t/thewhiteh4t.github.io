@@ -2,74 +2,16 @@
 layout: default
 ---
 
-{% if paginator.page == 1 %}
 <div class="col s12 m12 l12">
-	
-	<div style="display: flex; height: 180px; flex-wrap: nowrap;">
-		<a href="{{ site.url }}"><img class="circle responsive-img glow nav-img" src="{{ site.url }}/images/logo_small.png"></a>
-		<div class="white-text text-glow fluid-text" id="typetext"></div>
-		<div class="block-cursor white-text text-glow" id="console"></div>
+	<div class="banner">
+		<div>
+			<a href="{{ site.url }}"><img class="circle responsive-img glow nav-img" src="{{ site.url }}/images/logo_small.png"></a>
+			<div class="white-text text-glow fluid-text" id="typetext"></div>
+			<div class="block-cursor white-text text-glow" id="console"></div>
+		</div>
 	</div>
-
-	<div class="card-panel glow tr-dark">
-		<div class="card-body">
-			<div class="card-text">
-        		<h1 align="center" class="white-text text-glow"><i>"OFFENSE IS THE BEST DEFENSE"</i></h1>
-
-				<p class="about-text white-text text-glow">I write about tools I have created for the cyber security community, updates regarding my active projects, exploits, PoCs and a little bit of OSINT.</p>
-
-				<h3 class="white-text text-glow">Projects</h3>
-
-				<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/pwnedOrNot">pwnedOrNot</a>
-				<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/seeker">seeker</a>
-				<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/killcast">killcast</a>
-				<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/FinalRecon">FinalRecon</a>
-				<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/flashsploit">FlashSploit</a>
-				<a class="btn light-green accent-3 black-text adjust" href="https://github.com/thewhiteh4t/spacepaper">SpacePaper</a>
-
-				<h3 class="white-text text-glow">CVEs</h3>
-				<a class="btn light-green accent-3 black-text adjust" href="{{ site.url }}/2020/02/27/CVE-2020-9375-TP-Link-Archer-C50-v3-Denial-of-Service.html">CVE-2020-9375</a>
-
-				<h3 class="white-text text-glow">HackTheBox</h3> 
-				<script src="https://www.hackthebox.eu/badge/40338"></script>
-				
-				<div class="row margin30">
-					<div class="col s2 m2 l2 center-align">
-						<a href="https://github.com/thewhiteh4t">
-							<img src="{{ site.url }}/images/svg/github.svg" alt="thewhiteh4t github" class="btn-floating grey darken-4 hoverable">
-						</a>
-					</div>
-		            <div class="col s2 m2 l2 center-align">
-		            	<a href="https://www.youtube.com/c/thewhiteh4t">
-		            		<img src="{{ site.url }}/images/svg/youtube.svg" alt="thewhiteh4t youtube" class="btn-floating grey darken-4 hoverable">
-		            	</a>
-		            </div>
-		            <div class="col s2 m2 l2 center-align">
-		            	<a href="https://www.linkedin.com/in/lohityapushkar/">
-		            		<img src="{{ site.url }}/images/svg/linkedin.svg" alt="thewhiteh4t linkedin" class="btn-floating grey darken-4 hoverable">
-		            	</a>
-		            </div>
-		            <div class="col s2 m2 l2 center-align">
-		            	<a href="https://twitter.com/thewhiteh4t?ref_src=twsrc%5Etfw">
-		            		<img src="{{ site.url }}/images/svg/twitter.svg" alt="thewhiteh4t twitter" class="btn-floating grey darken-4 hoverable">
-		            	</a>
-		            </div>
-		            <div class="col s2 m2 l2 center-align">
-		            	<a href="https://t.me/thewhiteh4t">
-		            		<img src="{{ site.url }}/images/svg/telegram.svg" alt="thewhiteh4t telegram" class="btn-floating grey darken-4 hoverable">
-		            	</a>
-		            </div>
-		            <div class="col s2 m2 l2 center-align">
-		            	<a href="https://thewhiteh4t.github.io/feed.xml">
-		            		<img src="{{ site.url }}/images/svg/rss.svg" alt="thewhiteh4t rss" class="btn-floating grey darken-4 hoverable">
-		            	</a>
-		            </div>
-        		</div>
-    		</div>
-    	</div>
-    </div>
+	<button class="btn-abt btn-abt-glow" onclick="window.location.href='{{ site.url }}/about/'">About Me</button>
 </div>
-{% endif %}
 
 {% for post in paginator.posts %}
 <div class="col s12 m12 l6">
