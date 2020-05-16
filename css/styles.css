@@ -142,16 +142,17 @@ a:active, a:focus { outline: 0; border: none; }
 
 #timeline-content {
   margin-top: 50px;
+  width: 100%
 }
 
 .timeline {
   border-left: 2px solid #ffffff;
   margin: 50px auto;  
   position: relative;
-  padding: 50px;   
+  padding: 10px;   
   list-style: none;
-  text-align: left; 
-  max-width: 30%;
+  text-align: left;
+  max-width: 40%;
 }
 
 .event {
@@ -159,7 +160,7 @@ a:active, a:focus { outline: 0; border: none; }
   padding-bottom: 0px;
   margin-bottom: 30px;
   position: relative;
-  width: 40vw;
+  border-bottom: 1px solid #808080;
 }
 
 .event:before, .event:after {
@@ -173,7 +174,6 @@ a:active, a:focus { outline: 0; border: none; }
   content: attr(data-date);
   text-align: right;
   min-width: 120px;
-  font-size: medium;
 }
 
 .event:after { 
@@ -186,4 +186,16 @@ a:active, a:focus { outline: 0; border: none; }
   content: "";
   top: 5px;
 }
-.subline { font-size: 1.3em; }
+.title { font-size: 4vw; }
+.subline { font-size: 3vw; }
+.date-size { font-size: 3.6vw; }
+@media only screen and (min-width: 768px) {
+  .title { font-size: 1vw; }
+  .subline { font-size: 1vw; }
+  .date-size { font-size: 1vw; }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .title { font-size: 3vw; }
+  .subline { font-size: 2vw; }
+  .date-size { font-size: 2.5vw; }
+}
