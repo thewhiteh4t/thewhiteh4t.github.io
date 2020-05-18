@@ -17,29 +17,3 @@ layout: default
   </a>
 </div>
 {% endfor %}
-
-<script type="text/javascript" src="{{ site.url }}/js/search.js"></script>
-<script>
-  window.simpleJekyllSearch = new SimpleJekyllSearch({
-    searchInput: document.getElementById('search-input'),
-    resultsContainer: document.getElementById('results-container'),
-    json: '{{ site.url }}/search.json',
-    success: function () { console.log(" "); }
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, {"dismissible": false, "preventScrolling": false});
-  });
-
-  function blurred() {
-    var body = document.getElementById('container');
-    body.className += ' blur';
-  };
-
-  function clearblur() {
-    var body = document.getElementById('container');
-    body.classList.remove("blur");
-    console.log(body.className);
-  };
-</script>

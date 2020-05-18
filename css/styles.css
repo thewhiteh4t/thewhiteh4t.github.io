@@ -72,7 +72,7 @@ h3 { font-size: 25px; }
   -ms-filter: blur(4px);
   filter: blur(4px);
 }
-.link { color: #00ff00; font-size: 18px;}
+.link a { color: #00ff00; font-size: 18px; }
 .close-btn { display: flex; float: right; }
 a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }

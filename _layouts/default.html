@@ -98,13 +98,11 @@
         <button class="btn-abt btn-abt-glow" onclick="window.location.href='{{ site.url }}/about/'">whoami</button>
         {% endif %}
       </div>
-</div>
-
     </div>
   </header>
 
   <main>
-    <div id="container" class="container">
+    <div class="container">
       <div class="row">
         {{ content }}
       </div>
@@ -119,13 +117,13 @@
     </div>
 
     <div id="search-box" class="modal tr-dark glow">
-        <div class="modal-content">
-          <button class="btn btn-floating black glow close-btn modal-close" onclick="clearblur()">
-            <i class="material-icons white-text text-glow">close</i>
-          </button>
-            <input type="text" id="search-input" placeholder="Search..." class="white-text">
-        <ul id="results-container" class="white-text text-glow link"></ul>
-        </div>
+      <div class="modal-content">
+        <button class="btn btn-floating black glow close-btn modal-close" onclick="clearblur()">
+          <i class="material-icons white-text text-glow">close</i>
+        </button>
+        <input type="text" id="search-input" placeholder="Search..." class="white-text">
+        <ul id="results-container" class="text-glow link"></ul>
+      </div>
     </div>
     {% endif %}
   </main>
@@ -185,5 +183,37 @@
     gtag('js', new Date());
     gtag('config', 'UA-114300490-1');
   </script>
+
+  {% if page.url == '/' %}
+
+  <script type="text/javascript" src="{{ site.url }}/js/search.js"></script>
+  <script>
+    window.simpleJekyllSearch = new SimpleJekyllSearch({
+      searchInput: document.getElementById('search-input'),
+      resultsContainer: document.getElementById('results-container'),
+      json: '{{ site.url }}/search.json',
+      success: function () { console.log(" "); }
+    })
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems, {"dismissible": false, "preventScrolling": false});
+    })
+
+    function blurred() {
+      var body = document.getElementsByClassName('container');
+      for (var i = 0; i < body.length; i++) {
+        body[i].className += ' blur';
+      }
+    }
+
+    function clearblur() {
+      var body = document.getElementsByClassName('container');
+      for (var i = 0; i < body.length; i++) {
+        body[i].classList.remove("blur");
+      }
+    }
+  </script>
+  {% endif %}
 </body>
 </html>
