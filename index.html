@@ -2,29 +2,19 @@
 layout: default
 ---
 
-<div class="col s12 m12 l12">
-	<div class="banner">
-		<div>
-			<a href="{{ site.url }}"><img class="circle responsive-img glow nav-img" src="{{ site.url }}/images/logo_small.png"></a>
-			<div class="white-text text-glow fluid-text" id="typetext"></div>
-			<div class="block-cursor white-text text-glow" id="console"></div>
-		</div>
-	</div>
-	<button class="btn-abt btn-abt-glow" onclick="window.location.href='{{ site.url }}/about/'">About Me</button>
-</div>
-
 {% for post in paginator.posts %}
 <div class="col s12 m12 l6">
-  <div class="card hoverable margin30 tr-dark">
-    <div class="card-image">
-      <img class="img" src="{{ site.url }}/{{ post.image }}.webp" onerror="this.onerror=null; this.src='{{ site.url }}/{{ post.image }}.png'" alt="{{ post.title }}">
-      <a href="{{ site.url }}{{ post.url }}" class="btn-floating btn-large halfway-fab waves-effect black glow"><i class="material-icons">chevron_right</i></a>
+  <a href="{{ site.url }}{{ post.url }}">
+    <div class="card hoverable margin30 tr-dark">
+      <div class="card-image">
+        <img class="img" src="{{ site.url }}/{{ post.image }}.webp" onerror="this.onerror=null; this.src='{{ site.url }}/{{ post.image }}.png'" alt="{{ post.title }}">
+      </div>
+      <div class="card-content white-text">
+        <span class="card-title truncate"> {{ post.title }} </span>
+        <span class="cyan-text"> {{ post.date | date: "%b %d, %Y" }} </span>
+      </div>
     </div>
-    <div class="card-content white-text">
-      <span class="card-title truncate"> {{ post.title }} </span>
-      <span class="cyan-text"> {{ post.date | date: "%b %d, %Y" }} </span>
-    </div>
-  </div>
+  </a>
 </div>
 {% endfor %}
 

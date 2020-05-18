@@ -16,18 +16,18 @@
   <meta name="twitter:description" content="{{ page.title }}">
   <meta name="twitter:image" content="https://thewhiteh4t.github.io/{{ page.image }}.png">
   {% else %}
-  <title>thewhiteh4t's Blog | Tools,Red Teaming,Network Pentesting,OSINT</title>
-  <meta name="description" content="I write about tools I have created for the cyber community, updates regarding my active projects, exploits, PoCs and a little bit of OSINT">
+  <title>thewhiteh4t's Blog | Network Penetration Testing, Red Teaming, OSINT</title>
+  <meta name="description" content="I write about tools I have created for the cyber community, updates regarding my active projects, exploits, tutorials, PoCs and a little bit of OSINT">
   <meta property="og:title" content="thewhiteh4t's Blog | Tools,Red Teaming,Network Pentesting,OSINT">
   <meta property="og:url" content="https://thewhiteh4t.github.io">
-  <meta property="og:description" content="I write about tools I have created for the cyber community, updates regarding my active projects, exploits, PoCs and a little bit of OSINT">
+  <meta property="og:description" content="I write about tools I have created for the cyber community, updates regarding my active projects, exploits, tutorials, PoCs and a little bit of OSINT">
   <meta property="og:image" content="https://thewhiteh4t.github.io/images/og_twh_2.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@thewhiteh4t">
   <meta name="twitter:creator" content="@thewhiteh4t">
   <meta name="twitter:title" content="thewhiteh4t's Blog | Tools,Red Teaming,Network Pentesting,OSINT">
-  <meta name="twitter:description" content="I write about tools I have created for the cyber community, updates regarding my active projects, exploits, PoCs and a little bit of OSINT">
+  <meta name="twitter:description" content="I write about tools I have created for the cyber community, updates regarding my active projects, exploits, tutorials, PoCs and a little bit of OSINT">
   <meta name="twitter:image" content="https://thewhiteh4t.github.io/images/og_twh_2.jpg">
   {% endif %}
 
@@ -59,13 +59,49 @@
   <link rel="icon" type="image/png" href="{{ site.url }}/images/favicons/favicon-16x16.png" sizes="16x16" />
   <link rel="icon" type="image/png" href="{{ site.url }}/images/favicons/favicon-128.png" sizes="128x128" />
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.url }}/favicon.ico">
-  <!--<script async src="{{ site.url }}/js/pace.min.js"></script>-->
   <link rel="stylesheet" href="{{ site.url }}/css/materialize.min.css">
   <link rel="stylesheet" href="{{ site.url }}/css/styles.css">
 </head>
 
 <body>
   <div id="particles-js"></div>
+  <header class="container">
+    <div class="col s12 m12 l12">
+      <div class="nav-wrap">
+		    <a href="{{ site.url }}"><img class="circle responsive-img glow nav-img" src="{{ site.url }}/images/logo_small.png"></a>
+		    <div class="white-text text-glow fluid-text" id="typetext"></div>
+		    <div class="block-cursor white-text text-glow" id="console"></div>
+	    </div>
+
+      <div class="social-wrap">
+        <div class="sub-social">
+          <a href="https://github.com/thewhiteh4t">
+		  	    <img src="{{ site.url }}/images/svg/github.svg" alt="thewhiteh4t github" class="btn-floating grey darken-4 hoverable">
+		      </a>
+		      <a href="https://www.youtube.com/c/thewhiteh4t">
+		      	<img src="{{ site.url }}/images/svg/youtube.svg" alt="thewhiteh4t youtube" class="btn-floating grey darken-4 hoverable">
+		      </a>
+		      <a href="https://www.linkedin.com/in/lohityapushkar/">
+		      	<img src="{{ site.url }}/images/svg/linkedin.svg" alt="thewhiteh4t linkedin" class="btn-floating grey darken-4 hoverable">
+		      </a>
+		      <a href="https://twitter.com/thewhiteh4t">
+		      	<img src="{{ site.url }}/images/svg/twitter.svg" alt="thewhiteh4t twitter" class="btn-floating grey darken-4 hoverable">
+		      </a>
+		      <a href="https://t.me/thewhiteh4t">
+		      	<img src="{{ site.url }}/images/svg/telegram.svg" alt="thewhiteh4t telegram" class="btn-floating grey darken-4 hoverable">
+		      </a>
+		      <a href="https://thewhiteh4t.github.io/feed.xml">
+		      	<img src="{{ site.url }}/images/svg/rss.svg" alt="thewhiteh4t rss" class="btn-floating grey darken-4 hoverable">
+		      </a>
+        </div>
+        {% if page.url == '/' %}
+        <button class="btn-abt btn-abt-glow" onclick="window.location.href='{{ site.url }}/about/'">whoami</button>
+        {% endif %}
+      </div>
+</div>
+
+    </div>
+  </header>
 
   <main>
     <div id="container" class="container">
@@ -118,41 +154,59 @@
     </div>
   </footer>
 
-  <script src="{{ site.url }}/js/script.js"></script>
   <script src="{{ site.url }}/js/materialize.min.js"></script>
   <script src="{{ site.url }}/js/particles.min.js"></script>
   <script src="{{ site.url }}/js/highlight.pack.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114300490-1"></script>
+  <script src="https://www.googletagmanager.com/gtag/js?id=UA-114300490-1"></script>
   <script>
-  hljs.initHighlightingOnLoad();
-  particlesJS.load('particles-js', '/js/particlesjs-config.json');
-  SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('results-container'),
-      json: '/search.json'
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.modal');
-      var instances = M.Modal.init(elems, {"dismissible": false, "preventScrolling": false});
+    var i = 0;
+    var txt = "thewhiteh4t's blog";
+    var speed = 80;
+    var visible = true;
+    function typeWriter() {
+      if (i < txt.length) {
+        document.getElementById("typetext").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    window.setInterval(function() {
+      if (visible === true) {
+        document.getElementById('console').className = 'block-cursor white-text text-glow hidden'
+        visible = false;
+      } else {
+        document.getElementById('console').className = 'block-cursor white-text text-glow'
+        visible = true;
+      }
+    }, 400)
+    window.onload = setTimeout(function() { typeWriter(); }, 0);
+    hljs.initHighlightingOnLoad();
+    particlesJS.load('particles-js', '/js/particlesjs-config.json');
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search.json'
     });
 
-  function blurred() {
-    var body = document.getElementById('container');
-    body.className += ' blur';
-  };
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {"dismissible": false, "preventScrolling": false});
+      });
 
-  function clearblur() {
-    var body = document.getElementById('container');
-    body.classList.remove("blur");
-    console.log(body.className);
-  };
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-114300490-1');
-</script>
+    function blurred() {
+      var body = document.getElementById('container');
+      body.className += ' blur';
+    };
+
+    function clearblur() {
+      var body = document.getElementById('container');
+      body.classList.remove("blur");
+      console.log(body.className);
+    };
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114300490-1');
+  </script>
 </body>
 </html>

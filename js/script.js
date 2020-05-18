@@ -21,4 +21,4 @@ window.setInterval(function() {
   }
 }, 400)
 
-window.onload = setTimeout(function() { typeWriter(); }, 2000);
+window.onload = setTimeout(function() { typeWriter(); }, 0);

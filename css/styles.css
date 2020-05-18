@@ -18,10 +18,6 @@ pre { border: 0; display: block; padding: 0px; }
 .tools { overflow-x: auto; white-space: nowrap; }
 .round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
 #particles-js { position: fixed; width: 100%; height: auto; top: 0; left: 0; bottom: 0; right: 0; overflow: hidden; z-index: -1; }
-.pace-running > *:not(.pace) { opacity: 0; }
-.pace {-webkit-pointer-events: none;pointer-events: none;-webkit-user-select: none;-moz-user-select: none;user-select: none;z-index: 2000;position: fixed;margin: auto;top: 0;left: 0;right: 0;bottom: 0;height: 5px;width: 200px;background: #fff;border: 1px solid #2299dd;overflow: hidden;}
-.pace .pace-progress {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;-ms-box-sizing: border-box;-o-box-sizing: border-box;box-sizing: border-box;-webkit-transform: translate3d(0, 0, 0);-moz-transform: translate3d(0, 0, 0);-ms-transform: translate3d(0, 0, 0);-o-transform: translate3d(0, 0, 0);transform: translate3d(0, 0, 0);max-width: 200px;position: fixed;z-index: 2000;display: block;position: absolute;top: 0;right: 100%;height: 100%;width: 100%;background: #2299dd;}
-.pace.pace-inactive {display: none;}
 .hljs {display: block;overflow-x: auto;color: #eaeaea;background: #000;padding: 0.5em;}
 .hljs-subst {color: #eaeaea;}
 .hljs-emphasis {font-style: italic;}
@@ -56,7 +52,16 @@ h1 { font-size: 45px; }
 h2 { font-size: 30px; }
 h3 { font-size: 25px; }
 .tr-dark { background-color: rgba(30,30,30,0.6); }
-.nav-img { width: 100px; height: 100px; margin-left: 30px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center;}
+.nav-wrap { display: flex; align-items: center; margin-left: 15px; }
+.nav-img { width: 60px; height: 60px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
+@media only screen and (min-width: 768px) {
+  .nav-img { width: 80px; height: 80px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
+}
+.social-wrap { display: flex; flex-wrap: wrap; flex-direction: row; margin-bottom: 10px; align-items: center; justify-content: space-between; }
+.sub-social { display: flex; justify-content: space-between; margin-bottom: 20px; width: 100%; }
+@media only screen and (min-width: 768px) {
+.sub-social { display: flex; justify-content: space-between; margin-bottom: 20px; width: 50%; }
+}
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
 .sub-text { font-size: 20px; padding-top: -10px; }
@@ -68,9 +73,8 @@ h3 { font-size: 25px; }
 .block-cursor {
   float: left;
   margin-left: 4px;
-  margin-top: 82px;
   width: 10px;
-  height: 18px;
+  height: 20px;
   background: white;
   box-shadow: 0 0 15px #00e2ff;
   line-height: 180px;
@@ -79,16 +83,16 @@ h3 { font-size: 25px; }
 @media only screen and (min-width: 768px) {
 	.fluid-text { font-size: 45px; line-height: 180px; float: left;}
 	.block-cursor {
-		float: left;
- 	 	margin-left: 4px;
-  		margin-top: 72px;
-  		width: 23px;
-  		height: 45px;
-  		background: white;
-  		box-shadow: 0 0 15px #00e2ff;
-  		line-height: 180px;
-  		}
-  	}  	
+    float: left;
+    margin-left: 4px;
+    margin-top: 8px;  
+  	width: 23px;
+  	height: 45px;
+  	background: white;
+  	box-shadow: 0 0 15px #00e2ff;
+  	line-height: 180px;
+  }
+}  	
 .hidden { opacity: 0; }
 .blur {
   -webkit-filter: blur(4px);
@@ -102,37 +106,32 @@ h3 { font-size: 25px; }
 a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }
 .tb-margin{margin-top: 20px; margin-bottom: 20px;}
-.banner { display: flex; height: 180px; flex-wrap: wrap; flex-direction: row; justify-content: space-between; align-items: center; }
-.btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; width: 100%; height: 50px; color: #00ffff; font-family: "Chakra Petch"; font-size: 18px; }
+.btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; width: 100%; height: 50px; color: #00ffff; font-family: "Chakra Petch"; font-size: 18px;}
 @media only screen and (min-width: 768px) {
   .btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; width: 200px; height: 50px; color: #00ffff; font-family: "Chakra Petch"; font-size: 18px; float: right; }
 }
 .btn-abt:hover, .btn-abt:focus { background: transparent; }
-.btn-abt-glow { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); animation: shadow_pulse 1s infinite; }
+.btn-abt-glow { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); animation: shadow_pulse 3s infinite; }
 @keyframes shadow_pulse {
-  0% { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
-  70% { box-shadow: 0px 0px 10px 5px rgba(0,230,255,0); }
-  100 { box-shadow: 0px 0px 10px 5px rgba(0,230,255,0); }
+  0%, 100% { box-shadow: 0px 0px 10px 5px rgba(0,230,255,0); }
+  50% { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
 }
 @keyframes green_pulse {
-  0% { background-color: #00ff00; box-shadow: 0px 0px 10px 2px rgba(0,255,0,1); }
-  70% { background-color: #212121; box-shadow: 0px 0px 10px 2px rgba(0,255,0,0); }
-  100% { background-color: #212121; box-shadow: 0px 0px 10px 2px rgba(0,255,0,0); }
+  0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 2px rgba(0,255,0,0); }
+  50% { background-color: #00ff00; box-shadow: 0px 0px 10px 2px rgba(0,255,0,1); }
 }
 @keyframes yellow_pulse {
-  0% { background-color: #fff000; box-shadow: 0px 0px 10px 5px rgba(240,255,0,1); }
-  70% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(240,255,0,0); }
-  100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(240,255,0,0); }
+  0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(240,255,0,0); }
+  50% { background-color: #fff000; box-shadow: 0px 0px 10px 5px rgba(240,255,0,1); }
 }
 @keyframes red_pulse {
-  0% { background-color: #ff0000; box-shadow: 0px 0px 10px 5px rgba(255,0,0,1); }
-  70% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(255,0,0,0); }
-  100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(255,0,0,0); }
+  0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(255,0,0,0); }
+  50% { background-color: #ff0000; box-shadow: 0px 0px 10px 5px rgba(255,0,0,1); }
 }
 .btn-custom { display: inline-block; vertical-align: middle; text-align: center; line-height: 36px; height: 40px; padding: 0 10px 0 10px; margin: 5px; background-color: transparent; border: 2px #00e2ff solid; border-radius: 2px; cursor: pointer; color: #00ffff; font-family: "Chakra Petch"; font-size: 18px; }
-.green-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #00ff00; border-radius: 50%; animation: green_pulse 1s infinite; }
-.yellow-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #fff000; border-radius: 50%; animation: yellow_pulse 1s infinite; }
-.red-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #ff0000; border-radius: 50%; animation: red_pulse 1s infinite; }
+.green-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #00ff00; border-radius: 50%; animation: green_pulse 3s infinite; }
+.yellow-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #fff000; border-radius: 50%; animation: yellow_pulse 3s infinite; }
+.red-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #ff0000; border-radius: 50%; animation: red_pulse 3s infinite; }
 .pub-img { width: 100%; height: auto; }
 @media only screen and (min-width: 768px) {
   .pub-img { width: 20%; height: auto; }
@@ -142,17 +141,18 @@ a:active, a:focus { outline: 0; border: none; }
 
 #timeline-content {
   margin-top: 50px;
-  width: 100%
+  width: 100%;
 }
 
 .timeline {
+  left: 10%;
+  width: 40%;
   border-left: 2px solid #ffffff;
   margin: 50px auto;  
   position: relative;
   padding: 10px;   
   list-style: none;
   text-align: left;
-  max-width: 40%;
 }
 
 .event {
@@ -170,10 +170,10 @@ a:active, a:focus { outline: 0; border: none; }
 }
 
 .event:before {
-  left: -200px;
+  left: -150px;
+  min-width: 80px;
   content: attr(data-date);
   text-align: right;
-  min-width: 120px;
 }
 
 .event:after { 
