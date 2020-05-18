@@ -156,7 +156,6 @@
 
   <script src="{{ site.url }}/js/materialize.min.js"></script>
   <script src="{{ site.url }}/js/particles.min.js"></script>
-  <script src="{{ site.url }}/js/highlight.pack.js"></script>
   <script src="https://www.googletagmanager.com/gtag/js?id=UA-114300490-1"></script>
   <script>
     var i = 0;
@@ -180,29 +179,7 @@
       }
     }, 400)
     window.onload = setTimeout(function() { typeWriter(); }, 0);
-    hljs.initHighlightingOnLoad();
     particlesJS.load('particles-js', '/js/particlesjs-config.json');
-    SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: '/search.json'
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
-        var instances = M.Modal.init(elems, {"dismissible": false, "preventScrolling": false});
-      });
-
-    function blurred() {
-      var body = document.getElementById('container');
-      body.className += ' blur';
-    };
-
-    function clearblur() {
-      var body = document.getElementById('container');
-      body.classList.remove("blur");
-      console.log(body.className);
-    };
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
