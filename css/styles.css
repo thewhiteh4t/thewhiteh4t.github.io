@@ -1,4 +1,4 @@
-html { height: 100%; scroll-behavior: smooth; }
+html { height: 100%; scroll-behavior: smooth; visibility: visible; opacity: 1; }
 body { display: flex; min-height: 100vh; flex-direction: column; background-color: #000000; font-family: 'Chakra Petch', sans-serif; }
 main { flex: 1 0 auto; }
 @font-face { font-family: 'Chakra Petch'; font-style: normal; font-weight: 400; src: local('Chakra Petch Regular'), local('ChakraPetch-Regular'), url(../fonts/ChakraPetch-Regular.woff2) format('woff2'); font-display: swap;}
