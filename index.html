@@ -7,7 +7,7 @@ layout: default
   <a href="{{ site.url }}{{ post.url }}">
     <div class="card hoverable margin30 tr-dark">
       <div class="card-image">
-        <img class="img" src="{{ site.url }}/{{ post.image }}.webp" onerror="this.onerror=null; this.src='{{ site.url }}/{{ post.image }}.png'" alt="{{ post.title }}">
+        <img class="img lazyload" src="{{ site.url }}/{{ post.image }}.webp" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="{{ site.url }}/{{ post.image }}.webp, {{ site.url }}/{{ post.image }}.png" alt="{{ post.title }}">
       </div>
       <div class="card-content white-text">
         <span class="card-title truncate"> {{ post.title }} </span>
