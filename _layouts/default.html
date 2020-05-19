@@ -105,15 +105,15 @@
     {% if page.url == '/' %}
     
     <div class="fixed-action-btn">
-      <button class="btn-floating btn-large black glow modal-trigger" data-target="search-box" onclick="blurred()">
-        <i class=" material-icons">search</i>
+      <button class="circle-btn glow modal-trigger" data-target="search-box" onclick="blurred()">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA80lEQVRIx+2TSwrCMBRFUym6CRGxi3DgB9yGrqXLKO5Ai8vQdaj4mzl1UCfHyS2UgMZEHSjeySPlvnvSJM+Yv0IFDIAcOAEFcATmQP/V4BiY8lgZEIcCyvALkAIdoK6a6jtAFhI+rIR373i6FUjPF5CrMXX4UvlmvoCTGjsOXyLf0RdQqLHu8DXkK1yZNWt9Vm06+pqW/2nAUnXi6BurrnyPqO/5igZeAAVk1hwkmoPEmoOFd7gAcQVyTwvVLdAOBfWAGXAArnrCeXksCn8N4thAC1gLsnPNzvdCaqHBpaIo2htjRsaYzdt3b/1J+yOX/fu6AeMBqEoWpow6AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTA1LTE5VDA5OjUyOjA1KzAwOjAwyMR35QAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wNS0xOVQwOTo1MjowNSswMDowMLmZz1kAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC">
       </button>
     </div>
 
     <div id="search-box" class="modal tr-dark glow">
       <div class="modal-content">
-        <button class="btn btn-floating black glow close-btn modal-close" onclick="clearblur()">
-          <i class="material-icons white-text text-glow">close</i>
+        <button class="circle-btn glow close-btn modal-close" onclick="clearblur()">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAgUlEQVRIx+2UMQ6AIBAEiX+4xCdY4P8r4h+k8DljIYUxIiBgNLIVxbJ7dwunVMM/AQzABPQRXAEMMKYYGDZYQALi1nFNioEAs7u4nHUSw7ltki1+JVRM3DNnezhLlrink6TKuyIVvHZEVUOu+kyrf7QnVoV2JsEQd8tO38qi4ftYAR2/iAqKWJdNAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTA1LTE5VDA5OjQ5OjEwKzAwOjAwbzh86wAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wNS0xOVQwOTo0OToxMCswMDowMB5lxFcAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC">
         </button>
         <input type="text" id="search-input" placeholder="Search..." class="white-text">
         <ul id="results-container" class="text-glow link"></ul>
@@ -128,13 +128,13 @@
         <div class="col s12 m12 l12">
           <ul class="pagination">
             {% if paginator.previous_page %}
-              <li><a href="{{ paginator.previous_page_path }}"><i class="material-icons white-text">chevron_left</i></a></li>
+              <li><a href="{{ paginator.previous_page_path }}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAdklEQVRYw+3VOQqAMBRFUYfGHduppfsRHFZmea2E8MFG1Bfk3S5F4PBDkqJwzjn3bsAAjGpHijnTogIGYALqXDAL0BiTO2Y15gtMdWPPHtalZDJpQBumtMmOzKgHULoblzsqPgez7HO9mFQnxYRJ9WqHc879pgPVEUzX8o5ZzQAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMC0wNS0xOVQwOTo0MDo1OSswMDowMIL/HAgAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjAtMDUtMTlUMDk6NDA6NTkrMDA6MDDzoqS0AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAABJRU5ErkJggg=="></a></li>
             {% endif %}
             {% if paginator.page %}
               <li class="active cyan"><a class="black-text">{{ paginator.page }}</a></li>
             {% endif %}
             {% if paginator.next_page %}
-              <li><a href="{{ paginator.next_page_path }}"><i class="material-icons white-text">chevron_right</i></a></li>
+              <li><a href="{{ paginator.next_page_path }}"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAb0lEQVRYw+3VMQqAMBBE0WjAI9smpdcxglez/FaCLmmE4Aac36V7TLEJQSmlVJuADCzejjvmyhcFRGDjWfZGTcBqUO5LCfUGVYT6CjU2dg3mfXiuY29TEqZHTBGmgonA3tvnOrsvU0El92WUUuoPnTEnTNd6fqlgAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTA1LTE5VDA5OjQyOjQ4KzAwOjAw7NfHHwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wNS0xOVQwOTo0Mjo0OCswMDowMJ2Kf6MAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC"></a></li>
             {% endif %}
           </ul>
         </div>
