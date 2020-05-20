@@ -8,37 +8,40 @@ layout: default
 	</div>
 </div>
 
-<div class="fixed-action-btn">
-	<a class="btn-floating btn-large black glow z-depth-5">
-		<i class=" material-icons">share</i>
+<button class="circle-action-btn glow" onclick="switcher()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAuElEQVRIx+3SIW4CQRiG4RGLWxJOgUU2qapCEM5RguYArazoAXoEPAkn4ARcANFaBOtQD2aTtpDdzgzZpGJf/f3v98/kD6Gnpwm8dV2g0xLfdFPiN/eXYIhnrPHpltdccYl3nPxNWgkecYgQN5YULfKnEMImhFCmPjpm8zGqxM3hJUY+wL5FUuGY/f9YXg3usMIDRj9yWfICX/XQFpOWbPrlYIYzFhHZrLP8wDwymyavh6bJQz3/nguxSY4v9o375AAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyMC0wNS0yMFQwOTo1NToxMCswMDowMDprFv8AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjAtMDUtMjBUMDk6NTU6MTArMDA6MDBLNq5DAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAABJRU5ErkJggg=="></button>
+<div class="sharebar">
+	<a href="whatsapp://send?text={{ site.url }}{{ page.url }}" class="sub-action-btn">
+	  	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACB0lEQVRIx92Uu2uVQRDFz0q8hogKKnqJiqAWFhILg1UIiKSw8oGNhY3/gphKIZhGDUQMWFgIPlAsLLS4oMGkUMEHPvCBQYOimIegAaPGRzD+LHIubi77Jd+102m+b8+cmbM7s7PSf21ADbAdOAP0AZ+AMeAFcAHYBRT+NvkW4BmT9sv/V4AS8ASYsO8VsLPa5Pud9DPQBqxIcJYCrcCIhTqAWXmStzrgQSpxgr8EuO6YQzORm330x8C8Kk48B7hpka1ZpADcBb4Da4zVA6cyg6bGF4GPwHOgJkVo8g6ORVjJWH+e+gIHzN+WcnbYuSHCxvhjm3IIrDT3ZMrZDYwCIcL6HfA+T8Md8xJ4WF7Hx66XNBRCIMJO+PsohPA2j4CkQUnFlECQRAW5S9IdSZuBvTkFZkv6mVWiL5U3wDdpwIN3GCgAdZ7qdmBRBX8IuJ0SOOh6NyV8q6J+vAZuRc0fBWrNazB2NCWw3s6zGc2bD3QC40y1+xHnuLFmZSS55klenVVgYBmwDzjnd2phtPtx4IamCb7qSZ6bs6HluKJf1R9AYxapFvgK9EbY4hzJNwJvXJo90xFbTOoGTgODvjkX7VsQcQvGzruk34DdM+3kSEXzngK9FinbBwtPRFgJWJeVN34WLksakdQjqSeE8M74Wkk7JDVKWq7JIRqWdE/SpRBCXzX9+vfsN61jwb6GxYg7AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTA1LTIwVDEwOjAzOjAzKzAwOjAwofo7ZwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wNS0yMFQxMDowMzowMyswMDowMNCng9sAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC">
 	</a>
-	<ul>
-	  	<li>
-	  		<a href="whatsapp://send?text={{ site.url }}{{ page.url }}" class="btn-floating green z-depth-5">
-	  			<i><img class="round" src="/images/svg/whatsapp.svg"></i>
-	  		</a>
-	  	</li>
-	  	<li>
-	  		<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}" class="btn-floating grey darken-4 circle z-depth-5">
-	  			<i><img class="round" src="/images/svg/linkedin.svg"></i>
-	  		</a>
-	  	</li>
-	   	<li>
-	   		<a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" class="btn-floating blue darken-3 z-depth-5">
-	   			<i><img class="round" src="/images/svg/facebook.svg"></i>
-	   		</a>
-	   	</li>
-	  	<li>
-	  		<a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}" class="btn-floating blue darken-4 z-depth-5">
-	  			<i><img class="round" src="/images/svg/twitter.svg"></i>
-	  		</a>
-	  	</li>
-	</ul>
+	<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ site.url }}{{ page.url }}" class="sub-action-btn">
+	  	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABF0lEQVRIx+2UsUrEQBCGvw0nIoetWpyi3CsIFicINio+xHXiC4jYCddY29j7DFa2+gpiZZXUItcq/BbO6hCSkDWHINwPITuzm/8bZpbAXCmSdCyp0O+VSzrynqEEyIFBxzrzEMJGDLLSZjR/Ag6BMTBNBKw3tSjqwOWuUvvkPbMa1qpbr3TpV3kGkT4Fbsx83FBItWkI3751gLZ6BxaaAHWVXQNDex4tt2fxNnALrAF9YB94blWOm9Oly91bbsvinqSs9N1A0lvKkJv6+wFcSHqQtGO5ArirOp8MkLQMTIBd4MxtvcwEACzyczmWPHtWgCT9f0CvJj+SdG7rTXufSnrl6+5HDd25UZXRn/+uT4Cii7l5zNVen6tC6rEae7v2AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIwLTA1LTIwVDEwOjA4OjE0KzAwOjAwUBf+gAAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMC0wNS0yMFQxMDowODoxNCswMDowMCFKRjwAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwaAAAAAElFTkSuQmCC">
+	</a>
+	<a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" class="sub-action-btn">
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABkUlEQVRIx9WVPy8EQRjGnxfFCQ0KQkjUahIfwN9qfQHNieT4AKLSKnwEheSioNJcXFT6UwqVUriGRIhT3P0U5mTszt3uOY0nmWTzzjPPb2beza7032XtJoFeScuSIkmzkkbdVFVSRdKZpLKZ1TsmA0vANem6BhY7CTZgB6hnCG+qAewDPVkAexlDQxvYSwtfdbtppTsgAkacfxg4jJ1kpVV4H3DbJvwVmAqsO4j5boC+ECBKuZKTmH8e2AAuAt6o6fNJayntufHCFyRdtPFG+nqF5Xd9LgXw4j3PpHi/s3zAhLLLUubHExXgLXCXD8CQGznPm/Pql6EXoun1e1CVNB3jNszsObF9s5qkmoPF10jSYwhQCQB6gCH3/O6C5U7T78ZkAHAV6kEpYByT9ORGwasXXO2+RT9KIcCJW9Ct7iWdJgBm9iFp9w8AOy4rcQKZWVHSURfhR2Z27BdCn9cNScVfhBfd2h9KAMysbmbrkvL6amSaniTlzWy94z8bMAhsA2Vg06tvAufAFjDQxZX+A30CsqP69qXuwukAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDUtMjBUMTA6MDg6NTMrMDA6MDAR+s70AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTA1LTIwVDEwOjA4OjUzKzAwOjAwYKd2SAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=">
+	</a>
+	<a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}" class="sub-action-btn">
+	  	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAA7EAAAOxAGVKw4bAAABT0lEQVRIx+2TsUoDQRRF7wQNWMgiotjoFygogiCiEEutQhrxC+yEgIWtYGFh6RdYiagBBRsbC/EDJCm0sBMLIUrEWKjHZop1Mrs7q41FDgzssvfd+95jVurybwAKQDFQOwWcAS17zoEZ+20QWPIVLQO1rBBgAWjTyTtwCbwCc77CbSs8BQYSzA1wSzrHwB4w4hZvxUQPQNkTMEE2T8Csr7uSR3wDrAOjVjMfELCqlPFrKYXPQD0gYDHu2xN73pD0Jqktqc/TQ2RPFo9JE5QDusviBehNW9HVHwNOUmcDIuAI+PxlQMX1LDjvLbvDRsCuXRqSOib4EWCM+ZJ0L2k8pzmSqrY+QA1Vey1D2c09L9APHASY7yfenATjMWCN7J/qA9gBTIhpBGwCzcCVXAPTIQ0bJ2hI0oqkkqRJScOSipKaku4kXUg6NMbUc++8SxLfIVYDp/ydvzcAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDUtMjBUMTA6MDk6MzYrMDA6MDBqb4PqAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTA1LTIwVDEwOjA5OjM2KzAwOjAwGzI7VgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=">
+	</a>
 </div>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.fixed-action-btn');
-    var instances = M.FloatingActionButton.init(elems, {direction: 'top', hoverEnabled: true});
-  });
+	var flag = false;
+	function switcher() {
+		if (Boolean(flag) == true) { invisible() }
+		else { Visible() }
+	}	
+	function Visible() {
+		flag = true;
+		var def = document.getElementsByClassName('sub-action-btn');
+		for (var i = 0; i < def.length; i++) {
+        	def[i].className += ' grow';
+      	}
+	}
+	function invisible() {
+		flag = false;
+		var def = document.getElementsByClassName('sub-action-btn');
+		for (var i = 0; i < def.length; i++) {
+			def[i].classList.remove('grow');
+		}
+	}
 </script>

@@ -77,9 +77,9 @@ h3 { font-size: 25px; }
 a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }
 .tb-margin{margin-top: 20px; margin-bottom: 20px;}
-.btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 0px; }
+.btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 0px; }
 @media only screen and (min-width: 768px) {
-  .btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; width: 200px; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; float: right; padding: 0px; margin: 0px; }
+  .btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 200px; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; float: right; padding: 0px; margin: 0px; }
 }
 .btn-abt:hover, .btn-abt:focus { background: transparent; }
 .btn-abt-glow { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); animation: shadow_pulse 3s infinite; }
@@ -99,7 +99,7 @@ a:active, a:focus { outline: 0; border: none; }
   0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(255,0,0,0); }
   50% { background-color: #ff0000; box-shadow: 0px 0px 10px 5px rgba(255,0,0,1); }
 }
-.btn-custom { display: inline-block; vertical-align: middle; text-align: center; line-height: 36px; height: 40px; padding: 0 10px 0 10px; margin: 5px; background-color: transparent; border: 2px #00e2ff solid; border-radius: 2px; cursor: pointer; color: #00ffff; font-family: "Hack"; font-size: 18px; }
+.btn-custom { cursor: pointer; -webkit-tap-highlight-color: transparent; display: inline-block; vertical-align: middle; text-align: center; line-height: 36px; height: 40px; padding: 0 10px 0 10px; margin: 5px; background-color: transparent; border: 2px #00e2ff solid; border-radius: 2px; color: #00ffff; font-family: "Hack"; font-size: 18px; }
 .green-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #00ff00; border-radius: 50%; animation: green_pulse 3s infinite; }
 .yellow-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #fff000; border-radius: 50%; animation: yellow_pulse 3s infinite; }
 .red-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #ff0000; border-radius: 50%; animation: red_pulse 3s infinite; }
@@ -171,5 +171,14 @@ a:active, a:focus { outline: 0; border: none; }
   .date-size { font-size: 2.5vw; }
 }
 pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px; box-shadow: 0 0 10px 2px inset rgba(0,0,0,0.6); padding: 15px; overflow-x: hidden; font-family: Hack; white-space: pre-wrap; word-wrap: break-word; }
-.circle-btn { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background-color: #000000; border-radius: 50%; border: 0; cursor: pointer; padding: 0px; margin: 0px; }
-.circle-btn:focus { outline: 0; background-color: #000000; }
+.circle-btn { cursor: pointer; -webkit-tap-highlight-color: transparent; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background-color: #000000; border-radius: 50%; border: 0; padding: 0px; margin: 0px; }
+.circle-btn:focus { background-color: #000000; }
+.circle-action-btn { cursor: pointer; -webkit-tap-highlight-color: transparent; position: fixed; right: 15px; bottom: 15px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background-color: #000000; border-radius: 50%; border: 0; padding: 0px; margin: 0px; }
+.circle-action-btn:focus { background-color: #000000; }
+.sub-action-btn { pointer-events: none; width: 0px; height: 0px; opacity: 0; display: flex; align-items: center; justify-content: center; background-color: #000000; border-radius: 50%; border: 0; cursor: pointer; padding: 0px; margin-bottom: 15px; }
+.sharebar { width: 56px; height: 250px; bottom: 75px; right: 15px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: fixed; }
+.grow { width: 40px; height: 40px; border: 2px solid #00ffff; opacity: 1; animation: growth 0.5s; pointer-events: all; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+@keyframes growth {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
