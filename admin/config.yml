@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: thewhiteh4t/thewhiteh4t.github.io
+
+publish_mode: editorial_workflow
+media_folder: images/posts
+
+collections:
+ - name: "post"
+   label: "Post"
+   folder: "_posts"
+   sort: "date:desc"
+   create: true
+   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+   editor:
+     preview: false
+   fields:
+     - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+     - {label: "Title", name: "title", widget: "string", tagname: "h1"}
+     - {label: "Body", name: "body", widget: "markdown"}
+     - {label: "Categories", name: "categories", widget: "string", required: false}
