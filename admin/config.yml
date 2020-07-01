@@ -23,7 +23,7 @@ collections:
         name: 'desc'
         widget: 'string'
       
-      - label: 'Start time'
+      - label: 'Publish Date and Time'
         name: 'start'
         widget: 'datetime'
         default: ''
