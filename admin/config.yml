@@ -35,7 +35,7 @@ collections:
       - label: 'Cover Image'
         name: 'image'
         widget: 'image'
-        required: true
+        required: false
         tagname: ''
       
       - label: 'Body'
