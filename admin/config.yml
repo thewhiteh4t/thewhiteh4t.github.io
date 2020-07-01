@@ -16,10 +16,10 @@ collections:
      preview: false
    fields:
      - label: 'Title'
-         name: "title"
-         widget: "string"
+       name: "title"
+       widget: "string"
      - label: 'Cover Image'
-         name: 'image'
-         widget: 'image'
-         required: true
-         tagname: ''
+       name: 'image'
+       widget: 'image'
+       required: true
+       tagname: ''
