@@ -15,7 +15,11 @@ collections:
    editor:
      preview: false
    fields:
-     - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
-     - {label: "Title", name: "title", widget: "string", tagname: "h1"}
-     - {label: "Body", name: "body", widget: "markdown"}
-     - {label: "Categories", name: "categories", widget: "string", required: false}
+     - label: 'Title'
+         name: "title"
+         widget: "string"
+     - label: 'Cover Image'
+         name: 'image'
+         widget: 'image'
+         required: true
+         tagname: ''
