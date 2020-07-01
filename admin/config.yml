@@ -6,18 +6,32 @@ publish_mode: editorial_workflow
 media_folder: images/posts
 
 collections:
- - name: "post"
-   label: "Post"
-   folder: "_posts"
-   sort: "date:desc"
+ - name: 'post'
+   label: 'Post'
+   folder: '_posts'
+   sort: 'date:desc'
    create: true
-   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+   slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
    editor:
      preview: false
    fields:
      - label: 'Title'
-       name: "title"
-       widget: "string"
+       name: 'title'
+       widget: 'string'
+     
+     - label: 'Description'
+       name: 'desc'
+       widget: 'string'
+     
+     - label: 'Start time'
+       name: 'start'
+       widget: 'datetime'
+       default: ''
+       dateFormat: 'DD.MM.YYYY' # e.g. 24.12.2021
+       timeFormat: 'HH:mm' # e.g. 21:07
+       format: 'LLL'
+       pickerUtc: false
+     
      - label: 'Cover Image'
        name: 'image'
        widget: 'image'
