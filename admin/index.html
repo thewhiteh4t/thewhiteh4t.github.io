@@ -32,7 +32,12 @@
         CMS.registerEditorComponent({
             id:"h1",
             label: "Heading",
-            fields: [{name: 'h1', label: 'Heading', widget: 'string'}]
+            fields: [{name: 'h1', label: 'Heading', widget: 'string'}],
+
+            toBlock: function(obj) {
+                console.log(obj.widget)
+                return obj.widget
+            }
         });
     </script>
 
