@@ -34,6 +34,13 @@
             label: "Heading",
             fields: [{name: 'h1', label: 'Heading', widget: 'string'}],
 
+            fromBlock: function(match) {
+                return {
+                    text: match[1]
+                    console.log(text)
+                }
+            },
+
             toBlock: function(obj) {
                 console.log(obj.widget)
                 return obj.widget
