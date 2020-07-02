@@ -10,21 +10,17 @@
 
     <script>
         CMS.registerEditorComponent({
-            // Internal id of the component
             id: "youtube",
-            // Visible label
             label: "Youtube",
-            // Fields the user need to fill out when adding an instance of the component
-            fields: [{name: 'id', label: 'Youtube Video URL', widget: 'string'}],
-            // Pattern to identify a block as being an instance of this component
+            fields: [{name: 'id', label: 'Youtube Video ID', widget: 'string'}],
             pattern: /^youtube (\S+)$/,
-            // Function to extract data elements from the regexp match
+
             fromBlock: function(match) {
                 return {
                     id: match[1]
                 };
             },
-            // Function to create a text block from an instance of this component
+
             toBlock: function(obj) {
                 return '\
 <div class="video-container"> \
