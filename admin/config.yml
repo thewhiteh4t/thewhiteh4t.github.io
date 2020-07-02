@@ -23,8 +23,11 @@ collections:
         name: 'desc'
         widget: 'string'
       
+      - label: 'Layout'
+        name: 'post'  
+
       - label: 'Publish Date and Time'
-        name: 'start'
+        name: 'date'
         widget: 'datetime'
         default: ''
         dateFormat: 'DD.MM.YYYY' # e.g. 24.12.2021
