@@ -24,7 +24,8 @@ collections:
         widget: 'string'
       
       - label: 'Layout'
-        name: 'post'  
+        name: 'layout'
+        default: 'post'
         widget: 'hidden'
 
       - label: 'Publish Date and Time'
