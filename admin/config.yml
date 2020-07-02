@@ -25,8 +25,8 @@ collections:
       
       - label: 'Layout'
         name: 'post'  
-        hidden: true
-        
+        widget: 'hidden'
+
       - label: 'Publish Date and Time'
         name: 'date'
         widget: 'datetime'
