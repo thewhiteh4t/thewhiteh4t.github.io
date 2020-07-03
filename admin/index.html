@@ -32,7 +32,7 @@
         CMS.registerEditorComponent({
             id:"h1",
             label: "Heading",
-            fields: [{name: 'h1', label: 'Heading', widget: 'string'}],
+            fields: [{name: 'text', label: 'Heading', widget: 'string'}],
 
             fromBlock: function(match) {
                 return {
@@ -41,7 +41,7 @@
             },
 
             toBlock: function(obj) {
-                return obj.text
+                return '<h1 class="cyan-text">' + obj.text + '</h1>'
             }
         });
     </script>
