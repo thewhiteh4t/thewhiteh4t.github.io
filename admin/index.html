@@ -1,50 +1,12 @@
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STAY OUT, I SEE YOU!</title>
 </head>
 <body>
-  <script src="https://unpkg.com/netlify-cms@2.10.51/dist/netlify-cms.js"></script>
-
-    <script>
-        CMS.registerEditorComponent({
-            id: "youtube",
-            label: "Youtube",
-            fields: [{name: 'id', label: 'Youtube Video ID', widget: 'string'}],
-            pattern: /^youtube (\S+)$/,
-
-            fromBlock: function(match) {
-                return {
-                    id: match[1]
-                };
-            },
-
-            toBlock: function(obj) {
-                return '\
-<div class="video-container"> \
-    <iframe src="https://www.youtube.com/embed/' + obj.id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> \
-</div>'
-            }
-        });
-
-        CMS.registerEditorComponent({
-            id:"h1",
-            label: "Heading",
-            fields: [{name: 'text', label: 'Heading', widget: 'string'}],
-
-            fromBlock: function(match) {
-                return {
-                    text: match[1]
-                }
-            },
-
-            toBlock: function(obj) {
-                return '<h1 class="cyan-text">' + obj.text + '</h1>'
-            }
-        });
-    </script>
-
+    <script src="https://unpkg.com/netlify-cms@2.10.51/dist/netlify-cms.js"></script>
+    <script src="custom.js"></script>
 </body>
 </html>

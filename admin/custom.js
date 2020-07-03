@@ -1,0 +1,88 @@
+CMS.registerEditorComponent({
+    id: "youtube",
+    label: "Youtube",
+    fields: [{name: 'id', label: 'Youtube Video ID', widget: 'string'}],
+    pattern: /^youtube (\S+)$/,
+
+    fromBlock: function(match) {
+        return {
+            id: match[1]
+        };
+    },
+
+    toBlock: function(obj) {
+        return '\
+<div class="video-container"> \
+<iframe src="https://www.youtube.com/embed/' + obj.id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> \
+</div>'
+    }
+});
+
+CMS.registerEditorComponent({
+    id: "h1",
+    label: "Heading",
+    fields: [{name: 'text', label: 'Heading', widget: 'string'}],
+
+    fromBlock: function(match) {
+        return {
+            text: match[1]
+        }
+    },
+
+    toBlock: function(obj) {
+        return '<h1 class="cyan-text">' + obj.text + '</h1>'
+    }
+});
+
+CMS.registerEditorComponent({
+    id: "h2",
+    label: "Sub Heading",
+    fields: [{name: 'text', label: 'Sub Heading', widget: 'string'}],
+
+    fromBlock: function(match) {
+        return {
+            text: match[1]
+        }
+    },
+
+    toBlock: function(obj) {
+        return '<h2 class="cyan-text">' + obj.text + '</h2>'
+    }
+});
+
+CMS.registerEditorComponent({
+    id: "content",
+    label: "content",
+    fields: [{name: 'text', label: 'Content', widget: 'string'}],
+
+    fromBlock: function(match) {
+        return {
+            text: match[1]
+        }
+    },
+
+    toBlock: function(obj) {
+        return '<div class="content white-text"><p>' + obj.text + '</p></div>'
+    }
+});
+
+
+
+CMS.registerEditorComponent({
+    id: "img",
+    label: "image",
+    fields: [{name: 'text', label: 'Image URL', widget: 'string'}],
+
+    fromBlock: function(match) {
+        return {
+            text: match[1]
+        }
+    },
+
+    toBlock: function(obj) {
+        return '\
+<div class="center-img"> \
+    <img class="responsive-img" src="' + obj.text + '"> \
+</div>'
+    }
+});
