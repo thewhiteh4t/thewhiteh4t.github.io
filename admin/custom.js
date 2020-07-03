@@ -86,7 +86,7 @@ CMS.registerEditorComponent({
 CMS.registerEditorComponent({
     id: "cblk",
     label: "Code Block",
-    fields: [{name: 'text', label: 'Code Block', widget: 'string'}],
+    fields: [{name: 'text', label: 'Code Block', widget: 'text'}],
 
     fromBlock: function(match) {
         return {
