@@ -11,6 +11,7 @@ collections:
     folder: '_posts'
     sort: 'date:desc'
     create: true
+    format: 'html'
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     editor:
       preview: false
@@ -45,6 +46,6 @@ collections:
       
       - label: 'Body'
         name: 'body'
-        widget: 'html'
+        widget: 'markdown'
         required: true
 
