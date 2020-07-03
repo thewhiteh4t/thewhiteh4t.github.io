@@ -9,6 +9,7 @@ collections:
   - name: 'post'
     label: 'Post'
     folder: '_posts'
+    extension: 'html'
     sort: 'date:desc'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
@@ -47,5 +48,4 @@ collections:
         name: 'body'
         widget: 'markdown'
         required: true
-        format: 'html'
 
