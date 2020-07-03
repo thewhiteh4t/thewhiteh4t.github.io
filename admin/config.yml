@@ -4,7 +4,6 @@ backend:
 
 publish_mode: editorial_workflow
 media_folder: images/posts
-format: 'html'
 
 collections:
   - name: 'post'
@@ -48,4 +47,5 @@ collections:
         name: 'body'
         widget: 'markdown'
         required: true
+        format: 'html'
 
