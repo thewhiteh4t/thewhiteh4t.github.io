@@ -11,8 +11,7 @@ CMS.registerEditorComponent({
     },
 
     toBlock: function(obj) {
-        return '\
-<div class="video-container"> \
+        return '<div class="video-container"> \
 <iframe src="https://www.youtube.com/embed/' + obj.id + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> \
 </div>'
     }
@@ -52,7 +51,7 @@ CMS.registerEditorComponent({
 
 CMS.registerEditorComponent({
     id: "content",
-    label: "content",
+    label: "Content",
     fields: [{name: 'text', label: 'Content', widget: 'string'}],
 
     fromBlock: function(match) {
@@ -66,11 +65,9 @@ CMS.registerEditorComponent({
     }
 });
 
-
-
 CMS.registerEditorComponent({
     id: "img",
-    label: "image",
+    label: "Image URL",
     fields: [{name: 'text', label: 'Image URL', widget: 'string'}],
 
     fromBlock: function(match) {
@@ -80,9 +77,24 @@ CMS.registerEditorComponent({
     },
 
     toBlock: function(obj) {
-        return '\
-<div class="center-img"> \
+        return '<div class="center-img"> \
     <img class="responsive-img" src="' + obj.text + '"> \
 </div>'
+    }
+});
+
+CMS.registerEditorComponent({
+    id: "cblk",
+    label: "Code Block",
+    fields: [{name: 'text', label: 'Code Block', widget: 'string'}],
+
+    fromBlock: function(match) {
+        return {
+            text: match[1]
+        }
+    },
+
+    toBlock: function(obj) {
+        return '<pre><code>' + obj.text + '</code></pre>'
     }
 });
