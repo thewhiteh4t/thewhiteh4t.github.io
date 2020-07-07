@@ -38,9 +38,9 @@ collections:
         format: 'LLL'
         pickerUtc: false
       
-      - label: 'Cover Image'
+      - label: 'Card Image'
         name: 'image'
-        widget: 'image'
+        widget: 'Card Image'
         required: false
         tagname: ''
       
