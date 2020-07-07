@@ -1,5 +1,3 @@
-CMS.registerWidget('Card Image');
-
 CMS.registerEditorComponent({
     id: "youtube",
     label: "Youtube",
