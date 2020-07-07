@@ -40,10 +40,16 @@ collections:
       
       - label: 'Card Image'
         name: 'image'
-        widget: 'Card Image'
+        widget: 'image'
         required: false
         tagname: ''
       
+      - label: 'OG Image'
+        name: 'og_image'
+        widget: 'image'
+        required: false
+        tagname: ''
+
       - label: 'Body'
         name: 'body'
         widget: 'markdown'
