@@ -177,4 +177,5 @@ pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px
   100% { transform: rotate(360deg); }
 }
 .card-mod { border-radius: 5px; background-color: #212121; }
+.card-mod-2 { border-radius: 5px; background-color: #263238; }
 .dark-grey { background-color: #212121; }
