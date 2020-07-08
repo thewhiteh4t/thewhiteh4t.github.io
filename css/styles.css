@@ -1,5 +1,5 @@
 html { height: 100%; scroll-behavior: smooth; visibility: visible; opacity: 1; }
-body { display: flex; min-height: 100vh; flex-direction: column; background-color: #000000; font-family: 'Hack', sans-serif; }
+body { display: flex; min-height: 100vh; flex-direction: column; background-color: #121212; font-family: 'Hack', sans-serif; }
 main { flex: 1 0 auto; }
 @font-face { font-family: 'Hack'; font-style: normal; font-weight: 400; src: local('Hack Regular'), local('hack-regular'), url(../fonts/hack-regular.woff) format('woff'); font-display: swap;}
 @font-face { font-family: 'Hack'; font-style: normal; font-weight: 400; src: local('Hack Regular'), local('hack-regular'), url(../fonts/hack-regular.woff2) format('woff2'); font-display: swap;}
@@ -12,8 +12,8 @@ main { flex: 1 0 auto; }
 }
 .content { font-weight: 300; font-size: 16px; }
 pre { border: 0; display: block; padding: 0px; }
-.hoverable:hover { transition: box-shadow .25s; box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
-.glow { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
+.hoverable:hover { transition: box-shadow 1s; box-shadow: 0px 0px 10px 0.5px rgba(0,230,255,1); }
+.glow { box-shadow: 0px 0px 10px 2px rgba(0,230,255,1); }
 .glass { background-color: rgba(30,30,30,0.6); }
 .tools { overflow-x: auto; white-space: nowrap; }
 .round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
@@ -28,7 +28,7 @@ h3 { font-size: 25px; }
 @media only screen and (min-width: 768px) {
   .nav-img { width: 80px; height: 80px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
 }
-.social-wrap { display: flex; flex-wrap: wrap; flex-direction: row; margin-bottom: 10px; align-items: center; justify-content: space-between; }
+.social-wrap { display: flex; flex-wrap: wrap; flex-direction: row; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; align-items: center; justify-content: space-between; }
 .sub-social { display: flex; justify-content: space-between; margin-bottom: 20px; width: 100%; }
 @media only screen and (min-width: 768px) {
 .sub-social { display: flex; justify-content: space-between; margin-bottom: 20px; width: 50%; }
@@ -77,32 +77,15 @@ h3 { font-size: 25px; }
 a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }
 .tb-margin{margin-top: 20px; margin-bottom: 20px;}
-.btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 0px; }
+.btn-abt { background-color: #212121; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 0px; }
 @media only screen and (min-width: 768px) {
-  .btn-abt { background-color: transparent; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 200px; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; float: right; padding: 0px; margin: 0px; }
+  .btn-abt { background-color: #212121; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 200px; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; float: right; padding: 0px; margin: 0px; }
 }
-.btn-abt:hover, .btn-abt:focus { background: transparent; }
-.btn-abt-glow { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); animation: shadow_pulse 3s infinite; }
-@keyframes shadow_pulse {
-  0%, 100% { box-shadow: 0px 0px 10px 5px rgba(0,230,255,0); }
-  50% { box-shadow: 0px 0px 10px 5px rgba(0,230,255,1); }
-}
-@keyframes green_pulse {
-  0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 2px rgba(0,255,0,0); }
-  50% { background-color: #00ff00; box-shadow: 0px 0px 10px 2px rgba(0,255,0,1); }
-}
-@keyframes yellow_pulse {
-  0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(240,255,0,0); }
-  50% { background-color: #fff000; box-shadow: 0px 0px 10px 5px rgba(240,255,0,1); }
-}
-@keyframes red_pulse {
-  0%, 100% { background-color: #212121; box-shadow: 0px 0px 10px 5px rgba(255,0,0,0); }
-  50% { background-color: #ff0000; box-shadow: 0px 0px 10px 5px rgba(255,0,0,1); }
-}
+.btn-abt:hover, .btn-abt:focus { background-color: #212121; }
 .btn-custom { cursor: pointer; -webkit-tap-highlight-color: transparent; display: inline-block; vertical-align: middle; text-align: center; line-height: 36px; height: 40px; padding: 0 10px 0 10px; margin: 5px; background-color: transparent; border: 2px #00e2ff solid; border-radius: 2px; color: #00ffff; font-family: "Hack"; font-size: 18px; }
-.green-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #00ff00; border-radius: 50%; animation: green_pulse 3s infinite; }
-.yellow-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #fff000; border-radius: 50%; animation: yellow_pulse 3s infinite; }
-.red-dot { display: inline-block; height: 10px; width: 10px; margin-left: 10px; background-color: #ff0000; border-radius: 50%; animation: red_pulse 3s infinite; }
+.stars { display: flex; float: right; }
+.star-ico { width: 20px; height: 20px; margin-right: 10px; }
+.star-hide { opacity: 0; }
 .pub-img { width: 80%; height: auto; margin: 5px; border-radius: 5px; }
 @media only screen and (min-width: 768px) {
   .pub-img { width: 20%; height: auto; margin: 5px; border-radius: 5px; }
@@ -184,5 +167,14 @@ pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px
 }
 .strip { width: 100%; overflow-x: scroll; white-space: nowrap; scrollbar-width: none; }
 .strip::-webkit-scrollbar { 
-  display: none;  /* Safari and Chrome */
+  display: none;
 }
+
+.loader { display: flex; float: right; border: 3px solid #00bcd4; border-top: 3px solid transparent; border-radius: 50%; width: 20px; height: 20px; animation: spin 2s linear infinite; }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.card-mod { border-radius: 5px; background-color: #212121; }
+.dark-grey { background-color: #212121; }
