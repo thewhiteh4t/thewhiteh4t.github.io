@@ -12,9 +12,8 @@ main { flex: 1 0 auto; }
 }
 .content { font-weight: 300; font-size: 16px; }
 pre { border: 0; display: block; padding: 0px; }
-.hoverable:hover { transition: box-shadow 1s; box-shadow: 0px 0px 10px 0.5px rgba(0,230,255,1); }
+.hoverable:hover { transition: box-shadow 0.7s; box-shadow: 0px 0px 10px 0.5px rgba(0,230,255,1); }
 .glow { box-shadow: 0px 0px 10px 2px rgba(0,230,255,1); }
-.glass { background-color: rgba(30,30,30,0.6); }
 .tools { overflow-x: auto; white-space: nowrap; }
 .round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
 #particles-js { position: fixed; width: 100%; height: auto; top: 0; left: 0; bottom: 0; right: 0; overflow: hidden; z-index: -1; }
@@ -28,11 +27,7 @@ h3 { font-size: 25px; }
 @media only screen and (min-width: 768px) {
   .nav-img { width: 80px; height: 80px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
 }
-.social-wrap { display: flex; flex-wrap: wrap; flex-direction: row; margin-left: 10px; margin-right: 10px; margin-bottom: 10px; align-items: center; justify-content: space-between; }
-.sub-social { display: flex; justify-content: space-between; margin-bottom: 20px; width: 100%; }
-@media only screen and (min-width: 768px) {
-.sub-social { display: flex; justify-content: space-between; margin-bottom: 20px; width: 50%; }
-}
+.sub-social { display: flex; justify-content: space-between; align-items: center; height: 70px; }
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
 .sub-text { font-size: 20px; padding-top: -10px; }
@@ -76,13 +71,10 @@ h3 { font-size: 25px; }
 .close-btn { display: flex; float: right; }
 a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }
-.tb-margin{margin-top: 20px; margin-bottom: 20px;}
-.btn-abt { background-color: #212121; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 0px; }
-@media only screen and (min-width: 768px) {
-  .btn-abt { background-color: #212121; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 200px; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; float: right; padding: 0px; margin: 0px; }
-}
+.tb-margin{ margin-top: 20px; margin-bottom: 20px; }
+.btn-abt { flex: 1; background-color: #212121; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 130px; max-width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 10px; }
 .btn-abt:hover, .btn-abt:focus { background-color: #212121; }
-.btn-custom { cursor: pointer; -webkit-tap-highlight-color: transparent; display: inline-block; vertical-align: middle; text-align: center; line-height: 36px; height: 40px; padding: 0 10px 0 10px; margin: 5px; background-color: transparent; border: 2px #00e2ff solid; border-radius: 2px; color: #00ffff; font-family: "Hack"; font-size: 18px; }
+.go-right { display: flex; }
 .stars { display: flex; float: right; }
 .star-ico { width: 20px; height: 20px; margin-right: 10px; }
 .star-hide { opacity: 0; }
@@ -169,9 +161,7 @@ pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px
 .strip::-webkit-scrollbar { 
   display: none;
 }
-
 .loader { display: flex; float: right; border: 3px solid #00bcd4; border-top: 3px solid transparent; border-radius: 50%; width: 20px; height: 20px; animation: spin 2s linear infinite; }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
