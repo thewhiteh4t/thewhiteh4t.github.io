@@ -78,10 +78,6 @@ a:active, a:focus { outline: 0; border: none; }
 .stars { display: flex; float: right; }
 .star-ico { width: 20px; height: 20px; margin-right: 10px; }
 .star-hide { opacity: 0; }
-.pub-img { width: 80%; height: auto; margin: 5px; border-radius: 5px; }
-@media only screen and (min-width: 768px) {
-  .pub-img { width: 20%; height: auto; margin: 5px; border-radius: 5px; }
-}
 
 /* https://codepen.io/alanhouser/pen/aErrQJ */
 
@@ -122,7 +118,7 @@ a:active, a:focus { outline: 0; border: none; }
   text-align: right;
 }
 
-.event:after { 
+.event:after {
   left: -48.5px;
   background: #00bcd4;
   border: 2px solid #ffffff;
@@ -157,8 +153,8 @@ pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px
   from { transform: scale(0); }
   to { transform: scale(1); }
 }
-.strip { width: 100%; overflow-x: scroll; white-space: nowrap; scrollbar-width: none; }
-.strip::-webkit-scrollbar { 
+.strip { width: 100%; overflow-x: scroll; white-space: nowrap; scrollbar-width: none; padding: 10px;}
+.strip::-webkit-scrollbar {
   display: none;
 }
 .loader { display: flex; float: right; border: 3px solid #00bcd4; border-top: 3px solid transparent; border-radius: 50%; width: 20px; height: 20px; animation: spin 2s linear infinite; }
@@ -166,6 +162,33 @@ pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-.card-mod { border-radius: 5px; background-color: #212121; }
-.card-mod-2 { border-radius: 5px; background-color: #263238; }
+.card-mod { border-radius: 5px; background-color: #212121; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5); }
+.card-mod-2 { border-radius: 5px; background-color: #263238; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5); }
+
+.card-mod-3 { width: 100%; height: auto; padding: 0; border-radius: 5px; background-color: #263238; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5); }
+.cert-img { width: 100%; height: auto; border-radius: 5px; }
+.cert-desc { width: 100%; height: auto; padding: 10px; overflow-wrap: break-word; white-space:normal; }
+.carousel-cell { padding: 10px; width: 100%; height: auto; margin-right: 10px; }
+
+@media only screen and (min-width: 768px) {
+  .carousel-cell { width: 50%; height: auto; margin-right: 10px; }
+}
+
 .dark-grey { background-color: #212121; }
+.bright-green-text { color: #7abb19; }
+.cert-sub-text { font-size: 12px; }
+.cert-wrapper { width: 100%; height: auto; object-fit: cover; }
+.flick-carousel { height: auto; }
+.flickity-viewport { transition: height 0.2s; }
+.pub-card { width: 100%; height: auto; padding: 0px; border-radius: 5px; background-color: #263238; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5); }
+.pub-wrapper { width: 100%; height: auto; display: flex; padding: 10px; }
+.pub-img { align-self: center; max-width: 40%; height: auto; border-radius: 5px; box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.5); }
+.pub-desc { width: 100%; height: auto; margin: 10px; }
+.three-line-truncate { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.pub-sub-text { font-size: 12px; }
+
+.flickity-button {
+    background: transparent !important;
+    border: none;
+    color: #7abb19 !important;
+}

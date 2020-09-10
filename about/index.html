@@ -5,13 +5,14 @@ desc: I write about tools I have created for the cyber security community, updat
 image: /images/og_twh_2.jpg
 ---
 
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 <div class="col s12 m12 l12">
 	<div class="card-panel glow card-mod">
 		<div class="card-body">
 			<div class="card-text">
 				<p class="about-text white-text text-glow">I write about tools I have created for the cyber security community, updates regarding my active projects, exploits, tutorials, PoCs and a little bit of OSINT.</p>
 
-				<h3 class="white-text text-glow">Projects</h3>
+				<h3 class="white-text text-glow"><b>Projects</b></h3>
 
 				<div class="row">
 					<div class="col s12 m6 l6">
@@ -76,7 +77,7 @@ image: /images/og_twh_2.jpg
 					</div>
 				</div>
 
-				<h3 class="white-text text-glow">CVEs</h3>
+				<h3 class="white-text text-glow"><b>CVEs</b></h3>
 				<div class="row">
 					<div class="col s12 m6 l6">
 						<a href="{{ site.url }}/2020/02/27/CVE-2020-9375-TP-Link-Archer-C50-v3-Denial-of-Service.html" target="_blank">
@@ -87,81 +88,75 @@ image: /images/og_twh_2.jpg
 						</a>
 					</div>
 				</div>
-				
-				<h3 class="white-text text-glow">Publications</h3>
-				<div class="strip">
-					<a href="https://eforensicsmag.com/product/your-digital-forensics-toolkit/" target="_blank"><img class="pub-img" src="{{ site.url }}/images/publications/efor2_min.jpg"></a>
-					<a href="https://eforensicsmag.com/download/open-source-forensic-tools/" target="_blank"><img class="pub-img" src="{{ site.url }}/images/publications/efor_min.jpg"></a>
-    				<a href="https://hakin9.org/product/python-for-osint-tooling/" target="_blank"><img class="pub-img" src="{{ site.url }}/images/publications/h9_min.jpg"></a>
+
+				<h3 class="white-text text-glow"><b>Publications</b></h3>
+				<div class="flick-carousel" data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
+					{% for publication in site.data.publications %}
+					<div class="carousel-cell">
+						<a href="{{ publication.link }}" target="_blank">
+							<div class="card-panel pub-card hoverable">
+								<div class="pub-wrapper">
+									<img class="pub-img" data-flickity-lazyload="{{ site.url }}{{ publication.image }}">
+									<div class="pub-desc">
+										<p><b class="white-text three-line-truncate">{{ publication.title }}</b></p>
+										<br>
+										<span class="bright-green-text pub-sub-text">{{ publication.date }}</span>
+										<br>
+										<span class="bright-green-text pub-sub-text">{{ publication.issuer }}</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					{% endfor %}
   				</div>
 
-				<div id="timeline-content">
- 					<h3 class="white-text text-glow">Timeline</h3>
+				<h3 class="white-text text-glow"><b>Certifications</b></h3>
+				<div class="flick-carousel"  data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
+					{% for cert in site.data.certs %}
+					<div class="carousel-cell">
+						<div class="card-panel card-mod-3 hoverable">
+							<div class="cert-wrapper">
+								<img class="cert-img" data-flickity-lazyload="{{ site.url }}{{ cert.image }}">
+								<div class="cert-desc">
+									<span class="white-text"><b>{{ cert.title }}</b></span>
+									<br><br>
+									<span class="cyan-text cert-sub-text"><b class="bright-green-text">Issuer :</b> {{ cert.issuer }}</span>
+									<br>
+									<span class="cyan-text cert-sub-text"><b class="bright-green-text">Date &nbsp&nbsp:</b> {{ cert.date }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
 
-  					<ul class="timeline">
-					  	<li class="event white-text date-size" data-date="June 2020">
-							<p class="white-text text-glow title">Getting Started with Digital Forensics with Autopsy</p>
-							<p class="grey-text subline">eForensics Magazine</p>
-						</li>
-					  	<li class="event white-text date-size" data-date="May 2020">
-						  	<p class="white-text text-glow title">Published Article on pwnedOrNot</p>
-							<p class="grey-text subline">eForensics Magazine</p>
-						  	<p class="white-text text-glow title">Endpoint Security Fundamentals</p>
-      						<p class="grey-text subline">Elastic</p>
-						  	<p class="white-text text-glow title">Autopsy Basics and Hands On Training</p>
-      						<p class="grey-text subline">Basis</p>
-      						<p class="white-text text-glow title">Published Importance of Reconnaissance</p>
-      						<p class="grey-text subline">Hakin9</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="Mar 2020">
-      						<p class="white-text text-glow title">Found CVE-2020-9375</p>
-      						<p class="grey-text subline">MITRE</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="May 2019">
-						  	<p class="white-text text-glow title">Created FinalRecon</p>
-      						<p class="grey-text subline">The Last Recon Tool You'll Need</p>
-      						<p class="white-text text-glow title">Created FlashSploit</p>
-      						<p class="grey-text subline">Exploitation Framework for ATtiny85 Based HID Attacks</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="Jan 2019">
-      						<p class="white-text text-glow title">Created killcast</p>
-      						<p class="grey-text subline">Manipulate Chromecast Devices in your Network</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="Jul 2018">
-      						<p class="white-text text-glow title">Created seeker</p>
-      						<p class="grey-text subline">Accurately Locate Smartphones using Social Engineering</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="May 2018">
-      						<p class="white-text text-glow title">Created pwnedOrNot</p>
-      						<p class="grey-text subline">OSINT Tool for Finding Passwords of Compromised Accounts</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="Dec 2017">
-      						<p class="white-text text-glow title">Lucideus VAPT Simulator</p>
-      						<p class="grey-text subline">Lucideus</p>
-    					</li>
-					  	<li class="event white-text date-size" data-date="Oct 2017">
-      						<p class="white-text text-glow title">Internship</p>
-      						<p class="grey-text subline">Lucideus</p>
-    					</li>
-    					<li class="event white-text date-size" data-date="Sep 2017">
-      						<p class="white-text text-glow title">LCEH Grade 2</p>
-      						<p class="grey-text subline">Lucideus</p>
-    					</li>
-    					<li class="event white-text date-size" data-date="Aug 2017">
-      						<p class="white-text text-glow title">LCEH Grade 1</p>
-      						<p class="grey-text subline">Lucideus</p>
-    					</li>
-						<li class="event white-text date-size" id="date" data-date="Apr 2017">
-							<p class="white-text text-glow title">OOP Using C++</p>
-							<p class="grey-text subline">NIIT</p>
-						</li>
-  					</ul>
+  				<h3 class="white-text text-glow"><b>Achievements</b></h3>
+				<div class="flick-carousel"  data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
+					{% for honor in site.data.honors %}
+					<div class="carousel-cell">
+						<a href="{{ honor.link }}" target="_blank">
+							<div class="card-panel card-mod-3 hoverable">
+								<div class="cert-wrapper">
+									<img class="cert-img" data-flickity-lazyload="{{ site.url }}{{ honor.image }}">
+									<div class="cert-desc">
+										<span class="white-text"><b>{{ honor.title }}</b></span>
+										<br><br>
+										<span class="cyan-text cert-sub-text"><b class="bright-green-text">Issuer :</b> {{ honor.issuer }}</span>
+										<br>
+										<span class="cyan-text cert-sub-text"><b class="bright-green-text">Date &nbsp&nbsp:</b> {{ honor.date }}</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					{% endfor %}
 				</div>
     		</div>
     	</div>
     </div>
 </div>
-
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script>
 	var repo_list = ['seeker', 'FinalRecon', 'pwnedOrNot', 'killcast', 'flashsploit']
 	repo_list.forEach(fetch_stars);
@@ -190,5 +185,5 @@ image: /images/og_twh_2.jpg
 					}
 				}
 			});
-	}
+		}
 </script>
