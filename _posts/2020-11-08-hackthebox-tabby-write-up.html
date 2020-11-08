@@ -9,11 +9,11 @@ image: /images/posts/tabby.jpg
 
 <div class="content white-text"><p>In this post I will show you how I solved tabby, a Linux machine labelled as easy on HackTheBox platform...</p></div>
 
-<h1 class="cyan-text">Reconnaissance</h1>
+<h2 class="cyan-text">Reconnaissance</h2>
 
 <div class="content white-text"><p>I started with a quick top 1000 port scan using FinalRecon...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/MafubFV.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/MafubFV.png"> </div>
 
 <div class="content white-text"><p>I got these 3 ports open, after this I switched to nmap to scan for complete port range...</p></div>
 
@@ -49,11 +49,11 @@ Nmap done: 1 IP address (1 host up) scanned in 7.79 seconds</code></pre>
 
 <div class="content white-text"><p>it says megahosting.htb instead of the IP address so I created a new entry for it in /etc/hosts file on my machine and after that I was able to access the page...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/cKx7wTK.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/cKx7wTK.png"> </div>
 
 <div class="content white-text"><p>it looks like it is "reading" a file "statement" and displaying its contents so I tried Directory Traversal attack here...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/v80CTVU.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/v80CTVU.png"> </div>
 
 <div class="content white-text"><p>at this point my goal was to extract some credentials, now I checked port 8080, it has tomcat running and if you know about apache tomcat you know there is a manager dashboard, if I can get tomcat manager credentials from directory traversal I can upload a reverse shell, now the apache page shows a path where user entries are stored so using that I formed this URL...</p></div>
 
@@ -61,22 +61,22 @@ Nmap done: 1 IP address (1 host up) scanned in 7.79 seconds</code></pre>
 
 <div class="content white-text"><p>I had to curl this xml file to get the contents and I got the credentials!</p></div>
 
-<pre><code><role rolename="manager-script"/>
-<user username="tomcat" password="$3cureP4s5w0rd123!" roles="admin-gui,manager-script"/></code></pre>
+<pre><code>&lt;role rolename=&quot;manager-script&quot;/&gt;
+&lt;user username=&quot;tomcat&quot; password=&quot;$3cureP4s5w0rd123!&quot; roles=&quot;admin-gui,manager-script&quot;/&gt;</code></pre>
 
-<h1 class="cyan-text">Intrusion</h1>
+<h2 class="cyan-text">Intrusion</h2>
 
 <div class="content white-text"><p>Apache tomcat page specifies two applications : "manager webapp" and  "host-manager webapp" , I tried to login into manager as we have the creds for it but I got this...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/nlwx7Jp.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/nlwx7Jp.png"> </div>
 
 <div class="content white-text"><p>Access Denied!!!! but it has provided an example for adding username and password entry into the xml file and when I compared it with what I got in the curl request it says "manager-script" instead of "manager-gui", I read about this role and found that tomcat provides a text api for manager role and it is enabled, after some more research I created a reverse shell upload script which uses text API to upload a malicious WAR file, this script can also be used outside HTB if you have working credentials and access to text API, you can download the script here : <a href="https://github.com/thewhiteh4t/warsend" target="_blank">WARSend</a> . Below you can see the script in action!</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/Pz6KZAd.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/Pz6KZAd.png"> </div>
 
 <div class="content white-text"><p>and I successfully got a reverse shell here!</p></div>
 
-<h1 class="cyan-text">Let The Enumeration Begin</h1>
+<h2 class="cyan-text">Let The Enumeration Begin</h2>
 
 <div class="content white-text"><p>After some enumeration I found a zip file...</p></div>
 
@@ -105,7 +105,7 @@ PASSWORD FOUND!!!!: pw == admin@it</code></pre>
 
 <div class="content white-text"><p>So I got another password here so I tried this password for the user ash and it worked and I got the user here at this point! After this I added my ssh public key to authorized_keys file for a fully interactive shell...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/vfjSeX9.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/vfjSeX9.png"> </div>
 
 <h1 class="cyan-text">Privilege Escalation</h1>
 
@@ -116,16 +116,16 @@ uid=1000(ash) gid=1000(ash) groups=1000(ash),4(adm),24(cdrom),30(dip),46(plugdev
 
 <div class="content white-text"><p>LXD is a next generation system container manager. It offers a user experience similar to virtual machines but using Linux containers instead. I started looking for privilege escalation techniques using LXD and found a bash script on Exploit DB : <a href="https://www.exploit-db.com/exploits/46978" target="_blank">Ubuntu 18.04 - 'lxd' Privilege Escalation</a> . As per the instructions I downloaded the build-alpine script in my machine and used to fetch an alpine tar.gz file...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/hJndson.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/hJndson.png"> </div>
 
 <div class="content white-text"><p>next I uploaded this tar.gz file along with the pivesc script...</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/p3lwtPV.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/p3lwtPV.png"> </div>
 
 <div class="content white-text"><p>after this I executed the privesc script and got a root shell and finally got Root!</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/Mvi6exo.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/Mvi6exo.png"> </div>
 
 <div class="content white-text"><p>Solved!</p></div>
 
-<div class="center-img">     <img class="responsive-img" src="https://i.imgur.com/3r5JTdH.png"> </div>
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/3r5JTdH.png"> </div>

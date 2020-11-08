@@ -78,7 +78,7 @@ CMS.registerEditorComponent({
 
     toBlock: function(obj) {
         return '<div class="center-img"> \
-    <img class="responsive-img" src="' + obj.text + '"> \
+    <img class="responsive-img post-img" src="' + obj.text + '"> \
 </div>'
     }
 });

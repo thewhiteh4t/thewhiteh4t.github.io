@@ -1,32 +1,28 @@
 html { height: 100%; scroll-behavior: smooth; visibility: visible; opacity: 1; }
 body { display: flex; min-height: 100vh; flex-direction: column; background-color: #121212; font-family: 'Hack', sans-serif; }
 main { flex: 1 0 auto; }
+pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px; box-shadow: 0 0 10px 2px inset rgba(0,0,0,0.6); padding: 15px; overflow-x: scroll; font-family: Hack; }
+h1 { font-size: 45px; }
+h2 { font-size: 30px; }
+h3 { font-size: 25px; }
+a:active, a:focus { outline: 0; border: none; }
 @font-face { font-family: 'Hack'; font-style: normal; font-weight: 400; src: local('Hack Regular'), local('hack-regular'), url(../fonts/hack-regular.woff) format('woff'); font-display: swap;}
 @font-face { font-family: 'Hack'; font-style: normal; font-weight: 400; src: local('Hack Regular'), local('hack-regular'), url(../fonts/hack-regular.woff2) format('woff2'); font-display: swap;}
 .material-icons { font-family: 'Material Icons'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal; word-wrap: normal; white-space: nowrap; direction: ltr; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; }
-.img { object-fit: cover; width: auto; height: 180px; }
-@media only screen and (min-width: 768px) {
-  .img {
-    object-fit: cover; width: 640px; height: 320px;
-  }
-}
 .content { font-weight: 300; font-size: 16px; }
-pre { border: 0; display: block; padding: 0px; }
 .hoverable:hover { transition: box-shadow 0.7s; box-shadow: 0px 0px 10px 0.5px rgba(0,230,255,1); }
 .glow { box-shadow: 0px 0px 10px 2px rgba(0,230,255,1); }
 .tools { overflow-x: auto; white-space: nowrap; }
 .round { width: 40px; height: 40px; border-radius: 50%; text-align: center; }
 #particles-js { position: fixed; width: 100%; height: auto; top: 0; left: 0; bottom: 0; right: 0; overflow: hidden; z-index: -1; }
 .adjust { margin: 5px; border-radius: 5px; border: 1px solid #00e2ff; }
-h1 { font-size: 45px; }
-h2 { font-size: 30px; }
-h3 { font-size: 25px; }
 .tr-dark { background-color: rgba(30,30,30,0.6); }
 .nav-wrap { display: flex; align-items: center; margin-left: 15px; }
 .nav-img { width: 60px; height: 60px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
 @media only screen and (min-width: 768px) {
   .nav-img { width: 80px; height: 80px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
 }
+.post-img { border-radius: 5px; box-shadow: 0 0 10px #000000; }
 .sub-social { display: flex; justify-content: space-between; align-items: center; height: 70px; }
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
@@ -51,14 +47,14 @@ h3 { font-size: 25px; }
 	.block-cursor {
     float: left;
     margin-left: 4px;
-    margin-top: 8px;  
+    margin-top: 8px;
   	width: 23px;
   	height: 45px;
   	background: white;
   	box-shadow: 0 0 15px #00e2ff;
   	line-height: 180px;
   }
-}  	
+}
 .hidden { opacity: 0; }
 .blur {
   -webkit-filter: blur(4px);
@@ -69,7 +65,6 @@ h3 { font-size: 25px; }
 }
 .link a { color: #00ff00; font-size: 18px; }
 .close-btn { display: flex; float: right; }
-a:active, a:focus { outline: 0; border: none; }
 .center-img{ display: flex; justify-content: center; }
 .tb-margin{ margin-top: 20px; margin-bottom: 20px; }
 .btn-abt { flex: 1; background-color: #212121; border: 0; border-radius: 5px; cursor: pointer; -webkit-tap-highlight-color: transparent; width: 130px; max-width: 100%; height: 50px; color: #00ffff; font-family: Hack; font-size: 18px; padding: 0px; margin: 10px; }
@@ -90,9 +85,9 @@ a:active, a:focus { outline: 0; border: none; }
   left: 10%;
   width: 40%;
   border-left: 2px solid #ffffff;
-  margin: 50px auto;  
+  margin: 50px auto;
   position: relative;
-  padding: 10px;   
+  padding: 10px;
   list-style: none;
   text-align: left;
 }
@@ -141,7 +136,6 @@ a:active, a:focus { outline: 0; border: none; }
   .subline { font-size: 2vw; }
   .date-size { font-size: 2.5vw; }
 }
-pre { background-color: #212121; color: #00ff00; border: 0px; border-radius: 5px; box-shadow: 0 0 10px 2px inset rgba(0,0,0,0.6); padding: 15px; overflow-x: hidden; font-family: Hack; white-space: pre-wrap; word-wrap: break-word; }
 .circle-btn { cursor: pointer; -webkit-tap-highlight-color: transparent; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background-color: #000000; border-radius: 50%; border: 0; padding: 0px; margin: 0px; }
 .circle-btn:focus { background-color: #000000; }
 .circle-action-btn { cursor: pointer; -webkit-tap-highlight-color: transparent; position: fixed; right: 15px; bottom: 15px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; background-color: #000000; border-radius: 50%; border: 0; padding: 0px; margin: 0px; }
