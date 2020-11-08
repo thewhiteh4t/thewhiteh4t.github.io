@@ -23,6 +23,8 @@ a:active, a:focus { outline: 0; border: none; }
   .nav-img { width: 80px; height: 80px; margin-right: 20px; margin-bottom: 40px; margin-top: 40px; float: left; align-self: center; }
 }
 .post-img { border-radius: 5px; box-shadow: 0 0 10px #000000; }
+.img { object-fit: cover; width: auto; height: 180px; }
+@media only screen and (min-width: 768px) { .img { object-fit: cover; width: 640px; height: 320px; } }
 .sub-social { display: flex; justify-content: space-between; align-items: center; height: 70px; }
 .margin30 { margin-top: 30px; }
 .margin20 { margin-top: 20px; }
