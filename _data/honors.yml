@@ -1,38 +1,8 @@
-- title: destiny CTF
-  issuer: No Shit Security
-  date: September 2020
-  image: /images/honors/nss_destinyctf_badge.png
-  link: https://badgr.com/public/assertions/9vaTTuYNTm29iqw8h7v_ow
-
-- title: NSS Hall of Fame x2
-  issuer: No Shit Security
-  date: September 2020
-  image: /images/honors/nss_hof_x2_badge.png
-  link: https://badgr.com/public/assertions/Mdk2fsQXSfSjxE5dFWf9YQ
-
-- title: NSS Hall of Fame x1
-  issuer: No Shit Security
-  date: September 2020
-  image: /images/honors/nss_hof_x1_badge.png
-  link: https://badgr.com/public/assertions/LDGW6r8KSD6QPNrAXPH2XA
-
 - title: 5 Tools Added in BlackArch Linux
   issuer: BlackArch Linux
   date: 2018-20
   image: /images/honors/batools.jpg
   link: https://blackarch.org/tools.html
-
-- title: Architect CTF - First to Egg
-  issuer: No Shit Security
-  date: September 2020
-  image: /images/honors/architectctf.jpg
-  link: https://www.noshitsecurity.com/extinct
-
-- title: Cyborg CTF - First to Egg
-  issuer: No Shit Security
-  date: September 2020
-  image: /images/honors/cyborgctf.jpg
-  link: https://www.noshitsecurity.com/wins
 
 - title: Arctic Code Vault Contributor
   issuer: GitHub
