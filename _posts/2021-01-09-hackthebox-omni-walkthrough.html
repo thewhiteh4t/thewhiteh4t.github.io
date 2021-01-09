@@ -87,9 +87,9 @@ Nmap done: 1 IP address (1 host up) scanned in 83.61 seconds</code></pre>
 
 <div class="content white-text"><p>The Windows Device Portal (WDP) is a web server included with Windows devices that lets you configure and manage the settings for the device over a network or USB connection (local connections are also supported on devices with a web browser). These windows devices include XBox, HoloLens and IoT.</p></div>
 
-<div class="content white-text"><p>Read More <br><br> https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal</p></div>
+<div class="content white-text"><p><a href="https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal" target="_blank">Read More</a></p></div>
 
-<div class="content white-text"><p>The documentation also shows set up instructions for "Windows 10 IoT Dashboard". This discovery lead to another discovery, Windows 10 IoT Core, it is a trimmed down version of windows 10 which is optimized for smaller devices without a display and supports ARM/x86/x64 architectures. <br><br> Now I started looking for vulnerabilities and exploits for this OS and came across SirepRAT. <br><br> SirepRat exploits the Sirep Test Service that’s built in and running on the official images offered at Microsoft’s site. This service is the client part of the Hardware Lab Kit (HLK) setup one may build in order to perform driver/hardware tests on the IoT device. It serves the Sirep/WPCon/TShell protocol. <br><br> Read More <br><br> https://github.com/SafeBreach-Labs/SirepRAT/blob/master/docs/SirepRAT_RCE_as_SYSTEM_on_Windows_IoT_Core_Slides.pdf <br><br> Download SirepRat <br><br> https://github.com/SafeBreach-Labs/SirepRAT</p></div>
+<div class="content white-text"><p>The documentation also shows set up instructions for "Windows 10 IoT Dashboard". This discovery lead to another discovery, Windows 10 IoT Core, it is a trimmed down version of windows 10 which is optimized for smaller devices without a display and supports ARM/x86/x64 architectures. <br><br> Now I started looking for vulnerabilities and exploits for this OS and came across SirepRAT. <br><br> SirepRat exploits the Sirep Test Service that’s built in and running on the official images offered at Microsoft’s site. This service is the client part of the Hardware Lab Kit (HLK) setup one may build in order to perform driver/hardware tests on the IoT device. It serves the Sirep/WPCon/TShell protocol. <br><br> <a href="https://github.com/SafeBreach-Labs/SirepRAT/blob/master/docs/SirepRAT_RCE_as_SYSTEM_on_Windows_IoT_Core_Slides.pdf" target="_blank">Read More</a><br><a href="https://github.com/SafeBreach-Labs/SirepRAT" target="_blank">Download SirepRat</a> </p></div>
 
 <pre><code># Get system information from device
 ####################################
@@ -173,7 +173,11 @@ administrator:_1nt3rn37ofTh1nGz</code></pre>
 
 <div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/c0iBFmY.png"> </div>
 
-<div class="content white-text"><p>At this point all I had to do was figure out how to decrypt powershell secure string. After numerous google searches I found these articles which helped in understanding the secure strings and ways to decode them<br><br>Read more<br><br>https://devblogs.microsoft.com/scripting/decrypt-powershell-secure-string-password/<br>https://adamtheautomator.com/powershell-get-credential/</p></div>
+<div class="content white-text"><p>At this point all I had to do was figure out how to decrypt powershell secure string. After numerous google searches I found these articles which helped in understanding the secure strings and ways to decode them<br><br>Read more<br>
+	<a href="https://devblogs.microsoft.com/scripting/decrypt-powershell-secure-string-password/" target="_blank">Decrypt PowerShell Secure String Password</a>
+	<br>
+	<a href="https://adamtheautomator.com/powershell-get-credential/" target="_blank">Using the PowerShell Get-Credential Cmdlet and all things credentials</a>
+</p></div>
 
 <div class="content white-text"><p>I found two credentials earlier, to decode user flag I logged in as "app" in the dashboard and to decode root flag I logged in as "administrator" with their respective passwords and launched two separate netcat sessions to catch reverse shells, this can be done without using reverse shell, directly from the web console too!</p></div>
 
