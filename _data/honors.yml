@@ -1,4 +1,10 @@
-- title: 5 Tools Added in BlackArch Linux
+- title: FinalRecon included in Kali Linux
+  issuer: Offensive Security
+  date: March 2021
+  image: /images/honors/kalixfr.jpg
+  link: https://www.kali.org/blog/kali-linux-2020-4-release/
+
+- title: 5 Tools included in BlackArch Linux
   issuer: BlackArch Linux
   date: 2018-20
   image: /images/honors/batools.jpg
