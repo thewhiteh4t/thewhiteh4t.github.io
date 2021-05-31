@@ -1,0 +1,64 @@
+---
+title: "MirrorriM Dojo #10 Writeup"
+desc: A nice challenge on YesWeHack platform involving Javascript and eval with
+  some palindrome twist
+layout: post
+date: May 31, 2021 4:31 PM
+image: /images/posts/ywh_dojo_10.jpg
+---
+<h1 class="cyan-text">MirrorriM Dojo #10 Writeup</h1>
+
+<h2 class="cyan-text">Challenge</h2>
+
+<div class="content white-text"><p>A palindrome is a word, number, phrase, or other sequence of characters which reads the same backward as forward, such as madam or racecar. There are also numeric palindromes, including date/time stamps using short digits 11/11/11 11:11 and long digits 02/02/2020. Sentence-length palindromes ignore capitalization, punctuation, and word boundaries.</p></div>
+
+<h2 class="cyan-text">Blacklisted Characters</h2>
+
+<pre><code>;//--/</code></pre>
+
+<div class="content white-text"><p>I started with a simple input "FLAG" and here is the output I received :</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/75HwFdy.png"> </div>
+
+<div class="content white-text"><p>So the javascript reverses our input and concatenates it with the original input and passes it through eval <br> Let's breakdown the javascript code :</p></div>
+
+<pre><code>function random(){
+  return Math.random().toString(16).slice(2)
+}
+const KEY = random()</code></pre>
+
+<div class="content white-text"><p>random function generates a random alphanumeric string and stores it in KEY</p></div>
+
+<pre><code>function reverse(s){
+    return Array.from(s).reduce((acc, c) => c + acc, "")
+}</code></pre>
+
+<div class="content white-text"><p>reverse function simply reverses the characters of the input</p></div>
+
+<pre><code>function mirror_eval(s){
+    try {
+        return eval(s + reverse(s))
+    } catch (e){
+        console.log(e)
+    }
+    return null
+}</code></pre>
+
+<div class="content white-text"><p>mirror_eval function passes our input concatenated with reverse of our input into eval</p></div>
+
+<pre><code>function check(s){
+    const FLAG = `FLAG{${random()}}`
+    if (mirror_eval(s) == KEY){
+        console.log(FLAG)
+    }
+}</code></pre>
+
+<div class="content white-text"><p>check function creates our flag using the random alphanumeric value generated in random function and then it checks if the result of mirror_eval function is same as the value stored in the KEY, if it matches the flag is printed in the console. <br><br> eval evaluates or executes an argument, so for example if we pass "1+1" in eval we will get 2 as the result. Similarly eval can evaluate logical expressions as well. If you have noticed the blacklisted characters are specific and not every character is blacklisted. One of the logical operators is || i.e. logical OR. <br><br> Now lets solve the challenge, since the challenge reverses and concatenates our input if we input "KEY|" the result will be "KEY||YEK" which becomes a valid logical OR expression. <br><br> KEY is defined but YEK is not defined so technically we should get an error but thats not how OR in javascript works, here are few example :</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/grnGxYY.png"> </div>
+
+<div class="content white-text"><p>Here I have defined a variable KEY similar to our challenge and then some OR expressions. Notice lines 4, 5 and 6. In lines 4 and 5 the output is the first argument and in 6th line we can see YEK is not defined but no error was thrown and the result is the value of the first argument! <br><br> Now let's see if it works in our challenge :</p></div>
+
+<div class="center-img">     <img class="responsive-img post-img" src="https://i.imgur.com/ioP60S0.png"> </div>
+
+<div class="content white-text"><p>Solved!</p></div>
