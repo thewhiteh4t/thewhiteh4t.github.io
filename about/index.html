@@ -15,66 +15,20 @@ image: /images/og_twh_2.jpg
 				<h3 class="white-text text-glow"><b>Projects</b></h3>
 
 				<div class="row">
-					<div class="col s12 m6 l6">
-						<a href="https://github.com/thewhiteh4t/seeker" target="_blank">
-							<div class="card-panel card-mod-2 hoverable">
-								<span class="white-text">seeker</span>
-								<div class="loader">
-									<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
-									<span class="white-text" id="seeker"></span>
+					{% for project in site.data.projects %}
+						<div class="col s12 m6 l6">
+							<a href="{{ project.url }}" target="_blank">
+								<div class="card-panel card-mod-2 hoverable">
+									<span class="white-text">{{ project.title }}</span>
+									<div class="loader">
+										<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
+										<span class="white-text" id="{{ project.title }}"></span>
+									</div>
+									<p class="cyan-text">{{ project.desc }}</p>
 								</div>
-								<p class="cyan-text">Accurately Locate Smartphones Using Social Engineering</p>
-							</div>
-						</a>
-					</div>
-					<div class="col s12 m6 l6">
-						<a href="https://github.com/thewhiteh4t/killcast" target="_blank">
-							<div class="card-panel card-mod-2 hoverable">
-								<span class="white-text">killcast</span>
-								<div class="loader">
-									<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
-									<span class="white-text" id="killcast"></span>
-								</div>
-								<p class="cyan-text">Manipulate Chromecast Devices</p>
-							</div>
-						</a>
-					</div>
-					<div class="col s12 m6 l6">
-						<a href="https://github.com/thewhiteh4t/pwnedOrNot" target="_blank">
-							<div class="card-panel card-mod-2 hoverable">
-								<span class="white-text">pwnedOrNot</span>
-								<div class="loader">
-									<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
-									<span class="white-text" id="pwnedOrNot"></span>
-								</div>
-								<p class="cyan-text">OSINT Tool for Finding Passwords of Compromised Email Addresses</p>
-							</div>
-						</a>
-					</div>
-					<div class="col s12 m6 l6">
-						<a href="https://github.com/thewhiteh4t/FinalRecon" target="_blank">
-							<div class="card-panel card-mod-2 hoverable">
-								<span class="white-text">FinalRecon</span>
-								<div class="loader">
-									<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
-									<span class="white-text" id="FinalRecon"></span>
-								</div>
-								<p class="cyan-text">The Last Web Recon Tool You'll Need</p>
-							</div>
-						</a>
-					</div>
-					<div class="col s12 m6 l6">
-						<a href="https://github.com/thewhiteh4t/flashsploit" target="_blank">
-							<div class="card-panel card-mod-2 hoverable">
-								<span class="white-text">FlashSploit</span>
-								<div class="loader">
-									<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
-									<span class="white-text" id="flashsploit"></span>
-								</div>
-								<p class="cyan-text">Exploitation Framework for ATtiny85 Based HID Attacks</p>
-							</div>
-						</a>
-					</div>
+							</a>
+						</div>
+					{% endfor %}
 				</div>
 
 				<h3 class="white-text text-glow"><b>CVEs</b></h3>
@@ -158,7 +112,7 @@ image: /images/og_twh_2.jpg
 </div>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 <script>
-	var repo_list = ['seeker', 'FinalRecon', 'pwnedOrNot', 'killcast', 'flashsploit']
+	var repo_list = ['seeker', 'FinalRecon', 'pwnedOrNot', 'killcast', 'nexfil', 'FlashSploit']
 	repo_list.forEach(fetch_stars);
 
 	function fetch_stars(repo) {
