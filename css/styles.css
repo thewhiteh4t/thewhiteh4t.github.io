@@ -33,7 +33,7 @@ a:active, a:focus { outline: 0; border: none; }
 .sub-text-link { color: #00ff00; }
 .sub-text-glow { text-shadow: 0px 0px 15px #00ff00; }
 .text-glow { text-shadow: 0px 0px 15px #00e2ff; }
-.about-text { font-size: 18px; }
+.about-text { line-height: 0px; }
 .fluid-text { font-size: 18px; line-height: 180px; float: left; }
 .block-cursor {
   float: left;
@@ -77,55 +77,6 @@ a:active, a:focus { outline: 0; border: none; }
 .star-ico { width: 20px; height: 20px; margin-right: 10px; }
 .star-hide { opacity: 0; }
 
-/* https://codepen.io/alanhouser/pen/aErrQJ */
-
-#timeline-content {
-  margin-top: 50px;
-  width: 100%;
-}
-
-.timeline {
-  left: 10%;
-  width: 40%;
-  border-left: 2px solid #ffffff;
-  margin: 50px auto;
-  position: relative;
-  padding: 10px;
-  list-style: none;
-  text-align: left;
-}
-
-.event {
-  left: 40px;
-  padding-bottom: 0px;
-  margin-bottom: 30px;
-  position: relative;
-  border-bottom: 1px solid #808080;
-}
-
-.event:before, .event:after {
-  position: absolute;
-  display: block;
-  top: 0;
-}
-
-.event:before {
-  left: -150px;
-  min-width: 80px;
-  content: attr(data-date);
-  text-align: right;
-}
-
-.event:after {
-  left: -48.5px;
-  background: #00bcd4;
-  border: 2px solid #ffffff;
-  border-radius: 50%;
-  height: 15px;
-  width: 15px;
-  content: "";
-  top: 5px;
-}
 .title { font-size: 4vw; }
 .subline { font-size: 3vw; }
 .date-size { font-size: 3.6vw; }
