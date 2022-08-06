@@ -7,11 +7,16 @@ image: /images/og_twh_2.jpg
 
 {% for post in paginator.posts %}
 {% assign cv_img = post.image | split: '.' | first %}
+<link rel="prefetch" href="">
 <div class="col s12 m12 l6">
   <a href="{{ site.url }}{{ post.url }}">
     <div class="card hoverable margin30 card-mod z-depth-3">
       <div class="card-image">
+        {% if forloop.index == 1 %}
+        <img class="img" src="{{ site.url }}{{ post.image }}" alt="{{ post.title }}">
+        {% else %}
         <img class="img lazyload" src="{{ site.url }}{{ post.image }}" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="{{ site.url }}{{ cv_img }}.webp, {{ site.url }}{{ cv_img }}.png" alt="{{ post.title }}">
+        {% endif %}
       </div>
       <div class="card-content white-text">
         <span class="card-title truncate"> {{ post.title }} </span>
