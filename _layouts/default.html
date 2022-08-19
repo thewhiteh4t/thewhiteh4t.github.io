@@ -150,9 +150,9 @@
     </div>
   </footer>
 
-  <script src="{{ site.url }}/js/lazysizes.min.js"></script>
-  <script src="https://www.googletagmanager.com/gtag/js?id=UA-114300490-1"></script>
-  <script>
+  <script async src="{{ site.url }}/js/lazysizes.min.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114300490-1"></script>
+  <script async>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -161,14 +161,16 @@
 
   {% if page.url == '/' %}
 
-  <script type="text/javascript" src="{{ site.url }}/js/search.js"></script>
+  <script async type="text/javascript" src="{{ site.url }}/js/search.js" onload=""></script>
   <script>
-    window.simpleJekyllSearch = new SimpleJekyllSearch({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('results-container'),
-      json: '{{ site.url }}/search.json',
-      success: function () {}
-    })
+    function init_search() {
+      window.simpleJekyllSearch = new SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ site.url }}/search.json',
+        success: function () {}
+      })
+    }
 
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.modal-trigger');

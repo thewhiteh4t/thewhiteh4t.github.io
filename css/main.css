@@ -6,22 +6,6 @@
 @tailwind utilities;
 
 @layer components {
-    @font-face {
-        font-family: "Hack";
-        font-style: normal;
-        font-weight: 400;
-        src: local("Hack Regular"), local("hack-regular"), url(../fonts/hack-regular.woff) format("woff");
-        font-display: swap;
-    }
-
-    @font-face {
-        font-family: "Hack";
-        font-style: normal;
-        font-weight: 400;
-        src: local("Hack Regular"), local("hack-regular"), url(../fonts/hack-regular.woff2) format("woff2");
-        font-display: swap;
-    }
-
     html {
         height: 100%;
         scroll-behavior: smooth;
@@ -35,7 +19,7 @@
         min-height: 100vh;
         flex-direction: column;
         background-color: #121212;
-        font-family: "Hack", sans-serif;
+        font-family: "Courier New", sans-serif;
     }
 
     h1 {
