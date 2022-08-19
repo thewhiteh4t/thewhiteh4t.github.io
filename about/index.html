@@ -5,84 +5,85 @@ desc: I write about tools I have created for the cyber security community, updat
 image: /images/og_twh_2.jpg
 ---
 
-<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<div class="col s12 m12 l12">
-	<div class="card-panel glow card-mod">
-		<div class="card-body">
-			<div class="card-text">
-				<ul class="white-text text-glow">
+<div class="column-1 rounded-md bg-c-gray p-5 m-5 m-shadow">
+	<div class="">
+		<div class="">
+			<div class="">
+				<ul class="text-glow">
 					<li>~> Security Researcher</li>
 					<li>~> Content Creator</li>
 					<li>~> Founder at <a href="https://twc1rcle.com/" target="_blank">The White Circle</a></li>
 				</ul>
-					
 
-				<h3 class="white-text text-glow"><b>Projects</b></h3>
+				<h2 class="text-white text-glow">Projects</h2>
 
-				<div class="row">
+				<div class="grid lg:grid-cols-2 lg:grid-rows-3 grid-cols-1 gap-6">
 					{% for project in site.data.projects %}
-						<div class="col s12 m6 l6">
-							<a href="{{ project.url }}" target="_blank">
-								<div class="card-panel card-mod-2 hoverable">
-									<span class="white-text">{{ project.title }}</span>
-									<div class="loader">
-										<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
-										<span class="white-text" id="{{ project.title }}"></span>
-									</div>
-									<p class="cyan-text">{{ project.desc }}</p>
+					<a href="{{ project.url }}" target="_blank">
+						<div class="bg-c-cyan rounded-md m-shadow hover:drop-shadow-md p-5 flex flex-col">
+							<div class="flex-1 mx-auto w-full">
+								<span class="text-white float-left">{{ project.title }}</span>
+								<div class="loader flex float-right">
+									<img class="star-ico star-hide" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAADwElEQVRoge2Yz2scZRzGP8/stjmkUOLBXqXJkk22rZFmd9PqX+BJtPgDQfRipAiKp6i0WhUhKAhFkAQEoYeIXjyI/4AU013joU3IbFJjhXhQaIttYtpkZ74e0som7Gbmnc7kIHlgWZh5v8/zfN/v+2te2MMe9pAZ7FLxhF0qnshSI58lOeIsyIAns5PICDZdPI5HHRAKqyov1LLQ8bIgBSDHOe53kHlnspLJpAJWH3wMC2e28ocVVRbqaWtlUwEL32d751ju3SykUq+A1UpDEPzShtsIKWvEn0lTL4MKBGdp3zHC45201VKtgNUGSxBepnPHGKENaaRxOS3NdCsgey+CU3heqnMhtQrYdGkQL7hCdKeEeAxp2L+Shm56FfCCMzH5PALeTks2lQrYT4UBcrlZ4ndIiPSoyvOzD6rtnIBd7H2Y/fkCpgJGAU8FzMrAI45U15DqhLaIWES2yHpzUY//+pcLSdsE7MejPezbOIzsMHj3/ikBR4CDjkZdcQdYQpqDcAl07xcsqbywtL3xlgSsVvwYGAUeythkUtwAJlTx/9tPto7ZnuY54OIum3JBnebKh60PtiSgwtW7dOdOIftud33FgNkPrN55SieX11oft58DPx/fR7g6BTyzK+ai8T09zVMqXL27/UXbZU/DMxtc85/D7EL23qKgb/C6n25nHnZYt/UsAb83XgG+yspaJIwpVg+9qOGZjU5NIvcBM0S9/3PQ6XTdRUD2JcONVyXCnZpF7pwSRrnxOnA+NXPRmIxjHmJu/ZtJ+G9ifPbg3iLVvqDsvxbHPDgc5iRMVf8t0EfJzUXiU1XmT0tYbF9JVKxWnAKeTxK7A75WxX/BNSjZcdoyuBCTcknCkiUgjiSK2xmJON2P04t9XdzMr5D+tWSTnuaBThtWJ7hX4GbXANncqea54RVdgxIMoWYWw2cTkjN3ggRUco/JjjvJJM4wAXfuJAnELfMyYhQxCizHjDnqasZpFbK50gFWg1sRcdcxfUJw+/z9jw+bK+3nn+BljA+AQztJsG4H9UTjdlxPbhVYsxKdzBsryMbx1ntVnR9v/XJSaW5dZX+S7lwfpjHg7w4KossGXCy5JRBYu+GzDkxi+T6VG2MaXupkDpXmVlSdH8foRTYOrLVp5bQSOc4Ba51kG5hdwKyoij+qkdk/47Ko6l9XuTFGMyyweUxv2bzcViK3BDaPEIb0LaFKqjZeUrXxmxNHK93JhT9U8d8gr35gEghIeKSIBasVJ2y6/1hm/NP9x6xWnMiKfw97+D/iX5+MJQiZ+aR0AAAAAElFTkSuQmCC">
+									<span class="text-white" id="{{ project.title }}"></span>
 								</div>
-							</a>
+							</div>
+							<p class="text-cyan-400 my-5">{{ project.desc }}</p>
 						</div>
+					</a>
 					{% endfor %}
 				</div>
 
-				<h3 class="white-text text-glow"><b>CVEs</b></h3>
-				<div class="row">
-					<div class="col s12 m6 l6">
+				<h2 class="text-white text-glow">CVEs</h2>
+				<div class="grid lg:grid-cols-2 lg:grid-rows-1 grid-cols-1 gap-6">
+					<div>
 						<a href="{{ site.url }}/2020/02/27/CVE-2020-9375-TP-Link-Archer-C50-v3-Denial-of-Service.html" target="_blank">
-							<div class="card-panel card-mod-2 hoverable">
-								<span class="white-text">CVE-2020-9375</span>
-								<p class="cyan-text">TP-Link Archer C50 v3 Denial of Service</p>
+							<div class="bg-c-cyan rounded-md m-shadow hover:drop-shadow-md p-5">
+								<span class="text-white">CVE-2020-9375</span>
+								<p class="text-cyan-400">TP-Link Archer C50 v3 Denial of Service</p>
 							</div>
 						</a>
 					</div>
 				</div>
 
-				<h3 class="white-text text-glow"><b>Publications</b></h3>
-				<div class="flick-carousel" data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
+				<h2 class="text-white text-glow">Publications</h2>
+				<div class="flick-carousel py-5 w-full h-auto" data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
 					{% for publication in site.data.publications %}
-					<div class="carousel-cell">
+					<div class="carousel-cell lg:w-[38rem]">
 						<a href="{{ publication.link }}" target="_blank">
-							<div class="card-panel pub-card hoverable">
-								<div class="pub-wrapper">
-									<img class="pub-img" data-flickity-lazyload="{{ site.url }}{{ publication.image }}">
-									<div class="pub-desc">
-										<p><b class="white-text three-line-truncate">{{ publication.title }}</b></p>
+							<div class="bg-c-cyan rounded-md m-shadow hover:drop-shadow-md">
+								<div class="flex flex-row">
+									<div class="m-2 basis-1/4 self-center">
+										<img class="w-full m-shadow rounded-md" data-flickity-lazyload="{{ site.url }}{{ publication.image }}">
+									</div>
+									
+									<div class="p-5 basis-3/4">
+										<p class="text-white text-sm line-clamp-3 font-bold">{{ publication.title }}</p>
 										<br>
-										<span class="bright-green-text pub-sub-text">{{ publication.date }}</span>
+										<span class="text-cyan-400 text-sm">{{ publication.date }}</span>
 										<br>
-										<span class="bright-green-text pub-sub-text">{{ publication.issuer }}</span>
+										<span class="text-cyan-400 text-sm">{{ publication.issuer }}</span>
 									</div>
 								</div>
 							</div>
 						</a>
 					</div>
 					{% endfor %}
-  				</div>
+				</div>
 
-				<h3 class="white-text text-glow"><b>Certifications</b></h3>
+				<h2 class="text-white text-glow"><b>Certifications</b></h2>
 				<div class="flick-carousel"  data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
 					{% for cert in site.data.certs %}
-					<div class="carousel-cell">
-						<div class="card-panel card-mod-3 hoverable">
-							<div class="cert-wrapper">
-								<img class="cert-img" data-flickity-lazyload="{{ site.url }}{{ cert.image }}">
-								<div class="cert-desc">
-									<span class="white-text"><b>{{ cert.title }}</b></span>
+					<div class="carousel-cell lg:w-[38rem]">
+						<div class="bg-c-cyan rounded-md m-shadow hover:drop-shadow-md">
+							<div class="flex flex-col">
+								<img class="rounded-t-md" data-flickity-lazyload="{{ site.url }}{{ cert.image }}">
+								<div class="p-5">
+									<span><b>{{ cert.title }}</b></span>
 									<br><br>
-									<span class="cyan-text cert-sub-text"><b class="bright-green-text">Issuer :</b> {{ cert.issuer }}</span>
+									<span class="text-cyan-400 text-sm"><b>Issuer :</b> {{ cert.issuer }}</span>
 									<br>
-									<span class="cyan-text cert-sub-text"><b class="bright-green-text">Date &nbsp&nbsp:</b> {{ cert.date }}</span>
+									<span class="text-cyan-400 text-sm"><b>Date &nbsp&nbsp:</b> {{ cert.date }}</span>
 								</div>
 							</div>
 						</div>
@@ -90,20 +91,20 @@ image: /images/og_twh_2.jpg
 					{% endfor %}
 				</div>
 
-  				<h3 class="white-text text-glow"><b>Achievements</b></h3>
+  				<h2 class="text-white text-glow"><b>Achievements</b></h2>
 				<div class="flick-carousel"  data-flickity='{ "lazyLoad": 2, "imagesLoaded": true, "resize": true, "autoPlay": false, "adaptiveHeight": true, "pageDots": false, "prevNextButtons": true}'>
 					{% for honor in site.data.honors %}
-					<div class="carousel-cell">
+					<div class="carousel-cell  lg:w-[38rem]">
 						<a href="{{ honor.link }}" target="_blank">
-							<div class="card-panel card-mod-3 hoverable">
-								<div class="cert-wrapper">
-									<img class="cert-img" data-flickity-lazyload="{{ site.url }}{{ honor.image }}">
-									<div class="cert-desc">
-										<span class="white-text"><b>{{ honor.title }}</b></span>
+							<div class="bg-c-cyan rounded-md m-shadow hover:drop-shadow-md">
+								<div class="flex flex-col">
+									<img class="rounded-t-md" data-flickity-lazyload="{{ site.url }}{{ honor.image }}">
+									<div class="p-5">
+										<span class="text-white"><b>{{ honor.title }}</b></span>
 										<br><br>
-										<span class="cyan-text cert-sub-text"><b class="bright-green-text">Issuer :</b> {{ honor.issuer }}</span>
+										<span class="text-cyan-400 text-sm"><b>Issuer :</b> {{ honor.issuer }}</span>
 										<br>
-										<span class="cyan-text cert-sub-text"><b class="bright-green-text">Date &nbsp&nbsp:</b> {{ honor.date }}</span>
+										<span class="text-cyan-400 text-sm"><b>Date &nbsp&nbsp:</b> {{ honor.date }}</span>
 									</div>
 								</div>
 							</div>
@@ -115,7 +116,7 @@ image: /images/og_twh_2.jpg
     	</div>
     </div>
 </div>
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="https://unpkg.com/flickity/dist/flickity.pkgd.min.js"></script>
 <script>
 	var repo_list = ['seeker', 'FinalRecon', 'pwnedOrNot', 'killcast', 'nexfil', 'FlashSploit']
 	repo_list.forEach(fetch_stars);

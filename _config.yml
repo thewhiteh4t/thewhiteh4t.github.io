@@ -9,8 +9,13 @@ defaults:
       type: "posts"
     values:
       layout: "default"
+
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-feed
+  - jekyll-postcss
+
+postcss:
+  cache: false
