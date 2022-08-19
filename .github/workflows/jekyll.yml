@@ -1,5 +1,15 @@
 name: Jekyll site CI
 
+inputs:
+  path:
+    description: "Path of the directory containing the static assets."
+    required: true
+    default: "_site/"
+  retention-days:
+    description: "Duration after which artifact will expire in days."
+    required: false
+    default: "1"
+
 on:
   push:
     branches: [ "master" ]
@@ -23,6 +33,8 @@ jobs:
         docker run \
         -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
         jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && JEKYLL_ENV=production jekyll build --future"
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
 
   deploy:
     needs: build
