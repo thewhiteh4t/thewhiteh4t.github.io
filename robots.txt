@@ -4,4 +4,4 @@ Disallow: /feed.xml
 Disallow: /*.json
 Disallow: /*.js
 
-Sitemap: http://thewhiteh4t.github.io/sitemap.xml
+Sitemap: https://thewhiteh4t.github.io/sitemap.xml
