@@ -3,11 +3,14 @@
 <head>
   <title>{{ page.title }}</title>
   <meta name="description" content="{{ page.desc }}">
+  <meta name="author" content="{{ author }}">
+  <meta property="og:site_name" content="{{ site.title }}">
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:description" content="{{ page.desc }}">
   <meta property="og:image" content="{{ site.url }}{{ page.image }}">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@thewhiteh4t">
   <meta name="twitter:creator" content="@thewhiteh4t">
@@ -43,6 +46,22 @@
   <link rel="icon" type="image/png" href="{{ site.url }}/images/favicons/favicon-16x16.png" sizes="16x16" />
   <link rel="icon" type="image/png" href="{{ site.url }}/images/favicons/favicon-128.png" sizes="128x128" />
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.url }}/favicon.ico">
+
+  <script type="application/ld+json">
+    {
+      "author":{
+        "@type":"Person",
+        "name":"{{ site.author }}"
+      },
+      "image":"{{ site.url }}{{ page.image }}",
+      "headline":"{{ page.title }}",
+      "@type":"WebSite",
+      "url":"{{ site.url }}{{ page.url }}",
+      "name":"{{ page.title }}",
+      "@context":"https://schema.org"
+    }
+  </script>
+
   <style>html { visibility: hidden; opacity: 0; }</style>
 
   {% if page.url != '/about/' %}
