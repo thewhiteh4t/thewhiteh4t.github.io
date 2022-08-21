@@ -44,7 +44,8 @@
   <link rel="icon" type="image/png" href="{{ site.url }}/images/favicons/favicon-128.png" sizes="128x128" />
   <link rel="shortcut icon" type="image/x-icon" href="{{ site.url }}/favicon.ico">
   <style>html { visibility: hidden; opacity: 0; }</style>
-  {% if page.url == '/' %}
+
+  {% if page.url != '/about/' %}
   <link rel="stylesheet" href="{{ site.url }}/css/main.css" media="print" onload="this.media='all'">
   {% else %}
   <link rel="stylesheet" href="{{ site.url }}/css/main.css" media="print" onload="this.media='all'">
