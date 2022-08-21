@@ -49,16 +49,24 @@
 
   <script type="application/ld+json">
     {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "name": "{{ page.title }}",
+      "url": "{{ site.url }}{{ page.url }}",
+      "logo": "{{ site.url }}/images/og_twh_2.jpg",
+      "image":"{{ site.url }}{{ page.image }}",
+      "headline": {{ page.title | jsonify }},
+      "datePublished": {{ page.date | jsonify }},
+      "dateModified": {{ page.last_modified_at | default: page.date | jsonify }},
       "author":{
         "@type":"Person",
-        "name":"{{ site.author }}"
+        "name":"{{ site.author }}",
+        "url":"{{ site.url }}{{ page.url }}"
       },
-      "image":"{{ site.url }}{{ page.image }}",
-      "headline":"{{ page.title }}",
-      "@type":"WebSite",
-      "url":"{{ site.url }}{{ page.url }}",
-      "name":"{{ page.title }}",
-      "@context":"https://schema.org"
+      "mainEntityOfPage":{
+        "@type":"WebPage",
+        "@id":"{{ site.url }}"
+      }
     }
   </script>
 
