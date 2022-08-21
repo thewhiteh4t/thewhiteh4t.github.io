@@ -154,7 +154,7 @@
 
   {% if page.url == '/' %}
 
-  <script async type="text/javascript" src="{{ site.url }}/js/search.js" onload=""></script>
+  <script async type="text/javascript" src="{{ site.url }}/js/search.js" onload="init_search()"></script>
   <script>
     function init_search() {
       window.simpleJekyllSearch = new SimpleJekyllSearch({
