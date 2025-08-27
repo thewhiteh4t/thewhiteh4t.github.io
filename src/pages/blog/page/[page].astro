@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../../layouts/Base.astro'
+import BlogCard from '../../../components/BlogCard.astro'
+import CategoryCard from '../../../components/CategoryCard.astro'
+import TagCard from '../../../components/TagCard.astro'
+import PageBar from '../../../components/PageBar.astro'
+import { getCollection } from 'astro:content'
+
+export async function getStaticPaths({ paginate }) {
+  const posts = await getCollection('blog')
+
+  const sortedPosts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  )
+
+  const paginatedPosts = paginate(sortedPosts, { pageSize: 6 })
+
+  return paginatedPosts
+}
+
+const { page } = Astro.props
+---
+
+<BaseLayout title={`Blog - Page ${page.currentPage}`} description="">
+  <div class="container mx-auto px-4 py-6 pt-20">
+    <h1 class="text-3xl lg:text-4xl mt-10 mb-5">thewhiteh4t's Blog</h1>
+    <h2 class="font-mono text-[1rem] font-normal text-primary">
+      $ ./blog_page {page.currentPage}
+    </h2>
+    <div class="my-5 grid grid-cols-1 lg:grid-cols-4 gap-4">
+      <div class="lg:col-span-3">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {
+            page.data.map((post, index) => (
+              <BlogCard
+                post={post}
+                loadingType={index < 4 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+              />
+            ))
+          }
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <div class="order-2 md:order-1">
+          <CategoryCard />
+        </div>
+        <div class="order-3 md:order-2">
+          <TagCard />
+        </div>
+        <div class="order-1 md:order-3">
+          <PageBar
+            lastPage={page.lastPage}
+            currentPage={page.currentPage}
+            prev={page.url.prev}
+            next={page.url.next}
+            first={page.url.first}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+title: SpacePaper - High Quality Images from NASA APOD
+description: >-
+  One of the most popular websites at NASA is the Astronomy Picture of the Day.
+  Each day a different image or photograph of our fascinating universe is
+  featured, along with a brief explanation written by a professional astronomer.
+  The official NASA APOD page displays a single image everyday, SpacePaper
+  retrieves images for a specific Month and Year.
+pubDate: 2019-03-15
+categName: tools
+tagList: python
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/spacepaper/cardImage.png
+---
+## Introduction
+
+One of the most popular websites at NASA is the Astronomy Picture of the Day. Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.
+The official NASA APOD page displays a single image everyday, SpacePaper retrieves images for a specific Month and Year.
+APOD API allows us to retrieve images from June 1995 - Current Year.
+\
+API Requests are handled by a python script and it generates a Javascript file which displays images on the frontend.
+
+## Installation
+
+**Linux / Termux**
+
+```bash
+git clone https://github.com/thewhiteh4t/spacepaper.git
+cd spacepaper
+chmod 777 install.sh
+./install.sh
+```
+
+\
+**Usage**
+
+```bash
+usage: spacepaper.py [-h] [-m MONTH] [-y YEAR] [-r]
+
+SpacePaper Provides High Quality Images from NASA APOD [ June 1995 Onwards ]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -m MONTH, --month MONTH
+  -y YEAR, --year YEAR
+  -r, --random
+
+#Without Arguments
+
+python3 spacepaper.py
+
+# Get Images for a Specific Month and Year
+
+python3 spacepaper.py -m 12 -y 2018
+
+# Get Images for a Random Month and Year
+
+python3 spacepaper.py -r
+```
+
+## Demo
+
+{% VideoLink
+   link="https://odysee.com/@thewhiteh4t:2/spacepaper-high-quality-images-from-nasa:9" /%}

@@ -1,0 +1,44 @@
+---
+import { SEO } from 'astro-seo'
+import default_og_img from '../assets/og_twh_2.jpg'
+const { title, description } = Astro.props
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+var og_img_src = new URL(default_og_img.src, Astro.site)
+
+if (Astro.locals.frontmatter) {
+  og_img_src = new URL(Astro.locals.frontmatter.cardImage.src, Astro.site)
+}
+
+const default_desc =
+  'I write about tools I have created for the cyber community, updates regarding my active projects, exploits, tutorials, PoCs and a little bit of OSINT'
+const full_title = `${title} | thewhiteh4t`
+---
+
+<SEO
+  title={full_title}
+  titleDefault="thewhiteh4t"
+  description={description || default_desc}
+  canonical={canonicalURL}
+  openGraph={{
+    basic: {
+      title: full_title,
+      type: 'website',
+      image: og_img_src,
+    },
+    optional: {
+      description: description || default_desc,
+      siteName: 'thewhiteh4t',
+    },
+  }}
+  twitter={{
+    creator: '@thewhiteh4t',
+    card: 'summary_large_image',
+    title: full_title,
+    description: description || default_desc,
+    image: og_img_src,
+    imageAlt: `Image showing ${description || default_desc}`,
+  }}
+  extend={{
+    meta: [{ name: 'author', content: 'thewhiteh4t' }],
+  }}
+/>

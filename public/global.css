@@ -1,0 +1,441 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --color-primary: #00B8D4 !important;
+  --color-secondary: #FF9100 !important;
+
+  --pagefind-ui-scale: 0.8 !important;
+  --pagefind-ui-primary: var(--color-primary) !important;
+  --pagefind-ui-text: var(--color-on-surface) !important;
+  --pagefind-ui-background: var(--color-surface-card) !important;
+  --pagefind-ui-border: var(--color-primary) !important;
+  --pagefind-ui-tag: #000000 !important;
+  --pagefind-ui-border-width: 0px !important;
+  --pagefind-ui-border-radius: 8px !important;
+  --pagefind-ui-font: var(--font-inter) !important;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('/src/assets/fonts/Inter-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('/src/assets/fonts/Inter-Bold.woff2') format('woff2');
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Urbanist;
+    src: url('/src/assets/fonts/Urbanist-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Urbanist;
+    src: url('/src/assets/fonts/Urbanist-Bold.woff2') format('woff2');
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: FiraMono;
+    src: url('/src/assets/fonts/FiraMono-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: FiraMono;
+    src: url('/src/assets/fonts/FiraMono-Bold.woff2') format('woff2');
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Uni0024;
+    src: url('/src/assets/fonts/Unicode 0024_min.woff2') format('woff2');
+    font-display: swap;
+}
+
+@theme {
+    --font-inter: 'Inter', var(--default-font-family);
+    --font-urbanist: 'Urbanist', 'Arial';
+    --font-firamono: 'FiraMono', var(--default-mono-font-family);
+    --font-uc0024: 'Uni0024';
+
+    --color-background: #121212;
+    --color-on-background: #CFCFCF;
+    --color-surface: #1E1E1E;
+    --color-on-surface: #CFCFCF;
+    --color-on-surface-variant: #AFAFAF;
+    --color-on-primary: #000000;
+    --color-on-secondary: #000000;
+    --color-error: #CF6679;
+    --color-on-error: #000000;
+    --color-surface-card: #242424;
+    --color-divider: #2C2C2C;
+    --color-disabled: #5F5F5F;
+
+    --color-primary-on-hover: #18CCEA;
+    --color-primary-on-press: #00A0BC;
+}
+
+@layer base {
+    html {
+        @apply scroll-smooth antialiased;
+        font-family: var(--font-inter);
+    }
+
+    body {
+        @apply flex flex-col min-h-screen text-on-surface bg-background;
+        font-family: var(--font-inter);
+        /*background-image: linear-gradient(to top, var(--color-black), var(--color-slate-900), var(--color-black));
+        background-attachment: fixed;*/
+    }
+
+    main {
+        @apply flex-grow
+    }
+
+    h1 {
+        font-size: var(--text-3xl);
+        font-family: var(--font-urbanist);
+        font-weight: bold;
+        @apply text-on-surface;
+    }
+
+    h2 {
+        font-size: var(--text-2xl);
+        font-family: var(--font-urbanist);
+        font-weight: bold;
+        @apply text-on-surface;
+    }
+
+    h3 {
+        font-size: var(--text-xl);
+        font-family: var(--font-urbanist);
+        font-weight: bold;
+        @apply text-on-surface;
+    }
+
+    h4 {
+        font-size: var(--text-lg);
+        font-family: var(--font-urbanist);
+        font-weight: bold;
+        @apply text-on-surface;
+    }
+
+    a {
+        @apply text-secondary underline;
+    }
+
+    p > a {
+        @apply hover:underline;
+    }
+
+    p > code {
+        @apply rounded-sm text-sm px-1 py-[2px] bg-surface-card text-primary font-medium border-1 border-primary/10;
+    }
+
+    ul {
+        @apply list-disc list-inside space-y-1 text-on-surface-variant
+    }
+
+    ol {
+        @apply space-y-1 list-decimal list-inside text-on-surface-variant
+    }
+}
+
+.container {
+    @apply container mx-auto px-4 mb-5 pt-20
+}
+
+.card {
+    @apply text-on-surface
+}
+
+.card-title { 
+    @apply text-on-surface;
+}
+
+.card-btn {
+    font-family: var(--font-urbanist);
+    @apply bg-primary rounded-lg border-0 ring-0;
+    @apply text-on-primary uppercase font-semibold no-underline;
+    @apply md:hover:bg-primary-on-hover active:bg-primary-on-press;
+    @apply md:hover:shadow-md md:hover:shadow-black/30;
+    @apply hover:scale-90;
+    @apply transition-transform duration-300 ease-out;
+}
+
+.navbar-btn {
+    font-family: var(--font-urbanist);
+    @apply uppercase no-underline;
+    @apply bg-transparent border-0 ring-0;
+    @apply font-bold text-lg text-on-background;
+}
+
+.search-btn {
+    @apply btn bg-transparent border-0 ring-0 m-0 p-0;
+}
+
+.social-icon {
+    @apply fill-primary w-full max-w-8 mx-1;
+    @apply hover:scale-90;
+    @apply transition-colors duration-300 ease-out;
+}
+
+.card-bg {
+    /*background-color: hsla(213.17532987953427, 65%, 4%, 1);
+    background-image: radial-gradient(circle at 1% 0%, hsla(212.3684210526316, 81%, 25%, 0.61) 5.202913631633715%, transparent 53.01682626841344%);
+    background-blend-mode: normal;*/
+    @apply bg-surface
+}
+
+.card-shadow {
+    @apply shadow-md shadow-black/50;
+}
+
+.expressive-code {
+    @apply my-5 shadow-md shadow-black/50 rounded-lg
+}
+
+.expressive-code .frame.is-terminal .header {
+    @apply z-0
+}
+
+.expressive-code .copy {
+    @apply z-0
+}
+
+.expressive-code .copy button {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.expressive-code .copy button::before {
+    border: 0 !important;
+    border-radius: 7px !important;
+}
+
+.blog-bq {
+    @apply my-5 p-3 bg-surface-card rounded-lg border-s-4 border-primary shadow-md shadow-black/50 italic
+}
+
+.blog-body {
+    @apply bg-surface;
+    @apply p-4 rounded-lg;
+    @apply shadow-md shadow-black/50;
+    @apply leading-relaxed;
+}
+
+.blog-body h1 {
+  @apply text-4xl font-bold mt-6 mb-3;
+}
+
+.blog-body h2 {
+  @apply text-3xl font-bold mt-6 mb-3;
+}
+
+.blog-body h3 {
+  @apply text-2xl font-bold mt-5 mb-3;
+}
+
+.blog-body p {
+  @apply mt-0 mb-5;
+}
+
+.blog-body ul,
+.blog-body ol {
+  @apply mt-0 mb-5 list-inside list-disc;
+}
+
+.blog-heading {
+    @apply scroll-mt-20;
+}
+
+.blog-categ {
+    @apply btn border-0 ring-0 rounded-md m-1 no-underline;
+    @apply bg-surface-card text-on-surface-variant;
+    @apply shadow-md shadow-black/50;
+    @apply w-full;
+    @apply hover:bg-primary-on-hover hover:text-on-primary active:bg-primary-on-press active:text-on-primary;
+    @apply  transition-colors duration-100 ease-in-out;
+}
+
+.blog-tag {
+    @apply badge rounded-md bg-primary border-0 ring-0 mr-2 mb-2;
+    @apply text-xs text-on-primary lowercase no-underline;
+    @apply hover:bg-primary-on-hover active:bg-primary-on-press;
+    @apply transition-colors duration-100 ease-in-out;
+}
+
+.blog-img-container {
+    @apply w-full flex flex-row justify-center my-2;
+}
+
+.blog-img {
+    @apply rounded-lg shadow-md shadow-black/50;
+}
+
+.blog-card-img-cont {
+    @apply relative w-full aspect-[16/9];
+}
+
+.blog-card-img-cont > picture {
+  @apply absolute top-0 left-0 w-full h-full; /* CLS fix in combo with aspect ratio*/
+}
+
+.comment-card {
+    @apply lg:max-w-[70ch] w-full;
+}
+
+.page-btn {
+    @apply bg-primary text-on-primary;
+    @apply shadow-md shadow-black/50;
+    @apply rounded-md border-0;
+    @apply hover:scale-90;
+    @apply transition-transform duration-150 ease-out;
+}
+
+.active-page-btn {
+    @apply bg-secondary text-on-secondary;
+    @apply font-(family-name:--font-urbanist) font-bold;
+    @apply rounded-md;
+}
+
+.disabled-page-btn {
+    @apply brightness-50;
+}
+
+.giscus {
+    @apply bg-surface;
+}
+
+.video-container iframe {
+    @apply w-full aspect-video rounded-lg
+}
+
+.alias_circle {
+    background-color: black;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.alias_text {
+    font-family: var(--font-uc0024);
+    font-size: 38px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-panel {
+    @apply fixed inset-x-0 top-13 z-2 p-2 m-2;
+    @apply mt-5 flex flex-col items-center;
+    @apply bg-surface-card rounded-box rounded-lg;
+    @apply shadow-md shadow-black/50;
+}
+
+.dd-btn {
+    font-family: var(--font-urbanist);
+    @apply btn bg-transparent font-bold text-2xl;
+    @apply border-0 ring-0 text-on-background;
+    @apply no-underline mb-5;
+}
+
+#icon-close {
+  @apply hidden;
+}
+
+/* When the dropdown is open, hide the open icon and show the close icon */
+.dropdown[open] #icon-open {
+  @apply hidden;
+}
+
+.dropdown[open] #icon-close {
+  @apply block;
+}
+
+#icon-open,
+#icon-close {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.dropdown[open] .dropdown-panel {
+    animation: fadeInSlide 0.3s ease-in;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        pointer-events: none;
+    }
+    to {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+        
+@keyframes fadeOutSlide {
+    from {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    to {
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+.dropdown.closing .dropdown-panel {
+    animation: fadeOutSlide 0.3s ease-out;
+}
+
+.pagefind-ui {
+    margin-top: 10px !important;
+}
+
+.pagefind-ui__search-input {
+    outline: 0 !important;
+    font-weight: normal !important;
+}
+
+.pagefind-ui__message {
+    font-weight: normal !important;
+    color: var(--color-primary) !important;
+}
+
+.pagefind-ui__result {
+    padding: 10px !important;
+    border-top: 1px solid var(--color-secondary) !important;
+}
+
+.pagefind-ui a {
+    font-family: var(--font-urbanist) !important;
+}
+
+.pagefind-ui mark {
+    background-color: var(--color-primary) !important;
+}
+
+.modal-cl-btn {
+    @apply bg-transparent border-0 ring-0;
+}
+
+.modal-cl-icon {
+    @apply stroke-primary;
+    @apply hover:stroke-secondary active:stroke-secondary;
+    @apply transition-colors duration-100 ease-in-out;
+}

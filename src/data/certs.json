@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Advanced Program in Cyber Security and Cyber Defense",
+    "issuer": "IIT, Kanpur",
+    "date": "July 2020",
+    "img": "iitk.png"
+  },
+  {
+    "title": "Autopsy Basics and Hands On",
+    "issuer": "Basis Technology",
+    "date": "May 2020",
+    "img": "autopsy.png"
+  },
+  {
+    "title": "Endpoint Security Fundamentals",
+    "issuer": "Elastic",
+    "date": "May 2020",
+    "img": "elastic.png"
+  },
+  {
+    "title": "LCEH Grade 1&2",
+    "issuer": "SAFE (Lucideus)",
+    "date": "September 2017",
+    "img": "safe.png"
+  }
+]

@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../../layouts/Base.astro'
+import BlogCard from '../../../components/BlogCard.astro'
+
+export async function getStaticPaths() {
+  const allCategories = await getCollection('categories')
+  const allPosts = await getCollection('blog')
+  return allCategories.map((entry) => {
+    const postsForCategory = allPosts.filter(
+      (post) => post.data.categName === entry.id,
+    )
+    return {
+      params: { category: entry.id },
+      props: { categoryData: entry.data, categoryPosts: postsForCategory },
+    }
+  })
+}
+
+const { category } = Astro.params
+const { categoryData, categoryPosts } = Astro.props
+---
+
+<BaseLayout title=`${categoryData.categName} - Blog` description="">
+  <div class="container mx-auto px-4 py-6 pt-20">
+    <h1 class="my-5">Category : {categoryData.categName}</h1>
+    <h2 class="font-mono text-[1rem] font-normal text-primary">
+      $ ./blog_page --category {categoryData.categName}
+    </h2>
+    <div class="grid grid-cols-1 my-5 lg:grid-cols-3 gap-4">
+      {
+        categoryPosts.length > 0 ? (
+          categoryPosts.map((post, index) => (
+            <BlogCard
+              post={post}
+              loadingType={index < 4 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+            />
+          ))
+        ) : (
+          <h2>No posts in this category yet...</h2>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

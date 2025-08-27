@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Lightning Fast Profile Lookups using NExfil",
+    "issuer": "Hakin9",
+    "date": "May 2021",
+    "img": "H9-1.jpg",
+    "link": "https://hakin9.org/product/socmint-for-hackers/"
+  },
+  {
+    "title": "Reverse img Search 101",
+    "issuer": "Hakin9",
+    "date": "March 2021",
+    "img": "H9_03_2021.jpg",
+    "link": "https://hakin9.org/product/hacking-career-jumpstart/"
+  },
+  {
+    "title": "Beginners Guide to People Search",
+    "issuer": "eForensics Magazine",
+    "date": "August 2020",
+    "img": "efor3.jpg",
+    "link": "https://eforensicsmag.com/product/different-approaches-to-memory-forensics/"
+  },
+  {
+    "title": "Getting Started with Digital Forensics using Autopsy",
+    "issuer": "eForensics Magazine",
+    "date": "June 2020",
+    "img": "efor2.jpg",
+    "link": "https://eforensicsmag.com/product/your-digital-forensics-toolkit/"
+  },
+  {
+    "title": "pwnedOrNot - OSINT Tool for Finding Passwords of Compromised Email Accounts",
+    "issuer": "eForensics Magazine",
+    "date": "May 2020",
+    "img": "efor.jpg",
+    "link": "https://eforensicsmag.com/download/open-source-forensic-tools/"
+  },
+  {
+    "title": "Importance of Reconnaissance - FinalRecon",
+    "issuer": "Hakin9",
+    "date": "May 2020",
+    "img": "h9.jpg",
+    "link": "https://hakin9.org/product/python-for-osint-tooling/"
+  }
+]

@@ -1,0 +1,16 @@
+---
+import BlogCard from '../components/BlogCard.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3)
+---
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+  {
+    posts.map((post, index) => (
+      <BlogCard post={post} loadingType={'lazy'} fetchPriority={'auto'} />
+    ))
+  }
+</div>

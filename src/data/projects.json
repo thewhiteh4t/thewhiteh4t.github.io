@@ -1,0 +1,38 @@
+[
+  {
+    "title": "seeker",
+    "url": "https://github.com/thewhiteh4t/seeker",
+    "desc": "Accurately Locate Smartphones using Social Engineering",
+    "img": "seeker_banner.png"
+  },
+  {
+    "title": "FinalRecon",
+    "url": "https://github.com/thewhiteh4t/FinalRecon",
+    "desc": "Automated Web Recon with Speed & Accuracy",
+    "img": "finalrecon_banner.png"
+  },
+  {
+    "title": "pwnedOrNot",
+    "url": "https://github.com/thewhiteh4t/pwnedOrNot",
+    "desc": "Find Passwords of Compromised Email Addresses",
+    "img": "pwnedornot_banner.png"
+  },
+  {
+    "title": "killcast",
+    "url": "https://github.com/thewhiteh4t/killcast",
+    "desc": "Control Google ChromeCast Devices",
+    "img": "killcast_banner.png"
+  },
+  {
+    "title": "nexfil",
+    "url": "https://github.com/thewhiteh4t/nexfil",
+    "desc": "Lightning Fast Social Media Profile Lookups",
+    "img": "nexfil_banner.png"
+  },
+  {
+    "title": "FlashSploit",
+    "url": "https://github.com/thewhiteh4t/flashsploit",
+    "desc": "Exploitation Framework for ATtiny85 Based HID Attacks",
+    "img": "flashsploit_banner.png"
+  }
+]

@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/Base.astro'
+import FormattedDate from '../components/FormattedDate.astro'
+import { BookA, Calendar, Dot } from 'lucide-react'
+import ToC from '../components/ToC.astro'
+import BlogCard from '../components/BlogCard.astro'
+import CategoryCard from '../components/CategoryCard.astro'
+import TagCard from '../components/TagCard.astro'
+import { getCollection } from 'astro:content'
+
+const { frontmatter, headings } = Astro.props
+const allPosts = await getCollection('blog')
+const postsForCategory = allPosts
+  .filter((post) => post.id !== Astro.locals.slug)
+  .filter((post) => post.data.categName === frontmatter.categName)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3)
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.description}>
+  <div class="container mx-auto px-4 py-6 pt-20" data-pagefind-body>
+    <article
+      itemscope
+      itemtype="https://schema.org/BlogPosting"
+      class="w-full mt-5"
+    >
+      <h1 itemprop="headline" class="text-center text-on-background">
+        {frontmatter.title}
+      </h1>
+      <div class="flex flex-col items-center">
+        <p class="my-5 text-sm">
+          <a
+            href="/"
+            rel="author noopener noreferrer"
+            itemprop="url"
+            target="_blank"
+            class="flex items-center gap-2"
+          >
+            <BookA className="size-4" />
+            <span itemprop="author">{frontmatter.author.id}</span>
+          </a>
+
+          <span class="flex items-center gap-2 min-h-6">
+            <Calendar className="size-4 stroke-secondary" />
+            <FormattedDate date={frontmatter.pubDate} />
+
+            {
+              frontmatter.updatedDate && (
+                <>
+                  <Dot className="size-4" />
+                  Updated on&nbsp;
+                  <FormattedDate date={frontmatter.updatedDate} />
+                </>
+              )
+            }
+          </span>
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-3 order-1 lg:order-1">
+          <div class="lg:sticky lg:top-20 h-fit">
+            <ToC headings={headings} />
+          </div>
+        </div>
+
+        <div
+          itemprop="articleBody"
+          class="lg:col-span-6 order-2 lg:order-2
+                prose bg-surface p-4 rounded-lg shadow-md shadow-black/50 w-full lg:w-[65ch] mx-auto
+                prose-a:text-secondary
+              prose-headings:text-on-surface
+              prose-ul:text-on-surface-variant
+              prose-ol:text-on-surface-variant
+                prose-table:my-0
+              prose-table:text-on-surface-variant
+              prose-p:text-on-surface
+              prose-strong:text-on-surface"
+        >
+          <slot />
+        </div>
+
+        <div class="lg:col-span-3 order-3 lg:order-3">
+          <div class="lg:sticky lg:top-20 h-fit space-y-6">
+            <CategoryCard />
+            <TagCard />
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="container mx-auto px-4">
+    <div class="flex flex-row justify-center">
+      <div class="mb-5 card shadow-md shadow-black/50 max-w-[65ch] w-full">
+        <div class="card-body bg-surface rounded-lg">
+          <script
+            is:inline
+            src="https://giscus.app/client.js"
+            data-repo="thewhiteh4t/thewhiteh4t.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkxMjEwOTA0NTA="
+            data-category="General"
+            data-category-id="DIC_kwDOBzexks4CtD80"
+            data-mapping="title"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="transparent_dark"
+            data-lang="en"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async></script>
+        </div>
+      </div>
+    </div>
+
+    {
+      postsForCategory.length > 0 && (
+        <div class="my-5">
+          <h2 class="my-5">Other Posts</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {postsForCategory.map((bp, index) => (
+              <BlogCard post={bp} loadingType={'lazy'} fetchPriority={'auto'} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

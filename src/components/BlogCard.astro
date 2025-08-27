@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from '../components/FormattedDate.astro'
+import { Picture } from 'astro:assets'
+import { Dot, FolderSymlink } from 'lucide-react'
+
+type Props = {
+  post: CollectionEntry<'blog'>
+  loadingType: 'eager' | 'lazy' | null | undefined
+  fetchPriority: 'high' | 'auto' | 'low' | null | undefined
+}
+
+const { post, loadingType, fetchPriority } = Astro.props
+---
+
+<a href={`/blog/${post.id}`} class="no-underline" aria-label={post.data.title}>
+  <article class="card rounded-lg bg-surface shadow-md shadow-black/50 h-84">
+    <figure class="relative w-full aspect-[16/9]">
+      <Picture
+        src={post.data.cardImage}
+        alt={post.data.title}
+        quality="mid"
+        formats={['avif', 'webp']}
+        layout="full-width"
+        fit="cover"
+        position="center"
+        class="w-full h-full object-cover absolute inset-0"
+        loading={loadingType}
+        fetchpriority={fetchPriority}
+      />
+      <div
+        class="badge bg-background text-secondary uppercase text-xs absolute inset-0 top-2 left-2 shadow-lg shadow-black/50 py-4"
+      >
+        <FolderSymlink />
+        {post.data.categName}
+      </div>
+    </figure>
+    <header class="card-body rounded-b-lg">
+      <h3 class="card-title line-clamp-2">
+        {post.data.title}
+      </h3>
+
+      <p class="flex flex-row items-center flex-wrap">
+        <span class="text-primary">{post.data.author.id}</span>
+        <Dot />
+        <span class="text-on-surface-variant"
+          ><FormattedDate date={post.data.pubDate} /></span
+        >
+      </p>
+    </header>
+  </article>
+</a>

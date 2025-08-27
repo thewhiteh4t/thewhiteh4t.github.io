@@ -1,0 +1,47 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Footer from '../components/Footer.astro'
+import Header from '../components/Header.astro'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth antialiased">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+  <body class="flex flex-col min-h-screen text-on-surface bg-background">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:inline
+      src="https://www.googletagmanager.com/gtag/js?id=G-WVR2PT5HNE"
+      defer></script>
+    <script is:inline defer>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+      })
+
+      gtag('config', 'G-WVR2PT5HNE')
+    </script>
+  </body>
+</html>

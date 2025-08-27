@@ -1,0 +1,88 @@
+---
+title: pwnedOrNot - OSINT Tool for Finding Passwords of Compromised Email Accounts
+description: >-
+  pwnedOrNot is a python script which checks if the email account has been
+  compromised in a data breach, if the email account is compromised it proceeds
+  to find passwords for the compromised account
+pubDate: 2018-05-26
+updatedDate: 2018-05-26
+categName: tools
+tagList: python,osint,email,hibp
+author: thewhiteh4t
+layout: ../../layouts/BlogPost.astro
+cardImage: ../../assets/post_imgs/pwnedornot-osint-tool/cardImage.png
+---
+## Introduction
+
+pwnedOrNot is a python script which checks if the email account has been compromised in a data breach, if the email account is compromised it proceeds to find passwords for the compromised account.
+
+\
+It uses [HaveIBeenPwned](https://haveibeenpwned.com/API/v2) v2 API to test email accounts and searches for the passwords in pastebin dumps.
+
+\
+This tool has been tested on :
+
+- Kali Linux 18.2
+- Kali Nethunter
+- Ubuntu 18.04
+- Termux
+
+## Installation
+
+**Ubuntu and Kali**
+
+```bash
+pip install cfscrape
+apt-get install nodejs
+```
+
+\
+**Termux**
+
+```bash
+pkg install git
+pkg install python2
+pip2 install requests
+pip2 install cfscrape
+git clone https://github.com/thewhiteh4t/pwnedOrNot.git
+python2 pwnedornot.py
+```
+
+\
+Other common standard python modules pwnedornot uses :
+
+- os
+- re
+- time
+- json
+- requests
+
+## Usage
+
+```bash
+git clone https://github.com/thewhiteh4t/pwnedOrNot.git
+cd pwnedOrNot/
+python pwnedornot.py
+```
+
+## Features
+
+[HaveIBeenPwned](https://haveibeenpwned.com/API/v2) offers a lot of information about the compromised email, some useful information is displayed by this script :
+
+- Name of Breach
+- Domain Name
+- Date of Breach
+- Fabrication status
+- Verification Status
+- Retirement status
+- Spam Status
+- Source of Dump
+- ID of Dump
+
+\
+And with all this information pwnedOrNot can easily find passwords for compromised emails if the dump is accessible and it contains the password.
+
+## Demo
+
+{% VideoLink
+   link="https://odysee.com/@thewhiteh4t:2/pwnedornot-find-passwords-of-compromised:1" /%}

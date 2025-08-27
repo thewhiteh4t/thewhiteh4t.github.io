@@ -1,0 +1,29 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string
+  btnType?: 'internal' | 'external'
+}
+
+const { href, btnType, class: className, ...attrs } = Astro.props
+const isExternal = btnType === 'external'
+---
+
+<a
+  href={href}
+  class:list={[
+    'bg-primary rounded-lg border-0 ring-0 text-on-primary uppercase font-semibold no-underline md:hover:bg-primary-on-hover active:bg-primary-on-press md:hover:shadow-md md:hover:shadow-black/30 hover:scale-90 transition-transform duration-300 ease-out',
+    className,
+  ]}
+  target={isExternal ? '_blank' : undefined}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+>
+  <slot />
+</a>
+
+<style>
+  a {
+    font-family: var(--font-urbanist);
+  }
+</style>

@@ -1,0 +1,17 @@
+  .expressive-code .frame.is-terminal .header {
+      z-index: 0;
+  }
+
+  .expressive-code .copy {
+      z-index: 0;
+  }
+
+  .expressive-code .copy button {
+      width: 30px !important;
+      height: 30px !important;
+  }
+
+  .expressive-code .copy button::before {
+      border: 0 !important;
+      border-radius: 7px !important;
+  }

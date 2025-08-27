@@ -1,0 +1,51 @@
+---
+interface Props {
+  level: number
+  id: string
+}
+
+const { level, id } = Astro.props
+---
+
+{
+  level === 1 && (
+    <h1 id={id} class="scroll-mt-20">
+      <slot />
+    </h1>
+  )
+}
+{
+  level === 2 && (
+    <h2 id={id} class="scroll-mt-20">
+      <slot />
+    </h2>
+  )
+}
+{
+  level === 3 && (
+    <h3 id={id} class="scroll-mt-20">
+      <slot />
+    </h3>
+  )
+}
+{
+  level === 4 && (
+    <h4 id={id} class="scroll-mt-20">
+      <slot />
+    </h4>
+  )
+}
+{
+  level === 5 && (
+    <h5 id={id} class="scroll-mt-20">
+      <slot />
+    </h5>
+  )
+}
+{
+  level === 6 && (
+    <h6 id={id} class="scroll-mt-20">
+      <slot />
+    </h6>
+  )
+}

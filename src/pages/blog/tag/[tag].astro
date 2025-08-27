@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../../layouts/Base.astro'
+import BlogCard from '../../../components/BlogCard.astro'
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog')
+
+  const allTags = new Set()
+  allPosts.forEach((post) => {
+    if (post.data.tagList && typeof post.data.tagList === 'string') {
+      const tags = post.data.tagList
+        .split(',')
+        .map((tag) => tag.trim().toLowerCase())
+      tags.forEach((tag) => {
+        if (tag) {
+          allTags.add(tag)
+        }
+      })
+    }
+  })
+
+  return Array.from(allTags).map((tag) => ({
+    params: { tag },
+  }))
+}
+
+const { tag } = Astro.params
+
+const allPosts = await getCollection('blog')
+const filteredPosts = allPosts.filter((post) => {
+  if (post.data.tagList && typeof post.data.tagList === 'string') {
+    const postTags = post.data.tagList
+      .split(',')
+      .map((t) => t.trim().toLowerCase())
+    return postTags.includes(tag)
+  }
+  return false
+})
+---
+
+<BaseLayout title={`Posts tagged with "${tag}"`} description="">
+  <div class="container mx-auto px-4 py-6 pt-20">
+    <h1 class="my-5">
+      Tag : <span class="capitalize">{tag}</span>
+    </h1>
+    <h2 class="font-mono text-[1rem] font-normal text-primary">
+      $ ./blog_page --tag {tag}
+    </h2>
+
+    {
+      filteredPosts.length > 0 ? (
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 my-5">
+          {filteredPosts.map((post, index) => (
+            <BlogCard
+              post={post}
+              loadingType={index < 4 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+            />
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-xl text-slate-400">
+          No posts found for this tag.
+        </p>
+      )
+    }
+  </div>
+</BaseLayout>

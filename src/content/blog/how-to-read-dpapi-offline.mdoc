@@ -1,0 +1,129 @@
+---
+title: How to read DPAPI encrypted chrome credentials offline
+description: >-
+  Reading DPAPI encrypted secrets is easy using tools like mimikatz but what if
+  the secrets are stored offline in a disk image
+pubDate: 2023-03-18
+categName: ctf
+tagList: ctf,tutorial,dpapi,windows
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/how-to-read-dpapi-offline/cardImage.jpg
+---
+Recently we were playing DavinciCTF 2023 and I came across a forensics challenge, David Cicode, which was based on DPAPI encrypted chrome credentials. In a real life scenario we use tools like mimikatz to easily get master keys and read chrome secrets but in this challenge all I had was an image file which means offline extraction of secrets without the use of mimikatz!
+
+![](https://i.imgur.com/1JhkZUk.png)
+
+## Mount EWF image file
+
+Mounting an EWF image file is simple. Make sure you have `libewf` or `ewf-tools` depending on the OS you are using. You will have access to `ewfmount` command :
+
+![](https://i.imgur.com/KYeHL3R.png)
+
+I copied the image found inside for easier access and mounted it using the following mount command :
+
+```bash
+sudo mount ewf1 mpoint -o ro,loop,show_sys_files,streams_interace=windows
+```
+
+![](https://i.imgur.com/meUNyG5.png)
+
+yes I know, colors gone wrong, I still haven't fixed that. Anyways now the Users directory was readable. According to the challenge description goal was to find YouTube credentials.
+
+## Chrome secrets
+
+In windows you will find juicy stuff under the following directory :
+
+```shell
+/Users/USERNAME/AppData/Local/Google/Chrome/User Data
+```
+
+We are interested in two files, `Local State` and `Login Data`. State is a JSON file which contains browser information, profile information and encrypted keys for our logins. Login data is a sqlite3 database which contains encrypted passwords.
+
+## The problem
+
+The AES key in state file is protected by Windows DPAPI. We need to decrypt the DPAPI blob to get the AES key and then use it to read the passwords from database.
+
+## Crack user password
+
+Using `DPAPImk2john.py` we can generate a hash based on SID and masterkey of the user. To get SID and masterkey we can simply browse to the following path :
+
+```
+/Users/DavidCicode/AppData/Roaming/Microsoft/Protect
+```
+
+![](https://i.imgur.com/bpI7ebM.png)
+
+Directory name is the SID and the filename inside is the masterkey value
+
+```bash
+DPAPImk2john --sid="S-1-5-21-3100841193-2683041198-3967357107-1000" --masterkey="1acbbc52-02e6-404d-b139-43d93da54db8" --context="local" > hash.txt
+
+# Crack hash using john
+
+john hash.txt -w=/usr/share/wordlists/rockyou.txt
+Created directory: /home/twh/.john/opencl
+Using default input encoding: UTF-8
+Loaded 1 password hash (DPAPImk, DPAPI masterkey file v1 and v2 [SHA1/MD4 PBKDF2-(SHA1/SHA512)-DPAPI-variant 3DES/AES256 128/128 AVX 4x])
+Cost 1 (iteration count) is 8000 for all loaded hashes
+Will run 4 OpenMP threads
+Press 'q' or Ctrl-C to abort, 'h' for help, almost any other key for status
+ilovedavid       (?)
+```
+
+## Decrypt masterkey file
+
+Using the password and power of impacket tools we can now read the masterkey file
+
+```bash
+dpapi.py masterkey -file mpoint/Users/DavidCicode/AppData/Roaming/Microsoft/Protect/S-1-5-21-3100841193-2683041198-3967357107-1000/1acbbc52-02e6-404d-b139-43d93da54db8 -sid S-1-5-21-3100841193-2683041198-3967357107-1000 -password ilovedavid
+```
+
+![](https://i.imgur.com/rr32wdU.png)
+
+## David deleted everything!
+
+At this point the challenge took a turn and it looks like both state file and login data file were deleted, so now first we need to recover them. For this step I used `TestDisk` utility :
+
+```bash
+sudo testdisk ewf1
+```
+
+![](https://i.imgur.com/Vvzy5s6.png)
+
+Here is the Login Data database file :
+
+![](https://i.imgur.com/5zrNEk1.png)
+
+## Decrypting AES key
+
+In order to get the AES key first we need to extract it from state file and decode it :
+
+```py
+import json
+import base64
+
+with open('/home/twh/ctf/dvc_2023/cicode/recovered/local_state', 'rb') as state_file:
+    encrypted_key = json.load(state_file)
+
+encrypted_key = encrypted_key['os_crypt']['encrypted_key']
+decrypted_key = base64.b64decode(encrypted_key)
+
+with open('dec_data', 'wb') as outfile:
+    outfile.write(decrypted_key[5:])
+```
+
+next we need to decrypt this DPAPI blob using the masterkey :
+
+```bash
+dpapi.py unprotect -file dec_data -key 0x89c9d658351ff09f6507c089320a70302d94a462b1365d2e946af928caa80d39d87be29a7ec0429949391590595b6f9ccdf0675f20e9d91f5d534f8489949e1c
+```
+
+![](https://i.imgur.com/3JOCq9E.png)
+
+now we need to convert this hexdump, I used cyberchef for this :
+
+![](https://i.imgur.com/khDG7sK.png)
+
+finally I used [decrypt-chrome-passwords](https://github.com/ohyicong/decrypt-chrome-passwords) project to decrypt the password, few modifications are required like the path to login data database, and here is the flag :
+
+![](https://i.imgur.com/asY6yvr.png)

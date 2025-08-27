@@ -1,0 +1,14 @@
+[
+    {
+        "cve_id": "CVE-2023-37569",
+        "cve_title": "ESDS eMagic eNlight 360 RCE",
+        "cve_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-37569",
+        "cvss": "8.8 High"
+    },
+    {
+        "cve_id": "CVE-2020-9375",
+        "cve_title": "TP-Link Archer C50 v3 Denial of Service",
+        "cve_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-9375",
+        "cvss": "7.5 High"
+    }
+]

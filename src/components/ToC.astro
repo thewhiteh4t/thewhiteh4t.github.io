@@ -1,0 +1,27 @@
+---
+// https://noahflk.com/blog/astro-table-of-contents
+// Headings parsed in [...slug].astro
+import type { MarkdownHeading } from 'astro'
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+
+const filteredHeadings = headings.filter((heading) => heading.depth <= 2)
+---
+
+{
+  filteredHeadings.length > 0 && (
+    <div class="card bg-surface shadow-md shadow-black/50 rounded-lg mb-6 w-full max-w-[65ch] mx-auto">
+      <div class="card-body">
+        <h2 class="card-title">Contents</h2>
+        {filteredHeadings.map((heading) => (
+          <a class="text-md my-2" href={`#${heading.slug}`}>
+            {heading.text}
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}

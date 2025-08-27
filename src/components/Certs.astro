@@ -1,0 +1,18 @@
+---
+import certs from '../data/certs.json'
+import LoadImg from '../components/BulkImpImgs.astro'
+---
+
+{
+  certs.map((cert) => (
+    <div class="overflow-hidden rounded-full shadow-md shadow-black/50">
+      <figure aria-label="certification badge">
+        <LoadImg
+          imagePath={`/src/assets/cert_imgs/${cert.img}`}
+          altText={cert.title}
+          imageClasses="object-cover rounded-full scale-130"
+        />
+      </figure>
+    </div>
+  ))
+}

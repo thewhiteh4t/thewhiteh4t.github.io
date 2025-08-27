@@ -1,0 +1,33 @@
+---
+import projects from '../data/projects.json'
+import LoadImg from '../components/BulkImpImgs.astro'
+---
+
+{
+  projects.map((project) => (
+    <a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="no-underline"
+    >
+      <div class="rounded-lg overflow-hidden h-48 lg:h-58 shadow-md shadow-black/50">
+        <div class="relative h-full">
+          <div class="absolute inset-0">
+            <LoadImg
+              imagePath={`/src/assets/project_imgs/${project.img}`}
+              altText={`${project.title} - ${project.desc}`}
+              imageClasses="h-full w-full object-cover brightness-40"
+            />
+          </div>
+          <div class="absolute inset-0 flex justify-center items-center text-center p-2 text-white">
+            <div>
+              <h3 class="text-shadow-lg/50 text-4xl mb-2">{project.title}</h3>
+              <p class="text-shadow-lg/50">{project.desc}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  ))
+}

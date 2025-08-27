@@ -1,0 +1,35 @@
+---
+import { Code } from 'astro-expressive-code/components'
+import '../styles/expcode.css'
+
+const { content } = Astro.props
+const inputString = Astro.props['data-language'] || 'txt'
+const parts = inputString.split('|')
+const parsedResult = parts.map((part) => {
+  if (part.startsWith('[') && part.endsWith(']')) {
+    return part.slice(1, -1).split(',')
+  } else if (part.startsWith('{') && part.endsWith('}')) {
+    const content = part.slice(1, -1)
+    if (content.includes(',')) {
+      return content.split(',').map((item) => Number(item))
+    } else {
+      return Number(content)
+    }
+  } else {
+    return part
+  }
+})
+
+const [lang, title, mark, ins, del] = parsedResult
+---
+
+<Code
+  code={content}
+  title={title ?? undefined}
+  mark={mark ?? undefined}
+  del={del ?? undefined}
+  ins={ins ?? undefined}
+  frame="auto"
+  lang={lang ?? undefined}
+  class:list={['not-prose']}
+/>

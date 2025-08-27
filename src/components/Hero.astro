@@ -1,0 +1,62 @@
+---
+import AnimLogo from '../components/twh'
+import { ChevronDown } from 'lucide-react'
+---
+
+<!-- MOBILE LAYOUT -->
+<div
+  class="hero bg-transparent h-screen drop-shadow-lg drop-shadow-cyan-300/50"
+>
+  <div class="anim-bg h-screen w-full transform-cpu will-change-transform">
+  </div>
+
+  <div
+    class="hero-content flex flex-col items-center justify-center h-screen w-full lg:hidden"
+  >
+    <div class="my-2 size-[150px] contain-strict">
+      <AnimLogo client:load />
+    </div>
+
+    <h1 class="text-3xl h-[3rem] w-full text-center">thewhiteh4t</h1>
+    <h2 class="mt-5 text-xl font-normal h-[2rem] w-full text-center">
+      Security Through Hacking
+    </h2>
+    <p class="mt-5 text-sm p-1 leading-6 min-h-24 w-full text-center">
+      Specializing in offensive security assessments, vulnerability research and
+      open-source tool development
+    </p>
+    <a
+      href="#projects"
+      aria-label="move to next section button"
+      class="btn mt-25 rounded-full h-15 w-15 bg-primary border-0 ring-0 hover:scale-90 transition-transform duration-150 ease-out"
+    >
+      <ChevronDown className="stroke-on-primary animate-bounce" />
+    </a>
+  </div>
+  <!-- DESKTOP LAYOUT -->
+  <div
+    class="hero-content hidden lg:flex flex-col items-center justify-center h-screen w-full"
+  >
+    <div class="flex items-center justify-center gap-5 w-full min-h-[150px]">
+      <div class="size-[150px] contain-strict">
+        <AnimLogo client:load />
+      </div>
+
+      <h1 class="text-6xl h-[3.7rem] text-center">thewhiteh4t</h1>
+    </div>
+    <h2 class="mt-5 font-normal h-[2.5rem] w-full text-center">
+      Security Through Hacking
+    </h2>
+    <p class="mt-5 leading-6 min-h-24 w-full text-center">
+      Specializing in offensive security assessments, vulnerability research and
+      open-source tool development
+    </p>
+    <a
+      href="#projects"
+      aria-label="move to next section button"
+      class="btn mt-25 rounded-full h-15 w-15 bg-primary border-0 ring-0 hover:scale-90 transition-transform duration-150 ease-out"
+    >
+      <ChevronDown className="stroke-on-primary animate-bounce" />
+    </a>
+  </div>
+</div>

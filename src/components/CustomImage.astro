@@ -1,0 +1,34 @@
+---
+import { Picture } from 'astro:assets'
+const { src, alt } = Astro.props
+const postTitle = Astro.locals?.postTitle || ''
+Astro.locals.imageCounter++
+const imageNumber = Astro.locals.imageCounter
+
+function generateAltText(postTitle, imageNumber) {
+  if (imageNumber === 0) {
+    return `Illustration for ${postTitle} written by thewhiteh4t`
+  } else {
+    return `Figure ${imageNumber} showing ${postTitle} written by thewhiteh4t`
+  }
+}
+const altText = generateAltText(postTitle, imageNumber)
+---
+
+<figure
+  itemprop="image"
+  itemscope
+  itemtype="https://schema.org/ImageObject"
+  class="w-full flex flex-row justify-center"
+  aria-label={altText}
+>
+  <Picture
+    src={src}
+    alt={altText}
+    quality="mid"
+    formats={['avif', 'webp']}
+    layout="constrained"
+    inferSize={true}
+    class="rounded-lg shadow-md shadow-black/50"
+  />
+</figure>

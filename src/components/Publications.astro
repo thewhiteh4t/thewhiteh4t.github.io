@@ -1,0 +1,27 @@
+---
+import publs from '../data/publications.json'
+import LoadImg from '../components/BulkImpImgs.astro'
+---
+
+{
+  publs.map((publ) => (
+    <a
+      href={publ.link}
+      aria-label="link to publication"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="no-underline"
+    >
+      <figure
+        class="h-full w-full rounded-lg overflow-hidden shadow-md shadow-black/50"
+        aria-label="image of publication"
+      >
+        <LoadImg
+          imagePath={`/src/assets/publ_imgs/${publ.img}`}
+          altText={`${publ.issuer} - ${publ.title}`}
+          imageClasses="object-cover"
+        />
+      </figure>
+    </a>
+  ))
+}

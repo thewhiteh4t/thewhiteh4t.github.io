@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content'
+import CardBtn from './CardBtn.astro'
+const categories = await getCollection('categories')
+---
+
+<nav
+  aria-label="Blog Categories"
+  class="card bg-surface shadow-md shadow-black/50 max-w-[65ch] mt-6 lg:mt-0 mx-auto"
+>
+  <div class="card-body">
+    <h2 class="card-title">Categories</h2>
+    <div class="flex flex-wrap justify-center w-full">
+      {
+        categories.map((categ) => (
+          <CardBtn href={`/blog/category/${categ.id}`} class="btn m-1 min-w-32">
+            {categ.data.categName}
+          </CardBtn>
+        ))
+      }
+    </div>
+  </div>
+</nav>

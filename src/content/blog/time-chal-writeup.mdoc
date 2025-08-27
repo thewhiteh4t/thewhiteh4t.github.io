@@ -1,0 +1,89 @@
+---
+title: V4l's The Time Challenge Write up
+description: This time we will solve The Time Challenge created by V4l
+pubDate: 2020-08-23
+categName: ctf
+tagList: ctf,stegano,stego,cipher
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/time-chal-writeup/cardImage.png
+---
+V4l, one of our CTF creators at [TWC](https://twc1rcle.com) created this challenge, it uses multiple steganography and cryptography techniques and good for beginners who are trying their hand at CTFs. Lets solve this!
+
+## Follow The White Rabbit...
+
+![](https://i.imgur.com/jcXuhw0.png)
+
+Like always I start with the file command...
+
+```bash
+$ file thewhiterabbit.png
+thewhiterabbit.png: PNG image data, 836 x 456, 8-bit/color RGBA, non-interlaced
+```
+
+After trying various tools such as exiftool, pngcheck, strings I finally landed on zsteg!
+
+```bash
+$ zsteg thewhiterabbit.png
+
+b1,rgb,lsb,xy       .. text: "You need time : RxabLA7UQ9k \n\nbnnjm://jumnyvch.wig/y49gG4xD \n\n"
+b1,bgr,lsb,xy       .. text: "9!AmUEcn"
+b1,rgba,lsb,xy      .. text: "q]39QW{[YW"
+b2,g,lsb,xy         .. text: "AEAUAQEUAUDDDP@"
+b2,rgb,msb,xy       .. text: "\"( (*(*(\"("
+b3,r,lsb,xy         .. file: gfxboot compiled html help file
+b3,rgb,lsb,xy       .. file: gfxboot compiled html help file
+b3,rgb,msb,xy       .. file: Apple DiskCopy 4.2 image H\200 A\222 \011\202, 8388617 bytes, 0x92200882 tag size, 0x90 encoding, 0x0 format
+b4,r,lsb,xy         .. file: PDP-11 UNIX/RT ldp
+b4,rgb,lsb,xy       .. file: Targa image data (257-4368) 4096 x 65536 x 1 +4353 +257 - right "\021\020\001\020\001\001\001\020\001\001\001\020\001"
+
+# Take a look at the text part
+#
+#==============================
+# You need time : RxabLA7UQ9k
+
+# bnnjm://jumnyvch.wig/y49gG4xD
+#==============================
+```
+
+Second string looks like Caesar cipher, lets try to decode it using dcode.fr...
+
+![](https://i.imgur.com/0p5Lnkl.png)
+
+So it is a Caesar cipher with a shift of 20 and look it's a pastebin URL...
+
+```
+Title   -> youneedtorotbysomethingbutwhichone?
+content -> gssor://vvv.xntstad.bnl/vzsbg?u=
+```
+
+Title tells us what to do and if you observe the content it looks like a URL and we need to shift each alphabet by 1 to get the URL
+
+```
+https://www.youtube.com/watch?v=
+```
+
+Interesting but we need a video ID as well, lets head back a little...
+
+```
+You need time : RxabLA7UQ9k
+
+lets try this as the video id
+
+https://www.youtube.com/watch?v=RxabLA7UQ9k
+```
+
+It is a valid link to a video, lets take a look at the comments section...
+
+![](https://i.imgur.com/U2unV42.png)
+
+V4l has added a comment here, lets drop this string in CyberChef and use From Hex...
+
+![](https://i.imgur.com/RJ6NLOj.png)
+
+An anonfiles URL which is serving a WAV file, for this stage we got a hint from V4l : "look DEEP into the SOUND", DeepSound is a popular steganography tool used for hiding/revealing data inside audio files, it was also featured in Mr. Robot!
+
+Usage is very simple but unfortunately we need windows for this step :(
+
+![](https://i.imgur.com/tmiyES4.png)
+
+Inside there is a congrats.txt file and we have solved it! Thank you v4l for creating this challenge, suitable for beginners, looking forward to more such challenges!

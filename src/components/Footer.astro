@@ -1,0 +1,17 @@
+---
+import Contact from '../components/Contact.astro'
+const currYear = new Date().getFullYear()
+---
+
+<footer
+  id="contact"
+  class="footer footer-horizontal footer-center bg-gradient-to-t from-black to-transparent backdrop-blur text-base-content p-4"
+>
+  <div class="flex flex-row">
+    <Contact />
+  </div>
+  <aside>
+    <p>Designed by thewhiteh4t</p>
+    <p>2017 - {currYear}</p>
+  </aside>
+</footer>

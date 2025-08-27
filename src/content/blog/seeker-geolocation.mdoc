@@ -1,0 +1,94 @@
+---
+title: Seeker - Find Geolocation with High Accuracy
+description: >-
+  Concept behind Seeker is simple, just like we host phishing pages to get
+  credentials why not host a fake page that requests your loction just like many
+  popular location based websites
+pubDate: 2018-11-16
+categName: tools
+tagList: python,geolocation,osint
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/seeker-geolocation/cardImage.png
+---
+## Introduction
+
+Concept behind Seeker is simple, just like we host phishing pages to get credentials why not host a fake page that requests your location just like many popular location based websites. Seeker Hosts a fake website on In Built PHP Server and uses Ngrok, website asks for Location Permission and if the user allows it, we can get :
+
+- Longitude
+- Latitude
+- Accuracy
+- Altitude - Not always available
+- Direction - Only available if user is moving
+- Speed - Only available if user is moving
+
+\
+Along with Location Information we also get Device Information without any permissions :
+
+- Operating System
+- Platform
+- Number of CPU Cores
+- Amount of RAM - Approximate Results
+- Screen Resolution
+- GPU information
+- Browser Name and Version
+- Public IP Address
+
+\
+This tool is a Proof of Concept and is for Educational Purposes Only, Seeker shows what data a malicious website can gather about you and your devices and why you should not click on random links and allow critical permissions such as Location etc.
+
+- Other tools and services offer IP Geolocation which is not very accurate and does not give location of user.
+- Generally if a user accepts location permission, Accuracy of the information received is **accurate to approximately 30 meters**.
+
+**Tested On**
+
+- Kali Linux 2018.2
+- Ubuntu 18.04
+- Arch Linux based Distro
+- Termux
+- Kali Linux (WSL)
+- Parrot OS
+- Zorin OS
+
+## Installation
+
+**Ubuntu/Kali Linux**
+
+```bash
+git clone https://github.com/thewhiteh4t/seeker.git
+cd seeker/
+chmod 777 install.sh
+./install.sh
+
+#OR using Docker
+
+# Install docker
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# Build Seeker
+cd seeker/
+docker build -t seeker .
+
+# Launch seeker
+docker run -t --rm seeker
+```
+
+\
+**Arch Linux**
+
+```bash
+# Install docker
+pacman -Syy pacman -S docker
+systemctl start docker.service
+
+# Build Seeker
+cd seeker/
+docker build -t seeker .
+
+# Launch seeker
+docker run -t --rm seeker
+```
+
+## Demo
+
+{% VideoLink link="https://odysee.com/@thewhiteh4t:2/seeker_v126_demo:e" /%}

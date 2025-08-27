@@ -1,0 +1,53 @@
+---
+title: What's New in FinalRecon v1.0.2
+description: >-
+  I have added and improved multiple things in this release which enables
+  finalrecon to be faster than before and now it has new capabilities
+pubDate: 2020-03-25
+categName: tools
+tagList: update,tools
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/new-finalrecon-v102/cardImage.png
+---
+
+I have added and improved multiple things in this release which enables finalrecon to be faster than before and now it has new capabilities. Below is a breakdown of all the changes present in this release.
+
+## Improvements and New Modules
+
+- Improved URL Handling, URLs with a path are supported, domains and hostname are correctly separated now.
+- Tool version checking added, if I have released a new version and you are running an old version, it will notify you during startup that an update is now available along with the version.
+- Dependency checking added, if you are missing any dependency or if I add any new dependency and it's not installed on your machine, you will get the name of the dependency which is missing along with pip3 command to install it.
+- Time taken to execute desired commands will now be calculated and displayed when all modules finish executing
+- Crawler
+  - Significant speed improvement in crawling
+  - Javascript crawling added, links present inside javascripts will now be extracted
+- DNS Enumeration Added
+  - DNS Records : A, AAAA, ANY, CNAME, MX, NS, SOA, TXT Records
+  - DMARC Records
+- Subdomain Enumeration
+  - Subdomains are collected from 5 sources and then only unique subdomains are displayed as result along with total count
+    - BuffOver
+    - crt.sh
+    - ThreatCrowd
+    - AnubisDB
+    - ThreatMiner
+- Traceroute
+  - Protocols
+    - UDP
+    - TCP
+    - ICMP
+- Directory Searching
+- Port Scan
+  - Fast
+  - Top 1000 Ports
+  - Open Ports with Standard Services
+- Export
+  - Formats
+    - txt
+    - xml
+    - csv
+
+## Demo
+
+{% VideoLink
+   link="https://odysee.com/@thewhiteh4t:2/what%27s-new-in-finalrecon-v1.0.2-osint:c" /%}

@@ -1,0 +1,8 @@
+{
+  "name": "thewhiteh4t",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "landscape"
+}

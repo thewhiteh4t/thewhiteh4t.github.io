@@ -1,0 +1,98 @@
+---
+import logo from '../assets/logo_small.png'
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const blogURL = new URL('/blog', Astro.site)
+const logoURL = new URL(logo.src, Astro.site)
+let structuredData
+
+if (Astro.url.pathname === '/') {
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'thewhiteh4t',
+    url: Astro.site,
+    author: {
+      '@type': 'Person',
+      name: 'thewhiteh4t',
+    },
+  }
+} else if (Astro.url.pathname === '/blog/') {
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'thewhiteh4t Blog',
+    url: blogURL,
+    description:
+      'The official blog for thewhiteh4t, featuring articles on cybersecurity and security research.',
+    publisher: {
+      '@type': 'Person',
+      name: 'thewhiteh4t',
+      url: Astro.site,
+    },
+  }
+} else if (
+  Astro.url.pathname.startsWith('/blog/') &&
+  Astro.locals.frontmatter
+) {
+  const img_src = new URL(Astro.locals.frontmatter.cardImage.src, Astro.site)
+  structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    mainEntityOfPage: canonicalURL,
+    headline: Astro.locals.frontmatter.title,
+    name: Astro.locals.frontmatter.title,
+    description: Astro.locals.frontmatter.description,
+    datePublished: Astro.locals.frontmatter.pubDate.toISOString(),
+    dateModified:
+      Astro.locals.frontmatter.updatedDate?.toISOString() ?? undefined,
+    author: {
+      '@type': 'Person',
+      '@id': Astro.site,
+      name: Astro.locals.frontmatter.author.id,
+      url: Astro.site,
+      image: {
+        '@type': 'ImageObject',
+        '@id': logoURL,
+      },
+    },
+    publisher: {
+      '@type': 'Person',
+      '@id': Astro.site,
+      name: Astro.locals.frontmatter.author.id,
+      url: Astro.site,
+      image: {
+        '@type': 'ImageObject',
+        '@id': logoURL,
+      },
+    },
+    image: {
+      '@type': 'ImageObject',
+      '@id': img_src,
+      url: img_src,
+    },
+    url: canonicalURL,
+    isPartOf: {
+      '@type': 'Blog',
+      '@id': blogURL,
+      name: 'thewhiteh4t blog',
+      publisher: {
+        '@type': 'Person',
+        '@id': Astro.site,
+        name: Astro.locals.frontmatter.author.id,
+      },
+    },
+  }
+}
+---
+
+{
+  (Astro.url.pathname === '/' ||
+    Astro.url.pathname === '/blog/' ||
+    (Astro.url.pathname.startsWith('/blog/') && Astro.locals.frontmatter)) && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
+  )
+}

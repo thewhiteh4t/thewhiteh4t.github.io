@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /admin
-Disallow: /feed.xml
-Disallow: /*.json
-Disallow: /*.js
-
-Sitemap: https://thewhiteh4t.github.io/sitemap.xml

@@ -1,0 +1,11 @@
+---
+const { table } = Astro.props
+---
+
+<div
+  class="overflow-x-auto rounded-box border border-base-content/5 bg-surface-card shadow-md shadow-black/50"
+>
+  <table class="table table-sm md:table-md lg:table">
+    <slot />
+  </table>
+</div>

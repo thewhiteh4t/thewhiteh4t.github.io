@@ -1,0 +1,85 @@
+---
+title: 'MirrorriM Dojo #10 Writeup'
+description: >-
+  A nice challenge on YesWeHack platform involving Javascript and eval with some
+  palindrome twist
+pubDate: 2021-05-31
+categName: ctf
+tagList: ctf,js
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/mirrorim-dojo-10-writeup/cardImage.jpg
+---
+## Challenge
+
+A palindrome is a word, number, phrase, or other sequence of characters which reads the same backward as forward, such as madam or racecar. There are also numeric palindromes, including date/time stamps using short digits 11/11/11 11:11 and long digits 02/02/2020. Sentence-length palindromes ignore capitalization, punctuation, and word boundaries.
+
+## Blacklisted Characters
+
+```
+;//--/
+```
+
+I started with a simple input "FLAG" and here is the output I received :
+
+![](https://i.imgur.com/75HwFdy.png)
+
+So the javascript reverses our input and concatenates it with the original input and passes it through eval
+
+Let's breakdown the javascript code :
+
+```js
+function random(){
+  return Math.random().toString(16).slice(2)
+}
+const KEY = random()
+```
+
+random function generates a random alphanumeric string and stores it in KEY
+
+```js
+function reverse(s){
+    return Array.from(s).reduce((acc, c) => c + acc, "")
+}
+```
+
+reverse function simply reverses the characters of the input
+
+```js
+function mirror_eval(s){
+    try {
+        return eval(s + reverse(s))
+    } catch (e){
+        console.log(e)
+    }
+    return null
+}
+```
+
+mirror_eval function passes our input concatenated with reverse of our input into eval
+
+```js
+function check(s){
+    const FLAG = `FLAG{${random()}}`
+    if (mirror_eval(s) == KEY){
+        console.log(FLAG)
+    }
+}
+```
+
+check function creates our flag using the random alphanumeric value generated in random function and then it checks if the result of mirror_eval function is same as the value stored in the KEY, if it matches the flag is printed in the console.
+
+eval evaluates or executes an argument, so for example if we pass "1+1" in eval we will get 2 as the result. Similarly eval can evaluate logical expressions as well. If you have noticed the blacklisted characters are specific and not every character is blacklisted. One of the logical operators is || i.e. logical OR.
+
+Now lets solve the challenge, since the challenge reverses and concatenates our input if we input "KEY|" the result will be "KEY||YEK" which becomes a valid logical OR expression.
+
+KEY is defined but YEK is not defined so technically we should get an error but thats not how OR in javascript works, here are few example :
+
+![](https://i.imgur.com/grnGxYY.png)
+
+Here I have defined a variable KEY similar to our challenge and then some OR expressions. Notice lines 4, 5 and 6. In lines 4 and 5 the output is the first argument and in 6th line we can see YEK is not defined but no error was thrown and the result is the value of the first argument!
+
+Now let's see if it works in our challenge :
+
+![](https://i.imgur.com/ioP60S0.png)
+
+Solved!

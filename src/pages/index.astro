@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/Base.astro'
+import Hero from '../components/Hero.astro'
+import Projects from '../components/Projects.astro'
+import Cves from '../components/Cves.astro'
+import Publs from '../components/Publications.astro'
+import Certs from '../components/Certs.astro'
+import RecentPosts from '../components/RecentPosts.astro'
+import CardBtn from '../components/CardBtn.astro'
+import { TWC_JOIN_URL } from '../consts'
+import '../styles/animBg.css'
+---
+
+<BaseLayout title="Security Through Hacking" description="">
+  <Hero />
+  <div class="container mx-auto px-4 mb-5 pt-20">
+    <section id="projects" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Projects</h2>
+      <div
+        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8"
+      >
+        <Projects />
+      </div>
+    </section>
+
+    <section id="cves" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Vulnerability Disclosures</h2>
+      <div
+        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8"
+      >
+        <Cves />
+      </div>
+    </section>
+    <section id="publications" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Publications</h2>
+      <div
+        class="my-5 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-6 lg:gap-8"
+      >
+        <Publs />
+      </div>
+    </section>
+    <section id="certs" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Certifications</h2>
+      <div
+        class="my-5 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-6 lg:gap-8"
+      >
+        <Certs />
+      </div>
+    </section>
+    <section id="community" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Community</h2>
+      <p class="my-5 text-on-background">
+        I created <a
+          href="https://twc1rcle.com/"
+          target="_blank"
+          rel="noopener noreferrer">The White Circle</a
+        > to bring cybersecurity enthusiasts together. It's a place where we can
+        all learn from each other, stay updated on emerging threats, and build practical
+        skills in the field. <br /><br /><b>Who can join?</b> Anyone with a passion
+        for cybersecurity! Whether you're just starting out, a pro, or somewhere
+        in between, you'll find a welcoming and chill environment here. <br
+        /><br />And for those who love a good challenge, we also have our own <a
+          href="https://twc1rcle.com/ctf/team/"
+          target="_blank"
+          rel="noopener noreferrer">CTF team</a
+        >! We participate in various Capture The Flag events throughout the
+        year.
+      </p>
+      <CardBtn href={TWC_JOIN_URL} class="btn rounded-lg">Join TWC</CardBtn>
+    </section>
+    <section id="recents" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Recent Blog Posts</h2>
+      <RecentPosts />
+    </section>
+  </div>
+</BaseLayout>

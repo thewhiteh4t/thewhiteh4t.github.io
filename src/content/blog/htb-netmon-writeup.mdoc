@@ -1,0 +1,94 @@
+---
+title: Hack The Box - NetMon WriteUp
+description: Hack The Box - NetMon WriteUp by thewhiteh4t
+pubDate: 2019-06-29
+categName: hack-the-box
+tagList: htb,writeup
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/htb-netmon-writeup/cardImage.png
+---
+## Recon
+
+```bash
+Netmon IP Address : 10.10.10.152
+
+# Basic Port Scan
+
+nmap -F 10.10.10.152
+```
+
+![](https://i.imgur.com/NfRwUwk.png)
+
+Since FTP port is open we can try Anonymous login...
+
+```bash
+# username : anonymous
+# password : anonymous
+
+ftp 10.10.10.152
+```
+
+![](https://i.imgur.com/BY6EqSf.png)
+
+Anonymous Login Successful!!
+
+Now lets dig in deeper...
+
+## Enumeration
+
+![](https://i.imgur.com/jBhuN45.png)
+
+Inside `C:\Users\Public` we find `user.txt` which can be downloaded using get command and inside user.txt we have our first hash.
+
+Now Lets proceed to find the root hash...
+
+Earlier I found out that port 80 is open. On visiting via browser we have a PRTG NETMON Login Page...
+
+![](https://i.imgur.com/EOkTiBs.png)
+
+Default Username/Password for PRTG NETMON are `prtgadmin:prtgadmin` but these did not work...
+
+On inspecting the page source I didn't find anything interesting, so lets head back to ftp and look for something related to PRTG NETMON
+
+PRTG Default Installation Path is `C:/Users/Program Files (x86)/PRTG Network Monitor/` but there are no configuration files in this path, later on I found another path where configuration files are stored :
+
+```
+C:\ProgramData\Paessler\PRTG Network Monitor\
+```
+
+inside there are multiple files but the password is in PRTG `Configuration.old.bak`
+
+![](https://i.imgur.com/yG0YgJn.png)
+
+After reading `Configuration.old.bak` i found the password and username :
+
+```
+username : prtgadmin
+password : PrTg@dmin2018
+```
+
+![](https://i.imgur.com/ohOWyzI.png)
+
+I tried logging in with these credentials but login failed, but its year 2019 right now so I modified the password as `PrTg@dmin2019` and tried again and Login Successful!!
+
+![](https://i.imgur.com/cu9A1Nt.png)
+
+After some poking around in the dashboard I discovered Notification Settings under Account Settings...
+
+![](https://i.imgur.com/qMair3s.png)
+
+## Privilege Escalation
+
+Here we can Add a new Trigger which will execute a command of our choice...
+
+```
+# Set a custom notification name
+# Enable Execute Program option
+# In Parameter enter :
+
+test.txt;more C:\Users\Administrator\Desktop\root.txt > C:\hash.txt
+```
+
+After saving the new trigger, we can go back and check our new notification trigger, we can launch the trigger using the small play button on the right...
+
+After a while I got hash.txt in C:\ and that is the root hash.

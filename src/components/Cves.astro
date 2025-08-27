@@ -1,0 +1,22 @@
+---
+import cves from '../data/cves.json'
+import CardBtn from './CardBtn.astro'
+---
+
+{
+  cves.map((cve) => (
+    <div class="flex flex-col justify-items-center align-middle rounded-lg h-58 bg-surface shadow-md shadow-black/50">
+      <div class="h-full p-6 relative">
+        <h3 class="text-shadow-lg/50 text-2xl">{cve.cve_id}</h3>
+        <span class="uppercase text-red-400 font-semibold">{cve.cvss}</span>
+        <p class="mt-2">{cve.cve_title}</p>
+        <CardBtn
+          href={cve.cve_url}
+          class="btn absolute right-0 bottom-0 mb-8 mr-8"
+        >
+          View More
+        </CardBtn>
+      </div>
+    </div>
+  ))
+}

@@ -1,0 +1,76 @@
+---
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+export interface Props {
+  lastPage: number | undefined
+  currentPage: number
+  prev: string
+  next: string
+  first: string | undefined
+}
+
+const { lastPage, currentPage, prev, next, first } = Astro.props
+---
+
+<div class="card mb-5">
+  <div class="card-body flex flex-row justify-center">
+    <div class="join gap-2">
+      <!--<a
+        href={`${Astro.url.pathname === '/blog' ? '/blog' : '/blog/page/1'}`}
+        class={`${Astro.url.pathname === '/blog' || prev === undefined ? 'pointer-events-none' : ''}`}
+        aria-label="first page link"
+      >
+        <button
+          aria-label="first page button"
+          class={`join-item btn md:btn-sm bg-primary! text-on-primary shadow-md shadow-black/50 rounded-md border-0 hover:scale-90 transition-transform duration-150 ease-out ${first === undefined ? 'btn-disabled brightness-50' : ''}`}
+        >
+          <ChevronsLeft />
+        </button>
+      </a>-->
+      <a
+        href={prev}
+        class={`${prev === '' ? 'pointer-events-none' : ''}`}
+        aria-label="previous page link"
+      >
+        <button
+          aria-label="previous page button"
+          class={`join-item btn md:btn-sm bg-primary! text-on-primary shadow-md shadow-black/50 rounded-md border-0 hover:scale-90 transition-transform duration-150 ease-out ${first === undefined ? 'btn-disabled brightness-50' : ''}`}
+        >
+          <ChevronLeft />
+        </button>
+      </a>
+
+      <button
+        class="join-item btn md:btn-sm shadow-md shadow-black/50 border-0 hover:scale-90 transition-transform duration-150 ease-out bg-secondary text-on-secondary font-bold rounded-md"
+        >{currentPage}</button
+      >
+
+      <a
+        href={next}
+        aria-label="next page link"
+        class={`${currentPage === lastPage ? 'pointer-events-none' : ''}`}
+      >
+        <button
+          aria-label="next page button"
+          class={`join-item btn md:btn-sm bg-primary! text-on-primary shadow-md shadow-black/50 rounded-md border-0 hover:scale-90 transition-transform duration-150 ease-out ${currentPage === lastPage ? 'btn-disabled brightness-50' : ''}`}
+        >
+          <ChevronRight />
+        </button>
+      </a>
+      <!--<a
+        href={`/blog/page/${lastPage}`}
+        aria-label="last page link"
+        class={`${currentPage === lastPage ? 'pointer-events-none' : ''}`}
+      >
+        <button
+          aria-label="last page button"
+          class={`join-item btn md:btn-sm bg-primary! text-on-primary shadow-md shadow-black/50 rounded-md border-0 hover:scale-90 transition-transform duration-150 ease-out ${currentPage === lastPage ? 'btn-disabled brightness-50' : ''}`}
+        >
+          <ChevronsRight />
+        </button>
+      </a>-->
+    </div>
+  </div>
+</div>
+
+<style></style>

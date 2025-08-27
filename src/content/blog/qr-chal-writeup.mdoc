@@ -1,0 +1,75 @@
+---
+title: QR Challenge Write Up
+description: In this post I will share my solution for QR challenge created by roman1
+pubDate: 2020-08-23
+categName: ctf
+tagList: ctf,stegano,stego,morse
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/qr-chal-writeup/cardImage.png
+---
+![](https://i.imgur.com/R11IA4l.png)
+
+We have a qr code this time, to decode it we can use an awesome online service [ZXing Decoder Online](https://zxing.org/w/decode.jspx).
+
+![](https://i.imgur.com/XQdTd0s.png)
+
+A base64 string, lets decode it...
+
+```bash
+$ echo "aHR0cHM6Ly9pbWd1ci5jb20vYS9UUkdJczUz==" | base64 -d
+https://imgur.com/a/TRGIs53
+```
+
+A cat image, classic...it's a stego challenge...
+
+```bash
+$ file cat_img.png
+cat_img.png: PNG image data, 634 x 548, 8-bit/color RGBA, non-interlaced
+
+# After trying various other tools, I tried zsteg...
+
+$ zsteg cat_img.png
+
+b1,rgb,lsb,xy       .. text: "https://pastebin.com/V9TaKwNM"
+b2,r,msb,xy         .. text: "PPUPUUUUEDE"
+b2,b,msb,xy         .. text: "PPATUAP@"
+b2,rgba,lsb,xy      .. file: PGP Secret Sub-key -
+b2,abgr,msb,xy      .. text: "CWWCWCCC"
+b3,g,lsb,xy         .. text: "Hd6Hi&RH"
+b3,bgr,lsb,xy       .. text: "Xe6\tH&Za"
+b3,rgba,lsb,xy      .. text: "rw7ww7Sy"
+b4,r,lsb,xy         .. text: "ffDfffDD "
+b4,r,msb,xy         .. text: "w3USaUdgP%"
+b4,g,lsb,xy         .. file: 0421 Alliant compact executable
+b4,g,msb,xy         .. text: "5 bffFWQGbf\""
+b4,b,lsb,xy         .. text: "fdDD\"\"\"\"\"D\""
+b4,b,msb,xy         .. text: "f5\"fU5Db5@fBc7"
+b4,rgb,msb,xy       .. text: "6g5PsSW1afBET"
+b4,bgr,lsb,xy       .. text: "b&\"b&\"b&"
+b4,bgr,msb,xy       .. text: "c70uSW3QfAbD"
+b4,rgba,lsb,xy      .. text: "F/f/hOjo"
+b4,abgr,msb,xy      .. text: "o\"oa_U_3_w?pO&Of/aoe_"
+```
+
+Under text we can see a pastebin URL and the content is a long string. Lets switch to CyberChef and use From base64...
+
+![](https://i.imgur.com/RVxHsIv.png)
+
+We have morse code here!!! At this point I switched output to input and used From Morse recipe and got binary as new output, then I tried using From Binary recipe but it did not work so I used Reverse Recipe and then From Binary and got a pastebin URL...
+
+![](https://i.imgur.com/wRh4Mzz.png)
+
+And in the pastebin link we got the flag!
+
+```
+Congrats on finishing my challenge,
+flag{curiosity_is_wonderful}
+
+Feel free to respect my hackthebox account:
+roman1
+
+or add me on discord:
+roman1#9419
+```
+
+To anyone who read this far, please respect roman1 on HTB, Thank you roman1 for creating this amazing challenge!

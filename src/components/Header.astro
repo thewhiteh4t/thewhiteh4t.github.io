@@ -1,0 +1,263 @@
+---
+import { Picture } from 'astro:assets'
+import logo from '../assets/logo_small.png'
+import { Search, EllipsisVertical, CircleX } from 'lucide-react'
+
+const btn_titles = ['projects', 'cves', 'publications', 'certs', 'community']
+---
+
+<header>
+  <div
+    class="navbar w-full bg-gradient-to-b from-black to-transparent fixed top-0 z-10 justify-between backdrop-blur"
+  >
+    <div>
+      <a href="/">
+        <Picture
+          src={logo}
+          formats={['avif', 'webp']}
+          alt="thewhiteh4t logo"
+          class="ml-5"
+          layout="constrained"
+          width={45}
+          height={45}
+          quality="mid"
+          loading="eager"
+        />
+      </a>
+    </div>
+    <div class="flex mr-5 items-center">
+      <button
+        id="search-btn"
+        class="btn bg-transparent border-0 ring-0 m-0 p-0 mr-5 focus:outline-none"
+        aria-label="search button"><Search /></button
+      >
+
+      <div class="hidden lg:block gap-1">
+        <a
+          href="/blog"
+          class="btn uppercase no-underline bg-transparent border-0 ring-0 font-bold text-lg text-on-background"
+        >
+          blog
+        </a>
+        {
+          btn_titles.map((word) => (
+            <a
+              href={`/#${word}`}
+              class="btn uppercase no-underline bg-transparent border-0 ring-0 font-bold text-lg text-on-background"
+            >
+              {word}
+            </a>
+          ))
+        }
+        <a
+          href="#contact"
+          class="btn uppercase no-underline bg-transparent border-0 ring-0 font-bold text-lg text-on-background"
+        >
+          contact
+        </a>
+      </div>
+      <details class="dropdown lg:hidden">
+        <summary class="btn bg-transparent ring-0 border-0 p-0 ml-2.5">
+          <EllipsisVertical id="icon-open" />
+          <CircleX id="icon-close" />
+        </summary>
+        <div
+          id="dropdown-panel"
+          class="fixed inset-x-0 top-13 z-2 p-2 m-2 mt-5 flex flex-col items-center bg-surface-card rounded-box rounded-lg shadow-md shadow-black/50"
+        >
+          <a
+            href="/blog"
+            class="btn bg-transparent font-bold text-2xl border-0 ring-0 text-on-background no-underline uppercase mb-5 mt-5"
+            >blog</a
+          >
+          {
+            btn_titles.map((word) => (
+              <a
+                href={`/#${word}`}
+                class="btn bg-transparent font-bold text-2xl border-0 ring-0 text-on-background no-underline uppercase mb-5"
+              >
+                {word}
+              </a>
+            ))
+          }
+          <a
+            href="#contact"
+            class="btn bg-transparent font-bold text-2xl border-0 ring-0 text-on-background no-underline uppercase mb-5"
+            >contact</a
+          >
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <dialog id="searchBox" class="modal backdrop-blur">
+    <div
+      class="modal-box min-h-96 max-h-3/4 min-w-1/2 p-4 bg-surface shadow-md shadow-black/50"
+    >
+      <form method="dialog" class="flex items-center justify-end">
+        <kbd
+          class="min-h-5 inline-flex justify-center items-center py-[1px] px-1.5 rounded-md
+               bg-surface-card border border-gray-200/30 text-sm text-on-surface-variant shadow shadow-black/50"
+          >esc</kbd
+        >
+        <button class="btn btn-sm btn-circle bg-transparent border-0 ring-0">
+          <CircleX
+            className="stroke-primary hover:stroke-secondary active:stroke-secondary transition-colors duration-100 ease-in-out"
+          />
+        </button>
+      </form>
+      <div id="search"></div>
+      <script is:inline>
+        let pagefind
+        document
+          .querySelector('#search-btn')
+          .addEventListener('click', async (e) => {
+            if (!pagefind) {
+              pagefind = await import('/pagefind/pagefind-ui.js')
+              new PagefindUI({
+                element: '#search',
+                showImages: false,
+                autofocus: true,
+              })
+            }
+          })
+      </script>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
+
+  <script>
+    const dropdown = document.querySelector('.dropdown')
+    const summary = dropdown.querySelector('summary')
+    const dropdownLinks = dropdown.querySelectorAll('a')
+    const iconOpen = dropdown.querySelector('#icon-open')
+    const iconClose = dropdown.querySelector('#icon-close')
+    summary.addEventListener('click', function (e) {
+      if (dropdown.open) {
+        e.preventDefault()
+        dropdown.classList.add('closing')
+        iconOpen.classList.toggle('visible')
+        iconClose.classList.toggle('hidden')
+
+        setTimeout(() => {
+          dropdown.open = false
+          dropdown.classList.remove('closing')
+          iconOpen.classList.toggle('visible')
+          iconClose.classList.toggle('hidden')
+        }, 100)
+      }
+    })
+
+    dropdownLinks.forEach((link) => {
+      link.addEventListener('click', function () {
+        if (dropdown.open) {
+          dropdown.classList.add('closing')
+          setTimeout(() => {
+            dropdown.open = false
+            dropdown.classList.remove('closing')
+          }, 300)
+        }
+      })
+    })
+
+    const searchBtn = document.querySelector('#search-btn')
+    const searchBox = document.querySelector('#searchBox')
+    searchBtn.addEventListener('click', () => {
+      searchBox.showModal()
+    })
+  </script>
+</header>
+
+<style is:global>
+  :root {
+    --pagefind-ui-scale: 0.8 !important;
+    --pagefind-ui-primary: var(--color-primary) !important;
+    --pagefind-ui-text: var(--color-on-surface) !important;
+    --pagefind-ui-background: var(--color-surface-card) !important;
+    --pagefind-ui-border: var(--color-primary) !important;
+    --pagefind-ui-tag: #000000 !important;
+    --pagefind-ui-border-width: 0px !important;
+    --pagefind-ui-border-radius: 8px !important;
+    --pagefind-ui-font: var(--font-inter) !important;
+  }
+
+  header a {
+    font-family: var(--font-urbanist);
+  }
+
+  .pagefind-ui {
+    margin-top: 10px !important;
+  }
+
+  .pagefind-ui__search-input {
+    outline: 0 !important;
+    font-weight: normal !important;
+  }
+
+  .pagefind-ui__message {
+    font-weight: normal !important;
+    color: var(--color-primary) !important;
+  }
+
+  .pagefind-ui__result {
+    padding: 10px !important;
+    border-top: 1px solid var(--color-secondary) !important;
+  }
+
+  .pagefind-ui a {
+    font-family: var(--font-urbanist) !important;
+  }
+
+  .pagefind-ui mark {
+    background-color: var(--color-primary) !important;
+  }
+
+  #icon-close {
+    display: none;
+  }
+
+  .dropdown[open] #icon-open {
+    display: none;
+  }
+
+  .dropdown[open] #icon-close {
+    display: block;
+  }
+
+  #icon-open,
+  #icon-close {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .dropdown[open] #dropdown-panel {
+    animation: fadeInSlide 0.3s ease-in;
+  }
+
+  @keyframes fadeInSlide {
+    from {
+      opacity: 0;
+      pointer-events: none;
+    }
+    to {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @keyframes fadeOutSlide {
+    from {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    to {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .dropdown.closing #dropdown-panel {
+    animation: fadeOutSlide 0.3s ease-out;
+  }
+</style>

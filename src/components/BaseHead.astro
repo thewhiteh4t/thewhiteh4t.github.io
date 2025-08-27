@@ -1,0 +1,48 @@
+---
+import '../styles/global.css'
+import SEO from '../components/seo.astro'
+import JsonLD from './JsonLD.astro'
+import type { ImageMetadata } from 'astro'
+
+interface Props {
+  title: string
+  description: string
+  image?: ImageMetadata
+}
+
+const { title, description } = Astro.props
+---
+
+<!-- Global Metadata -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#000000" />
+<meta http-equiv="content-language" content="en" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json" />
+<link rel="sitemap" href="/sitemap.xml" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="thewhiteh4t - Security Through Hacking"
+  href={new URL('rss.xml', Astro.site)}
+/>
+<meta
+  name="google-site-verification"
+  content="CoXRnOCynjRXx21Qp5sEmlVMpIfLvg4ThJ5yPTHwEsc"
+/>
+
+<!-- SEO Tags -->
+<SEO title={title} description={description} />
+
+<!-- Structured Data -->
+<JsonLD title={title} description={description} />
+
+<!-- PageFind -->
+<link
+  href="/pagefind/pagefind-ui.css"
+  rel="preload"
+  as="style"
+  onload="this.onload=null;this.rel='stylesheet'"
+/>
+<!--<script src="/pagefind/pagefind-ui.js" defer></script> -->

@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content'
+
+const allPosts = await getCollection('blog')
+const allTags = new Set()
+allPosts.forEach((post) => {
+  if (post.data.tagList && typeof post.data.tagList === 'string') {
+    const tags = post.data.tagList
+      .split(',')
+      .map((tag) => tag.trim().toLowerCase())
+    tags.forEach((tag) => {
+      if (tag) {
+        allTags.add(tag)
+      }
+    })
+  }
+})
+---
+
+<div
+  class="card bg-surface mt-5 shadow-md shadow-black/50 max-w-[65ch] mx-auto"
+>
+  <div class="card-body">
+    <h2 class="card-title">Tags</h2>
+    <div class="flex flex-row flex-wrap">
+      {
+        Array.from(allTags)
+          .slice(0, 10)
+          .map((tagName) => (
+            <a
+              href={`/blog/tag/${tagName}`}
+              class="badge rounded-md bg-primary border-0 ring-0 mr-2 mb-2 text-xs text-on-primary lowercase no-underline hover:bg-primary-on-hover active:bg-primary-on-press transition-colors duration-100 ease-in-out"
+            >
+              {tagName}
+            </a>
+          ))
+      }
+    </div>
+  </div>
+</div>

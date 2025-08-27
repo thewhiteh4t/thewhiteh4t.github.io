@@ -1,0 +1,27 @@
+---
+title: Ghidra v9.0 Remote Code Execution - PoC
+description: >-
+  The existence of GHIDRA was first publicly revealed by WikiLeaks in CIA Vault
+  7 leaks, but the NSA today publicly released the tool for free at the RSA
+  conference, making it a great alternative to expensive commercial reverse
+  engineering tools like IDA-Pro
+pubDate: 2019-03-16
+categName: exploits
+tagList: rce,windows
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/ghidra-rce/cardImage.png
+---
+## Introduction
+
+GHIDRA is a Java-based reverse engineering framework that features a graphical user interface (GUI) and has been designed to run on a variety of platforms including Windows, macOS, and Linux.
+
+The existence of GHIDRA was first publicly revealed by WikiLeaks in CIA Vault 7 leaks, but the NSA today publicly released the tool for free at the RSA conference, making it a great alternative to expensive commercial reverse engineering tools like IDA-Pro.
+
+Matthew Hickey, who uses online alias "HackerFantastic," being the first to report a security issue in GHIDRA.
+
+Hickey noticed that the reverse engineering suit opens JDWP debug port 18001 for all interfaces when a user launches GHIDRA in the debug mode, allowing anyone within the network to remotely execute arbitrary code on the analysts' system.
+
+## Demo
+
+{% VideoLink
+   link="https://odysee.com/@thewhiteh4t:2/ghidra-v9.0-remote-code-execution-poc:3" /%}

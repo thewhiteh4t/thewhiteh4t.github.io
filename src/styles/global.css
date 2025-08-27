@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+@plugin "daisyui";
+
+:root {
+  --color-primary: #00B8D4 !important;
+  --color-secondary: #FF9100 !important;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('/src/assets/fonts/Inter-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url('/src/assets/fonts/Inter-Bold.woff2') format('woff2');
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Urbanist;
+    src: url('/src/assets/fonts/Urbanist-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Urbanist;
+    src: url('/src/assets/fonts/Urbanist-Bold.woff2') format('woff2');
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: FiraMono;
+    src: url('/src/assets/fonts/FiraMono-Regular.woff2') format('woff2');
+    font-display: swap;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: FiraMono;
+    src: url('/src/assets/fonts/FiraMono-Bold.woff2') format('woff2');
+    font-display: swap;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Uni0024;
+    src: url('/src/assets/fonts/Unicode 0024_min.woff2') format('woff2');
+    font-display: swap;
+}
+
+@theme {
+    --font-inter: 'Inter', var(--default-font-family);
+    --font-urbanist: 'Urbanist', 'Arial';
+    --font-firamono: 'FiraMono', var(--default-mono-font-family);
+    --font-uc0024: 'Uni0024';
+
+    --color-background: #121212;
+    --color-on-background: #CFCFCF;
+    --color-surface: #1E1E1E;
+    --color-on-surface: #CFCFCF;
+    --color-on-surface-variant: #AFAFAF;
+    --color-on-primary: #000000;
+    --color-on-secondary: #000000;
+    --color-error: #CF6679;
+    --color-on-error: #000000;
+    --color-surface-card: #242424;
+    --color-divider: #2C2C2C;
+    --color-disabled: #5F5F5F;
+
+    --color-primary-on-hover: #18CCEA;
+    --color-primary-on-press: #00A0BC;
+}
+
+@layer base {
+    html, body {
+        font-family: var(--font-inter);
+    }
+
+    h1,h2,h3 {
+        font-family: var(--font-urbanist);
+        font-weight: bold;
+        color: var(--color-on-surface);
+    }
+
+    h1 {
+        font-size: var(--text-3xl);
+    }
+
+    h2 {
+        font-size: var(--text-2xl);
+    }
+
+    h3 {
+        font-size: var(--text-xl);
+    }
+
+    a {
+        color: var(--color-secondary);
+        text-decoration-line: underline;
+    }
+
+    p > code {
+        font-family: var(--font-firamono);
+        @apply rounded-sm! p-1 text-sm! bg-surface-card! text-primary! border-0! ring-1! ring-primary/30!;
+    }
+}
+
+@utility prose {
+  --tw-prose-bullets: var(--color-on-surface-variant);
+}
+
+.social-icon {
+    @apply fill-primary w-full max-w-8 mx-1;
+    @apply hover:scale-90;
+    @apply transition-colors duration-300 ease-out;
+}
+
+.expressive-code {
+    @apply my-5 shadow-md shadow-black/50 rounded-lg;
+}
+
+.alias_circle {
+  background-color: black;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 5px;
+}
+
+.alias_text {
+  font-family: var(--font-uc0024);
+  font-size: 38px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

