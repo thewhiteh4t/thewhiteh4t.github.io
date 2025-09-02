@@ -40,7 +40,7 @@ const { title, description } = Astro.props
         ad_personalization: 'denied',
       })
 
-      gtag('config', 'G-WVR2PT5HNE')
+      gtag('config', 'G-WVR2PT5HNE', { cookie_flags: 'SameSite=None;Secure' })
     </script>
   </body>
 </html>
