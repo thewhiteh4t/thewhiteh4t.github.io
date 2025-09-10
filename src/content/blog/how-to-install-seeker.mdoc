@@ -1,46 +1,116 @@
 ---
-title: How to Install seeker in Termux Android
-description: Step by step instructions for installing seeker in termux android
+title: How to Install Seeker on Termux in 2025 - The Complete Guide (Step-by-Step)
+description: >-
+  Get Seeker installed on termux the right way in 2025. No outdated steps, no
+  frustration just a clean, tested walkthrough that gets you up and running
+  fast.
 pubDate: 2020-06-09
+updatedDate: 2025-09-10
 categName: tutorials
 tagList: tutorial,tools
 author: thewhiteh4t
 cardImage: ../../assets/post_imgs/how-to-install-seeker/cardImage.jpg
 ---
+## Introduction
 
-## Instructions
+Seeker works on the concept of social engineering we all know as phishing. Instead of credentials you can use seeker to phish for geolocation. Follow the step by step instructions provided below to install seeker on termux.
 
-Follow these steps and you will be able to install seeker in a fast and simple way...
+## Step 1 - Update
 
-## Step 1
+Update and upgrade termux packages :
 
-I am assuming you have git installed, if not then install git package first.
+```bash
+pkg update
+pkg upgrade
+```
 
-Clone seeker from github as shown
+![](https://files.catbox.moe/51c9qo.png)
+
+if you are getting any errors after running the `update` command then you can easily fix it using a neat in-built termux utility : `termux-change-repo`, just run the command and it will ask you to choose nearby region for termux package repositories, any package related errors should go away at this point.
+
+## Step 2 - Install git
+
+We will be downloading seeker from GitHub. To do that we will use `git` command, you can read and learn more about [git command here](https://git-scm.com/docs/git). Using the `pkg` command we can install `git` :
+
+```bash
+pkg install git
+```
+
+![](https://files.catbox.moe/eractj.png)
+
+## Step 3 - Download seeker
+
+Download seeker from GitHub, make sure to download the official version as there are many old and outdated forks available :
 
 ```bash
 git clone https://github.com/thewhiteh4t/seeker.git
 cd seeker/
 ```
 
-![](https://i.imgur.com/4pPDrhV.png)
+![](https://files.catbox.moe/itd1ig.png)
 
-## Step 2
+## Step 4 - Permissions
 
-I have provided a separate installation script for termux : termux_install.sh
-
-Give it appropriate permission for execution using the command below
+Earlier there was a separate termux install script but now there is a single install script for simplicity. Using `chmod` command give the script execution permissions. You can read and learn more about [chmod command here](https://cets.seas.upenn.edu/answers/chmod.html).
 
 ```bash
-chmod +x termux_install.sh
+ls
+chmod +x install.sh
 ```
 
-## Step 3
+![](https://files.catbox.moe/9hnlce.png)
 
-Final step, execute the installation script and wait for it to finish, during its execution in will create a new file install.log in the same directory, after installation check install.log for any errors, if there are any errors fix them before starting seeker.
+## Step 5 - Install
 
-![](https://i.imgur.com/8cyuLWe.png)
+Now we are ready to install all required dependencies for seeker and the install script will automate that for us.
 
-Here is a small demo of one of the templates seeker contains
+```bash
+./install.sh
+```
 
-if serveo is not working for you, you can refer to this video on how to use ngrok or any other similar software of your choice!
+As you can see, for each dependency the script will show the status, do not panic if it looks stuck, the script is installing the packages in background.
+
+![](https://files.catbox.moe/cc46hs.png)
+
+But lets say you get an error in any of the packages, check out the last line, an `install.log` file has been created! We can simply read the logs and look for any errors. After looking for the error on google/chatgpt/<insert your favorite LLM>, try to fix the error and then repeat `step 5` again, i.e. run the install script again, if the errors were fixed you will see `Installed` for each dependency.
+
+This is very important because without all dependencies seeker will not run properly. Below you can see what my `install.log` file looks like :
+
+![](https://files.catbox.moe/teidr1.png)
+
+## Step 6 - Launch
+
+The best part, now we can simply run seeker using the `python` command :
+
+```bash
+python seeker.py
+```
+
+![](https://files.catbox.moe/frmepp.png)
+
+If you have multiple versions of `python` installed then make sure to use `python3` since seeker supports `python3` and above.
+
+## Step 7 - Secure Tunnels
+
+Seeker requires `HTTPS` . This is compulsory because geolocation features can only accessed in a secure context. There are no bypasses for this. Now you have different options for this step depending on what you choose. For example you can host seeker on a VPS with nginx reverse proxy and a SSL certificate.
+
+But since we are using the tool on termux, easiest option is a secure tunneling application like `ngrok`. You can find lots of tutorials and videos on how to download and use ngrok on termux so I won't be covering that in this post. There are many other alternatives available as well, check out [Awesome Tunneling on GitHub](https://github.com/anderspitman/awesome-tunneling).
+
+You will need a second termux session or in simple words a second terminal window where you can launch a secure tunnel. You need to swipe from the left edge to open the sessions panel as shown :
+
+![](https://files.catbox.moe/8trf8i.png)
+
+Usually these secure tunnels provide a secure `HTTPS` URL, make sure to forward the correct port! By default seeker uses port `8080` but you can easily change this using `-p` or `--port` option as shown below :
+
+```bash
+python seeker.py --port 9000
+```
+
+and forward the same port in your tunnel, for example if you are using ngrok you can use the following command :
+
+```bash
+ngrok http 9000
+```
+
+\
+Thanks for reading and following along!
