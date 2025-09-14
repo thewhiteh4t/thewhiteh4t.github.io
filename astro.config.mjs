@@ -36,7 +36,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['i.imgur.com'],
+    domains: ['i.imgur.com', 'files.catbox.moe'],
   },
 
   vite: {
