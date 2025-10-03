@@ -10,6 +10,7 @@ interface Props {
   image?: ImageMetadata
 }
 
+const isBlogPost = Astro.url.pathname.includes('/blog/')
 const { title, description } = Astro.props
 ---
 
@@ -27,6 +28,46 @@ const { title, description } = Astro.props
   title="thewhiteh4t - Security Through Hacking"
   href={new URL('rss.xml', Astro.site)}
 />
+
+<!-- Preload Fonts -->
+<link 
+  rel="preload" 
+  href="/fonts/Urbanist-Bold.woff2"
+  as="font" 
+  type="font/woff2" 
+  crossorigin="anonymous"
+/>
+<link 
+  rel="preload" 
+  href="/fonts/Inter-Regular.woff2"
+  as="font" 
+  type="font/woff2" 
+  crossorigin="anonymous"
+/>
+<link 
+  rel="preload" 
+  href="/fonts/Urbanist-Regular.woff2"
+  as="font" 
+  type="font/woff2" 
+  crossorigin="anonymous"
+/>
+<link 
+  rel="preload" 
+  href="/fonts/Inter-Bold.woff2"
+  as="font" 
+  type="font/woff2" 
+  crossorigin="anonymous"
+/>
+{isBlogPost && (
+  <link 
+    rel="preload" 
+    href="/fonts/FiraMono-Regular.woff2"
+    as="font" 
+    type="font/woff2" 
+    crossorigin="anonymous"
+  />
+)
+}
 
 <!-- SEO Tags -->
 <SEO title={title} description={description} />

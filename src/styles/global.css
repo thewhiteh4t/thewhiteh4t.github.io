@@ -9,49 +9,49 @@
 
 @font-face {
     font-family: Inter;
-    src: url('/src/assets/fonts/Inter-Regular.woff2') format('woff2');
+    src: url('/fonts/Inter-Regular.woff2') format('woff2');
     font-display: swap;
     font-weight: normal;
 }
 
 @font-face {
     font-family: Inter;
-    src: url('/src/assets/fonts/Inter-Bold.woff2') format('woff2');
+    src: url('/fonts/Inter-Bold.woff2') format('woff2');
     font-display: swap;
     font-weight: bold;
 }
 
 @font-face {
     font-family: Urbanist;
-    src: url('/src/assets/fonts/Urbanist-Regular.woff2') format('woff2');
+    src: url('/fonts/Urbanist-Regular.woff2') format('woff2');
     font-display: swap;
     font-weight: normal;
 }
 
 @font-face {
     font-family: Urbanist;
-    src: url('/src/assets/fonts/Urbanist-Bold.woff2') format('woff2');
+    src: url('/fonts/Urbanist-Bold.woff2') format('woff2');
     font-display: swap;
     font-weight: bold;
 }
 
 @font-face {
     font-family: FiraMono;
-    src: url('/src/assets/fonts/FiraMono-Regular.woff2') format('woff2');
+    src: url('/fonts/FiraMono-Regular.woff2') format('woff2');
     font-display: swap;
     font-weight: normal;
 }
 
 @font-face {
     font-family: FiraMono;
-    src: url('/src/assets/fonts/FiraMono-Bold.woff2') format('woff2');
+    src: url('/fonts/FiraMono-Bold.woff2') format('woff2');
     font-display: swap;
     font-weight: bold;
 }
 
 @font-face {
     font-family: Uni0024;
-    src: url('/src/assets/fonts/Unicode 0024_min.woff2') format('woff2');
+    src: url('/fonts/Unicode 0024_min.woff2') format('woff2');
     font-display: swap;
 }
 
