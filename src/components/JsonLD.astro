@@ -10,10 +10,18 @@ if (Astro.url.pathname === '/') {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'thewhiteh4t',
+    alternateName: 'Lohitya Pushkar',
     url: Astro.site,
     author: {
       '@type': 'Person',
-      name: 'thewhiteh4t',
+      name: 'Lohitya Pushkar',
+      alternateName: 'thewhiteh4t',
+      sameAs: [
+        'https://github.com/thewhiteh4t',
+        'https://www.linkedin.com/in/lohityapushkar',
+        'https://twitter.com/thewhiteh4t'
+      ],
+      jobTitle: 'Penetration Tester',
     },
   }
 } else if (Astro.url.pathname === '/blog/') {
@@ -23,10 +31,11 @@ if (Astro.url.pathname === '/') {
     name: 'thewhiteh4t Blog',
     url: blogURL,
     description:
-      'The official blog for thewhiteh4t, featuring articles on cybersecurity and security research.',
+      'The official blog for Lohitya Pushkar (thewhiteh4t), featuring articles on cybersecurity and security research.',
     publisher: {
       '@type': 'Person',
-      name: 'thewhiteh4t',
+      name: 'Lohitya Pushkar',
+      alternateName: 'thewhiteh4t',
       url: Astro.site,
     },
   }
@@ -48,7 +57,8 @@ if (Astro.url.pathname === '/') {
     author: {
       '@type': 'Person',
       '@id': Astro.site,
-      name: Astro.locals.frontmatter.author.id,
+      name: 'Lohitya Pushkar',
+      alternateName: 'thewhiteh4t',
       url: Astro.site,
       image: {
         '@type': 'ImageObject',
@@ -58,7 +68,8 @@ if (Astro.url.pathname === '/') {
     publisher: {
       '@type': 'Person',
       '@id': Astro.site,
-      name: Astro.locals.frontmatter.author.id,
+      name: 'Lohitya Pushkar',
+      alternateName: 'thewhiteh4t',
       url: Astro.site,
       image: {
         '@type': 'ImageObject',
@@ -78,7 +89,8 @@ if (Astro.url.pathname === '/') {
       publisher: {
         '@type': 'Person',
         '@id': Astro.site,
-        name: Astro.locals.frontmatter.author.id,
+        name: 'Lohitya Pushkar',
+        alternateName: 'thewhiteh4t',
       },
     },
   }

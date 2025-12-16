@@ -11,12 +11,12 @@ if (Astro.locals.frontmatter) {
 
 const default_desc =
   'I write about tools I have created for the cyber community, updates regarding my active projects, exploits, tutorials, PoCs and a little bit of OSINT'
-const full_title = `${title} | thewhiteh4t`
+const full_title = `${title} | Lohitya Pushkar (thewhiteh4t)`
 ---
 
 <SEO
   title={full_title}
-  titleDefault="thewhiteh4t"
+  titleDefault="Lohitya Pushkar (thewhiteh4t)"
   description={description || default_desc}
   canonical={canonicalURL}
   openGraph={{
@@ -27,7 +27,7 @@ const full_title = `${title} | thewhiteh4t`
     },
     optional: {
       description: description || default_desc,
-      siteName: 'thewhiteh4t',
+      siteName: 'Lohitya Pushkar (thewhiteh4t)',
     },
   }}
   twitter={{
@@ -39,6 +39,6 @@ const full_title = `${title} | thewhiteh4t`
     imageAlt: `Image showing ${description || default_desc}`,
   }}
   extend={{
-    meta: [{ name: 'author', content: 'thewhiteh4t' }],
+    meta: [{ name: 'author', content: 'Lohitya Pushkar (thewhiteh4t)' }],
   }}
 />
