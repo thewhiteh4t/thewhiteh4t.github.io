@@ -8,21 +8,40 @@ let structuredData
 if (Astro.url.pathname === '/') {
   structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'thewhiteh4t',
-    alternateName: 'Lohitya Pushkar',
-    url: Astro.site,
-    author: {
-      '@type': 'Person',
-      name: 'Lohitya Pushkar',
-      alternateName: 'thewhiteh4t',
-      sameAs: [
-        'https://github.com/thewhiteh4t',
-        'https://www.linkedin.com/in/lohityapushkar',
-        'https://twitter.com/thewhiteh4t'
-      ],
-      jobTitle: 'Penetration Tester',
-    },
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': `${Astro.site}#person`,
+        'name': 'Lohitya Pushkar',
+        'alternateName': 'thewhiteh4t',
+        'url': Astro.site,
+        'image': logoURL,
+        'jobTitle': 'Security Researcher & Penetration Tester',
+        'description': 'Security researcher specializing in penetration testing, offensive security tooling, automated reconnaissance, and Agentic AI. Developer of Seeker, FinalRecon, and NExfil etc.',
+        'knowsAbout': [
+          'Offensive Security Tooling',
+          'Automated Reconnaissance',
+          'Vulnerability Research',
+          'Memory Forensics',
+          'Network Exploitation',
+          'Agentic AI',
+          'Security Automation'
+        ],
+        'sameAs': [
+          'https://orcid.org/0009-0000-5370-3402',
+          'https://github.com/thewhiteh4t',
+          'https://www.linkedin.com/in/lohityapushkar',
+          'https://x.com/thewhiteh4t',
+        ]
+      },
+      {
+        '@type': 'ProfilePage',
+        '@id': `${Astro.site}#profilepage`,
+        'url': Astro.site,
+        'name': 'Lohitya Pushkar (thewhiteh4t) - Security Researcher Profile',
+        'mainEntity': { '@id': `${Astro.site}#person` }
+      }
+    ]
   }
 } else if (Astro.url.pathname === '/blog/') {
   structuredData = {
