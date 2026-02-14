@@ -34,17 +34,10 @@ const { title, description } = Astro.props
       }
       gtag('js', new Date())
 
-      gtag('consent', 'default', {
-        ad_storage: 'denied',
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-      })
-
-      gtag('config', 'G-WVR2PT5HNE', { cookie_flags: 'SameSite=None;Secure' }, 
-        'TAG_ID', {
-          'cookie_domain': 'thewhiteh4t.github.io'
-        }
-      )
+      gtag('config', 'G-WVR2PT5HNE', { 
+        'cookie_flags': 'SameSite=None;Secure',
+        'cookie_domain': 'thewhiteh4t.github.io'
+      });
     </script>
   </body>
 </html>
