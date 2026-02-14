@@ -17,12 +17,16 @@ const { title, description } = Astro.props
     <BaseHead title={title} description={description} />
   </head>
   <body class="flex flex-col min-h-screen text-on-surface bg-background">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZPRPC8W"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <Header />
     <main class="flex-grow">
       <slot />
     </main>
     <Footer />
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) 
     <script
       is:inline
       src="https://www.googletagmanager.com/gtag/js?id=G-WVR2PT5HNE"
@@ -38,6 +42,6 @@ const { title, description } = Astro.props
         'cookie_flags': 'SameSite=None;Secure',
         'cookie_domain': 'thewhiteh4t.github.io'
       });
-    </script>
+    </script>-->
   </body>
 </html>
