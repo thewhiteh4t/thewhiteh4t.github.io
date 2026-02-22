@@ -22,13 +22,11 @@ const altText = generateAltText(postTitle, imageNumber)
   class="w-full flex flex-row justify-center"
   aria-label={altText}
 >
-  <Picture
+  <img
     src={src}
     alt={altText}
-    quality="mid"
-    formats={['avif']}
-    layout="constrained"
-    inferSize={true}
+    loading="lazy"
+    decoding="async"
     class="rounded-lg shadow-md shadow-black/50"
   />
 </figure>

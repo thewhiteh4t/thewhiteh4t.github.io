@@ -73,15 +73,15 @@ On port 8080 there is a blog page, I did not find much in the source code so I m
 
 Further inspecting the page and files I found multiple things...
 
-![](https://i.imgur.com/UHEDpTw.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748509/img/UHEDpTw.png)
 
 Email address of the author is visible along with a possible username "bill", Gemfile and Rakefile can also be seen which are associated with ruby. Inside Gemfile I found the versions of ruby, rails and bcrypt along with other modules...
 
-![](https://i.imgur.com/xoN1obW.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748528/img/xoN1obW.png)
 
 On further inspection of visible files I found some hashes in "bd.sql" file...
 
-![](https://i.imgur.com/MFnna97.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748488/img/MFnna97.png)
 
 ```
 bill - $2a$12$uhUssB8.HFpT4XpbhclQU.Oizufehl9qqKtmdxTXetojn2FcNncJW
@@ -96,7 +96,7 @@ Both hashes are bcrypt with 12 rounds, I tried to crack both hashes with john bu
 
 A deserialization of untrusted data vulnernerability exists in rails < 5.2.4.3, rails < 6.0.3.1 that can allow an attacker to unmarshal user-provided objects in MemCacheStore and RedisCacheStore potentially resulting in an RCE. You can read more about the vulnerability in this [Hackerone Report](https://hackerone.com/reports/413388). The flaw can be spotted in "users_controller.rb" file on line number 37
 
-![](https://i.imgur.com/i8Wn6wq.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748479/img/i8Wn6wq.png)
 
 ## Intrusion
 
@@ -122,15 +122,15 @@ payload = Marshal.dump(ActiveSupport::Deprecation::DeprecatedInstanceVariablePro
 puts URI.encode_www_form(payload: payload)
 ```
 
-![](https://i.imgur.com/yoaU3Sj.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748500/img/yoaU3Sj.png)
 
 I sent the payload in the username field of the request I intercepted using burp as you can see below...
 
-![](https://i.imgur.com/biKr0kB.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748459/img/biKr0kB.png)
 
 In the vulnerable code above, you can see that on line 40 the page is supposed to be redirected to articles page i.e. the home page, payload triggered as soon as I visited the home page and I got foothold!
 
-![](https://i.imgur.com/vTHj48G.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748392/img/vTHj48G.png)
 
 The username is bill and I got the user flag in home directory.
 
@@ -138,11 +138,11 @@ The username is bill and I got the user flag in home directory.
 
 After some poking around I found a sql file in the following path...
 
-![](https://i.imgur.com/8kJ7QO3.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748480/img/8kJ7QO3.png)
 
 You can see that although the file is owned by root but its permissions are misconfigured and it is readable, inside I found another bcrypt hash for our user "bill"
 
-![](https://i.imgur.com/Hng73bV.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748412/img/Hng73bV.png)
 
 This hash got cracked successfully using john and I got a password for bill here...
 
@@ -154,23 +154,23 @@ bill:spongebob
 
 First thing I tried was to execute sudo with "-l" flag which lists the privileges of the user but it asks for a verification code! Now I started looking for the origin of this verification system...
 
-![](https://i.imgur.com/SRxh3Zv.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748504/img/SRxh3Zv.png)
 
 In the home directory I found a dot file, google-authenticator which contains a 26 character long alphanumeric string...
 
-![](https://i.imgur.com/c6SZ5xg.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748402/img/c6SZ5xg.png)
 
 Fortunately I use google authenticator app and it offers two methods to add a new entry
 
-![](https://i.imgur.com/jKeive5.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748523/img/jKeive5.png)
 
 I tried adding the alphanumeric string I found earlier into setup using key option and it worked, google authenticator is now generating codes!
 
-![](https://i.imgur.com/j0T6neJ.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748533/img/j0T6neJ.png)
 
 and now I was finally able to use sudo and I found that our user bill can execute gem command!
 
-![](https://i.imgur.com/8I00fkw.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748436/img/8I00fkw.png)
 
 I used the following command to escalate privileges...
 
@@ -180,6 +180,6 @@ I used the following command to escalate privileges...
 $ sudo gem open -e "/bin/sh -c /bin/bash" rdoc
 ```
 
-![](https://i.imgur.com/28jgQ3J.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748498/img/28jgQ3J.png)
 
 Solved!

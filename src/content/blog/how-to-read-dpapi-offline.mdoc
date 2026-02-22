@@ -11,13 +11,13 @@ cardImage: ../../assets/post_imgs/how-to-read-dpapi-offline/cardImage.jpg
 ---
 Recently we were playing DavinciCTF 2023 and I came across a forensics challenge, David Cicode, which was based on DPAPI encrypted chrome credentials. In a real life scenario we use tools like mimikatz to easily get master keys and read chrome secrets but in this challenge all I had was an image file which means offline extraction of secrets without the use of mimikatz!
 
-![](https://i.imgur.com/1JhkZUk.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748525/img/1JhkZUk.png)
 
 ## Mount EWF image file
 
 Mounting an EWF image file is simple. Make sure you have `libewf` or `ewf-tools` depending on the OS you are using. You will have access to `ewfmount` command :
 
-![](https://i.imgur.com/KYeHL3R.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748494/img/KYeHL3R.png)
 
 I copied the image found inside for easier access and mounted it using the following mount command :
 
@@ -25,7 +25,7 @@ I copied the image found inside for easier access and mounted it using the follo
 sudo mount ewf1 mpoint -o ro,loop,show_sys_files,streams_interace=windows
 ```
 
-![](https://i.imgur.com/meUNyG5.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748430/img/meUNyG5.png)
 
 yes I know, colors gone wrong, I still haven't fixed that. Anyways now the Users directory was readable. According to the challenge description goal was to find YouTube credentials.
 
@@ -51,7 +51,7 @@ Using `DPAPImk2john.py` we can generate a hash based on SID and masterkey of the
 /Users/DavidCicode/AppData/Roaming/Microsoft/Protect
 ```
 
-![](https://i.imgur.com/bpI7ebM.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748480/img/bpI7ebM.png)
 
 Directory name is the SID and the filename inside is the masterkey value
 
@@ -78,7 +78,7 @@ Using the password and power of impacket tools we can now read the masterkey fil
 dpapi.py masterkey -file mpoint/Users/DavidCicode/AppData/Roaming/Microsoft/Protect/S-1-5-21-3100841193-2683041198-3967357107-1000/1acbbc52-02e6-404d-b139-43d93da54db8 -sid S-1-5-21-3100841193-2683041198-3967357107-1000 -password ilovedavid
 ```
 
-![](https://i.imgur.com/rr32wdU.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748405/img/rr32wdU.png)
 
 ## David deleted everything!
 
@@ -88,11 +88,11 @@ At this point the challenge took a turn and it looks like both state file and lo
 sudo testdisk ewf1
 ```
 
-![](https://i.imgur.com/Vvzy5s6.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748482/img/Vvzy5s6.png)
 
 Here is the Login Data database file :
 
-![](https://i.imgur.com/5zrNEk1.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748445/img/5zrNEk1.png)
 
 ## Decrypting AES key
 
@@ -118,12 +118,12 @@ next we need to decrypt this DPAPI blob using the masterkey :
 dpapi.py unprotect -file dec_data -key 0x89c9d658351ff09f6507c089320a70302d94a462b1365d2e946af928caa80d39d87be29a7ec0429949391590595b6f9ccdf0675f20e9d91f5d534f8489949e1c
 ```
 
-![](https://i.imgur.com/3JOCq9E.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748515/img/3JOCq9E.png)
 
 now we need to convert this hexdump, I used cyberchef for this :
 
-![](https://i.imgur.com/khDG7sK.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748416/img/khDG7sK.png)
 
 finally I used [decrypt-chrome-passwords](https://github.com/ohyicong/decrypt-chrome-passwords) project to decrypt the password, few modifications are required like the path to login data database, and here is the flag :
 
-![](https://i.imgur.com/asY6yvr.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748423/img/asY6yvr.png)

@@ -17,7 +17,7 @@ Netmon IP Address : 10.10.10.152
 nmap -F 10.10.10.152
 ```
 
-![](https://i.imgur.com/NfRwUwk.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748528/img/NfRwUwk.png)
 
 Since FTP port is open we can try Anonymous login...
 
@@ -28,7 +28,7 @@ Since FTP port is open we can try Anonymous login...
 ftp 10.10.10.152
 ```
 
-![](https://i.imgur.com/BY6EqSf.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748530/img/BY6EqSf.png)
 
 Anonymous Login Successful!!
 
@@ -36,7 +36,7 @@ Now lets dig in deeper...
 
 ## Enumeration
 
-![](https://i.imgur.com/jBhuN45.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748524/img/jBhuN45.png)
 
 Inside `C:\Users\Public` we find `user.txt` which can be downloaded using get command and inside user.txt we have our first hash.
 
@@ -44,7 +44,7 @@ Now Lets proceed to find the root hash...
 
 Earlier I found out that port 80 is open. On visiting via browser we have a PRTG NETMON Login Page...
 
-![](https://i.imgur.com/EOkTiBs.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748477/img/EOkTiBs.png)
 
 Default Username/Password for PRTG NETMON are `prtgadmin:prtgadmin` but these did not work...
 
@@ -58,7 +58,7 @@ C:\ProgramData\Paessler\PRTG Network Monitor\
 
 inside there are multiple files but the password is in PRTG `Configuration.old.bak`
 
-![](https://i.imgur.com/yG0YgJn.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748508/img/yG0YgJn.png)
 
 After reading `Configuration.old.bak` i found the password and username :
 
@@ -67,15 +67,15 @@ username : prtgadmin
 password : PrTg@dmin2018
 ```
 
-![](https://i.imgur.com/ohOWyzI.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748507/img/ohOWyzI.png)
 
 I tried logging in with these credentials but login failed, but its year 2019 right now so I modified the password as `PrTg@dmin2019` and tried again and Login Successful!!
 
-![](https://i.imgur.com/cu9A1Nt.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748434/img/cu9A1Nt.png)
 
 After some poking around in the dashboard I discovered Notification Settings under Account Settings...
 
-![](https://i.imgur.com/qMair3s.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748407/img/qMair3s.png)
 
 ## Privilege Escalation
 

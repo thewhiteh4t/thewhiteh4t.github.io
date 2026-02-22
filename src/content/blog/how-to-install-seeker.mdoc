@@ -24,7 +24,7 @@ pkg update
 pkg upgrade
 ```
 
-![](https://files.catbox.moe/51c9qo.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748398/img/51c9qo.png)
 
 if you are getting any errors after running the `update` command then you can easily fix it using a neat in-built termux utility : `termux-change-repo`, just run the command and it will ask you to choose nearby region for termux package repositories, any package related errors should go away at this point.
 
@@ -36,7 +36,7 @@ We will be downloading seeker from GitHub. To do that we will use `git` command,
 pkg install git
 ```
 
-![](https://files.catbox.moe/eractj.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748526/img/eractj.png)
 
 ## Step 3 - Download seeker
 
@@ -47,7 +47,7 @@ git clone https://github.com/thewhiteh4t/seeker.git
 cd seeker/
 ```
 
-![](https://files.catbox.moe/itd1ig.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748488/img/itd1ig.png)
 
 ## Step 4 - Permissions
 
@@ -58,7 +58,7 @@ ls
 chmod +x install.sh
 ```
 
-![](https://files.catbox.moe/9hnlce.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748396/img/9hnlce.png)
 
 ## Step 5 - Install
 
@@ -70,13 +70,13 @@ Now we are ready to install all required dependencies for seeker and the install
 
 As you can see, for each dependency the script will show the status, do not panic if it looks stuck, the script is installing the packages in background.
 
-![](https://files.catbox.moe/cc46hs.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748471/img/cc46hs.png)
 
 But lets say you get an error in any of the packages, check out the last line, an `install.log` file has been created! We can simply read the logs and look for any errors. After looking for the error on google/chatgpt/<insert your favorite LLM>, try to fix the error and then repeat `step 5` again, i.e. run the install script again, if the errors were fixed you will see `Installed` for each dependency.
 
 This is very important because without all dependencies seeker will not run properly. Below you can see what my `install.log` file looks like :
 
-![](https://files.catbox.moe/teidr1.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748469/img/teidr1.png)
 
 ## Step 6 - Launch
 
@@ -86,7 +86,7 @@ The best part, now we can simply run seeker using the `python` command :
 python seeker.py
 ```
 
-![](https://files.catbox.moe/frmepp.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748467/img/frmepp.png)
 
 If you have multiple versions of `python` installed then make sure to use `python3` since seeker supports `python3` and above.
 
@@ -98,7 +98,7 @@ But since we are using the tool on termux, easiest option is a secure tunneling 
 
 You will need a second termux session or in simple words a second terminal window where you can launch a secure tunnel. You need to swipe from the left edge to open the sessions panel as shown :
 
-![](https://files.catbox.moe/8trf8i.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748401/img/8trf8i.png)
 
 Usually these secure tunnels provide a secure `HTTPS` URL, make sure to forward the correct port! By default seeker uses port `8080` but you can easily change this using `-p` or `--port` option as shown below :
 

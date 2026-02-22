@@ -36,7 +36,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['i.imgur.com', 'files.catbox.moe'],
+    domains: ['res.cloudinary.com'],
   },
 
   vite: {

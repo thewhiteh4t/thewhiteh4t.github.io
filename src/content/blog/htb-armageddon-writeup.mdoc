@@ -76,9 +76,9 @@ unix/webapp/drupal_drupalgeddon2
 
 Drupalgeddon2 is an unauthenticated exploit, below you can see the options I used in the MSF module
 
-![](https://i.imgur.com/sZC5cci.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748417/img/sZC5cci.png)
 
-![](https://i.imgur.com/yerpIO5.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748461/img/yerpIO5.png)
 
 ## Enumeration
 
@@ -129,7 +129,7 @@ grep -rnw "password"
 
 I got lots of matches and one of the files contains a password
 
-![](https://i.imgur.com/mYKl9Fi.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748404/img/mYKl9Fi.png)
 
 ```php
 $databases = array (
@@ -155,7 +155,7 @@ Along with the password I found database name and username. Driver field contain
 mysql --user="drupaluser" --password="CQHEy@9M*m23gBVj" --database="drupal" --execute="select * from users;"
 ```
 
-![](https://i.imgur.com/vBl6atE.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748391/img/vBl6atE.png)
 
 ```
 username : brucetherealadmin
@@ -166,7 +166,7 @@ password after cracking : booboo
 
 these credentials worked for SSH login and I got a proper shell along with the user flag
 
-![](https://i.imgur.com/k9Gt1O7.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748424/img/k9Gt1O7.png)
 
 ## Privilege Escalation
 
@@ -209,7 +209,7 @@ After this I started looking for ways to execute system commands from within the
 
 here is the final snapcraft.yaml file :
 
-![](https://i.imgur.com/4u1iqpi.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748506/img/4u1iqpi.png)
 
 the rev.sh you see above contains the following python reverse shell...
 
@@ -223,10 +223,10 @@ In this process I also discovered a part of documentation which really helped in
 
 Finally after running snapcraft command as mentioned in the guide by ubuntu I successfully built a malicious snap package
 
-![](https://i.imgur.com/O1kWtq4.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748532/img/O1kWtq4.png)
 
 After uploading the malicious snap package to the target I used the install command we saw earlier but since the confinement in yaml file is defined as devmode I used the devmode option...
 
-![](https://i.imgur.com/xldHKZt.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748476/img/xldHKZt.png)
 
 Solved.

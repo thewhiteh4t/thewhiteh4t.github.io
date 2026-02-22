@@ -13,7 +13,7 @@ In this post I will show you how I solved tabby, a Linux machine labelled as eas
 
 I started with a quick top 1000 port scan using FinalRecon...
 
-![](https://i.imgur.com/MafubFV.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748529/img/MafubFV.png)
 
 I got these 3 ports open, after this I switched to nmap to scan for complete port range...
 
@@ -55,11 +55,11 @@ http://megahosting.htb/news.php?file=statement
 
 it says megahosting.htb instead of the IP address so I created a new entry for it in /etc/hosts file on my machine and after that I was able to access the page...
 
-![](https://i.imgur.com/cKx7wTK.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748450/img/cKx7wTK.png)
 
 it looks like it is "reading" a file "statement" and displaying its contents so I tried Directory Traversal attack here...
 
-![](https://i.imgur.com/v80CTVU.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748473/img/v80CTVU.png)
 
 at this point my goal was to extract some credentials, now I checked port 8080, it has tomcat running and if you know about apache tomcat you know there is a manager dashboard, if I can get tomcat manager credentials from directory traversal I can upload a reverse shell, now the apache page shows a path where user entries are stored so using that I formed this URL...
 
@@ -78,11 +78,11 @@ I had to curl this xml file to get the contents and I got the credentials!
 
 Apache tomcat page specifies two applications : "manager webapp" and "host-manager webapp" , I tried to login into manager as we have the creds for it but I got this...
 
-![](https://i.imgur.com/nlwx7Jp.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748445/img/nlwx7Jp.png)
 
 Access Denied!!!! but it has provided an example for adding username and password entry into the xml file and when I compared it with what I got in the curl request it says "manager-script" instead of "manager-gui", I read about this role and found that tomcat provides a text api for manager role and it is enabled, after some more research I created a reverse shell upload script which uses text API to upload a malicious WAR file, this script can also be used outside HTB if you have working credentials and access to text API, you can download the script here : [WARSend](https://github.com/thewhiteh4t/warsend) . Below you can see the script in action!
 
-![](https://i.imgur.com/Pz6KZAd.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748492/img/Pz6KZAd.png)
 
 and I successfully got a reverse shell here!
 
@@ -119,7 +119,7 @@ PASSWORD FOUND!!!!: pw == admin@it
 
 So I got another password here so I tried this password for the user ash and it worked and I got the user here at this point! After this I added my ssh public key to authorized_keys file for a fully interactive shell...
 
-![](https://i.imgur.com/vfjSeX9.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748452/img/vfjSeX9.png)
 
 ## Privilege Escalation
 
@@ -132,16 +132,16 @@ uid=1000(ash) gid=1000(ash) groups=1000(ash),4(adm),24(cdrom),30(dip),46(plugdev
 
 LXD is a next generation system container manager. It offers a user experience similar to virtual machines but using Linux containers instead. I started looking for privilege escalation techniques using LXD and found a bash script on Exploit DB : [Ubuntu 18.04 - 'lxd' Privilege Escalation](https://www.exploit-db.com/exploits/46978) . As per the instructions I downloaded the build-alpine script in my machine and used to fetch an alpine tar.gz file...
 
-![](https://i.imgur.com/hJndson.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748446/img/hJndson.png)
 
 next I uploaded this tar.gz file along with the pivesc script...
 
-![](https://i.imgur.com/p3lwtPV.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748419/img/p3lwtPV.png)
 
 after this I executed the privesc script and got a root shell and finally got Root!
 
-![](https://i.imgur.com/Mvi6exo.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748457/img/Mvi6exo.png)
 
 Solved!
 
-![](https://i.imgur.com/3r5JTdH.png)
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/f_auto,q_auto/v1771748481/img/3r5JTdH.png)
