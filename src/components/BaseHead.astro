@@ -75,12 +75,13 @@ const { title, description } = Astro.props
 <!-- Structured Data -->
 <JsonLD title={title} description={description} />
 
-<!-- Google Tag Manager -->
+<!-- Google Tag Manager 
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-KZPRPC8W');</script>
+-->
 
 <!-- PageFind -->
 <link
@@ -90,3 +91,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   onload="this.onload=null;this.rel='stylesheet'"
 />
 <!--<script src="/pagefind/pagefind-ui.js" defer></script> -->
+
+<!-- Analytics -->
+<script defer src="https://cloud.umami.is/script.js" data-website-id="4b40b7ed-8746-4919-b6a0-220c27fc208d"></script>
