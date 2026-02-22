@@ -13,6 +13,18 @@ function generateAltText(postTitle, imageNumber) {
   }
 }
 const altText = generateAltText(postTitle, imageNumber)
+
+function getOptimizedUrl(url) {
+  if (!url.includes('res.cloudinary.com')) return url;
+  
+  if (url.includes('f_auto') || url.includes('q_auto')) {
+    return url;
+  }
+
+  return url.replace('/upload/', '/upload/f_auto,q_auto/');
+}
+
+const optimizedSrc = getOptimizedUrl(src);
 ---
 
 <figure
@@ -23,7 +35,7 @@ const altText = generateAltText(postTitle, imageNumber)
   aria-label={altText}
 >
   <img
-    src={src}
+    src={optimizedSrc}
     alt={altText}
     loading="lazy"
     decoding="async"
