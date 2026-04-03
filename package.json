@@ -9,10 +9,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdoc": "^0.12.0",
+    "@astrojs/markdoc": "^0.15.10",
     "@astrojs/react": "^5.0.2",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "@keystatic/astro": "^5.0.6",
     "@keystatic/core": "^0.5.48",
     "@tailwindcss/vite": "^4.2.0",
