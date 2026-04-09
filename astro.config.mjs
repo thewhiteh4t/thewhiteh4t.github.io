@@ -12,8 +12,14 @@ export default defineConfig({
     assets: '_assets',
   },
   site: 'https://thewhiteh4t.github.io',
+  trailingSlash: 'always',
   integrations: [
-    sitemap(),
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString()
+        return item
+      },
+    }),
     react(),
     markdoc({ ignoreIndentation: true }),
     ...(process.env.SKIP_KEYSTATIC ? [] : [keystatic()]),

@@ -13,7 +13,7 @@ type Props = {
 const { post, loadingType, fetchPriority } = Astro.props
 ---
 
-<a href={`/blog/${post.id}`} class="no-underline" aria-label={post.data.title}>
+<a href={`/blog/${post.id}/`} class="no-underline" aria-label={post.data.title}>
   <article class="card rounded-lg bg-surface shadow-md shadow-black/50 h-84">
     <figure class="relative w-full aspect-[16/9]">
       <Picture

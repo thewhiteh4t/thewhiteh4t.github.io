@@ -13,7 +13,10 @@ const categories = await getCollection('categories')
     <div class="flex flex-wrap justify-center w-full">
       {
         categories.map((categ) => (
-          <CardBtn href={`/blog/category/${categ.id}`} class="btn m-1 min-w-32">
+          <CardBtn
+            href={`/blog/category/${categ.id}/`}
+            class="btn m-1 min-w-32"
+          >
             {categ.data.categName}
           </CardBtn>
         ))
