@@ -90,7 +90,7 @@ In the manifest we specify the content scripts and the service workers along wit
 
 When we click the extension icon we see a popup window, so as you might have guessed `popup.html` is the file where our extension *front-end* lives. Here is an example of a legitimate *looking* extension :
 
-![](%5Bhttps://res.cloudinary.com/dg5ijxsap/image/upload/v1779859042/2026-05-27_10-45_tumxub.png%5D\(https://res.cloudinary.com/dg5ijxsap/image/upload/v1779859042/2026-05-27_10-45_tumxub.png))
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/v1779859042/2026-05-27_10-45_tumxub.png)
 
 Real magic happens inside the `content_scripts` this is where we use `MutationObserver` to watch DOM changes and parse it according to the platform we are targeting. For this PoC I added custom parsing for Claude, ChatGPT and Gemini, the big 3.
 
@@ -140,7 +140,7 @@ const payload = {
 
 notice that there is no fetch query, we can use it inside `content.js` but it's better to do that in a service worker instead, because :
 
-![](%5Bhttps://res.cloudinary.com/dg5ijxsap/image/upload/v1779860225/2026-05-27_11-06_ysho1t.png%5D\(https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860225/2026-05-27_11-06_ysho1t.png))\
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860225/2026-05-27_11-06_ysho1t.png)
 \
 so we have a proper workaround for Same Origin Policy… you can read more about it [here](https://developer.chrome.com/docs/extensions/develop/concepts/network-requests).
 
@@ -167,15 +167,15 @@ async function handleExfil(data) {
 }
 ```
 
-For the PoC i used localhost but this can be replaced with something like a tunnel provider such as ngrok or cloudflare. Its a simple fetch query which sends the conversation to our FastAPI backend server.
+For the PoC i used localhost but this can be replaced with something like a tunnel provider such as ngrok or flare. Its a simple fetch query which sends the conversation to our FastAPI backend server.
 
 The python script is also simple as it receives the query, passes the conversation through a set of regex patterns and displays the conversation along with any secret detection. Here is how it looks for a test prompt in gemini :
 
-![](%5Bhttps://res.cloudinary.com/dg5ijxsap/image/upload/v1779860807/2026-05-27_11-15_kmcpbh.png%5D\(https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860807/2026-05-27_11-15_kmcpbh.png))
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860807/2026-05-27_11-15_kmcpbh.png)
 
 and after secrets detection :
 
-![](%5Bhttps://res.cloudinary.com/dg5ijxsap/image/upload/v1779860806/2026-05-27_11-16_rm6zh1.png%5D\(https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860806/2026-05-27_11-16_rm6zh1.png))
+![](https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860806/2026-05-27_11-16_rm6zh1.png)
 
 You can watch it in action here : coming soon...
 
