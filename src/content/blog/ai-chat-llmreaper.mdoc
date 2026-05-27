@@ -167,7 +167,7 @@ async function handleExfil(data) {
 }
 ```
 
-For the PoC i used localhost but this can be replaced with something like a tunnel provider such as ngrok or flare. Its a simple fetch query which sends the conversation to our FastAPI backend server.
+For the PoC i used localhost but this can be replaced with something like a tunnel provider such as ngrok or cloudflare. Its a simple fetch query which sends the conversation to our FastAPI backend server.
 
 The python script is also simple as it receives the query, passes the conversation through a set of regex patterns and displays the conversation along with any secret detection. Here is how it looks for a test prompt in gemini :
 
