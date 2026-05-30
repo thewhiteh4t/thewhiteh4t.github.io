@@ -1,15 +1,15 @@
 ---
-title: Your AI Conversations Are Not Private From Browser Extensions
+title: LLMReaper - DOM Based AI Conversation Exfiltration via Browser Extensions
 description: >-
-  Most people think their AI conversations are private. They're not. Any browser
-  extension with page access can read everything. in this post i'll show exactly
-  how i built LLMReaper, a proof-of-concept that silently captures AI
-  conversations from ChatGPT, Claude and Gemini at the DOM level and scans them
-  for exposed API keys, passwords, tokens and credentials in real time. no
-  special permissions. no network interception. just standard browser extension
-  access that most users never think twice about.
+  LLMReaper is a proof-of-concept Chrome extension (Manifest V3) demonstrating
+  passive DOM-based exfiltration of AI conversations from ChatGPT, Claude,
+  and Gemini using MutationObserver, no special permissions, no network
+  interception. Captured conversations are scanned in real-time for exposed
+  API keys, OAuth tokens, JWTs, cloud credentials, and passwords, then
+  exfiltrated via service worker to bypass Same-Origin Policy. Most users never
+  question the permissions they grant browser extensions.
 pubDate: 2026-05-27
-updatedDate: 2026-05-27
+updatedDate: 2026-05-30
 categName: research
 tagList: llm, browser extension, tool, python, privacy
 author: thewhiteh4t
@@ -94,7 +94,7 @@ When we click the extension icon we see a popup window, so as you might have gue
 
 Real magic happens inside the `content_scripts` this is where we use `MutationObserver` to watch DOM changes and parse it according to the platform we are targeting. For this PoC I added custom parsing for Claude, ChatGPT and Gemini, the big 3.
 
-I have used various selector queries to match user prompts and LLM responses but the main challenge was detecting when the response completes since we see a streaming output in these platforms. We can't fire a capture query every few seconds because that would mean lot of duplicate and chunks of the response depending on the length, but all three platforms have a think in common **the stop button**. It maintains its state until the response is completed and then changes so I used the stop button to track response completion and it was good enough for the PoC.
+I have used various selector queries to match user prompts and LLM responses but the main challenge was detecting when the response completes since we see a streaming output in these platforms. We can't fire a capture query every few seconds because that would mean lot of duplicate and chunks of the response depending on the length, but all three platforms have a thing in common **the stop button**. It maintains its state until the response is completed and then changes so I used the stop button to track response completion and it was good enough for the PoC.
 
 ```js
 const STOP_SIGNALS = {
@@ -178,6 +178,18 @@ and after secrets detection :
 ![](https://res.cloudinary.com/dg5ijxsap/image/upload/v1779860806/2026-05-27_11-16_rm6zh1.png)
 
 You can watch it in action here : [YouTube](https://www.youtube.com/watch?v=Hq8yIQS0kdo)
+
+## MITRE ATT&CK Mapping
+
+LLMReaper demonstrates techniques documented in the MITRE ATT&CK framework:
+
+| Technique | ID | Description |
+|---|---|---|
+| Masquerading | T1036 | Extension presents a legitimate-looking UI while capturing conversations in the background |
+| Web Portal Capture | T1056.003 | Passively reads user prompts and AI responses rendered in the DOM |
+| Exfiltration Over C2 Channel | T1041 | Captured conversations POSTed to attacker-controlled server via service worker |
+| Supply Chain Compromise | T1195 | Malicious extensions distributed via legitimate browser stores |
+| Credentials from Web Browsers | T1555.003 | API keys, tokens, passwords detected via regex in captured conversation content |
 
 ## What can you do about it
 
