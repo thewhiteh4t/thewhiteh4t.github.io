@@ -1,5 +1,8 @@
 ---
 import logo from '../assets/logo_small.png'
+import publs from '../data/publications.json'
+import projects from '../data/projects.json'
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const blogURL = new URL('/blog', Astro.site)
 const logoURL = new URL(logo.src, Astro.site)
@@ -12,38 +15,57 @@ if (Astro.url.pathname === '/') {
       {
         '@type': 'Person',
         '@id': `${Astro.site}#person`,
-        'name': 'Lohitya Pushkar',
-        'alternateName': 'thewhiteh4t',
-        'url': Astro.site,
-        'image': logoURL,
-        'jobTitle': 'Security Researcher & Penetration Tester',
-        'description': 'Security researcher specializing in penetration testing, offensive security tooling, automated reconnaissance, and Agentic AI. Developer of Seeker, FinalRecon, and NExfil etc.',
-        'knowsAbout': [
+        name: 'Lohitya Pushkar',
+        alternateName: 'thewhiteh4t',
+        url: Astro.site,
+        image: logoURL,
+        jobTitle: 'Security Researcher & Penetration Tester',
+        description:
+          'Security researcher specializing in penetration testing, offensive security tooling, automated reconnaissance, and Agentic AI. Developer of Seeker, FinalRecon, and NExfil etc.',
+        knowsAbout: [
           'Offensive Security Tooling',
           'Automated Reconnaissance',
           'Vulnerability Research',
           'Memory Forensics',
           'Network Exploitation',
           'Agentic AI',
-          'Security Automation'
+          'Security Automation',
         ],
-        'sameAs': [
+        sameAs: [
           'https://www.google.com/search?kgmid=/g/11yts41g9r',
           'https://orcid.org/0009-0000-5370-3402',
           'https://github.com/thewhiteh4t',
           'https://www.linkedin.com/in/lohityapushkar',
           'https://x.com/thewhiteh4t',
-          'https://muckrack.com/lohitya-pushkar'
-        ]
+          'https://muckrack.com/lohitya-pushkar',
+        ],
       },
       {
         '@type': 'ProfilePage',
         '@id': `${Astro.site}#profilepage`,
-        'url': Astro.site,
-        'name': 'Lohitya Pushkar (thewhiteh4t) - Security Researcher Profile',
-        'mainEntity': { '@id': `${Astro.site}#person` }
-      }
-    ]
+        url: Astro.site,
+        name: 'Lohitya Pushkar (thewhiteh4t) - Security Researcher Profile',
+        mainEntity: { '@id': `${Astro.site}#person` },
+      },
+      ...publs.map((publ) => ({
+        '@type': 'Article',
+        headline: publ.title,
+        author: { '@id': `${Astro.site}#person` },
+        publisher: {
+          '@type': 'Organization',
+          name: publ.issuer,
+        },
+        datePublished: publ.date,
+        url: publ.link,
+      })),
+      ...projects.map((project) => ({
+        '@type': 'SoftwareSourceCode',
+        name: project.title,
+        description: project.desc,
+        codeRepository: project.url,
+        author: { '@id': `${Astro.site}#person` },
+      })),
+    ],
   }
 } else if (Astro.url.pathname === '/blog/') {
   structuredData = {

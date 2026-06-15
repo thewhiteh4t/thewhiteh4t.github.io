@@ -5,14 +5,24 @@ import LoadImg from '../components/BulkImpImgs.astro'
 
 {
   certs.map((cert) => (
-    <div class="overflow-hidden rounded-full shadow-md shadow-black/50">
-      <figure aria-label="certification badge">
-        <LoadImg
-          imagePath={`/src/assets/cert_imgs/${cert.img}`}
-          altText={cert.title}
-          imageClasses="object-cover rounded-full scale-130"
-        />
-      </figure>
+    <div class="relative flex items-center h-32">
+      <div class="w-32 h-32 rounded-full shrink-0 absolute left-0 z-1 shadow-lg shadow-black/50 overflow-hidden border-2 border-surface">
+        <figure aria-label="certification badge">
+          <LoadImg
+            imagePath={`/src/assets/cert_imgs/${cert.img}`}
+            altText={cert.title}
+            imageClasses="object-cover rounded-full scale-130"
+          />
+        </figure>
+      </div>
+      <div class="flex items-start flex-col justify-center w-full h-32 bg-surface rounded-lg border border-white/5 shadow-lg shadow-black/50 pl-22 pr-4 ml-16">
+        <p class="text-sm text-white font-semibold line-clamp-2 leading-5">
+          {cert.title}
+        </p>
+        <p class="text-xs text-on-surface-variant mt-1">
+          {cert.issuer} · {cert.date}
+        </p>
+      </div>
     </div>
   ))
 }

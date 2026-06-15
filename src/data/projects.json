@@ -2,37 +2,37 @@
   {
     "title": "seeker",
     "url": "https://github.com/thewhiteh4t/seeker",
-    "desc": "Accurately Locate Smartphones using Social Engineering",
-    "img": "seeker_banner.png"
+    "desc": "PoC tool demonstrating how browser geolocation can be abused via fake pages and social engineering to accurately locate smartphones",
+    "category": "Social Eng"
   },
   {
     "title": "FinalRecon",
     "url": "https://github.com/thewhiteh4t/FinalRecon",
-    "desc": "Automated Web Recon with Speed & Accuracy",
-    "img": "finalrecon_banner.png"
+    "desc": "All-in-one web reconnaissance tool that delivers a full target overview — DNS, SSL, WHOIS, subdomains, ports — in one run with minimal dependencies",
+    "category": "Recon"
   },
   {
     "title": "pwnedOrNot",
     "url": "https://github.com/thewhiteh4t/pwnedOrNot",
-    "desc": "Find Passwords of Compromised Email Addresses",
-    "img": "pwnedornot_banner.png"
+    "desc": "Checks email addresses against HaveIBeenPwned v3 API then searches available public dumps for plaintext passwords from confirmed breaches",
+    "category": "OSINT"
   },
   {
     "title": "killcast",
     "url": "https://github.com/thewhiteh4t/killcast",
-    "desc": "Control Google ChromeCast Devices",
-    "img": "killcast_banner.png"
+    "desc": "PoC tool demonstrating how Chromecast devices can be hijacked by anyone on the network — inspired by the 2019 PewDiePie Chromecast hijack",
+    "category": "Network"
   },
   {
     "title": "nexfil",
     "url": "https://github.com/thewhiteh4t/nexfil",
-    "desc": "Lightning Fast Social Media Profile Lookups",
-    "img": "nexfil_banner.png"
+    "desc": "Username OSINT tool that checks 350+ websites in seconds with low false positives. Built out of frustration with Sherlock's speed and accuracy",
+    "category": "OSINT"
   },
   {
     "title": "FlashSploit",
     "url": "https://github.com/thewhiteh4t/flashsploit",
-    "desc": "Exploitation Framework for ATtiny85 Based HID Attacks",
-    "img": "flashsploit_banner.png"
+    "desc": "Exploitation framework for ATtiny85 HID devices. Auto-generates Arduino scripts from user input and launches Metasploit listeners where required",
+    "category": "Hardware"
   }
 ]

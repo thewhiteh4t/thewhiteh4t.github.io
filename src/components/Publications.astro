@@ -1,27 +1,48 @@
 ---
 import publs from '../data/publications.json'
 import LoadImg from '../components/BulkImpImgs.astro'
+import { ExternalLink } from 'lucide-react'
 ---
 
 {
   publs.map((publ) => (
     <a
       href={publ.link}
-      aria-label="link to publication"
+      aria-label={`link to publication: ${publ.title}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="no-underline"
+      class="no-underline group rounded-lg h-full"
     >
-      <figure
-        class="h-full w-full rounded-lg overflow-hidden shadow-md shadow-black/50"
-        aria-label="image of publication"
-      >
-        <LoadImg
-          imagePath={`/src/assets/publ_imgs/${publ.img}`}
-          altText={`${publ.issuer} - ${publ.title}`}
-          imageClasses="object-cover"
-        />
-      </figure>
+      <div class="h-full rounded-lg bg-surface shadow-lg shadow-black/50 border border-white/5 group-hover:border-cyan-300/70 transition-colors duration-200 flex flex-row overflow-hidden">
+        <div class="w-24 shrink-0">
+          <LoadImg
+            imagePath={`/src/assets/publ_imgs/${publ.img}`}
+            altText={`${publ.issuer} - ${publ.title}`}
+            imageClasses="h-full w-full object-cover object-top"
+          />
+        </div>
+        <div class="flex flex-col justify-between p-4 grow">
+          <div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-300">
+                {publ.issuer}
+              </span>
+              <ExternalLink
+                size={14}
+                className="text-on-surface-variant shrink-0"
+                aria-hidden="true"
+              />
+            </div>
+            <p class="mt-2 text-sm text-white leading-6">{publ.title}</p>
+          </div>
+          <time
+            class="text-xs text-on-surface-variant mt-3 block"
+            datetime={`${publ.date}`}
+          >
+            {publ.date}
+          </time>
+        </div>
+      </div>
     </a>
   ))
 }

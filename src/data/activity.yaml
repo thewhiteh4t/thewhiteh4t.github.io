@@ -1,0 +1,49 @@
+- id: '1'
+  date: '2026-06-10'
+  text: 'Qualified in MDSec hiring CTF'
+  url: 'https://www.linkedin.com/posts/lohityapushkar_completed-the-mdsec-offensive-security-accelerator-share-7470445165048913920-1v28/'
+
+- id: '2'
+  date: '2026-06-08'
+  text: 'Our team ranked 3rd in Coalfire x HTB CTF'
+  url: 'https://www.linkedin.com/posts/lohityapushkar_ctf-cybersecurity-hackthebox-activity-7469735028105695232-wSUb'
+
+- id: '3'
+  date: '2026-05-27'
+  text: 'Published LLMReaper - DOM based AI conversation exfiltration research'
+  url: 'https://thewhiteh4t.github.io/blog/ai-chat-llmreaper/'
+
+- id: '4'
+  date: '2026-05-22'
+  text: 'Updated FinalRecon to v1.1.8'
+  url: 'https://www.linkedin.com/posts/lohityapushkar_bugbounty-recon-osint-activity-7463573877328142337-_OeY'
+
+- id: '5'
+  date: '2026-05-04'
+  text: 'Published PoC for CVE-2026-27483 - MindsDB path traversal to RCE on Exploit-DB'
+  url: 'https://www.exploit-db.com/exploits/52547'
+
+- id: '6'
+  date: '2026-04-04'
+  text: 'Published MSSQL Pentesting Cheatsheet on blog'
+  url: 'https://thewhiteh4t.github.io/blog/mssql-pentesting-cheatsheet/'
+
+- id: '7'
+  date: '2026-03-16'
+  text: 'Published nuclei templet for CVE-2026-27483 - MindsDB path traversal to RCE'
+  url: 'https://github.com/projectdiscovery/nuclei-templates/pull/15568'
+
+- id: '8'
+  date: '2025-11-30'
+  text: 'Completed Google x Kaggle AI Agents Intensive course'
+  url: 'https://www.linkedin.com/posts/lohityapushkar_aiagents-googleai-kaggle-activity-7407636933708980224-vvXK'
+
+- id: '9'
+  date: '2025-06-16'
+  text: 'Seeker was featured on SCWorld news'
+  url: 'https://www.scworld.com/brief/novel-tool-facilitates-non-malware-geolocation-compromise'
+
+- id: '10'
+  date: '2025-06-14'
+  text: 'Seeker was featured on CyberNews'
+  url: 'https://cybernews.com/security/phishing-exposes-precise-smartphone-geolocation/'

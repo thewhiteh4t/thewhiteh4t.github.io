@@ -1,6 +1,7 @@
 ---
 import AnimLogo from '../components/twh'
 import { ChevronDown } from 'lucide-react'
+const FALLBACK_STARS = '18K+'
 ---
 
 <!-- MOBILE LAYOUT -->
@@ -22,11 +23,28 @@ import { ChevronDown } from 'lucide-react'
       Security Through Hacking
     </h2>
     <p class="mt-5 text-sm p-1 leading-6 min-h-24 w-full text-center">
-      Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br>
-      offensive security assessments,<br>
-      vulnerability research and<br>
+      Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br
+      />
+      offensive security assessments,<br />
+      vulnerability research and<br />
       open-source development
     </p>
+    <div class="mx-auto mt-10">
+      <div class="grid grid-cols-3">
+        <div class="text-center border-r border-white/10">
+          <p class="text-4xl font-bold">6</p>
+          <p class="text-xs font-bold">Tools</p>
+        </div>
+        <div class="text-center border-r border-white/10 px-5">
+          <p class="text-4xl font-bold gh-stars">{FALLBACK_STARS}</p>
+          <p class="text-xs font-bold">Stars</p>
+        </div>
+        <div class="text-center">
+          <p class="text-4xl font-bold">2</p>
+          <p class="text-xs font-bold">CVEs</p>
+        </div>
+      </div>
+    </div>
     <a
       href="#projects"
       aria-label="move to next section button"
@@ -50,11 +68,29 @@ import { ChevronDown } from 'lucide-react'
       Security Through Hacking
     </h2>
     <p class="mt-5 leading-6 min-h-24 w-full text-center">
-      Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br>
-      offensive security assessments,<br>
-      vulnerability research and<br>
+      Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br
+      />
+      offensive security assessments,<br />
+      vulnerability research and<br />
       open-source development
     </p>
+    <div class="mx-auto mt-10">
+      <div class="grid grid-cols-3">
+        <div class="text-center border-r border-white/10">
+          <p class="text-5xl font-bold">6</p>
+          <p class="font-bold">Tools</p>
+        </div>
+        <div class="text-center border-r border-white/10 px-10">
+          <p class="text-5xl font-bold gh-stars">{FALLBACK_STARS}</p>
+          <p class="font-bold">Stars</p>
+        </div>
+        <div class="text-center">
+          <p class="text-5xl font-bold">2</p>
+          <p class="font-bold">CVEs</p>
+        </div>
+      </div>
+    </div>
+
     <a
       href="#projects"
       aria-label="move to next section button"
@@ -64,3 +100,52 @@ import { ChevronDown } from 'lucide-react'
     </a>
   </div>
 </div>
+
+<script>
+  const repos = [
+    'seeker',
+    'FinalRecon',
+    'pwnedOrNot',
+    'nexfil',
+    'killcast',
+    'flashsploit',
+  ]
+  const FALLBACK = { FALLBACK_STARS }
+
+  const fetchWithTimeout = (url, ms = 3000) => {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), ms)
+    return fetch(url, { signal: controller.signal }).finally(() =>
+      clearTimeout(timer),
+    )
+  }
+
+  Promise.allSettled(
+    repos.map((r) =>
+      fetchWithTimeout(`https://api.github.com/repos/thewhiteh4t/${r}`)
+        .then((res) => res.json())
+        .then((d) => d.stargazers_count),
+    ),
+  )
+    .then((results) => {
+      const sum = results
+        .filter((r) => r.status === 'fulfilled')
+        .reduce((acc, r) => acc + r.value, 0)
+
+      if (sum > 0) {
+        const rounded = Math.round(sum / 1000) * 1000
+        document.querySelectorAll('.gh-stars').forEach((el) => {
+          el.textContent = `${rounded / 1000}K+`
+        })
+      } else {
+        document.querySelectorAll('.gh-stars').forEach((el) => {
+          el.textContent = FALLBACK
+        })
+      }
+    })
+    .catch(() => {
+      document.querySelectorAll('.gh-stars').forEach((el) => {
+        el.textContent = FALLBACK
+      })
+    })
+</script>

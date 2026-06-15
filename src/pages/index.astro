@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/Base.astro'
 import Hero from '../components/Hero.astro'
 import Projects from '../components/Projects.astro'
+import Activity from '../components/RecentActivity.astro'
 import Cves from '../components/Cves.astro'
 import Publs from '../components/Publications.astro'
 import Certs from '../components/Certs.astro'
@@ -17,16 +18,23 @@ import '../styles/animBg.css'
     <section id="projects" class="scroll-mt-20">
       <h2 class="text-3xl my-10">Projects</h2>
       <div
-        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8"
+        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8 items-stretch"
       >
         <Projects />
+      </div>
+    </section>
+
+    <section id="log" class="scroll-mt-20">
+      <h2 class="text-3xl my-10">Log</h2>
+      <div class="flex justify-center">
+        <Activity />
       </div>
     </section>
 
     <section id="cves" class="scroll-mt-20">
       <h2 class="text-3xl my-10">Vulnerability Disclosures</h2>
       <div
-        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8"
+        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8 items-stretch"
       >
         <Cves />
       </div>
@@ -34,7 +42,7 @@ import '../styles/animBg.css'
     <section id="publications" class="scroll-mt-20">
       <h2 class="text-3xl my-10">Publications</h2>
       <div
-        class="my-5 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-6 lg:gap-8"
+        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8 items-stretch"
       >
         <Publs />
       </div>
@@ -42,32 +50,60 @@ import '../styles/animBg.css'
     <section id="certs" class="scroll-mt-20">
       <h2 class="text-3xl my-10">Certifications</h2>
       <div
-        class="my-5 grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8 lg:grid-cols-6 lg:gap-8"
+        class="my-5 grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-2 lg:gap-8 items-stretch"
       >
         <Certs />
       </div>
     </section>
     <section id="community" class="scroll-mt-20">
       <h2 class="text-3xl my-10">Community</h2>
-      <p class="my-5 text-on-background">
-        I created <a
-          href="https://twc1rcle.com/"
-          target="_blank"
-          rel="noopener noreferrer">The White Circle</a
-        > to bring cybersecurity enthusiasts together. It's a place where we can
-        all learn from each other, stay updated on emerging threats, and build practical
-        skills in the field. <br /><br /><b>Who can join?</b> Anyone with a passion
-        for cybersecurity! Whether you're just starting out, a pro, or somewhere
-        in between, you'll find a welcoming and chill environment here. <br
-        /><br />And for those who love a good challenge, we also have our own <a
-          href="https://twc1rcle.com/ctf/team/"
-          target="_blank"
-          rel="noopener noreferrer">CTF team</a
-        >! We participate in various Capture The Flag events throughout the
-        year.
-      </p>
-      <CardBtn href={TWC_JOIN_URL} class="btn rounded-lg">Join TWC</CardBtn>
+
+      <div class="flex flex-col items-center">
+        <div class="max-w-2xl">
+          <p class="text-on-surface leading-7">
+            I created
+            <a
+              href="https://twc1rcle.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="no-underline hover:underline">The White Circle</a
+            > to bring cybersecurity enthusiasts together. A place where we learn
+            from each other, stay updated on emerging threats, and build practical
+            skills in the field.
+          </p>
+
+          <p class="text-on-surface leading-7 mt-4">
+            Anyone with a passion for cybersecurity is welcome, whether you're
+            just starting out, a seasoned pro, or somewhere in between. We also
+            have our own <a
+              href="https://twc1rcle.com/ctf/team/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="no-underline
+          hover:underline">CTF team</a
+            >
+          </p> that participates in competitions throughout the year.
+        </div>
+
+        <div class="flex flex-row gap-6 mt-8">
+          <CardBtn
+            href="https://twc1rcle.com/"
+            btnType="external"
+            class="btn rounded-lg"
+          >
+            Visit TWC
+          </CardBtn>
+          <CardBtn
+            href={TWC_JOIN_URL}
+            btnType="external"
+            class="btn rounded-lg"
+          >
+            Join Discord
+          </CardBtn>
+        </div>
+      </div>
     </section>
+
     <section id="recents" class="scroll-mt-20">
       <h2 class="text-3xl my-10">Recent Blog Posts</h2>
       <RecentPosts />

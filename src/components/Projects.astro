@@ -1,6 +1,6 @@
 ---
 import projects from '../data/projects.json'
-import LoadImg from '../components/BulkImpImgs.astro'
+import { ExternalLink } from 'lucide-react'
 ---
 
 {
@@ -9,24 +9,25 @@ import LoadImg from '../components/BulkImpImgs.astro'
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      class="no-underline"
+      class="no-underline group rounded-lg"
     >
-      <div class="rounded-lg overflow-hidden h-48 lg:h-58 shadow-md shadow-black/50">
-        <div class="relative h-full">
-          <div class="absolute inset-0">
-            <LoadImg
-              imagePath={`/src/assets/project_imgs/${project.img}`}
-              altText={`${project.title} - ${project.desc}`}
-              imageClasses="h-full w-full object-cover brightness-40"
+      <div class="rounded-lg h-full bg-surface shadow-lg shadow-black/50 p-6 flex flex-col justify-between border border-white/5 group-hover:border-cyan-300 transition-colors duration-200">
+        <div class="flex items-center justify-between">
+          <h3 class="text-2xl">{project.title}</h3>
+          <div class="flex shrink-0 items-center gap-2">
+            <span class="shrink-0 text-xs font-semibold uppercase tracking-wider text-cyan-300 border border-cyan-300/30 rounded px-2 py-1">
+              {project.category}
+            </span>
+            <ExternalLink
+              size={14}
+              className="text-on-surface-variant"
+              aria-hidden="true"
             />
           </div>
-          <div class="absolute inset-0 flex justify-center items-center text-center p-2 text-white">
-            <div>
-              <h3 class="text-shadow-lg/50 text-4xl mb-2">{project.title}</h3>
-              <p class="text-shadow-lg/50">{project.desc}</p>
-            </div>
-          </div>
         </div>
+        <p class="text-sm text-on-surface-variant leading-6 grow mt-4">
+          {project.desc}
+        </p>
       </div>
     </a>
   ))

@@ -1,0 +1,58 @@
+---
+import { getCollection } from 'astro:content'
+import { SquareArrowOutUpRight } from 'lucide-react'
+
+const allActivities = await getCollection('activity')
+
+const activities = allActivities.sort((a, b) => {
+  return Date.parse(b.data.date) - Date.parse(a.data.date)
+})
+---
+
+<div class="relative max-w-4xl rounded-lg">
+  <ul
+    class="w-fit flex flex-col activity-scroll max-h-150 overflow-y-auto rounded-lg p-1"
+  >
+    {
+      activities.map((activity) => (
+        <li class="group border-b border-white/5 last:border-0">
+          {activity.data.url ? (
+            <a
+              href={activity.data.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="no-underline flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 py-4"
+            >
+              <time
+                datetime={activity.data.date}
+                class="font-mono text-sm text-on-surface-variant shrink-0 w-fit"
+              >
+                {activity.data.date}
+              </time>
+              <span class="inline border-l-2 border-cyan-300/70 pl-4 text-on-background group-hover:text-cyan-300 transition-colors duration-150">
+                {activity.data.text}
+                <SquareArrowOutUpRight className="ml-1 inline-block size-4 shrink-0 opacity-50 group-hover:opacity-100 transition-opacity duration-150" />
+              </span>
+            </a>
+          ) : (
+            <div class="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-6 py-4">
+              <time
+                datetime={activity.data.date}
+                class="font-mono text-sm text-on-surface-variant shrink-0 w-fit"
+              >
+                {activity.data.date}
+              </time>
+              <span class="border-l-2 border-cyan-300/70 pl-4 text-on-background">
+                {activity.data.text}
+              </span>
+            </div>
+          )}
+        </li>
+      ))
+    }
+  </ul>
+  <div
+    class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-cyan-300/20 to-transparent pointer-events-none rounded-lg"
+  >
+  </div>
+</div>
