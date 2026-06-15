@@ -101,7 +101,7 @@ const FALLBACK_STARS = '18K+'
   </div>
 </div>
 
-<script>
+<script is:inline define:vars={{ FALLBACK_STARS }}>
   const repos = [
     'seeker',
     'FinalRecon',
@@ -110,7 +110,7 @@ const FALLBACK_STARS = '18K+'
     'killcast',
     'flashsploit',
   ]
-  const FALLBACK = { FALLBACK_STARS }
+  const FALLBACK = FALLBACK_STARS
 
   const fetchWithTimeout = (url, ms = 3000) => {
     const controller = new AbortController()

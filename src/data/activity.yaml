@@ -30,7 +30,7 @@
 
 - id: '7'
   date: '2026-03-16'
-  text: 'Published nuclei templet for CVE-2026-27483 - MindsDB path traversal to RCE'
+  text: 'Published nuclei template for CVE-2026-27483 - MindsDB path traversal to RCE'
   url: 'https://github.com/projectdiscovery/nuclei-templates/pull/15568'
 
 - id: '8'
