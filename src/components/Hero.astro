@@ -12,89 +12,93 @@ const FALLBACK_STARS = '18K+'
   </div>
 
   <div
-    class="hero-content flex flex-col items-center justify-center h-screen w-full lg:hidden"
+    class="hero-content flex flex-col items-center h-screen w-full lg:hidden pt-16 pb-16"
   >
-    <div class="my-2 size-[150px] contain-strict">
-      <AnimLogo client:load />
-    </div>
+    <div class="flex flex-col items-center justify-center grow">
+      <div class="size-[150px] contain-strict">
+        <AnimLogo client:load />
+      </div>
 
-    <h1 class="text-3xl h-[3rem] w-full text-center">thewhiteh4t</h1>
-    <h2 class="mt-5 text-xl font-normal h-[2rem] w-full text-center">
-      Security Through Hacking
-    </h2>
-    <p class="mt-5 text-sm p-1 leading-6 min-h-24 w-full text-center">
-      Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br
-      />
-      offensive security assessments,<br />
-      vulnerability research and<br />
-      open-source development
-    </p>
-    <div class="mx-auto mt-10">
-      <div class="grid grid-cols-3">
-        <div class="text-center border-r border-white/10">
-          <p class="text-4xl font-bold">6</p>
-          <p class="text-xs font-bold">Tools</p>
-        </div>
-        <div class="text-center border-r border-white/10 px-5">
-          <p class="text-4xl font-bold gh-stars">{FALLBACK_STARS}</p>
-          <p class="text-xs font-bold">Stars</p>
-        </div>
-        <div class="text-center">
-          <p class="text-4xl font-bold">2</p>
-          <p class="text-xs font-bold">CVEs</p>
+      <h1 class="mt-4 text-3xl h-[3rem] w-full text-center">thewhiteh4t</h1>
+      <h2 class="mt-4 text-xl font-normal h-[2rem] w-full text-center">
+        Security Through Hacking
+      </h2>
+      <p class="mt-4 text-sm p-1 leading-6 min-h-24 w-full text-center">
+        Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br
+        />
+        offensive security assessments,<br />
+        vulnerability research and<br />
+        open-source development
+      </p>
+      <div class="mx-auto mt-4">
+        <div class="grid grid-cols-3">
+          <div class="text-center border-r border-white/10">
+            <p class="text-3xl font-bold">6</p>
+            <p class="text-xs font-bold">Tools</p>
+          </div>
+          <div class="text-center border-r border-white/10 px-5">
+            <p class="text-3xl font-bold gh-stars">{FALLBACK_STARS}</p>
+            <p class="text-xs font-bold">Stars</p>
+          </div>
+          <div class="text-center">
+            <p class="text-3xl font-bold">2</p>
+            <p class="text-xs font-bold">CVEs</p>
+          </div>
         </div>
       </div>
     </div>
+
     <a
       href="#projects"
       aria-label="move to next section button"
-      class="btn mt-25 rounded-full h-15 w-15 bg-primary border-0 ring-0 hover:scale-90 transition-transform duration-150 ease-out"
+      class="btn mt-auto rounded-full h-15 w-15 bg-primary border-0 ring-0 hover:scale-90 transition-transform duration-150 ease-out"
     >
       <ChevronDown className="stroke-on-primary animate-bounce" />
     </a>
   </div>
   <!-- DESKTOP LAYOUT -->
   <div
-    class="hero-content hidden lg:flex flex-col items-center justify-center h-screen w-full"
+    class="hero-content hidden lg:flex flex-col items-center h-screen w-full pt-16 pb-10"
   >
-    <div class="flex items-center justify-center gap-5 w-full min-h-[150px]">
-      <div class="size-[150px] contain-strict">
-        <AnimLogo client:load />
-      </div>
+    <div class="flex flex-col items-center justify-center grow">
+      <div class="flex items-center justify-center gap-5 w-full min-h-[150px]">
+        <div class="size-[150px] contain-strict">
+          <AnimLogo client:load />
+        </div>
 
-      <h1 class="text-6xl h-[3.7rem] text-center">thewhiteh4t</h1>
-    </div>
-    <h2 class="mt-5 font-normal h-[2.5rem] w-full text-center">
-      Security Through Hacking
-    </h2>
-    <p class="mt-5 leading-6 min-h-24 w-full text-center">
-      Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br
-      />
-      offensive security assessments,<br />
-      vulnerability research and<br />
-      open-source development
-    </p>
-    <div class="mx-auto mt-10">
-      <div class="grid grid-cols-3">
-        <div class="text-center border-r border-white/10">
-          <p class="text-5xl font-bold">6</p>
-          <p class="font-bold">Tools</p>
-        </div>
-        <div class="text-center border-r border-white/10 px-10">
-          <p class="text-5xl font-bold gh-stars">{FALLBACK_STARS}</p>
-          <p class="font-bold">Stars</p>
-        </div>
-        <div class="text-center">
-          <p class="text-5xl font-bold">2</p>
-          <p class="font-bold">CVEs</p>
+        <h1 class="text-6xl h-[3.7rem] text-center">thewhiteh4t</h1>
+      </div>
+      <h2 class="mt-5 font-normal h-[2.5rem] w-full text-center">
+        Security Through Hacking
+      </h2>
+      <p class="mt-5 leading-6 min-h-24 w-full text-center">
+        Lohitya Pushkar (thewhiteh4t) is a security researcher specializing in<br
+        />
+        offensive security assessments,<br />
+        vulnerability research and<br />
+        open-source development
+      </p>
+      <div class="mx-auto mt-10">
+        <div class="grid grid-cols-3">
+          <div class="text-center border-r border-white/10">
+            <p class="text-5xl font-bold">6</p>
+            <p class="font-bold">Tools</p>
+          </div>
+          <div class="text-center border-r border-white/10 px-10">
+            <p class="text-5xl font-bold gh-stars">{FALLBACK_STARS}</p>
+            <p class="font-bold">Stars</p>
+          </div>
+          <div class="text-center">
+            <p class="text-5xl font-bold">2</p>
+            <p class="font-bold">CVEs</p>
+          </div>
         </div>
       </div>
     </div>
-
     <a
       href="#projects"
       aria-label="move to next section button"
-      class="btn mt-25 rounded-full h-15 w-15 bg-primary border-0 ring-0 hover:scale-90 transition-transform duration-150 ease-out"
+      class="mt-auto btn rounded-full h-15 w-15 bg-primary border-0 ring-0 hover:scale-90 transition-transform duration-150 ease-out"
     >
       <ChevronDown className="stroke-on-primary animate-bounce" />
     </a>

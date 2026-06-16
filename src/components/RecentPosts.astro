@@ -1,6 +1,7 @@
 ---
 import BlogCard from '../components/BlogCard.astro'
 import { getCollection } from 'astro:content'
+import CardBtn from '../components/CardBtn.astro'
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -13,4 +14,9 @@ const posts = (await getCollection('blog'))
       <BlogCard post={post} loadingType={'lazy'} fetchPriority={'auto'} />
     ))
   }
+</div>
+<div class="mt-8">
+  <CardBtn href="/blog/" btnType="internal" class="btn rounded-lg">
+    View More Posts
+  </CardBtn>
 </div>
