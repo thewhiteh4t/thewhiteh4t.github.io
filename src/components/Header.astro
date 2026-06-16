@@ -116,18 +116,29 @@ const btn_titles = [
       <div id="search"></div>
       <script is:inline>
         let pagefind
+        const searchBox = document.querySelector('#searchBox')
+
+        const openSearch = async () => {
+          if (!pagefind) {
+            pagefind = await import('/pagefind/pagefind-ui.js')
+            new PagefindUI({
+              element: '#search',
+              showImages: false,
+              autofocus: true,
+            })
+          }
+          searchBox.showModal()
+        }
         document
           .querySelector('#search-btn')
-          .addEventListener('click', async (e) => {
-            if (!pagefind) {
-              pagefind = await import('/pagefind/pagefind-ui.js')
-              new PagefindUI({
-                element: '#search',
-                showImages: false,
-                autofocus: true,
-              })
-            }
-          })
+          .addEventListener('click', openSearch)
+
+        document.addEventListener('keydown', (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault()
+            openSearch()
+          }
+        })
       </script>
     </div>
     <form method="dialog" class="modal-backdrop">
@@ -167,19 +178,6 @@ const btn_titles = [
           }, 300)
         }
       })
-    })
-
-    const searchBtn = document.querySelector('#search-btn')
-    const searchBox = document.querySelector('#searchBox')
-    searchBtn.addEventListener('click', () => {
-      searchBox.showModal()
-    })
-
-    document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault()
-        searchBox.showModal()
-      }
     })
   </script>
 </header>
